@@ -106,50 +106,50 @@
                                     <span class="align-middle">Categoría3</span></a></li>
                                 <li class="sidebar-item">
                                     </li>
+                                <div runat="server" id="funcionesAdmin">
+                                    <li class="sidebar-header">
+                                        FUNCIONES DEL ADMINISTRADOR
+                                    </li>
 
-                                <li class="sidebar-header">
-                                    FUNCIONES DEL ADMINISTRADOR
-                                </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarArticulos" runat="server" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
+                                    </li>
 
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbAgregarArticulos" runat="server" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
-                                </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarProveedores" runat="server" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
+                                    </li>
 
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbAgregarProveedores" runat="server" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
-                                </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarCategorias" runat="server" OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
+                                    </li>
 
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbAgregarCategorias" runat="server" OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
-                                </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarMarcas" runat="server" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
+                                    </li>
 
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbAgregarMarcas" runat="server" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbListadoArticulos" runat="server" OnClick="LbListadoArticulos_Click">Listado de Artículos</asp:LinkButton>
-                                </li>
-
-
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbListadoProveedores" runat="server" OnClick="LbListadoProveedores_Click">Listado de Proveedores</asp:LinkButton>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbListadoCategorias" runat="server" OnClick="LbListadoCategorias_Click">Listado de Categorías</asp:LinkButton>
-                                </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbListadoArticulos" runat="server" OnClick="LbListadoArticulos_Click">Listado de Artículos</asp:LinkButton>
+                                    </li>
 
 
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LbListadoMarcas" runat="server" OnClick="LbListadoMarcas_Click">Listado de Marcas</asp:LinkButton>
-                                </li>
-                                <li class="sidebar-item">
-                                </li>
-                                <li class="sidebar-item">
-                                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">ArticulosModificar</asp:LinkButton>
-                                </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbListadoProveedores" runat="server" OnClick="LbListadoProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                                    </li>
 
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbListadoCategorias" runat="server" OnClick="LbListadoCategorias_Click">Listado de Categorías</asp:LinkButton>
+                                    </li>
+
+
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbListadoMarcas" runat="server" OnClick="LbListadoMarcas_Click">Listado de Marcas</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">ArticulosModificar</asp:LinkButton>
+                                    </li>
+                                </div>
                             </ul>
                             <p>
                                 &nbsp;</p>

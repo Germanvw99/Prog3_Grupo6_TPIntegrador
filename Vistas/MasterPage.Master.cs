@@ -37,12 +37,15 @@ namespace Vistas
 
                     // SIDEBAR GENERAL
                     heroUser.Visible = true;
+                    funcionesAdmin.Visible = false;
 
                     // En caso de que haya un usuario Logueado, identificar si es Administrador o Usuario
                     if (objUsuario.Codigo_Perfil == 1)
                     {
                         // Admin
+                        // SIDEBAR
                         lblTipoUsuario.Text = objUsuario.Username+" (Administrador)";
+                        funcionesAdmin.Visible = true;
                     }
                     else
                     {
@@ -60,6 +63,7 @@ namespace Vistas
 
                 //SIDEBAR GENERAL
                 heroUser.Visible = false;
+                funcionesAdmin.Visible = false;
             }
                
         }

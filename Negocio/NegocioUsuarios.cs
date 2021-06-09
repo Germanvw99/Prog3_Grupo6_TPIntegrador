@@ -124,5 +124,17 @@ namespace Negocio
             }
             return objUsuario;
         }
+
+        public bool isAdmin()
+        {
+            DataTable dt = (DataTable)System.Web.HttpContext.Current.Session["User"];
+            Usuarios objUsuario = LeerTablaUsuario(dt);
+
+            if(objUsuario.Codigo_Perfil == 1)
+            {
+                return true;
+            }
+            else { return false; }
+        }
     }
 }
