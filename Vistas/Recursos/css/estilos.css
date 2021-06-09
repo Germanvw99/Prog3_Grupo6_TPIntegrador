@@ -1,0 +1,56 @@
+﻿/* Estilos Globales */
+ul {
+    list-style-type: none;
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+}
+.v100{
+    height:100vh;
+}
+
+/* Login */
+.wrapper-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #57BAEC;
+}
+.container-login {
+    max-width: 500px;
+    width:100%;
+    padding: 90px 70px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 5px 6px 12px -3px #377696;
+    box-shadow: 5px 6px 12px -3px #377696;
+}
+
+/* Navbar */
+.hyperlink{
+    display:flex;
+    justify-content:center;
+}
+
+.nav-right.ul.li{
+    list-style-type: none;
+}
+
+.nav-searchbar {
+    width: 33%;
+}
+
+.hoverRemain:hover {
+    color: #07689F !important;
+}
+
+/* Body MasterPage */
+.main-content{
+    /* El mínimo de altura es de 1 pantalla entera - 112px (Altura de Header + Footer)*/
+    min-height: calc(100vh - 112px);
+    max-width: 80%;
+    padding:0;
+}

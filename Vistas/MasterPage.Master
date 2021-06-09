@@ -1,0 +1,177 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Vistas.MasterPage" %>
+<!DOCTYPE html>
+<html>
+    <head runat="server">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" href="Recursos/css/bootstrap.min.css" type="text/css" />
+        <!-- FONTAWESOME -->
+        <link rel="stylesheet" href="Recursos/css/all.css" type="text/css"" />
+        <!-- ESTILOS -->
+        <link href="Recursos/css/theme.css" rel="stylesheet" type="text/css" />
+        <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css" />
+        
+        <title>Grupo 6 - TP Integrador</title>
+
+        </head>
+    <body>
+        <form id="form2" runat="server">
+            <div>
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-primary text-light d-flex justify-content-between align-items-center pr-5 pl-5">
+                        <div class="nav-left">
+                            <asp:HyperLink ID="hlHomepage" runat="server" CssClass="text-light navbar-brand" NavigateUrl="~/Home.aspx">Logotipo</asp:HyperLink>
+                        </div>
+                        <div class="nav-searchbar d-flex">
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control py-2 rounded-3 mr-4" style='border: 1px solid #E1E1E1' placeholder="Artículo"></asp:TextBox>
+                            <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="btn btn-outline-light my-2 my-sm-0 hoverRemain"/>
+                        </div>
+                        <div class="nav-right" id="userPanelLoggedIn" runat="server">
+                            <ul class="d-flex m-0">
+                                <li>
+                                    <asp:Button ID="btnLogOff" runat="server" Text="Cerrar Sesión" CssClass="btn btn-primary mr-5 my-2 my-sm-0" OnClick="btnLogOff_Click" />
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="btnCart" runat="server" CssClass="btn btn-outline-light my-2 my-sm-0 hoverRemain" OnClick="btnCart_Click"><i class="fas fa-shopping-cart"></i></asp:LinkButton>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="nav-right" id="userPanelLoggedOff" runat="server">
+                            <ul class="d-flex m-0">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink3" runat="server" CssClass="text-light navbar-brand mr-5 fs-7" NavigateUrl="~/Login.aspx">Iniciar Sesión</asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink4" runat="server" CssClass="text-light navbar-brand mr-5 fs-5" NavigateUrl="~/Register.aspx">Crear Cuenta</asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-outline-light my-2 my-sm-0 hoverRemain" OnClick="btnCart_Click"><i class="fas fa-shopping-cart"></i></asp:LinkButton>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+                <main class="row w-100">
+                    <nav class="sidebar col-md-2 bg-white border-right sticky-top d-flex flex-column align-items-center">
+                        <p class="sidebar-brand">
+                            Grupo 6 - TP Integrador
+                        </p>
+                        <div class="w-100">
+                            <div class="sidebar-user" id="heroUser" runat="server">
+                                <asp:ImageButton ID="ImageButton1" runat="server" CssClass="img-fluid rounded-circle mb-2" ImageUrl="Recursos/img/avatar.png" OnClick="Img_user_Click" />
+                                <div class="d-flex align-items-center flex-column">
+                                    <small>
+                                        <asp:Label ID="lblTipoUsuario" runat="server" Text="Label"></asp:Label></small>
+                                </div>
+                            </div>
+                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
+                                <li class="mt-4 sidebar-header">
+                                    Marcas
+                                    </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">
+                                    <span class="align-middle">Marca1</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">
+                                    <span class="align-middle">Marca2</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">
+                                    <span class="align-middle">Marca3</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">
+                                    <span class="align-middle">Marca4</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-header">
+                                    Categorías
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">
+                                    <span class="align-middle">Categoría1</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">
+                                    <span class="align-middle">Categoría2</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">
+                                    <span class="align-middle">Categoría3</span></a></li>
+                                <li class="sidebar-item">
+                                    </li>
+
+                                <li class="sidebar-header">
+                                    FUNCIONES DEL ADMINISTRADOR
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarArticulos" runat="server" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarProveedores" runat="server" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarCategorias" runat="server" OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarMarcas" runat="server" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoArticulos" runat="server" OnClick="LbListadoArticulos_Click">Listado de Artículos</asp:LinkButton>
+                                </li>
+
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoProveedores" runat="server" OnClick="LbListadoProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoCategorias" runat="server" OnClick="LbListadoCategorias_Click">Listado de Categorías</asp:LinkButton>
+                                </li>
+
+
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoMarcas" runat="server" OnClick="LbListadoMarcas_Click">Listado de Marcas</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">ArticulosModificar</asp:LinkButton>
+                                </li>
+
+                            </ul>
+                            <p>
+                                &nbsp;</p>
+                        </div>   
+                        
+
+                    </nav>
+
+                    <div class="main-content col-md-10">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </main>
+                <footer class="footer bg-primary text-light align-items-center pr-5 pl-5 d-flex justify-content-between">
+                    <div class="footer-left"> © 2021. Todos los derechos reservados.</div>
+                    <div class="footer-right"> Mas contenido footer.</div>
+                </footer>
+            </div>
+        </form>
+        <script src="Recursos/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="Recursos/js/jquery-3.6.0.min.js"></script>
+        <script src="Recursos/js/jquery.dataTables.min.js"></script>
+
+    </body>
+</html>

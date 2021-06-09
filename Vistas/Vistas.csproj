@@ -1,0 +1,431 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CC526591-BE20-46B7-AAB0-B35695EBAC49}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vistas</RootNamespace>
+    <AssemblyName>Vistas</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44303</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ArticulosAgregar.aspx" />
+    <Content Include="ArticulosListado.aspx" />
+    <Content Include="ArticulosModificar.aspx" />
+    <Content Include="CategoriasAgregar.aspx" />
+    <Content Include="CategoriasListado.aspx" />
+    <Content Include="CategoriasModificar.aspx" />
+    <Content Include="Carrito.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Home.aspx" />
+    <Content Include="Imagenes\articulos\1.png" />
+    <Content Include="Imagenes\articulos\10.png" />
+    <Content Include="Imagenes\articulos\11.png" />
+    <Content Include="Imagenes\articulos\12.png" />
+    <Content Include="Imagenes\articulos\2.png" />
+    <Content Include="Imagenes\articulos\3.png" />
+    <Content Include="Imagenes\articulos\4.png" />
+    <Content Include="Imagenes\articulos\5.png" />
+    <Content Include="Imagenes\articulos\6.png" />
+    <Content Include="Imagenes\articulos\7.png" />
+    <Content Include="Imagenes\articulos\8.png" />
+    <Content Include="Imagenes\articulos\9.png" />
+    <Content Include="Imagenes\categorias\camaras-y-accesorios.png" />
+    <Content Include="Imagenes\categorias\celulares-y-telefonos.png" />
+    <Content Include="Imagenes\categorias\computacion.png" />
+    <Content Include="Imagenes\categorias\consolas-y-videojuegos.png" />
+    <Content Include="Imagenes\categorias\electronica-audio-y-video.png" />
+    <Content Include="Imagenes\categorias\herramientas.png" />
+    <Content Include="Imagenes\categorias\televisores.png" />
+    <Content Include="Imagenes\marcas\ActiVision.png" />
+    <Content Include="Imagenes\marcas\Admiral.png" />
+    <Content Include="Imagenes\marcas\Alcatel.png" />
+    <Content Include="Imagenes\marcas\AMD.png" />
+    <Content Include="Imagenes\marcas\Apple.png" />
+    <Content Include="Imagenes\marcas\Atma.png" />
+    <Content Include="Imagenes\marcas\Benro.png" />
+    <Content Include="Imagenes\marcas\BGH.png" />
+    <Content Include="Imagenes\marcas\Black &amp; Decker.png" />
+    <Content Include="Imagenes\marcas\BlackBerry.png" />
+    <Content Include="Imagenes\marcas\Bosch.png" />
+    <Content Include="Imagenes\marcas\Canon.png" />
+    <Content Include="Imagenes\marcas\Celestron.png" />
+    <Content Include="Imagenes\marcas\Corsair.png" />
+    <Content Include="Imagenes\marcas\Dell.png" />
+    <Content Include="Imagenes\marcas\DeWalt.png" />
+    <Content Include="Imagenes\marcas\EA.png" />
+    <Content Include="Imagenes\marcas\Einhell.png" />
+    <Content Include="Imagenes\marcas\Electrolux.png" />
+    <Content Include="Imagenes\marcas\Exo.png" />
+    <Content Include="Imagenes\marcas\Fuji Film.png" />
+    <Content Include="Imagenes\marcas\Gafa.png" />
+    <Content Include="Imagenes\marcas\Go Pro.png" />
+    <Content Include="Imagenes\marcas\Godox.png" />
+    <Content Include="Imagenes\marcas\Hisense.png" />
+    <Content Include="Imagenes\marcas\Hitachi.png" />
+    <Content Include="Imagenes\marcas\HP.png" />
+    <Content Include="Imagenes\marcas\Huawei.png" />
+    <Content Include="Imagenes\marcas\HyperX.png" />
+    <Content Include="Imagenes\marcas\Hyundai.png" />
+    <Content Include="Imagenes\marcas\JVC.png" />
+    <Content Include="Imagenes\marcas\Kanji.png" />
+    <Content Include="Imagenes\marcas\Karcher.png" />
+    <Content Include="Imagenes\marcas\Ken Brown.png" />
+    <Content Include="Imagenes\marcas\Kingston.png" />
+    <Content Include="Imagenes\marcas\KitchenAid.png" />
+    <Content Include="Imagenes\marcas\Kodak Alaris.png" />
+    <Content Include="Imagenes\marcas\Kodak.png" />
+    <Content Include="Imagenes\marcas\LG.png" />
+    <Content Include="Imagenes\marcas\Liliana.png" />
+    <Content Include="Imagenes\marcas\Logitech.png" />
+    <Content Include="Imagenes\marcas\Lusqtoff.png" />
+    <Content Include="Imagenes\marcas\Makita.png" />
+    <Content Include="Imagenes\marcas\Marumi.png" />
+    <Content Include="Imagenes\marcas\Microsoft.png" />
+    <Content Include="Imagenes\marcas\Motorola.png" />
+    <Content Include="Imagenes\marcas\MSI.png" />
+    <Content Include="Imagenes\marcas\Multilaser.png" />
+    <Content Include="Imagenes\marcas\Nespresso.png" />
+    <Content Include="Imagenes\marcas\Nikom.png" />
+    <Content Include="Imagenes\marcas\Noblex.png" />
+    <Content Include="Imagenes\marcas\Nokia.png" />
+    <Content Include="Imagenes\marcas\Nvidia.png" />
+    <Content Include="Imagenes\marcas\Oster.png" />
+    <Content Include="Imagenes\marcas\Peabody.png" />
+    <Content Include="Imagenes\marcas\Philco.png" />
+    <Content Include="Imagenes\marcas\Philips.png" />
+    <Content Include="Imagenes\marcas\Phottix.png" />
+    <Content Include="Imagenes\marcas\PlayStation.png" />
+    <Content Include="Imagenes\marcas\Quantum.png" />
+    <Content Include="Imagenes\marcas\RCA.png" />
+    <Content Include="Imagenes\marcas\Redagon.png" />
+    <Content Include="Imagenes\marcas\Samsung.png" />
+    <Content Include="Imagenes\marcas\Sanyo.png" />
+    <Content Include="Imagenes\marcas\Sigma.png" />
+    <Content Include="Imagenes\marcas\Sony.png" />
+    <Content Include="Imagenes\marcas\Stanley.png" />
+    <Content Include="Imagenes\marcas\Starcam.png" />
+    <Content Include="Imagenes\marcas\TCL.png" />
+    <Content Include="Imagenes\marcas\Telefunken.png" />
+    <Content Include="Imagenes\marcas\Think Tank.png" />
+    <Content Include="Imagenes\marcas\TopHouse.png" />
+    <Content Include="Imagenes\marcas\Trust Gaming.png" />
+    <Content Include="Imagenes\marcas\Trust.png" />
+    <Content Include="Imagenes\marcas\Ubisoft.png" />
+    <Content Include="Imagenes\marcas\Whirlpool.png" />
+    <Content Include="Imagenes\marcas\Xiaomi.png" />
+    <Content Include="Imagenes\marcas\ZTE.png" />
+    <Content Include="Imagenes\mediosPago\americanExpress.png" />
+    <Content Include="Imagenes\mediosPago\cabal.png" />
+    <Content Include="Imagenes\mediosPago\diners.png" />
+    <Content Include="Imagenes\mediosPago\mastercard.png" />
+    <Content Include="Imagenes\mediosPago\naranja.png" />
+    <Content Include="Imagenes\mediosPago\visa.png" />
+    <Content Include="Imagenes\proveedores\1.png" />
+    <Content Include="Imagenes\proveedores\2.png" />
+    <Content Include="Imagenes\proveedores\3.png" />
+    <Content Include="Imagenes\proveedores\4.png" />
+    <Content Include="Imagenes\proveedores\5.png" />
+    <Content Include="Imagenes\proveedores\6.png" />
+    <Content Include="Imagenes\proveedores\7.png" />
+    <Content Include="Imagenes\proveedores\8.png" />
+    <Content Include="Imagenes\usuarios\1.png" />
+    <Content Include="Imagenes\usuarios\2.png" />
+    <Content Include="Imagenes\usuarios\3.png" />
+    <Content Include="Imagenes\usuarios\4.png" />
+    <Content Include="Imagenes\usuarios\5.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="MarcasAgregar.aspx" />
+    <Content Include="MarcasListado.aspx" />
+    <Content Include="MarcasModificar.aspx" />
+    <Content Include="Perfil.aspx" />
+    <Content Include="ProveedoresAgregar.aspx" />
+    <Content Include="ProveedoresListado.aspx" />
+    <Content Include="ProveedoresModificar.aspx" />
+    <Content Include="Recursos\css\all.css" />
+    <Content Include="Recursos\css\bootstrap.min.css" />
+    <Content Include="Recursos\css\dataTables.bootstrap5.min.css" />
+    <Content Include="Recursos\css\estilos.css" />
+    <Content Include="Recursos\css\jquery.dataTables.min.css" />
+    <Content Include="Recursos\css\theme.css" />
+    <Content Include="Recursos\img\avatar.png" />
+    <Content Include="Recursos\img\ca.png" />
+    <Content Include="Recursos\img\Carrito.png" />
+    <Content Include="Recursos\img\CarritoAgregar.png" />
+    <Content Include="Recursos\img\editar.png" />
+    <Content Include="Recursos\img\eliminar.png" />
+    <Content Include="Recursos\img\ver.png" />
+    <Content Include="Recursos\js\bootstrap.min.js" />
+    <Content Include="Recursos\js\jquery-3.3.1.slim.min.js" />
+    <Content Include="Recursos\js\jquery-3.6.0.min.js" />
+    <Content Include="Recursos\js\jquery.dataTables.min.js" />
+    <Content Include="Recursos\js\popper.min.js" />
+    <Content Include="Recursos\webfonts\fa-brands-400.svg" />
+    <Content Include="Recursos\webfonts\fa-regular-400.svg" />
+    <Content Include="Recursos\webfonts\fa-solid-900.svg" />
+    <Content Include="Register.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArticulosAgregar.aspx.cs">
+      <DependentUpon>ArticulosAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticulosAgregar.aspx.designer.cs">
+      <DependentUpon>ArticulosAgregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticulosListado.aspx.cs">
+      <DependentUpon>ArticulosListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticulosListado.aspx.designer.cs">
+      <DependentUpon>ArticulosListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticulosModificar.aspx.cs">
+      <DependentUpon>ArticulosModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticulosModificar.aspx.designer.cs">
+      <DependentUpon>ArticulosModificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriasAgregar.aspx.cs">
+      <DependentUpon>CategoriasAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoriasAgregar.aspx.designer.cs">
+      <DependentUpon>CategoriasAgregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriasListado.aspx.cs">
+      <DependentUpon>CategoriasListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoriasListado.aspx.designer.cs">
+      <DependentUpon>CategoriasListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriasModificar.aspx.cs">
+      <DependentUpon>CategoriasModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoriasModificar.aspx.designer.cs">
+      <DependentUpon>CategoriasModificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Carrito.aspx.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Carrito.aspx.designer.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MarcasAgregar.aspx.cs">
+      <DependentUpon>MarcasAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarcasAgregar.aspx.designer.cs">
+      <DependentUpon>MarcasAgregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MarcasListado.aspx.cs">
+      <DependentUpon>MarcasListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarcasListado.aspx.designer.cs">
+      <DependentUpon>MarcasListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MarcasModificar.aspx.cs">
+      <DependentUpon>MarcasModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarcasModificar.aspx.designer.cs">
+      <DependentUpon>MarcasModificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedoresAgregar.aspx.cs">
+      <DependentUpon>ProveedoresAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProveedoresAgregar.aspx.designer.cs">
+      <DependentUpon>ProveedoresAgregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedoresListado.aspx.cs">
+      <DependentUpon>ProveedoresListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProveedoresListado.aspx.designer.cs">
+      <DependentUpon>ProveedoresListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedoresModificar.aspx.cs">
+      <DependentUpon>ProveedoresModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProveedoresModificar.aspx.designer.cs">
+      <DependentUpon>ProveedoresModificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPage.Master" />
+    <Content Include="Imagenes\marcas\desktop.ini" />
+    <None Include="packages.config" />
+    <Content Include="Recursos\webfonts\fa-brands-400.eot" />
+    <Content Include="Recursos\webfonts\fa-brands-400.ttf" />
+    <Content Include="Recursos\webfonts\fa-brands-400.woff" />
+    <Content Include="Recursos\webfonts\fa-brands-400.woff2" />
+    <Content Include="Recursos\webfonts\fa-regular-400.eot" />
+    <Content Include="Recursos\webfonts\fa-regular-400.ttf" />
+    <Content Include="Recursos\webfonts\fa-regular-400.woff" />
+    <Content Include="Recursos\webfonts\fa-regular-400.woff2" />
+    <Content Include="Recursos\webfonts\fa-solid-900.eot" />
+    <Content Include="Recursos\webfonts\fa-solid-900.ttf" />
+    <Content Include="Recursos\webfonts\fa-solid-900.woff" />
+    <Content Include="Recursos\webfonts\fa-solid-900.woff2" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{77e2503d-41c4-49b3-94d0-ad7c22c23a91}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{20282fcb-0a2a-41ab-b1a2-298b17f780f1}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>23131</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44303/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
