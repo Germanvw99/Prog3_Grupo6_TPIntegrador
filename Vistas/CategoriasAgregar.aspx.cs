@@ -14,6 +14,11 @@ namespace Vistas
         private readonly NegocioEstados negocioEstados = new NegocioEstados();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (NegocioUsuarios.getInstance().isAdmin() != true)
+            {
+                Response.Redirect("home.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
                 CargarEstados();

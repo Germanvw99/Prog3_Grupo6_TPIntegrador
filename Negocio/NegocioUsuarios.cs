@@ -106,21 +106,24 @@ namespace Negocio
         public Usuarios LeerTablaUsuario(DataTable dt)
         {
             Usuarios objUsuario = new Usuarios();
-            foreach (DataRow row in dt.Rows)
+            if(dt != null)
             {
-                objUsuario.Dni = row["usu_dni"].ToString();
-                objUsuario.Username = row["usu_username"].ToString();
-                objUsuario.Nombre = row["usu_nombre"].ToString();
-                objUsuario.Apellido = row["usu_apellido"].ToString();
-                objUsuario.Telefono = row["usu_telefono"].ToString();
-                objUsuario.Email = row["usu_email"].ToString();
-                objUsuario.Direccion = row["usu_direccion"].ToString();
-                objUsuario.Ciudad = row["usu_ciudad"].ToString();
-                objUsuario.Provincia = row["usu_provincia"].ToString();
-                objUsuario.Codigo_Postal = row["usu_codigo_postal"].ToString();
-                objUsuario.Ruta_Img = row["usu_ruta_imagen"].ToString();
-                objUsuario.Estado = Convert.ToInt32(row["usu_codigo_estado"]);
-                objUsuario.Codigo_Perfil = Convert.ToInt32(row["usu_perfil_codigo"]);
+                foreach (DataRow row in dt.Rows)
+                {
+                    objUsuario.Dni = row["usu_dni"].ToString();
+                    objUsuario.Username = row["usu_username"].ToString();
+                    objUsuario.Nombre = row["usu_nombre"].ToString();
+                    objUsuario.Apellido = row["usu_apellido"].ToString();
+                    objUsuario.Telefono = row["usu_telefono"].ToString();
+                    objUsuario.Email = row["usu_email"].ToString();
+                    objUsuario.Direccion = row["usu_direccion"].ToString();
+                    objUsuario.Ciudad = row["usu_ciudad"].ToString();
+                    objUsuario.Provincia = row["usu_provincia"].ToString();
+                    objUsuario.Codigo_Postal = row["usu_codigo_postal"].ToString();
+                    objUsuario.Ruta_Img = row["usu_ruta_imagen"].ToString();
+                    objUsuario.Estado = Convert.ToInt32(row["usu_codigo_estado"]);
+                    objUsuario.Codigo_Perfil = Convert.ToInt32(row["usu_perfil_codigo"]);
+                }
             }
             return objUsuario;
         }

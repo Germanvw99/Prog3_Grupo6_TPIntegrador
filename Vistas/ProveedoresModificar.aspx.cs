@@ -16,6 +16,11 @@ namespace Vistas
         private readonly NegocioProveedores negocioProveedor = new NegocioProveedores();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (NegocioUsuarios.getInstance().isAdmin() != true)
+            {
+                Response.Redirect("home.aspx");
+            }
+
             DataTable dt = negocioProveedor.ObtenerTablaSesion();
 
             foreach (DataRow dr in dt.Rows)

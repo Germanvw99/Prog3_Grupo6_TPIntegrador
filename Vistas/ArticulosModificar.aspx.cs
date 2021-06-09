@@ -15,6 +15,11 @@ namespace Vistas
         private readonly NegocioArticulos NegocioArticulo = new NegocioArticulos();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (NegocioUsuarios.getInstance().isAdmin() != true)
+            {
+                Response.Redirect("home.aspx");
+            }
+
             DataTable dt = NegocioArticulo.ObtenerTablaSesion();
 
             foreach (DataRow dr in dt.Rows)
