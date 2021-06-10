@@ -2,5 +2,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <main class="content">
 	MODIFICAR PARA VER RESULTADOS EN GITHUB
+
+	Hoy es Miercoles 
+
 </main>
 </asp:Content>
