@@ -11,7 +11,11 @@ namespace Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Checkeo si el usuario esta autorizado a entrar a el link
+            if (Session["User"] == null)
+            {
+                Response.Redirect("home.aspx");
+            }
         }
     }
 }
