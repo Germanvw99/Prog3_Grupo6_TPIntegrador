@@ -8,12 +8,11 @@
         <!-- FONTAWESOME -->
         <link rel="stylesheet" href="Recursos/css/all.css" type="text/css"" />
         <!-- ESTILOS -->
+        <link href="Recursos/css/sidebar.css" rel="stylesheet" type="text/css" />
         <link href="Recursos/css/theme.css" rel="stylesheet" type="text/css" />
         <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css" />
-        
         <title>Grupo 6 - TP Integrador</title>
-
-        </head>
+    </head>
     <body>
         <form id="form2" runat="server">
             <div>
@@ -61,13 +60,14 @@
                                 <asp:ImageButton ID="ImageButton1" runat="server" CssClass="img-fluid rounded-circle mb-2" ImageUrl="Recursos/img/avatar.png" OnClick="Img_user_Click" />
                                 <div class="d-flex align-items-center flex-column">
                                     <small>
-                                        <asp:Label ID="lblTipoUsuario" runat="server" Text="Label"></asp:Label></small>
+                                        <asp:Label ID="lblTipoUsuario" runat="server" Text="Label"></asp:Label>
+                                    </small>
                                 </div>
                             </div>
                             <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
                                 <li class="mt-4 sidebar-header">
                                     Marcas
-                                    </li>
+                                </li>
                                 <li class="sidebar-item">
                                     <a class="sidebar-link" href="#">
                                     <span class="align-middle">Marca1</span>
@@ -103,61 +103,48 @@
                                 </li>
                                 <li class="sidebar-item">
                                     <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Categoría3</span></a></li>
+                                    <span class="align-middle">Categoría3</span></a>
+                                </li>
                                 <li class="sidebar-item">
-                                    </li>
-                                <div runat="server" id="funcionesAdmin">
-                                    <li class="sidebar-header">
-                                        FUNCIONES DEL ADMINISTRADOR
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarArticulos" runat="server" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarProveedores" runat="server" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarCategorias" runat="server" OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarMarcas" runat="server" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoArticulos" runat="server" OnClick="LbListadoArticulos_Click">Listado de Artículos</asp:LinkButton>
-                                    </li>
-
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoProveedores" runat="server" OnClick="LbListadoProveedores_Click">Listado de Proveedores</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoCategorias" runat="server" OnClick="LbListadoCategorias_Click">Listado de Categorías</asp:LinkButton>
-                                    </li>
-
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoMarcas" runat="server" OnClick="LbListadoMarcas_Click">Listado de Marcas</asp:LinkButton>
-                                    </li>
-                                    <li class="sidebar-item">
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">ArticulosModificar</asp:LinkButton>
-                                    </li>
-                                </div>
+                                </li>
+                                <li runat="server" id="funcionesAdmin" class="sidebar-header">
+                                    FUNCIONES DEL ADMINISTRADOR
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarArticulos" runat="server" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarProveedores" runat="server" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarCategorias" runat="server" OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbAgregarMarcas" runat="server" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoArticulos" runat="server" OnClick="LbListadoArticulos_Click">Listado de Artículos</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoProveedores" runat="server" OnClick="LbListadoProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoCategorias" runat="server" OnClick="LbListadoCategorias_Click">Listado de Categorías</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbListadoMarcas" runat="server" OnClick="LbListadoMarcas_Click">Listado de Marcas</asp:LinkButton>
+                                </li>
+                                <li class="sidebar-item">
+                                </li>
+                                <li class="sidebar-item">
+                                    <asp:LinkButton ID="LbVentasListado" runat="server" OnClick="LbVentasListado_Click">VentasListado</asp:LinkButton>
+                                </li>
                             </ul>
                             <p>
-                                &nbsp;</p>
-                        </div>   
-                        
-
+                                &nbsp;
+                            </p>
+                        </div>
                     </nav>
-
                     <div class="main-content col-md-10">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
@@ -172,6 +159,5 @@
         <script src="Recursos/js/jquery-3.3.1.slim.min.js"></script>
         <script src="Recursos/js/jquery-3.6.0.min.js"></script>
         <script src="Recursos/js/jquery.dataTables.min.js"></script>
-
     </body>
 </html>

@@ -119,11 +119,6 @@ namespace Vistas
             Response.Redirect("MarcasListado.aspx");
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ArticulosModificar.aspx");
-        }
-
         protected void btnCart_Click(object sender, EventArgs e)
         {
             Response.Redirect("Carrito.aspx");
@@ -133,6 +128,11 @@ namespace Vistas
         {
             Session.Remove("User");
             Response.Redirect("Home.aspx");
+        }
+
+        protected void LbVentasListado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("VentasListado.aspx");
         }
     }
 }
