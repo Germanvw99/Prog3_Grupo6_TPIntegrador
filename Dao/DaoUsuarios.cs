@@ -24,9 +24,10 @@ namespace Dao
             return daoUsuarios;
         }
         #endregion
+        
+        SqlConnection conn = null;
         public Usuarios Login(String username, String password)
         {
-            SqlConnection conn = null;
             Usuarios objUsuario = null;
 
             try
@@ -72,7 +73,6 @@ namespace Dao
 
         public bool Register(Usuarios objUsuario)
         {
-            SqlConnection conn = null;
             bool answ = false;
             try
             {
@@ -100,6 +100,49 @@ namespace Dao
                 {
                     answ = true;
                 }
+
+
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return answ;
+        }
+
+
+
+
+        public bool EditUser(Usuarios objUsuario)
+        {
+            bool answ = false;
+            try
+            {   
+                // Edita la información del registro en la BD
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spEditarUsuario", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmDni", objUsuario.Dni);
+                cmd.Parameters.AddWithValue("@prmNombre", objUsuario.Nombre);
+                cmd.Parameters.AddWithValue("@prmApellido", objUsuario.Apellido);
+                cmd.Parameters.AddWithValue("@prmEmail", objUsuario.Email);
+                cmd.Parameters.AddWithValue("@prmTelefono", objUsuario.Telefono);
+                cmd.Parameters.AddWithValue("@prmDireccion", objUsuario.Direccion);
+                cmd.Parameters.AddWithValue("@prmCodigo_Postal", objUsuario.Codigo_Postal);
+                cmd.Parameters.AddWithValue("@prmCiudad", objUsuario.Ciudad);
+                cmd.Parameters.AddWithValue("@prmProvincia", objUsuario.Provincia);
+
+                int filasEditadas = cmd.ExecuteNonQuery();
+
+                // Chekea si hubo modificaciones
+                if (filasEditadas > 0)
+                {
+                    answ = true;
+                }
             }
             catch (Exception exc)
             {
@@ -112,5 +155,47 @@ namespace Dao
             return answ;
         }
        
+        public Usuarios LeerUsuario(String dni)
+        {
+            Usuarios objUsuario = null;
+            try {
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spLeerUsuario", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmDni", dni);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                // En caso de encontrar el usuario:
+                if (dr.Read())
+                {
+                    objUsuario = new Usuarios();
+                    objUsuario.Dni = dr["usu_dni"].ToString();
+                    objUsuario.Username = dr["usu_username"].ToString();
+                    objUsuario.Nombre = dr["usu_nombre"].ToString();
+                    objUsuario.Apellido = dr["usu_apellido"].ToString();
+                    objUsuario.Telefono = dr["usu_telefono"].ToString();
+                    objUsuario.Email = dr["usu_email"].ToString();
+                    objUsuario.Direccion = dr["usu_direccion"].ToString();
+                    objUsuario.Ciudad = dr["usu_ciudad"].ToString();
+                    objUsuario.Provincia = dr["usu_provincia"].ToString();
+                    objUsuario.Codigo_Postal = dr["usu_codigo_postal"].ToString();
+                    objUsuario.Ruta_Img = dr["usu_ruta_imagen"].ToString();
+                    objUsuario.Estado = Convert.ToInt32(dr["usu_codigo_estado"].ToString());
+                    objUsuario.Codigo_Perfil = Convert.ToInt32(dr["usu_perfil_codigo"].ToString());
+                }
+            }
+            catch (Exception exc)
+            {
+                objUsuario = null;
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return objUsuario;
+        }
     }
 }

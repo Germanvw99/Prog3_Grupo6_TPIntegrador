@@ -46,11 +46,9 @@ namespace Vistas
             objUsuario.Codigo_Postal = txtCodigoPostal.Text;
             objUsuario.Ruta_Img = "../Recursos/img/avatar.png";
             objUsuario.Estado = 1;
-            objUsuario.Codigo_Perfil = 1;
+            objUsuario.Codigo_Perfil = 2;
 
             return objUsuario;
         }
-
-
     }
 }

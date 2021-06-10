@@ -49,6 +49,24 @@ namespace Negocio
             }
         }
 
+        public bool EditUser(Usuarios objUsuario)
+        {
+            try
+            {
+                bool answ = false;
+                answ = DaoUsuarios.getInstance().EditUser(objUsuario);
+
+                // Si el usuario se modifico, entonces se vuelve a crear el Session
+                CrearSessionUsuario(DaoUsuarios.getInstance().LeerUsuario(objUsuario.Dni));
+
+                return answ;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
         private  Usuarios CrearSessionUsuario(Usuarios objUsuario)
         {
             if(objUsuario != null)
