@@ -47,6 +47,14 @@ h2 {
     color: #07689F !important;
 }
 
+/* SIDEBAR */
+
+
+/* FOOTER */
+.footer{
+    height: 56px;
+}
+
 /* Body MasterPage */
 .main-content{
     /* El mínimo de altura es de 1 pantalla entera - 112px (Altura de Header + Footer)*/

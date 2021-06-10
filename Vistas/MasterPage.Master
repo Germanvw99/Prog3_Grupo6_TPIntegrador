@@ -58,10 +58,13 @@
                         </p>
                         <div class="w-100">
                             <div class="sidebar-user" id="heroUser" runat="server">
-                                <asp:ImageButton ID="ImageButton1" runat="server" CssClass="img-fluid rounded-circle mb-2" ImageUrl="Recursos/img/avatar.png" OnClick="Img_user_Click" />
+                                <div class="ImgUser d-flex justify-content-center mb-2">
+                                    <asp:ImageButton ID="ImageButton1" runat="server" CssClass="img-fluid rounded-circle" ImageUrl="Recursos/img/avatar.png" OnClick="Img_user_Click" />
+                                </div>
                                 <div class="d-flex align-items-center flex-column">
                                     <small>
-                                        <asp:Label ID="lblTipoUsuario" runat="server" Text="Label"></asp:Label></small>
+                                        <asp:Label ID="lblTipoUsuario" runat="server" Text="Label"></asp:Label>
+                                    </small>
                                 </div>
                             </div>
                             <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
@@ -103,10 +106,12 @@
                                 </li>
                                 <li class="sidebar-item">
                                     <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Categoría3</span></a></li>
-                                <li class="sidebar-item">
-                                    </li>
-                                <div runat="server" id="funcionesAdmin">
+                                        <span class="align-middle">Categoría3</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div runat="server" id="funcionesAdmin">
+                                <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
                                     <li class="sidebar-header">
                                         FUNCIONES DEL ADMINISTRADOR
                                     </li>
@@ -149,15 +154,10 @@
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">ArticulosModificar</asp:LinkButton>
                                     </li>
-                                </div>
-                            </ul>
-                            <p>
-                                &nbsp;</p>
-                        </div>   
-                        
-
+                                </ul>
+                            </div>
+                        </div> 
                     </nav>
-
                     <div class="main-content col-md-10">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
