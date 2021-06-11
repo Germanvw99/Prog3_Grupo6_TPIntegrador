@@ -15,16 +15,23 @@
                                 </div>
                                 <div class="col-md-6">
                                 </div>
-                            </div>                       
+                            </div>
                         </div>
                         <div class="card-body">
                             <asp:GridView ID="GrdVentas" runat="server" AutoGenerateColumns="False"
                                 OnPreRender="GrdVentas_PreRender"
-                                CssClass="table display" OnRowCommand="GrdVentas_RowCommand">
+                                CssClass="table display" OnRowCommand="GrdVentas_RowCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
                                     <asp:TemplateField HeaderText="N° Factura">
                                         <ItemTemplate>
                                             <asp:Label ID="ven_codigo" runat="server" Text='<%# Eval("ven_codigo") %>' />
+                                            <asp:HiddenField ID="usu_direccion" runat="server" Value='<%# Eval("usu_direccion") %>' />
+                                            <asp:HiddenField ID="usu_ciudad" runat="server" Value='<%# Eval("usu_ciudad") %>' />
+                                            <asp:HiddenField ID="ven_medio_pago_codigo" runat="server" Value='<%# Eval("ven_medio_pago_codigo") %>' />
+                                            <%--<asp:HiddenField ID="ven_fecha_requerida" runat="server" Value='<%# Eval("ven_fecha_requerida") %>' />
+                                                <asp:HiddenField ID="ven_fecha_envio" runat="server" Value='<%# Eval("ven_fecha_envio") %>' />--%>
+                                            <asp:HiddenField ID="ven_codigo_estado" runat="server" Value='<%# Eval("ven_codigo_estado") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="DNI Cliente">
@@ -32,9 +39,14 @@
                                             <asp:Label ID="ven_usuarios_dni" runat="server" Text='<%# Eval("ven_usuarios_dni") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Apellido y nombre">
+                                    <asp:TemplateField HeaderText="Apellido">
                                         <ItemTemplate>
-                                            <asp:Label ID="usuario" runat="server" Text='<%# Eval("usuario") %>' />
+                                            <asp:Label ID="usu_apellido" runat="server" Text='<%# Eval("usu_apellido") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Nombre">
+                                        <ItemTemplate>
+                                            <asp:Label ID="usu_nombre" runat="server" Text='<%# Eval("usu_nombre") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Medio de pago">
@@ -58,20 +70,25 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <%-- BOTON VER --%>
-                                    <asp:ButtonField ButtonType="Image" CommandName="eventoVer" ImageUrl="Recursos/img/ver.png" />
+                                    <asp:ButtonField ButtonType="Image" CommandName="eventoVerDetalles" ImageUrl="Recursos/img/ver.png" />
                                 </Columns>
+                                <EditRowStyle BackColor="#999999" />
+                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                             </asp:GridView>
-                            <asp:Label ID="lblMensaje" runat="server"></asp:Label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <!-- MODAL VER-->
-
-    <!-- MODAL ELIMINAR-->
-
     <script src="Recursos/js/jquery-3.6.0.min.js"></script>
     <script src="Recursos/js/jquery.dataTables.min.js"></script>
     <script src="Recursos/js/popper.min.js"></script>

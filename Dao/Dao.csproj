@@ -44,6 +44,7 @@
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="DaoArticulos.cs" />
     <Compile Include="DaoCategorias.cs" />
+    <Compile Include="DaoDetalleVentas.cs" />
     <Compile Include="DaoEstados.cs" />
     <Compile Include="DaoMarcas.cs" />
     <Compile Include="DaoProveedores.cs" />
