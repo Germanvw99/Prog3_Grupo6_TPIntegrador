@@ -15,7 +15,11 @@ namespace Vistas
         {
             // Checkeo si el usuario esta autorizado a entrar a el link
             if(Session["User"] != null)
+
             {
+
+
+
                 Response.Redirect("home.aspx");
             }
         }
@@ -30,7 +34,18 @@ namespace Vistas
             }
             else
             {
-                Response.Redirect("home.aspx");
+
+
+                if (objUsuario.Codigo_Perfil == 2)
+                {
+                    Response.Redirect("Vistausuario.aspx");
+
+
+                }
+                else
+                {
+                    Response.Redirect("home.aspx");
+                }
 
             }
         }
