@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vistausuario.aspx.cs" Inherits="Vistas.Formulario_web11" %>
+﻿<%@ Page Title=""  EnableEventValidation="false"  Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vistausuario.aspx.cs" Inherits="Vistas.Formulario_web11" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         .c {
@@ -7,7 +7,7 @@
 </style>
      <div class="card-body">
         <div cssclass="container">
-    <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="3" DataSourceID="SqlDataSource1" style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
+    <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="3"  style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged" >
         <AlternatingItemTemplate  >
             <td runat="server" style="background-color: #FFFFFF;color: #284775;"><br />&nbsp;
                 <asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
@@ -19,7 +19,7 @@
                 <br />&nbsp;$
                 <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>' />
                 <br />
-                <asp:Button ID="Button3" runat="server" CssClass="btn-primary" Text="Agregar" CommandArgument='<%# Eval("art_codigo")+","+Eval("art_nombre")+","+Eval("art_descripcion")+","+Eval("art_precio_lista")+","+Eval("art_precio_lista") %>' CommandName="agregar" />
+                <asp:Button ID="Button3" runat="server" CssClass="btn-primary" Text="Agregar" CommandArgument='<%# Eval("art_codigo")+"@"+Eval("art_nombre")+"@"+Eval("art_descripcion")+"@"+Eval("art_precio_lista") %>' CommandName="agregar" />
             </td>
         </AlternatingItemTemplate>
         <EditItemTemplate>
@@ -82,7 +82,7 @@
                 <br />&nbsp;$&nbsp;
                 <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>' />
                 <br />
-                <asp:Button ID="Button2" CssClass=btn-primary runat="server" Text="Agregar" CommandArgument='<%# Eval("art_codigo")+","+Eval("art_nombre")+","+Eval("art_descripcion")+","+Eval("art_precio_lista")+","+Eval("art_precio_lista") %>' CommandName="agregar" OnCommand="Button2_Command" />
+                <asp:Button ID="Button2" CssClass=btn-primary runat="server" Text="Agregar" CommandArgument='<%# Eval("art_codigo")+"@"+Eval("art_nombre")+"@"+Eval("art_descripcion")+"@"+Eval("art_precio_lista")%>' CommandName="agregar" OnCommand="Button2_Command" />
             </td>
         </ItemTemplate>
         <LayoutTemplate>
@@ -128,6 +128,7 @@
                 <br /></td>
         </SelectedItemTemplate>
     </asp:ListView>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </div>
 
          </div>

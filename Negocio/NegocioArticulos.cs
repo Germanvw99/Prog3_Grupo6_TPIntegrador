@@ -18,6 +18,11 @@ namespace Negocio
         {
             return daoArticulos.ObtenerArticulos();
         }
+
+        public DataTable ObtenerArticulosdemarca(string marca)
+        {
+            return daoArticulos.ObtenerArticulospormarca(marca);
+        }
         //USO SESION PARA EDITAR ARTICULOS
 
         //SI NO EXISTE, CREA LA SESION

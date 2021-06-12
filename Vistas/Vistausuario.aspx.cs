@@ -34,24 +34,47 @@ namespace Vistas
                 if (objUsuario.Codigo_Perfil == 2)
                 {
 
+                   cargarlistview();
 
-                    cargarlistview();
                 }
                 else
                 {
 
-                    Response.Redirect("Home.aspx");
+                   Response.Redirect("Home.aspx");
+                    
 
                 }
             }
+               if (Session["tablapormarca"] != null)
+               {
+                cargarlistviewpormarca();
+            }
+            else
+            {
+                cargarlistview();
+
+
+            }
+        }
+
+        public void cargarlistviewpormarca()
+        {
+            //  int e = Convert.ToInt32((String)Session["tablapormarca"]);
+            // SqlDataSource1.SelectCommand= "SELECT art_codigo,art_nombre,art_descripcion,art_punto_pedido,art_precio_lista,art_ruta_imagen,est_nombre, mar_nombre, cat_nombre FROM Articulos INNER JOIN Estados ON Articulos.art_codigo_estado=Estados.est_codigo INNER JOIN Marcas ON Marcas.mar_codigo=Articulos.art_marca_codigo INNER JOIN Categorias ON Categorias.cat_codigo=Articulos.art_categoria_codigo  where art_marca_codigo = " + 9;
+            ListView1.DataSource = negocioArticulos.ObtenerArticulosdemarca((String)Session["tablapormarca"]);
+            ListView1.DataBind();
+            
+
+
+
         }
 
         public void cargarlistview()
         {
 
 
-           // ListView1.DataSource = negocioArticulos.ObtenerArticulos();
-           //ListView1.DataBind();
+            ListView1.DataSource = negocioArticulos.ObtenerArticulos();
+            ListView1.DataBind();
 
 
 
@@ -72,11 +95,13 @@ namespace Vistas
             if (e.CommandName == "agregar")
             {
                 String s = e.CommandArgument.ToString();
-                String[] arreglo = s.Split(',');
+                String[] arreglo = s.Split('@');
                 String id = arreglo[0];
                 String nombre = arreglo[1];
                 String descripcion = arreglo[2];
                 String precio = arreglo[3];
+
+                Label1.Text = arreglo[3];
 
 
                 n.agregarfilacarrito(id, nombre, descripcion, precio);

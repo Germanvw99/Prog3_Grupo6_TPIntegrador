@@ -69,45 +69,33 @@
                             </div>
                             <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
                                 <li class="mt-4 sidebar-header">
-                                    Marcas
                                     </li>
                                 <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Marca1</span>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="#">&nbsp;<asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="ImageButton2" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="38px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImageButton2_Command" Width="65px" />
+                                           
+<br />
+                                        </ItemTemplate>
+                                    </asp:DataList>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
                                     <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Marca2</span>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
                                     </a>
                                 </li>
+                            </ul>
+                            <p>
+                                &nbsp;</p>
+                            <p>
+                                &nbsp;</p>
+                            <p>
+                                &nbsp;</p>
+                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
                                 <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Marca3</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Marca4</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-header">
-                                    Categorías
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Categoría1</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">
-                                    <span class="align-middle">Categoría2</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">
-                                        <span class="align-middle">Categoría3</span>
-                                    </a>
                                 </li>
                             </ul>
                             <div runat="server" id="funcionesAdmin">
