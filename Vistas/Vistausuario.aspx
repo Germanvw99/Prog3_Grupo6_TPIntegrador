@@ -7,7 +7,7 @@
 </style>
      <div class="card-body">
         <div cssclass="container">
-    <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="3"  style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged" >
+    <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="6"  style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged" >
         <AlternatingItemTemplate  >
             <td runat="server" style="background-color: #FFFFFF;color: #284775;"><br />&nbsp;
                 <asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
@@ -128,7 +128,6 @@
                 <br /></td>
         </SelectedItemTemplate>
     </asp:ListView>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </div>
 
          </div>
