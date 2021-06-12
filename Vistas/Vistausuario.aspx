@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vistausuario.aspx.cs" Inherits="Vistas.Formulario_web11" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style type="text/css">
+       
+    </style>
      <div class="card-body">
-    <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="3" DataSourceID="SqlDataSource1" style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
-        <AlternatingItemTemplate>
-            <td runat="server" style="background-color: #FAFAD2;color: #284775;"><br />&nbsp;
+        <div cssclass="container">
+    <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="4" DataSourceID="SqlDataSource1" style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
+        <AlternatingItemTemplate   >
+            <td runat="server" style="background-color: #FFFFFF;color: #284775;"><br />&nbsp;
                 <asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
                 <br />
                 <asp:ImageButton ID="ImageButton4" runat="server" Height="166px" ImageUrl='<%# Bind("art_ruta_imagen") %>' Width="202px" />
@@ -67,7 +71,7 @@
                 <br /></td>
         </InsertItemTemplate>
         <ItemTemplate>
-            <td runat="server" style="background-color: #FFFBD6;color: #333333;">
+            <td runat="server" style="background-color: #FFFFFF;color: #333333;">
                 <br />&nbsp;<asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
                 <br />&nbsp;<asp:ImageButton ID="ImageButton2" runat="server" Height="167px" ImageUrl='<%# Bind("art_ruta_imagen") %>' Width="202px" />
                 <br />
@@ -122,6 +126,7 @@
                 <br /></td>
         </SelectedItemTemplate>
     </asp:ListView>
+            </div>
 
          </div>
 
