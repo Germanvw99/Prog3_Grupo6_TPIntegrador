@@ -7,13 +7,15 @@ using System.Web.UI.WebControls;
 using Negocio;
 using Entidades;
 using System.Data;
+using Negocio;
 namespace Vistas
+
 {
     public partial class Formulario_web11 : System.Web.UI.Page
 
     {
 
-
+        NegocioArticulos n = new NegocioArticulos();
         private readonly NegocioArticulos negocioArticulos = new NegocioArticulos();
         private readonly Articulos articulo = new Articulos();
         private readonly Categorias categoria = new Categorias();
@@ -63,6 +65,25 @@ namespace Vistas
         protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button2_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "agregar")
+            {
+                String s = e.CommandArgument.ToString();
+                String[] arreglo = s.Split(',');
+                String id = arreglo[0];
+                String nombre = arreglo[1];
+                String descripcion = arreglo[2];
+                String precio = arreglo[3];
+
+
+                n.agregarfilacarrito(id, nombre, descripcion, precio);
+
+
+
+            }
         }
     }
 }
