@@ -64,6 +64,7 @@ namespace Vistas
             ListView1.DataSource = negocioArticulos.ObtenerArticulosdemarca((String)Session["tablapormarca"]);
             ListView1.DataBind();
             
+            
 
 
 
@@ -101,10 +102,11 @@ namespace Vistas
                 String descripcion = arreglo[2];
                 String precio = arreglo[3];
 
-                Label1.Text = arreglo[3];
+                
 
 
                 n.agregarfilacarrito(id, nombre, descripcion, precio);
+                //aca  termine .
 
 
 

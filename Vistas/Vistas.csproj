@@ -72,6 +72,7 @@
     <Content Include="CategoriasListado.aspx" />
     <Content Include="CategoriasModificar.aspx" />
     <Content Include="Carrito.aspx" />
+    <Content Include="Vistausuario.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Imagenes\articulos\1.png" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="Carrito.aspx.designer.cs">
       <DependentUpon>Carrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistausuario.aspx.cs">
+      <DependentUpon>Vistausuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistausuario.aspx.designer.cs">
+      <DependentUpon>Vistausuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

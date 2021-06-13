@@ -39,6 +39,8 @@ namespace Vistas
                 if (objUsuario.Codigo_Perfil == 2)
                 {
                     Response.Redirect("Vistausuario.aspx");
+                    Session["tablapormarca"] = null;
+                    //BORRA EL FILTRO PARA EL LISTVIEW Y CARGA TODOS LOS ARTICULOS
 
 
                 }
