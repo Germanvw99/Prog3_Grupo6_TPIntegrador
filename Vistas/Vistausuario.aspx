@@ -5,8 +5,8 @@
             box-shadow: 10px 5px 5px black
         }
 </style>
-     <div class="card-body">
-        <div cssclass="container">
+     <div class="container-fluid">
+        <div class="card-body">
     <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="6"  style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged" >
         <AlternatingItemTemplate  >
             <td runat="server" style="background-color: #FFFFFF;color: #284775;"><br />&nbsp;
@@ -96,10 +96,10 @@
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style="text-align: center;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;">
+                    <td runat="server" style="text-align: center;background-color: #FFFFFF;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
                         <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
                             <Fields>
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                <asp:NumericPagerField />
                             </Fields>
                         </asp:DataPager>
                     </td>
@@ -128,6 +128,7 @@
                 <br /></td>
         </SelectedItemTemplate>
     </asp:ListView>
+
             </div>
 
          </div>
