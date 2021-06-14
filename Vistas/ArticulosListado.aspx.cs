@@ -113,12 +113,21 @@ namespace Vistas
             }
             if (e.CommandName == "eventoAgregarCarrito")
             {
+
                 int fila = Convert.ToInt32(e.CommandArgument);
-                String id = ((Label)GrdArticulos.Rows[fila].FindControl("art_codigo")).Text;
-                String nombre = ((Label)GrdArticulos.Rows[fila].FindControl("art_nombre")).Text;
-                String descripcion = ((Label)GrdArticulos.Rows[fila].FindControl("art_descripcion")).Text;
-                String precio = ((Label)GrdArticulos.Rows[fila].FindControl("art_precio_lista")).Text;
-                negocioArticulos.agregarfilacarrito(id,nombre,descripcion,precio);
+                articulo.SetCodigo(Int32.Parse(((Label)GrdArticulos.Rows[fila].FindControl("art_codigo")).Text));
+                articulo.SetNombre(((Label)GrdArticulos.Rows[fila].FindControl("art_nombre")).Text);
+                articulo.SetDescripcion(((Label)GrdArticulos.Rows[fila].FindControl("art_descripcion")).Text);
+                articulo.SetPrecioLista(Decimal.Parse(((Label)GrdArticulos.Rows[fila].FindControl("art_precio_lista")).Text));
+                negocioArticulos.agregarfilacarrito(articulo);
+
+
+                //int fila = Convert.ToInt32(e.CommandArgument);
+                //String id = ((Label)GrdArticulos.Rows[fila].FindControl("art_codigo")).Text;
+                //String nombre = ((Label)GrdArticulos.Rows[fila].FindControl("art_nombre")).Text;
+                //String descripcion = ((Label)GrdArticulos.Rows[fila].FindControl("art_descripcion")).Text;
+                //String precio = ((Label)GrdArticulos.Rows[fila].FindControl("art_precio_lista")).Text;
+                //negocioArticulos.agregarfilacarrito(id,nombre,descripcion,precio);
 
                     /*
                 articulo.SetNombre(((Label)GrdArticulos.Rows[fila].FindControl("art_nombre")).Text);

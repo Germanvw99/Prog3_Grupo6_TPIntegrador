@@ -76,20 +76,21 @@ namespace Vistas
         protected void MontoPagar()
         {
             decimal monto = 0;
-            /*int cantidadFilas = GridView1.Rows.Count;
+            int cantidadFilas = GridView1.Rows.Count;
             for (int x = 0; x < cantidadFilas; x++)
             {
-                monto +=Convert.ToDecimal(GridView1.Rows[x].Cells[8].Text);
+                monto += Convert.ToDecimal(GridView1.Rows[x].Cells[6].Text);
             }
-            Lbmonto.Text = "$"+monto;
-            */
-            foreach(GridViewRow fila in GridView1.Rows)
-            {
+            Lbmonto.Text = "$" + monto;
 
-                monto += Convert.ToDecimal(((Label)fila.Cells[3].FindControl("Label4")).Text);
-                //((Label)fila.Cells["Peso"].FindControl("Lbl_Peso")).Text)
+            //foreach(GridViewRow fila in GridView1.Rows)
+            //{
 
-            }
+            //    monto += Convert.ToDecimal(((Label)fila.Cells[3].FindControl("Label4")).Text);
+            //    //((Label)fila.Cells["Peso"].FindControl("Lbl_Peso")).Text)
+
+            //}
+            
 
         }
 

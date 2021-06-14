@@ -146,21 +146,16 @@ namespace Vistas
         {
             if (e.CommandName == "marcas")
             {
-                
-
-                
                     
-                    
-                    Session["tablapormarca"] = e.CommandArgument.ToString();
+                Session["tablapormarca"] = e.CommandArgument.ToString();
                 Response.Redirect("Vistausuario.aspx");
                 
-
-
-                
-                
-                
-
             }
+        }
+
+        protected void btbuscar_Click(object sender, EventArgs e)
+        {
+            Session["Busquedad"] = tbbuscardor.Text;
         }
     }
 }

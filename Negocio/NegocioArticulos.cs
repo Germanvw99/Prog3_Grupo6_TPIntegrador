@@ -23,6 +23,19 @@ namespace Negocio
         {
             return daoArticulos.ObtenerArticulospormarca(marca);
         }
+
+        public DataTable ObtenerArticulosAct()
+        {
+            return daoArticulos.ObtenerArticulosActivos();
+        }
+        public DataTable ObtenerArticulosBuscados(string busquedad)
+        {
+            return daoArticulos.ObtenerArticulosBus(busquedad);
+        }
+
+
+
+
         //USO SESION PARA EDITAR ARTICULOS
 
         //SI NO EXISTE, CREA LA SESION
@@ -118,12 +131,12 @@ namespace Negocio
         }
 
 
-        public void agregarfilacarrito(String id,string nombre, string descripcion, string precio)
+        public void agregarfilacarrito(Articulos Articulo, Int16 cantidad = 1)
         {
             DataTable dt = obtenercarritosesion();
             
 
-            agregarfilacarrito(dt,  id,  nombre,  descripcion,  precio);
+            agregarfilacarrito(dt, Articulo, cantidad);
 
 
 
@@ -172,7 +185,11 @@ namespace Negocio
             columna = new DataColumn("precio", System.Type.GetType("System.String"));
             dt.Columns.Add(columna);
 
+            columna = new DataColumn("Cantidad", System.Type.GetType("System.String"));
+            dt.Columns.Add(columna);
 
+            columna = new DataColumn("Total", System.Type.GetType("System.String"));
+            dt.Columns.Add(columna);
 
             return dt;
 
@@ -181,18 +198,18 @@ namespace Negocio
 
         }
 
-        public void agregarfilacarrito(DataTable dt , String id, string nombre, string descripcion, string precio)
+        public void agregarfilacarrito(DataTable dt , Articulos Articulo, Int16 cantidad)
         {
 
             DataRow dr = dt.NewRow();
 
-            dr["nombre"] = nombre;
-            dr["id"] = id;
-            dr["descripcion"] = descripcion;
-            dr["precio"] = precio;
-
+            dr["nombre"] = Articulo.GetNombre();
+            dr["id"] = Articulo.GetCodigo();
+            dr["descripcion"] = Articulo.GetDescripcion();
+            dr["precio"] = Articulo.GetPrecioLista();
+            dr["Cantidad"] = cantidad;
+            dr["Total"] = Convert.ToString(Articulo.GetPrecioLista() * cantidad);
             dt.Rows.Add(dr);
-
 
             Session["carrito"] = dt;
 

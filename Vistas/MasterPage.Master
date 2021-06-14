@@ -23,8 +23,8 @@
                             <asp:HyperLink ID="hlHomepage" runat="server" CssClass="text-light navbar-brand" NavigateUrl="~/Home.aspx">Logotipo</asp:HyperLink>
                         </div>
                         <div class="nav-searchbar d-flex">
-                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control py-2 rounded-3 mr-4" style='border: 1px solid #E1E1E1' placeholder="Artículo"></asp:TextBox>
-                            <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="btn btn-outline-light my-2 my-sm-0 hoverRemain"/>
+                            <asp:TextBox ID="tbbuscardor" runat="server" CssClass="form-control py-2 rounded-3 mr-4" style='border: 1px solid #E1E1E1' placeholder="Artículo"></asp:TextBox>
+                            <asp:Button ID="btbuscar" runat="server" Text="Buscar" CssClass="btn btn-outline-light my-2 my-sm-0 hoverRemain" OnClick="btbuscar_Click"/>
                         </div>
                         <div class="nav-right" id="userPanelLoggedIn" runat="server">
                             <ul class="d-flex m-0">
