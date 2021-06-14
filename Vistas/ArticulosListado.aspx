@@ -83,7 +83,7 @@
                         <div class="card-body">
                             <asp:GridView ID="GrdArticulos" runat="server" AutoGenerateColumns="False"
                                 OnPreRender="GrdArticulos_PreRender"
-                                CssClass="table display" OnRowCommand="GrdArticulos_RowCommand" OnSelectedIndexChanged="GrdArticulos_SelectedIndexChanged">
+                                CssClass="table display" OnRowCommand="GrdArticulos_RowCommand">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Código">
                                         <ItemTemplate>
@@ -133,7 +133,7 @@
                                     </asp:TemplateField>
                                     <%--BOTONES VER - EDITAR - ELIMINAR--%>
                                     <asp:ButtonField ButtonType="Image" CommandName="eventoVer" ImageUrl="Recursos/img/ver.png" />
-                                    <asp:ButtonField ButtonType="Image" CommandName="eventoAgregarCarrito" ImageUrl="Recursos/img/ca.png" />
+                                    <%--<asp:ButtonField ButtonType="Image" CommandName="eventoAgregarCarrito" ImageUrl="Recursos/img/ca.png" />--%>
                                     <asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
                                     <asp:ButtonField ButtonType="Image" CommandName="eventoEliminar" ImageUrl="Recursos/img/eliminar.png" />
                                 </Columns>

@@ -12,6 +12,14 @@
         <link href="Recursos/css/theme.css" rel="stylesheet" type="text/css" />
         <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css" />
         <title>Grupo 6 - TP Integrador</title>
+
+        <script>
+
+.table > tbody > tr > td {
+                vertical - align: middle;
+            }
+        </script>
+
     </head>
     <body>
         <form id="form2" runat="server">
@@ -156,8 +164,8 @@
                 </footer>
             </div>
         </form>
-        <script src="Recursos/js/jquery-3.3.1.slim.min.js"></script>
-        <script src="Recursos/js/jquery-3.6.0.min.js"></script>
-        <script src="Recursos/js/jquery.dataTables.min.js"></script>
+    <script src="Recursos/js/popper.min.js"></script>
+    <script src="Recursos/js/bootstrap.min.js"></script>
+    <%--<script src="Recursos/js/jquery.dataTables.min.js"></script>--%>
     </body>
 </html>

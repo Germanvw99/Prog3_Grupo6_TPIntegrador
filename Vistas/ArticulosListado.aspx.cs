@@ -111,21 +111,21 @@ namespace Vistas
                 //MOSTRAR MODAL
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModalEliminar').modal('show');</script>", false);
             }
-            if (e.CommandName == "eventoAgregarCarrito")
-            {
-                int fila = Convert.ToInt32(e.CommandArgument);
-                String id = ((Label)GrdArticulos.Rows[fila].FindControl("art_codigo")).Text;
-                String nombre = ((Label)GrdArticulos.Rows[fila].FindControl("art_nombre")).Text;
-                String descripcion = ((Label)GrdArticulos.Rows[fila].FindControl("art_descripcion")).Text;
-                String precio = ((Label)GrdArticulos.Rows[fila].FindControl("art_precio_lista")).Text;
-                negocioArticulos.agregarfilacarrito(id,nombre,descripcion,precio);
+            //if (e.CommandName == "eventoAgregarCarrito")
+            //{
+            //    int fila = Convert.ToInt32(e.CommandArgument);
+            //    String id = ((Label)GrdArticulos.Rows[fila].FindControl("art_codigo")).Text;
+            //    String nombre = ((Label)GrdArticulos.Rows[fila].FindControl("art_nombre")).Text;
+            //    String descripcion = ((Label)GrdArticulos.Rows[fila].FindControl("art_descripcion")).Text;
+            //    String precio = ((Label)GrdArticulos.Rows[fila].FindControl("art_precio_lista")).Text;
+            //    negocioArticulos.agregarfilacarrito(id,nombre,descripcion,precio);
 
                     /*
                 articulo.SetNombre(((Label)GrdArticulos.Rows[fila].FindControl("art_nombre")).Text);
                 articulo.SetDescripcion(((Label)GrdArticulos.Rows[fila].FindControl("art_descripcion")).Text);
                 articulo.SetPuntoPedido(Int32.Parse(((Label)GrdArticulos.Rows[fila].FindControl("art_punto_pedido")).Text));
                 articulo.SetPrecioLista(Decimal.Parse(((Label)GrdArticulos.Rows[fila].FindControl("art_precio_lista")).Text));*/
-            }
+            //}
         }
 
         protected void IrListarArticulos_Click(object sender, EventArgs e)
@@ -150,11 +150,6 @@ namespace Vistas
         protected void LnAgregarArticulos_Click(object sender, EventArgs e)
         {
             Response.Redirect("ArticulosAgregar.aspx");
-        }
-
-        protected void GrdArticulos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

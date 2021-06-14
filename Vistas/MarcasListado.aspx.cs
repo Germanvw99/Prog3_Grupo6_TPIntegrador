@@ -1,35 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Negocio;
-using Entidades;
-
-namespace Vistas
+﻿namespace Vistas
 {
+    using Entidades;
+    using Negocio;
+    using System;
+    using System.Data;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+
     public partial class MarcasListado : System.Web.UI.Page
     {
-        private readonly NegocioMarcas negocioMarcas = new NegocioMarcas();
+        private readonly NegocioMarcas negocioMarca = new NegocioMarcas();
+
+        private readonly NegocioEstados negocioEstado = new NegocioEstados();
+
         private readonly Estados estado = new Estados();
-        private readonly Marcas marca = new Marcas();
 
+        private Marcas marca = new Marcas();
 
-        protected void Page_Load(object sender, EventArgs e) {
-            if (!Page.IsPostBack) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
                 CargarGridView();
+                CargarEstados();
             }
         }
-        private void CargarGridView() {
-            GrdMarcas.DataSource = negocioMarcas.ObtenerMarcas();
+
+        private void CargarGridView()
+        {
+            GrdMarcas.DataSource = negocioMarca.ObtenerMarcas();
             GrdMarcas.DataBind();
         }
-        protected void GrdMarcas_PreRender(object sender, EventArgs e) {
+
+        private void CargarEstados()
+        {
+            DdlEstados.Items.Add(new ListItem("", "0"));
+            DataTable dt = negocioEstado.ObtenerEstados();
+            foreach (DataRow dr in dt.Rows)
+            {
+                DdlEstados.Items.Add(new ListItem(dr["est_nombre"].ToString(), dr["est_codigo"].ToString()));
+            }
+        }
+
+        protected void GrdMarcas_PreRender(object sender, EventArgs e)
+        {
             GridView gv = (GridView)sender;
 
-            if ((gv.ShowHeader == true && gv.Rows.Count > 0)
-                || (gv.ShowHeaderWhenEmpty == true))
+            if ((gv.ShowHeader == true && gv.Rows.Count > 0) || (gv.ShowHeaderWhenEmpty == true))
             {
                 // OBLIGAR A GRIDVIEW A USAR <THEAD> EN LUGAR DE <TBODY>
                 gv.HeaderRow.TableSection = TableRowSection.TableHeader;
@@ -40,57 +57,84 @@ namespace Vistas
                 gv.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
+
         protected void GrdMarcas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "eventoVer")
+
+            if (e.CommandName == "eventoVerDetalle")
             {
+                // RECUPERO EL CONTENIDO DEL WEBFORM MARCASLISTADO.ASPX
                 int fila = Convert.ToInt32(e.CommandArgument);
                 TxtCodigoModal.Text = ((Label)GrdMarcas.Rows[fila].FindControl("mar_codigo")).Text;
                 TxtNombreModal.Text = ((Label)GrdMarcas.Rows[fila].FindControl("mar_nombre")).Text;
                 TxtEsloganModal.Text = ((Label)GrdMarcas.Rows[fila].FindControl("mar_descripcion")).Text;
                 TxtEstadoModal.Text = ((Label)GrdMarcas.Rows[fila].FindControl("est_nombre")).Text;
-
-                //RECUPERO CAMPO OCULTO
-                HiddenField rutaImagen = (HiddenField)GrdMarcas.Rows[fila].FindControl("urlImage");
-                ImgLogo.ImageUrl = rutaImagen.Value;
-
+                //
+                string rutaImage = ((Image)GrdMarcas.Rows[fila].FindControl("mar_ruta_imagen")).ImageUrl;
+                ImgLogo.ImageUrl = rutaImage;
+                string cod = ((Label)GrdMarcas.Rows[fila].FindControl("est_codigo")).Text;
 
                 //MOSTRAR MODAL
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModal').modal('show');</script>", false);
             }
             if (e.CommandName == "eventoEditar")
             {
+                // RECUPERO EL CONTENIDO DEL WEBFORM MARCASLISTADO.ASPX
                 int fila = Convert.ToInt32(e.CommandArgument);
-
+                //
                 marca.SetCodigo(Int32.Parse(((Label)GrdMarcas.Rows[fila].FindControl("mar_codigo")).Text));
                 marca.SetNombre(((Label)GrdMarcas.Rows[fila].FindControl("mar_nombre")).Text);
                 marca.SetDescripcion(((Label)GrdMarcas.Rows[fila].FindControl("mar_descripcion")).Text);
-
-                //AQUI RECUPERO LA RUTA DE LA IMAGEN
-                HiddenField rutaImagen = (HiddenField)GrdMarcas.Rows[fila].FindControl("urlImage");
-                marca.SetRutaImagen(rutaImagen.Value);
-
+                //
+                // AQUI RECUPERO LA RUTA DE LA IMAGEN
+                string rutaImage = ((Image)GrdMarcas.Rows[fila].FindControl("mar_ruta_imagen")).ImageUrl;
+                marca.SetRutaImagen(rutaImage);
+                //
+                // RECUPERO CAMPO OCULTO CODIGO DE ESTADO
+                int codigo = Int32.Parse(((Label)GrdMarcas.Rows[fila].FindControl("est_codigo")).Text);
+                estado.SetCodigo(codigo);
                 estado.SetNombre(((Label)GrdMarcas.Rows[fila].FindControl("est_nombre")).Text);
-               
                 marca.SetEstado(estado);
 
-                negocioMarcas.CrearSesion();
-                negocioMarcas.AgregarMarcaEnLaSesion(marca);
+                // AGREGO LO SELECCIONADO EN LA SESION
+                negocioMarca.AgregarMarcaEnLaSesion(marca);
 
                 Response.Redirect("MarcasModificar.aspx");
             }
 
-
-
             if (e.CommandName == "eventoEliminar")
             {
+                // RECUPERO EL CONTENIDO DEL WEBFORM MARCASLISTADO.ASPX
                 int fila = Convert.ToInt32(e.CommandArgument);
+                //SETEO EL CODIGO DE LA MARCA A ELIMINAR
+                marca.SetCodigo(Int32.Parse(((Label)GrdMarcas.Rows[fila].FindControl("mar_codigo")).Text));
+                //
+                // MUESTRO EL NOMBRE Y EL LOGO DE LA MARCA A ELIMINAR EN UN MODAL
                 TxtNombreModalEliminar.Text = ((Label)GrdMarcas.Rows[fila].FindControl("mar_nombre")).Text;
-
+                string rutaImage = ((Image)GrdMarcas.Rows[fila].FindControl("mar_ruta_imagen")).ImageUrl;
+                ImageModalEliminar.ImageUrl = rutaImage;
+                //
                 //MOSTRAR MODAL
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModalEliminar').modal('show');</script>", false);
             }
         }
+
+        protected void BtnEliminarMarca_Click(object sender, EventArgs e)
+        {
+            marca = negocioMarca.ObtenerSesionMarca();
+
+            if (negocioMarca.eliminarMarca(marca))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se eliminó la marca');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar la marca');", true);
+            }
+
+            Response.Redirect("MarcasListado.aspx");
+        }
+
         protected void IrListarArticulos_Click(object sender, EventArgs e)
         {
             Response.Redirect("ArticulosListado.aspx");
@@ -105,6 +149,7 @@ namespace Vistas
         {
             Response.Redirect("CategoriasListado.aspx");
         }
+
         protected void IrListarProveedores_Click(object sender, EventArgs e)
         {
             Response.Redirect("ProveedoresListado.aspx");
@@ -113,6 +158,11 @@ namespace Vistas
         protected void LnAgregarMarcas_Click(object sender, EventArgs e)
         {
             Response.Redirect("MarcasAgregar.aspx");
+        }
+
+        protected void IrListarVentas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ProveedoresListado.aspx");
         }
     }
 }

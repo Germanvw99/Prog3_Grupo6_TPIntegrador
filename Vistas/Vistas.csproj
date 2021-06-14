@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -60,11 +63,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArticulosAgregar.aspx" />
@@ -174,6 +172,7 @@
     <Content Include="Imagenes\marcas\Whirlpool.png" />
     <Content Include="Imagenes\marcas\Xiaomi.png" />
     <Content Include="Imagenes\marcas\ZTE.png" />
+    <Content Include="Imagenes\marcas\__default.png" />
     <Content Include="Imagenes\mediosPago\americanExpress.png" />
     <Content Include="Imagenes\mediosPago\cabal.png" />
     <Content Include="Imagenes\mediosPago\diners.png" />
@@ -195,6 +194,7 @@
     <Content Include="Imagenes\usuarios\5.png" />
     <Content Include="Login.aspx" />
     <Content Include="MarcasAgregar.aspx" />
+    <Content Include="MarcasEliminar.aspx" />
     <Content Include="MarcasListado.aspx" />
     <Content Include="MarcasModificar.aspx" />
     <Content Include="Perfil.aspx" />
@@ -308,6 +308,13 @@
     <Compile Include="MarcasAgregar.aspx.designer.cs">
       <DependentUpon>MarcasAgregar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MarcasEliminar.aspx.cs">
+      <DependentUpon>MarcasEliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarcasEliminar.aspx.designer.cs">
+      <DependentUpon>MarcasEliminar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MarcasListado.aspx.cs">
       <DependentUpon>MarcasListado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -376,7 +383,6 @@
   <ItemGroup>
     <Content Include="MasterPage.Master" />
     <Content Include="Imagenes\marcas\desktop.ini" />
-    <None Include="packages.config" />
     <Content Include="Recursos\webfonts\fa-brands-400.eot" />
     <Content Include="Recursos\webfonts\fa-brands-400.ttf" />
     <Content Include="Recursos\webfonts\fa-brands-400.woff" />
@@ -389,6 +395,7 @@
     <Content Include="Recursos\webfonts\fa-solid-900.ttf" />
     <Content Include="Recursos\webfonts\fa-solid-900.woff" />
     <Content Include="Recursos\webfonts\fa-solid-900.woff2" />
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

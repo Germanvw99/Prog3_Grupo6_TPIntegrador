@@ -19,10 +19,10 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="tab-content">
+                                <div class="col-md-4 text-left">
                                     <div class="card">
                                         <div class="card-header">
-                                            <div class="card-actions float-right">
+                                            <div class="card-actions">
                                                 <!--IR A MAS DETALLES DEL COMPRADOR-->
                                             </div>
                                             <h5 class="card-title mb-0">Factura:</h5>
@@ -42,16 +42,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-8 text-left">
                                     <div class="card">
                                         <div class="card-header">
-                                            <div class="card-actions float-right">
+                                            <div class="card-actions">
                                                 <!--IR A MAS DETALLES DEL COMPRADOR-->
                                             </div>
                                             <h5 class="card-title mb-0">Comprador:</h5>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-8">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label >Apellido y nombre: </label>
                                                         <asp:Label runat="server" type="text"  id="LblApellidoNombre" ></asp:Label>
@@ -60,6 +62,8 @@
                                                         <label >DNI: </label>
                                                         <asp:Label runat="server" type="text"  id="LblDni" ></asp:Label>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label >Dirección: </label>
                                                         <asp:Label runat="server" type="text"  id="LblDireccion" ></asp:Label>
@@ -72,6 +76,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="col-md-12 text-left">
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="card-actions float-right">
@@ -122,17 +130,25 @@
                                                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                             </asp:GridView>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="form-group float-right">
-                                                <label >Total: </label>
-                                                <asp:Label runat="server" type="text"  id="LblTotalFacturado" ></asp:Label>
+                                            <div class="row">
+                                                <div class="col-md-2 text-center"></div>
+                                                <div class="col-md-2 text-center"></div>
+                                                <div class="col-md-2 text-center"></div>
+                                                <div class="col-md-2 text-center"></div>
+                                                <div class="col-md-2 text-center"></div>
+                                                <div class="col-md-2 text-left">
+                                                    <label >Total: </label>
+                                                    <asp:Label runat="server" type="text"  id="LblTotalFacturado" ></asp:Label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12 text-reght">
+                                    <div class="form-group float-right">
+                                    </div>
+                                </div>
+                                <%--</div>--%>
                             </div>
                         </div>
                     </div>
