@@ -2,19 +2,26 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         .c {
-            box-shadow: 10px 5px 5px black
+            box-shadow: 10px 10px 10px  black;
+            border : 3px solid #d3d3d3; 
+        }
+         .b {
+            box-shadow: -1px 1px 1px 1px green;
+        }
+          .p {
+            box-shadow: -1px 1px 1px 1px red;
         }
 </style>
-     <div class="container-fluid">
-        <div class="card-body">
+     <div >
+        <div >
     <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="6"  style="margin-right: 0px" OnSelectedIndexChanged="ListView1_SelectedIndexChanged" >
         <AlternatingItemTemplate  >
-            <td runat="server" style="background-color: #FFFFFF;color: #284775;"><br />&nbsp;
+            <td runat="server" Class=c     style="background-color: #FFFFFF;color: #284775;"><br />&nbsp;
                 <asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
                 <br />
                 <asp:ImageButton ID="ImageButton4" runat="server" Height="166px" ImageUrl='<%# Bind("art_ruta_imagen") %>' Width="202px" />
                 <br />
-                <br />
+             <br />
                 <br />
                 <br />&nbsp;$
                 <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>' />
@@ -30,6 +37,7 @@
                 <br />
                 <br />&nbsp;$
                 <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>'></asp:Label>
+                <br />
                 <br />
                 <br />
                 <br /></td>
@@ -73,7 +81,7 @@
                 <br /></td>
         </InsertItemTemplate>
         <ItemTemplate>
-            <td runat="server" style="background-color: #FFFFFF;color: #333333;">
+            <td   Class=c runat="server" style="background-color: #FFFFFF;color: #333333;">
                 <br />&nbsp;<asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
                 <br />&nbsp;<asp:ImageButton ID="ImageButton2" runat="server" Height="167px" ImageUrl='<%# Bind("art_ruta_imagen") %>' Width="202px" />
                 <br />
@@ -96,7 +104,7 @@
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style="text-align: center;background-color: #FFFFFF;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
+                    <td  Class=c drunat="server" style="text-align: center;background-color: #FFFFFF;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
                         <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
                             <Fields>
                                 <asp:NumericPagerField />
