@@ -16,6 +16,21 @@ namespace Negocio {
 
 		#region SESION MARCAS
 
+		public void AgregarMarcaEliminar(Marcas marca)
+        {
+				Session["SesionMarcaEliminar"] = marca;
+		}
+
+		public Marcas ObtenerMarcaEliminar()
+		{
+			Marcas marca = new Marcas();
+			if (Session["SesionMarcaEliminar"] != null)
+			{
+				marca = (Marcas)Session["SesionMarcaEliminar"];
+			}
+			return marca;
+		}
+
 		//USO SESION PARA MODIFICAR MARCAS. SI NO EXISTE, CREA LA SESION
 		private void CrearSesionMarca() {
 			if (Session["SesionMarca"] == null) {

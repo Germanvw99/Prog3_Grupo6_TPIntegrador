@@ -13,53 +13,137 @@ namespace Negocio
 {
     public class NegocioCategorias : System.Web.UI.Page
     {
-        private readonly DaoCategorias daoCategorias = new DaoCategorias();
+        private readonly DaoCategorias daoCategoria = new DaoCategorias();
+        private readonly Categorias categoria = new Categorias();
         public DataTable ObtenerCategorias()
         {
-            return daoCategorias.ObtenerCategorias();
+            return daoCategoria.ObtenerCategorias();
         }
 
-        //USO SESION PARA EDITAR CATEGORIAS
+        #region SESION CATEGORIAS
 
-        //SI NO EXISTE, CREA LA SESION
-        public void CrearSesion()
+
+        public void AgregarCategoriaEliminar(Categorias categoria)
         {
-            if (Session["TablaSesionCategoria"] == null)
+            Session["SesionCategoriaEliminar"] = categoria;
+        }
+
+        public Categorias ObtenerCategoriaEliminar()
+        {
+            Categorias categoria = new Categorias();
+            if (Session["SesionCategoriaEliminar"] != null)
             {
-                Session["TablaSesionCategoria"] = CrearTablaSesion();
+                categoria = (Categorias)Session["SesionCategoriaEliminar"];
+            }
+            return categoria;
+        }
+
+
+        //USO SESION PARA MODIFICAR CATEGORIAS. SI NO EXISTE, CREA LA SESION
+        private void CrearSesionCategoria()
+        {
+            if (Session["SesionCategoria"] == null)
+            {
+                Categorias categoria = new Categorias();
+                Session["SesionCategoria"] = categoria;
             }
         }
-        private DataTable CrearTablaSesion()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("cat_codigo", typeof(string));
-            dt.Columns.Add("cat_nombre", typeof(string));
-            dt.Columns.Add("cat_descripcion", typeof(string));
-            dt.Columns.Add("cat_ruta_imagen", typeof(string));
-            dt.Columns.Add("cat_codigo_estado", typeof(string));
-            return dt;
-        }
 
-        // RETORNA UNA TABLA DE LA SESION.
-        // EN CASO DE QUE LA SESION SEA NULL RETORNA UNA TABLA NULL
-        public DataTable ObtenerTablaSesion()
+        // RETORNA LA SESION CATEGORIA. EN CASO DE QUE LA SESION SEA NULL RETORNA UNA CATEGORIA NULL
+        public Categorias ObtenerSesionCategoria()
         {
-            DataTable dt = new DataTable();
-            if (Session["TablaSesionCategoria"] != null)
+            Categorias categoria = new Categorias();
+            if (Session["SesionCategoria"] != null)
             {
-                dt = (DataTable)Session["TablaSesionCategoria"];
+                categoria = (Categorias)Session["SesionCategoria"];
             }
-            return dt;
+            return categoria;
+        }
+        // AGREGA UNA MARCA A LA SESION
+        public void AgregarCategoriaEnLaSesion(Categorias categoria)
+        {
+            EliminarSesionCategoria();
+            CrearSesionCategoria();
+            Categorias categoriaSesion = ObtenerSesionCategoria();
+            categoriaSesion.SetCodigo(categoria.GetCodigo());
+            categoriaSesion.SetNombre(categoria.GetNombre());
+            categoriaSesion.SetDescripcion(categoria.GetDescripcion());
+            categoriaSesion.SetRutaImagen(categoria.GetRutaImagen());
+            Estados estado = new Estados();
+            estado.SetNombre(categoria.GetEstado().GetNombre());
+            estado.SetCodigo(categoria.GetEstado().GetCodigo());
+            categoriaSesion.SetEstado(estado);
         }
 
-        // SI NO EXISTE CAT_CODIGO AGREGA LA CATEGORIA A LA SESION
-        // RETORNA TRUE SI AGREGO
-        // RETORNA FALSE SI NO AGREGO
-        public bool AgregarCategoriaEnLaSesion(Categorias Categoria)
+        // ELIMINA LA SESION CATEGORIA
+        private void EliminarSesionCategoria()
         {
-            if (VerificarItem(Categoria.GetCodigo()))
+            if (Session["SesionCategoria"] != null)
             {
-                AgregarCategoria(Categoria);
+                Session["SesionCategoria"] = null;
+            }
+        }
+
+        #endregion
+
+        #region AGREGAR CATEGORIA
+        // RETORNA 0 --> NO AGREGO LA CATEGORIA
+        // RETORNA 1 --> AGREGO LA CATEGORIA
+        // RETORNA 2 --> LA CATEGORIA YA EXISTE, NO FUE AGREGADA
+        public int agregarMarca(Categorias categoria)
+        {
+            if (buscarMarcaPorCategoria(categoria) == 0)
+            {
+                int agregar = daoCategoria.agregarCategoria(categoria);
+                if (agregar == 1) return 1;
+                else return 0;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+        //BUSCAR MARCA POR NOMBRE
+        private int buscarMarcaPorCategoria(Categorias categoria)
+        {
+            return daoCategoria.buscarCategoriaPorNombre(categoria);
+        }
+
+        #endregion
+
+        #region MODIFICAR CATEGORIA
+
+        //USADO PARA MODIFICAR CATEGORIA
+        //BUSCAR CATEGORIA POR NOMBRE Y CODIGO DE CATEGORIA NO COINCIDENTE PARA EVITAR QUE EXISTAN CATEGORIAS CON EL MISMO NOMBRE
+        private int buscarCategoriaPorNombreCodigoNoCoincidente(Categorias categoria)
+        {
+            return daoCategoria.buscarCategoriaPorNombreCodigoNoCoincidente(categoria);
+        }
+
+        //MODIFICAR MARCA
+        public int modificarMarca(Categorias categoria)
+        {
+            if (buscarCategoriaPorNombreCodigoNoCoincidente(categoria) == 0)
+            {
+                int agregar = daoCategoria.modificarCategoria(categoria);
+                if (agregar == 1) return 1;
+                else return 0;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+
+
+        #endregion
+
+        # region ELIMINAR CATEGORIA
+        public bool eliminarCategoria(Categorias categoria)
+        {
+            int eliminar = daoCategoria.eliminarCategoria(categoria);
+            if (eliminar == 1)
+            {
                 return true;
             }
             else
@@ -67,45 +151,10 @@ namespace Negocio
                 return false;
             }
         }
-        // VERIFICA LA EXISTENCIA DEL DNI EN LA SESION
-        // SI EL DNI EXISTE RETORNA FALSE
-        // SI EL DNI NO EXISTE RETORNA TRUE
-        private bool VerificarItem(int catCodigo)
-        {
-            DataTable dt = ObtenerTablaSesion();
-            foreach (DataRow row in dt.Rows)
-            {
-                if (Int32.Parse(row["cat_codigo"].ToString()) == catCodigo)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        private void AgregarCategoria(Categorias Categoria)
-        {
-            DataTable dt = ObtenerTablaSesion();
-            DataRow dr = dt.NewRow();
 
 
 
-            dr["cat_codigo"] = Categoria.GetCodigo();
-            dr["cat_nombre"] = Categoria.GetNombre();
-            dr["cat_descripcion"] = Categoria.GetDescripcion();
-            dr["cat_ruta_imagen"] = Categoria.GetRutaImagen();
-            dr["cat_codigo_estado"] = Categoria.GetEstado().GetCodigo();
+        #endregion
 
-            dt.Rows.Add(dr);
-        }
-
-        public bool EliminarSesion()
-        {
-            if (Session["TablaSesionCategoria"] != null)
-            {
-                Session["TablaSesionCategoria"] = null;
-                return true;
-            }
-            return false;
-        }
     }
 }

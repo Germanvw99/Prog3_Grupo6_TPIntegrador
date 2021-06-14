@@ -53,32 +53,34 @@
 									</div>
 									
 
-						<div class="card-body">
-							<div class="form-group">
-								<label class="form-label">Nombre</label>
-								<asp:TextBox ID="TextBox7" type="text" runat="server" class="form-control" placeholder="Nombre"></asp:TextBox>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Descripción</label>
-								<asp:TextBox ID="TextBox8" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine"></asp:TextBox>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Estado</label>
-								<br />
-								<asp:DropDownList ID="DropDownList2"  class="custom-select form-control"  runat="server" > </asp:DropDownList>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Imágen</label>
-								<div>
-									<input type="file" class="validation-file" name="validation-file">
-								</div>
-										<div class="form-group float-right">
-																	<button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
-							<asp:Button ID="Button1" class="btn btn-primary float-right" runat="server" Text="Modificar categoría" />
-
-	   </div>
-								</div>
-						</div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label class="form-label">Nombre</label>
+                                            <asp:TextBox ID="TxtNombreModificar" type="text" runat="server" class="form-control" placeholder="Nombre"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Descripción</label>
+                                            <asp:TextBox ID="TxtDescripcionModificar" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Estado</label>
+                                            <br />
+                                            <asp:DropDownList ID="DdlEstadoModificar"  class="custom-select form-control"   runat="server" > </asp:DropDownList>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Imágen</label>
+                                        <div>
+                                            <asp:Image ID="ImageModificar" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
+                                        </div>
+                                            <div>
+                                                <asp:FileUpload ID="FUCategoria" runat="server" />
+                                            </div>
+                                            <div class="form-group float-right">
+                                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
+                                                <asp:Button ID="BtnModificarCategoria" class="btn btn-primary float-right" runat="server" Text="Modificar Categoría" OnClick="BtnModificarCategoria_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
 		</div>
 								
 							</div>

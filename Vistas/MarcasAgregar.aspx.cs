@@ -16,7 +16,7 @@ namespace Vistas
         private readonly Marcas marca = new Marcas();
         private readonly Estados estado = new Estados();
         //
-        private string imagenURL = "/Imagenes/marcas/__default.png";
+        private string imagenURL = "Imagenes/marcas/__default.png";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (NegocioUsuarios.getInstance().isAdmin() != true)
@@ -32,7 +32,7 @@ namespace Vistas
         {
             TxtNombre.Text = string.Empty;
             TxtDescripcion.Text = string.Empty;
-            imagenURL = "/Imagenes/marcas/__default.png";
+            imagenURL = "Imagenes/marcas/__default.png";
         }
         private void CargarEstados()
         {
@@ -49,7 +49,7 @@ namespace Vistas
                 if (FUMarca.HasFile)
                 {
                     string imagenNombre = FUMarca.PostedFile.FileName;
-                    imagenURL = "/Imagenes/marcas/" + imagenNombre;
+                    imagenURL = "Imagenes/marcas/" + imagenNombre;
                 }
                 marca.SetNombre(TxtNombre.Text.Trim());
                 marca.SetDescripcion(TxtDescripcion.Text.Trim());

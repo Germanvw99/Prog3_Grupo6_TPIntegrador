@@ -94,6 +94,7 @@
     <Content Include="Imagenes\categorias\electronica-audio-y-video.png" />
     <Content Include="Imagenes\categorias\herramientas.png" />
     <Content Include="Imagenes\categorias\televisores.png" />
+    <Content Include="Imagenes\categorias\__default.png" />
     <Content Include="Imagenes\marcas\ActiVision.png" />
     <Content Include="Imagenes\marcas\Admiral.png" />
     <Content Include="Imagenes\marcas\Alcatel.png" />
