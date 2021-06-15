@@ -71,9 +71,9 @@ namespace Dao
             return objUsuario;
         }
 
-        public bool Register(Usuarios objUsuario)
+        public int Register(Usuarios objUsuario)
         {
-            bool answ = false;
+            int filasEditadas = 0;
             try
             {
                 conn = conex.ObtenerConexion();
@@ -94,14 +94,7 @@ namespace Dao
                 cmd.Parameters.AddWithValue("@prmEstado", objUsuario.Estado);
                 cmd.Parameters.AddWithValue("@prmCodigo_Perfil", objUsuario.Codigo_Perfil);
 
-                int filasEditadas = cmd.ExecuteNonQuery();
-
-                if (filasEditadas > 0)
-                {
-                    answ = true;
-                }
-
-
+                filasEditadas = cmd.ExecuteNonQuery();
             }
             catch (Exception exc)
             {
@@ -111,7 +104,7 @@ namespace Dao
             {
                 conn.Close();
             }
-            return answ;
+            return filasEditadas;
         }
 
 
@@ -198,9 +191,9 @@ namespace Dao
             return objUsuario;
         }
 
-        public bool EditPassword(String nuevaPassword, String Dni)
+        public int EditPassword(String nuevaPassword, String Dni)
         {
-            bool answ = false;
+            int filasEditadas;
             try
             {
                 // Se modifica la contraseña
@@ -210,13 +203,7 @@ namespace Dao
                 cmd.Parameters.AddWithValue("@prmNuevaPassword", nuevaPassword);
                 cmd.Parameters.AddWithValue("@prmDni", Dni);
 
-                int filasEditadas = cmd.ExecuteNonQuery();
-
-                // Chekea si hubo modificaciones
-                if (filasEditadas > 0)
-                {
-                    answ = true;
-                }
+                filasEditadas = cmd.ExecuteNonQuery();
             }
             catch (Exception exc)
             {
@@ -226,12 +213,11 @@ namespace Dao
             {
                 conn.Close();
             }
-            return answ;
+            return filasEditadas;
         }
-
-        public bool VerificarAntiguaPassword(String username, String antiguaPassword)
+        // Verificaciones
+        public Usuarios VerificarAntiguaPassword(String username, String antiguaPassword)
         {
-            bool answ = false;
             Usuarios objUsuario = null;
             try
             {
@@ -249,16 +235,6 @@ namespace Dao
                 {
                     objUsuario = new Usuarios();
                     objUsuario.Dni = dr["usu_dni"].ToString();
-                    objUsuario.Username = dr["usu_username"].ToString();
-                }
-
-                if(objUsuario != null)
-                {
-                    answ = true;
-                }
-                else
-                {
-                    answ = false;
                 }
             }
             catch (Exception exc)
@@ -269,7 +245,50 @@ namespace Dao
             {
                 conn.Close();
             }
-            return answ;
+            return objUsuario ;
+        }
+
+        public Usuarios LeerUsername(String username)
+        {
+            Usuarios objUsuario = null;
+            try
+            {
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spLeerUsername", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmUsername ", username);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                // En caso de encontrar el usuario:
+                if (dr.Read())
+                {
+                    objUsuario = new Usuarios();
+                    objUsuario.Dni = dr["usu_dni"].ToString();
+                    objUsuario.Username = dr["usu_username"].ToString();
+                    objUsuario.Nombre = dr["usu_nombre"].ToString();
+                    objUsuario.Apellido = dr["usu_apellido"].ToString();
+                    objUsuario.Telefono = dr["usu_telefono"].ToString();
+                    objUsuario.Email = dr["usu_email"].ToString();
+                    objUsuario.Direccion = dr["usu_direccion"].ToString();
+                    objUsuario.Ciudad = dr["usu_ciudad"].ToString();
+                    objUsuario.Provincia = dr["usu_provincia"].ToString();
+                    objUsuario.Codigo_Postal = dr["usu_codigo_postal"].ToString();
+                    objUsuario.Ruta_Img = dr["usu_ruta_imagen"].ToString();
+                    objUsuario.Estado = Convert.ToInt32(dr["usu_codigo_estado"].ToString());
+                    objUsuario.Codigo_Perfil = Convert.ToInt32(dr["usu_perfil_codigo"].ToString());
+                }
+            }
+            catch (Exception exc)
+            {
+                objUsuario = null;
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return objUsuario;
         }
     }
 }

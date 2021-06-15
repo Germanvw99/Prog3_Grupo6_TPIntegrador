@@ -22,7 +22,7 @@
             <form runat="server" class="px-3">
               <div class="row">
                 <div class="mb-3 form-group d-flex p-0">
-                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1' placeholder="Usuario"></asp:TextBox>
+                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1' placeholder="Usuario" AutoPostBack="True"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RfvUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="Usuario invalido" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
                 </div>
               </div>
@@ -88,7 +88,7 @@
               </div>
                 <asp:ValidationSummary ID="VsRegister" runat="server" ForeColor="Red" ValidationGroup="VgRegister" style="" DisplayMode="BulletList" ShowMessageBox="True" ShowValidationErrors="True" ShowSummary="False" />
 
-
+                <asp:Label ID="lblNotificacion" runat="server" Text="" ForeColor="Red"></asp:Label>
             </form>
           <div class="mt-5 d-flex justify-content-center">
             <div>

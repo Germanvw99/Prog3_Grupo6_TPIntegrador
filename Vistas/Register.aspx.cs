@@ -22,11 +22,23 @@ namespace Vistas
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            bool registered = NegocioUsuarios.getInstance().RegistUser(GetEntity());
-
-            if (registered)
+            bool usernameDuplicado = NegocioUsuarios.getInstance().VerificarUsernameDuplicado(txtUsername.Text);
+            bool dniDuplicado = NegocioUsuarios.getInstance().VerificarDniDuplicado(txtDni.Text);
+            if(usernameDuplicado)
             {
-                Response.Redirect("login.aspx");
+                lblNotificacion.Text = "El Username ingresado ya fue registrado.";
+            }
+            if(dniDuplicado)
+            {
+                lblNotificacion.Text = "El Dni ingresado ya fue registrado.";
+            }
+            if(dniDuplicado == false && usernameDuplicado == false)
+            {
+                bool registered = NegocioUsuarios.getInstance().RegistUser(GetEntity());
+                if (registered)
+                {
+                    Response.Redirect("login.aspx");
+                }
             }
         }
 
@@ -51,4 +63,5 @@ namespace Vistas
             return objUsuario;
         }
     }
+    
 }
