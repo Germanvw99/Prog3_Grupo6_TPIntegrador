@@ -44,15 +44,15 @@ namespace Vistas
                 txtProvincia.Text = objUsuario.Provincia;
 
                 // Estado de los txt
-                EsconderUI();
-
+                EsconderUIUser();
+                EsconderUiPassword();
             }
         }
 
         protected void btnActivarForm_Click(object sender, EventArgs e)
         {
-            // Activa el form
-            HabilitarUI();
+            // Activa el form del usedr
+            HabilitarUIUser();
         }
 
         protected void btnEnviarForm_Click(object sender, EventArgs e)
@@ -62,13 +62,50 @@ namespace Vistas
 
             if (editado)
             {
-                EsconderUI();
+                EsconderUIUser();
+                lblNotificacion.ForeColor = System.Drawing.Color.Green;
                 lblNotificacion.Text = "Perfil editado!";
 
             }
             else
             {
+                EsconderUIUser();
+                lblNotificacion.ForeColor = System.Drawing.Color.Red;
                 lblNotificacion.Text = "No se pudo editar el perfil!";
+            }
+        }
+
+        protected void btnActivarFormPassword_Click(object sender, EventArgs e)
+        {
+            // Activar form password
+            HabilitarUiPassword();
+        }
+
+        protected void btnEnviarFormPassword_Click(object sender, EventArgs e)
+        {
+            bool correcto = NegocioUsuarios.getInstance().VerificarAntiguaPassword(txtUsername.Text, txtAntiguaPassword.Text);
+            if(correcto)
+            {
+                bool editado = NegocioUsuarios.getInstance().EditPassword(txtNuevaPassword.Text, txtDni.Text);
+                if (editado)
+                {
+                    EsconderUiPassword();
+                    lblNotificacionPassword.ForeColor = System.Drawing.Color.Green;
+                    lblNotificacionPassword.Text = "Contraseña editada!";
+
+                }
+                else
+                {
+                    EsconderUiPassword();
+                    lblNotificacionPassword.ForeColor = System.Drawing.Color.Red;
+                    lblNotificacionPassword.Text = "No se pudo editar la contraseña!";
+                }
+            }
+            else
+            {
+                EsconderUiPassword();
+                lblNotificacionPassword.ForeColor = System.Drawing.Color.Red;
+                lblNotificacionPassword.Text = "Contraseña actual invalida!";
             }
         }
 
@@ -90,7 +127,7 @@ namespace Vistas
             return objUsuario;
         }
 
-        private void EsconderUI()
+        private void EsconderUIUser()
         {
             lblNotificacion.Text = "";
             txtDni.Enabled = false;
@@ -107,9 +144,24 @@ namespace Vistas
             btnEnviarForm.Enabled = false;
         }
 
-        private void HabilitarUI()
+        private void EsconderUiPassword()
+        {
+            lblNotificacionPassword.Text = "";
+            txtAntiguaPassword.Text = "";
+            txtNuevaPassword.Text = "";
+            txtVerificacionPassword.Text = "";
+
+            txtAntiguaPassword.Enabled = false;
+            txtNuevaPassword.Enabled = false;
+            txtVerificacionPassword.Enabled = false;
+
+            btnEnviarFormPassword.Enabled = false;
+        }
+
+        private void HabilitarUIUser()
         {
             lblNotificacion.Text = "";
+
             txtNombre.Enabled = true;
             txtApellido.Enabled = true;
             txtEmail.Enabled = true;
@@ -122,5 +174,17 @@ namespace Vistas
             btnEnviarForm.Enabled = true;
         }
 
+        private void HabilitarUiPassword()
+        {
+            lblNotificacionPassword.Text = "";
+
+            txtAntiguaPassword.Enabled = true;
+            txtNuevaPassword.Enabled = true;
+            txtVerificacionPassword.Enabled = true;
+
+            btnEnviarFormPassword.Enabled = true;
+        }
+
+       
     }
 }

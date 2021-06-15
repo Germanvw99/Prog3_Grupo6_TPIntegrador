@@ -24,6 +24,96 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblUsername;
 
         /// <summary>
+        /// Control txtAntiguaPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAntiguaPassword;
+
+        /// <summary>
+        /// Control RfvAntiguaPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvAntiguaPassword;
+
+        /// <summary>
+        /// Control txtNuevaPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNuevaPassword;
+
+        /// <summary>
+        /// Control RfvNuevaPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvNuevaPassword;
+
+        /// <summary>
+        /// Control txtVerificacionPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtVerificacionPassword;
+
+        /// <summary>
+        /// Control RfvVerificacionPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvVerificacionPassword;
+
+        /// <summary>
+        /// Control CvRepeatPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CvRepeatPassword;
+
+        /// <summary>
+        /// Control btnActivarFormPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActivarFormPassword;
+
+        /// <summary>
+        /// Control btnEnviarFormPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEnviarFormPassword;
+
+        /// <summary>
+        /// Control lblNotificacionPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNotificacionPassword;
+
+        /// <summary>
         /// Control txtDni.
         /// </summary>
         /// <remarks>

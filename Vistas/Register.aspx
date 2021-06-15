@@ -55,7 +55,7 @@
               <div class="row">
                   <div class="form-group col-md-8 pl-0 d-flex">
                       <asp:TextBox ID="txtRepeatPassword" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1'  placeholder="Repetir Contraseña" TextMode="Password"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RfvRepeastPassword" runat="server" ControlToValidate="txtRepeatPassword" ErrorMessage="Contraseña invalida" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
+                      <asp:RequiredFieldValidator ID="RfvRepeatPassword" runat="server" ControlToValidate="txtRepeatPassword" ErrorMessage="Contraseña invalida" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
                       <asp:CompareValidator ID="CvRepeatPassword" runat="server" ErrorMessage="Las contraseñas no son iguales" ControlToCompare="txtRepeatPassword" ControlToValidate="txtPassword" ForeColor="Red" ValidationGroup="VgRegister">*</asp:CompareValidator>
                   </div>
                   <div class="form-group col-md-4 pr-0 d-flex">

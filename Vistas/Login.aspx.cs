@@ -17,9 +17,6 @@ namespace Vistas
             if(Session["User"] != null)
 
             {
-
-
-
                 Response.Redirect("home.aspx");
             }
         }
@@ -41,8 +38,6 @@ namespace Vistas
                     Response.Redirect("Vistausuario.aspx");
                     Session["tablapormarca"] = null;
                     //BORRA EL FILTRO PARA EL LISTVIEW Y CARGA TODOS LOS ARTICULOS
-
-
                 }
                 else
                 {

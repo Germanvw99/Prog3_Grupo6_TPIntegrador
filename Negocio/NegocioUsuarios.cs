@@ -67,6 +67,38 @@ namespace Negocio
             }
         }
 
+        public bool EditPassword(String nuevaPassword, String Dni)
+        {
+            try
+            {
+                bool answ = false;
+
+                // Devuelve el valor correspondiente a si fue posible modificarse la contraseña
+                answ = DaoUsuarios.getInstance().EditPassword(nuevaPassword, Dni);
+
+                return answ;
+            }catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public bool VerificarAntiguaPassword(String username, String antiguaPassword)
+        {
+            try
+            {
+                bool answ = false;
+
+                // Devuelve el valor correspondiente a si las contraseñas son iguales
+                answ = DaoUsuarios.getInstance().VerificarAntiguaPassword(username, antiguaPassword);
+
+                return answ;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
         private  Usuarios CrearSessionUsuario(Usuarios objUsuario)
         {
             if(objUsuario != null)

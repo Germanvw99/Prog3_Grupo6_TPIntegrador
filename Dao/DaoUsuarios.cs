@@ -197,5 +197,79 @@ namespace Dao
 
             return objUsuario;
         }
+
+        public bool EditPassword(String nuevaPassword, String Dni)
+        {
+            bool answ = false;
+            try
+            {
+                // Se modifica la contraseña
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spEditarContraseña", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmNuevaPassword", nuevaPassword);
+                cmd.Parameters.AddWithValue("@prmDni", Dni);
+
+                int filasEditadas = cmd.ExecuteNonQuery();
+
+                // Chekea si hubo modificaciones
+                if (filasEditadas > 0)
+                {
+                    answ = true;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return answ;
+        }
+
+        public bool VerificarAntiguaPassword(String username, String antiguaPassword)
+        {
+            bool answ = false;
+            Usuarios objUsuario = null;
+            try
+            {
+                // Se modifica la contraseña
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spLoginUsuario", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmUsername", username);
+                cmd.Parameters.AddWithValue("@prmPassword", antiguaPassword);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                // En caso de encontrar el usuario y verificar la contraseña recolecta información:
+                if (dr.Read())
+                {
+                    objUsuario = new Usuarios();
+                    objUsuario.Dni = dr["usu_dni"].ToString();
+                    objUsuario.Username = dr["usu_username"].ToString();
+                }
+
+                if(objUsuario != null)
+                {
+                    answ = true;
+                }
+                else
+                {
+                    answ = false;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return answ;
+        }
     }
 }
