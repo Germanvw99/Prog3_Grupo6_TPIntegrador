@@ -41,13 +41,138 @@ namespace Negocio
         {
             try
             {
-                return DaoUsuarios.getInstance().Register(objUsuario);
+                int filasEditadas = DaoUsuarios.getInstance().Register(objUsuario);
+                bool answ = false;
+
+                if (filasEditadas > 0)
+                {
+                    answ = true;
+                }
+                return answ;
             }
             catch (Exception exc)
             {
                 throw exc;
             }
         }
+
+        public bool EditUser(Usuarios objUsuario)
+        {
+            try
+            {
+                bool answ = false;
+                answ = DaoUsuarios.getInstance().EditUser(objUsuario);
+
+                // Si el usuario se modifico, entonces se vuelve a crear el Session
+                CrearSessionUsuario(DaoUsuarios.getInstance().LeerUsuario(objUsuario.Dni));
+
+                return answ;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public bool EditPassword(String nuevaPassword, String Dni)
+        {
+            try
+            {
+                bool answ = false;
+
+                // Devuelve el valor correspondiente a si fue hubo filas editadas
+                int filasEditadas = DaoUsuarios.getInstance().EditPassword(nuevaPassword, Dni);
+
+                // Chekea si hubo modificaciones
+                if (filasEditadas > 0)
+                {
+                    answ = true;
+                }
+
+                return answ;
+            }catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public bool VerificarAntiguaPassword(String username, String antiguaPassword)
+        {
+            try
+            {
+                Usuarios objUsuario = null;
+                bool answ = false;
+
+                // Devuelve el valor correspondiente a si las contraseñas son iguales
+                objUsuario = DaoUsuarios.getInstance().VerificarAntiguaPassword(username, antiguaPassword);
+
+                if (objUsuario != null)
+                {
+                    answ = true;
+                }
+                else
+                {
+                    answ = false;
+                }
+
+                return answ;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        // Verificaciones del registro
+
+        public bool VerificarUsernameDuplicado(String username)
+        {
+            Usuarios objUsuario = null;
+            bool answ = false;
+            try
+            {
+                objUsuario = DaoUsuarios.getInstance().LeerUsername(username);
+                if (objUsuario != null)
+                {
+                    answ = true;
+                }
+                else
+                {
+                    answ = false;
+                }
+                return answ;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public bool VerificarDniDuplicado(String Dni)
+        {
+            Usuarios objUsuario = null;
+            bool answ = false;
+            try
+            {
+                objUsuario = DaoUsuarios.getInstance().LeerUsuario(Dni);
+
+                if(objUsuario != null)
+                {
+                    answ = true;
+                }
+                else
+                {
+                    answ = false;
+                }
+                return answ;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        // Next()
 
         private  Usuarios CrearSessionUsuario(Usuarios objUsuario)
         {
@@ -65,6 +190,8 @@ namespace Negocio
             }
             return objUsuario;
         }
+
+
         private DataTable CrearTablaUsuario(Usuarios objUsuario)
         {
             // Se crea un DataTable
@@ -139,5 +266,7 @@ namespace Negocio
             }
             else { return false; }
         }
+
+       
     }
 }

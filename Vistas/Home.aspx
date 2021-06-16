@@ -1,11 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Vistas.Home" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Vistas.Home" %>
 <asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<main class="content">
-<<<<<<< Updated upstream
+    <main class="content">
 	MODIFICAR PARA VER RESULTADOS EN GITHUB
-=======
-	
 
->>>>>>> Stashed changes
+	PRUEBA
 </main>
 </asp:Content>
