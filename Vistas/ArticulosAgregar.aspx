@@ -21,50 +21,72 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Nombre</label>
-                                <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="Nombre"></asp:TextBox>
+                                <div class="d-flex">
+                                    <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="Nombre"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RfvNombre" runat="server" ControlToValidate="txtnombre" ErrorMessage="Nombre invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Descripción</label>
-                                <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine"></asp:TextBox>
+                                <div class="d-flex">
+                                    <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RfvDescripcion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="Descripcion invalida" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="mb-3">
                                     <label class="form-label">Marca</label>
                                     <asp:LinkButton ID="IrAgregarMarca" runat="server" class="btn btn-outline-primary float-right" OnClick="IrAgregarMarca_Click">+ Agregar Marca</asp:LinkButton>
                                 </div>
-                                <asp:DropDownList ID="DdlMarcas"  class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                <div class="d-flex">
+                                    <asp:DropDownList ID="DdlMarcas"  class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RfvMarca" runat="server" ControlToValidate="DdlMarcas" ErrorMessage="Marca invalida" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="mb-3">
                                     <label class="form-label">Categoría</label>
                                     <asp:LinkButton ID="IrAgregarCategoria" runat="server" class="btn btn-outline-primary float-right" OnClick="IrAgregarCategoria_Click">+ Agregar Categoría</asp:LinkButton>
                                 </div>
-                                <asp:DropDownList ID="DdlCategorias"    class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                <div class="d-flex">
+                                    <asp:DropDownList ID="DdlCategorias"    class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RfvCategorias" runat="server" ControlToValidate="DdlCategorias" ErrorMessage="Categoria invalida" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Estado</label>
                                 <br />
-                                <asp:DropDownList ID="DdlEstados"   class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                <div class="d-flex">
+                                    <asp:DropDownList ID="DdlEstados"   class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RfvEstados" runat="server" ControlToValidate="DdlEstados" ErrorMessage="Estado invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Punto de pedido</label>
-                                <asp:TextBox ID="TextBox1" type="text" runat="server" class="form-control" placeholder="Punto de pedido"></asp:TextBox>
-                            </div>
+                                <div class="d-flex">
+                                    <asp:TextBox ID="txtPedido" type="text" runat="server" class="form-control" placeholder="Punto de pedido" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RfvPedido" runat="server" ControlToValidate="txtPedido" ErrorMessage="Pedido invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
+                                </div>
+                             </div>
                             <div class="form-group">
                                 <label class="form-label">Precio de Lista</label>
-                                <asp:TextBox ID="TextBox2" type="text" runat="server" class="form-control" placeholder="Precio de Lista"></asp:TextBox>
+                                <div class="d-flex">
+                                    <asp:TextBox ID="txtPrecio" type="text" runat="server" class="form-control" placeholder="Precio de Lista" TextMode="Number"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RfvPrecio" runat="server" ControlToValidate="txtPrecio" ErrorMessage="Precio invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Imágen</label>
                                 <div>
-                                    <input type="file" class="validation-file" name="validation-file">
+                                    <asp:FileUpload ID="UploadImage" runat="server" />
                                 </div>
                             </div>
-                            <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar artículo" />
+                            <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar artículo" OnClick="BtnAgregar_Click" ValidationGroup="VgAgregarArticulo"/>
                         </div>
+                        <asp:Label ID="lblNotificacion" runat="server" Text=""></asp:Label>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 </asp:Content>

@@ -28,7 +28,7 @@ namespace Negocio
         {
             try
             {
-                return CrearSessionUsuario(DaoUsuarios.getInstance().Login(username, password));
+                return CrearSessionUsuario(DaoUsuarios.GetInstance().Login(username, password));
             }
             catch (Exception exc)
             {
@@ -39,21 +39,21 @@ namespace Negocio
 
         public bool RegistUser(Usuarios objUsuario)
         {
+            bool answ = false;
             try
             {
-                int filasEditadas = DaoUsuarios.getInstance().Register(objUsuario);
-                bool answ = false;
+                int filasEditadas = DaoUsuarios.GetInstance().Register(objUsuario);
 
                 if (filasEditadas > 0)
                 {
                     answ = true;
                 }
-                return answ;
             }
             catch (Exception exc)
             {
                 throw exc;
             }
+            return answ;
         }
 
         public bool EditUser(Usuarios objUsuario)
@@ -61,10 +61,10 @@ namespace Negocio
             try
             {
                 bool answ = false;
-                answ = DaoUsuarios.getInstance().EditUser(objUsuario);
+                answ = DaoUsuarios.GetInstance().EditUser(objUsuario);
 
                 // Si el usuario se modifico, entonces se vuelve a crear el Session
-                CrearSessionUsuario(DaoUsuarios.getInstance().LeerUsuario(objUsuario.Dni));
+                CrearSessionUsuario(DaoUsuarios.GetInstance().LeerUsuario(objUsuario.Dni));
 
                 return answ;
             }
@@ -81,7 +81,7 @@ namespace Negocio
                 bool answ = false;
 
                 // Devuelve el valor correspondiente a si fue hubo filas editadas
-                int filasEditadas = DaoUsuarios.getInstance().EditPassword(nuevaPassword, Dni);
+                int filasEditadas = DaoUsuarios.GetInstance().EditPassword(nuevaPassword, Dni);
 
                 // Chekea si hubo modificaciones
                 if (filasEditadas > 0)
@@ -104,7 +104,7 @@ namespace Negocio
                 bool answ = false;
 
                 // Devuelve el valor correspondiente a si las contraseñas son iguales
-                objUsuario = DaoUsuarios.getInstance().VerificarAntiguaPassword(username, antiguaPassword);
+                objUsuario = DaoUsuarios.GetInstance().VerificarAntiguaPassword(username, antiguaPassword);
 
                 if (objUsuario != null)
                 {
@@ -128,10 +128,10 @@ namespace Negocio
         public bool VerificarUsernameDuplicado(String username)
         {
             Usuarios objUsuario = null;
-            bool answ = false;
+            bool answ;
             try
             {
-                objUsuario = DaoUsuarios.getInstance().LeerUsername(username);
+                objUsuario = DaoUsuarios.GetInstance().LeerUsername(username);
                 if (objUsuario != null)
                 {
                     answ = true;
@@ -151,10 +151,10 @@ namespace Negocio
         public bool VerificarDniDuplicado(String Dni)
         {
             Usuarios objUsuario = null;
-            bool answ = false;
+            bool answ;
             try
             {
-                objUsuario = DaoUsuarios.getInstance().LeerUsuario(Dni);
+                objUsuario = DaoUsuarios.GetInstance().LeerUsuario(Dni);
 
                 if(objUsuario != null)
                 {

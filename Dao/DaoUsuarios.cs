@@ -11,11 +11,11 @@ namespace Dao
 {
     public class DaoUsuarios
     {
-        AccesoDatos conex = new AccesoDatos();
+        readonly AccesoDatos conex = new AccesoDatos();
         #region
         private static DaoUsuarios daoUsuarios = null;
         private DaoUsuarios() { }
-        public static DaoUsuarios getInstance()
+        public static DaoUsuarios GetInstance()
         {
             if (daoUsuarios == null)
             {

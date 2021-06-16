@@ -34,8 +34,6 @@ namespace Negocio
         }
 
 
-
-
         //USO SESION PARA EDITAR ARTICULOS
 
         //SI NO EXISTE, CREA LA SESION
@@ -80,7 +78,7 @@ namespace Negocio
         {
             if (VerificarItem(Articulo.GetCodigo()))
             {
-                AgregarArticulo(Articulo);
+                AgregarArticuloTabla(Articulo);
                 return true;
             }
             else
@@ -103,7 +101,7 @@ namespace Negocio
             }
             return true;
         }
-        private void AgregarArticulo(Articulos Articulo)
+        private void AgregarArticuloTabla(Articulos Articulo)
         {
             DataTable dt = ObtenerTablaSesion();
             DataRow dr = dt.NewRow();
@@ -118,6 +116,26 @@ namespace Negocio
             dr["art_codigo_estado"] = Articulo.GetEstado().GetNombre();
 
             dt.Rows.Add(dr);
+        }
+
+        public bool AgregarArticulo(Articulos objArticulo)
+        {
+            bool answ = false;
+            try
+            {
+                int filasAgregadas = daoArticulos.AgregarArticulo(objArticulo);
+
+                if(filasAgregadas > 0)
+                {
+                    answ = true;
+                    // Agregar articulo a la session
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            return answ;
         }
 
         public bool EliminarSesion()

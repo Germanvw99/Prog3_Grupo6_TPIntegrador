@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Entidades;
 using System.Data;
 
 namespace Vistas
@@ -14,6 +15,8 @@ namespace Vistas
         private readonly NegocioMarcas negocioMarcas = new NegocioMarcas();
         private readonly NegocioCategorias negocioCategorias = new NegocioCategorias();
         private readonly NegocioEstados negocioEstados = new NegocioEstados();
+        private readonly NegocioArticulos negocioArticulos = new NegocioArticulos();
+        
         protected void Page_Load(object sender, EventArgs e) {
             if (NegocioUsuarios.getInstance().isAdmin() != true)
             {
@@ -72,6 +75,68 @@ namespace Vistas
         protected void IrAgregarCategoria_Click(object sender, EventArgs e)
         {
             Response.Redirect("CategoriasAgregar.aspx");
+        }
+
+        protected void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            // Valida que el archivo sea correcto.
+            if (NegocioImagenes.validarArchivo(UploadImage.PostedFile))
+            {
+                // Sube archivo.
+                string rutaImagen = NegocioImagenes.SubirImagenArticulo(UploadImage.PostedFile);
+
+
+                Articulos objArticulo = getEntity(rutaImagen);
+                // Una vez validado, se sube el registro del articulo.
+                if(negocioArticulos.AgregarArticulo(objArticulo))
+                {
+                    lblNotificacion.ForeColor = System.Drawing.Color.Green;
+                    lblNotificacion.Text = "Artículo agregado!";
+                    clearForm();
+                }
+                else
+                {
+                    lblNotificacion.ForeColor = System.Drawing.Color.Red;
+                    lblNotificacion.Text = "Error al agregar el articulo!";
+                }
+            }
+            else
+            {
+                lblNotificacion.ForeColor = System.Drawing.Color.Red;
+                lblNotificacion.Text = "Error al subir la imagen!";
+            }
+        }
+
+        private Articulos getEntity(String rutaImagen)
+        {
+            Articulos objArticulo = new Articulos();
+            Marcas objMarca = new Marcas();
+            Categorias objCategoria = new Categorias();
+            Estados objEstado = new Estados();
+
+            // Inicializo con valores necesarios
+            objMarca.SetCodigo(Convert.ToInt32(DdlMarcas.SelectedValue));
+            objCategoria.SetCodigo(Convert.ToInt32(DdlCategorias.SelectedValue));
+            objEstado.SetCodigo(Convert.ToInt32(DdlEstados.SelectedValue));
+
+            objArticulo.SetNombre(TxtNombre.Text);
+            objArticulo.SetDescripcion(TxtDescripcion.Text);
+            objArticulo.SetCategoria(objCategoria);
+            objArticulo.SetMarca(objMarca);
+            objArticulo.SetEstado(objEstado);
+            objArticulo.SetRutaImagen(rutaImagen);
+            objArticulo.SetPuntoPedido(Convert.ToInt32(txtPedido.Text));
+            objArticulo.SetPrecioLista(Convert.ToDecimal(txtPrecio.Text));
+
+            return objArticulo;
+        }
+
+        private void clearForm()
+        {
+            txtPedido.Text = "";
+            TxtNombre.Text = "";
+            TxtDescripcion.Text = "";
+            txtPrecio.Text = "";
         }
     }
 }
