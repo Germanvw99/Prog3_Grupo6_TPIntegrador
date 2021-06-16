@@ -92,7 +92,7 @@ namespace Vistas
 			if (agrego == 1)
 			{
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se modificó la marca');", true);
-				Response.Redirect("MarcasListado.aspx");
+				//Response.Redirect("MarcasListado.aspx");
 			}
 			if (agrego == 2)
 			{

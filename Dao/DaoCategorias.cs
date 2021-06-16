@@ -15,7 +15,7 @@ namespace Dao
         public DataTable ObtenerCategorias()
         {
             string strTabla = "Categorias";
-            string srtSQL = "SELECT cat_codigo, cat_nombre, cat_descripcion, cat_ruta_imagen, est_nombre, est_codigo FROM Categorias INNER JOIN Estados ON Categorias.cat_codigo_estado=Estados.est_codigo";
+            string srtSQL = "SELECT cat_codigo, cat_nombre, cat_descripcion, cat_ruta_imagen, est_nombre, est_codigo FROM Categorias INNER JOIN Estados ON Categorias.cat_codigo_estado=Estados.est_codigo ORDER BY cat_nombre ASC";
             return accDatos.ObtenerTabla(strTabla, srtSQL);
         }
 
@@ -51,7 +51,6 @@ namespace Dao
 			return cantidad;
 		}
 		#endregion
-
 
 		#region MODIFICAR CATEGORIAS
 		//BUSCAR CATEGORIA POR NOMBRE Y CODIGO NO COINCIDENTE

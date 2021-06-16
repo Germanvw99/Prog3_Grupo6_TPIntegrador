@@ -62,9 +62,6 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label">Imágen</label>
-                                        <div>
-                                            <asp:Image ID="ImageModificar" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
-                                        </div>
                                             <div>
                                                 <asp:FileUpload ID="FUMarca" runat="server" />
                                             </div>

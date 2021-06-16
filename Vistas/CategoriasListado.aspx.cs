@@ -63,7 +63,6 @@ namespace Vistas
                 //
                 string rutaImage = ((Image)GrdCategorias.Rows[fila].FindControl("cat_ruta_imagen")).ImageUrl;
                 ImgLogo.ImageUrl = rutaImage;
-                string cod = ((Label)GrdCategorias.Rows[fila].FindControl("est_codigo")).Text;
 
                 //MOSTRAR MODAL
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModal').modal('show');</script>", false);
@@ -158,7 +157,7 @@ namespace Vistas
         }
         protected void IrListarVentas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ProveedoresListado.aspx");
+            Response.Redirect("VentasListado.aspx");
         }
     }
 }

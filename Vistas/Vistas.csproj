@@ -87,6 +87,7 @@
     <Content Include="Imagenes\articulos\7.png" />
     <Content Include="Imagenes\articulos\8.png" />
     <Content Include="Imagenes\articulos\9.png" />
+    <Content Include="Imagenes\articulos\__default.png" />
     <Content Include="Imagenes\categorias\camaras-y-accesorios.png" />
     <Content Include="Imagenes\categorias\celulares-y-telefonos.png" />
     <Content Include="Imagenes\categorias\computacion.png" />
@@ -188,14 +189,15 @@
     <Content Include="Imagenes\proveedores\6.png" />
     <Content Include="Imagenes\proveedores\7.png" />
     <Content Include="Imagenes\proveedores\8.png" />
+    <Content Include="Imagenes\proveedores\__default.png" />
     <Content Include="Imagenes\usuarios\1.png" />
     <Content Include="Imagenes\usuarios\2.png" />
     <Content Include="Imagenes\usuarios\3.png" />
     <Content Include="Imagenes\usuarios\4.png" />
     <Content Include="Imagenes\usuarios\5.png" />
+    <Content Include="Imagenes\usuarios\__default.png" />
     <Content Include="Login.aspx" />
     <Content Include="MarcasAgregar.aspx" />
-    <Content Include="MarcasEliminar.aspx" />
     <Content Include="MarcasListado.aspx" />
     <Content Include="MarcasModificar.aspx" />
     <Content Include="Perfil.aspx" />
@@ -308,13 +310,6 @@
     </Compile>
     <Compile Include="MarcasAgregar.aspx.designer.cs">
       <DependentUpon>MarcasAgregar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MarcasEliminar.aspx.cs">
-      <DependentUpon>MarcasEliminar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MarcasEliminar.aspx.designer.cs">
-      <DependentUpon>MarcasEliminar.aspx</DependentUpon>
     </Compile>
     <Compile Include="MarcasListado.aspx.cs">
       <DependentUpon>MarcasListado.aspx</DependentUpon>

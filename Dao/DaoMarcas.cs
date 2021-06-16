@@ -15,7 +15,7 @@ namespace Dao
 		public DataTable ObtenerMarcas()
 		{
 			string strTabla = "Marcas";
-			string srtSQL = "SELECT mar_codigo,mar_nombre,mar_descripcion,mar_ruta_imagen,est_nombre,est_codigo FROM Marcas INNER JOIN Estados ON Marcas.mar_codigo_estado=Estados.est_codigo";
+			string srtSQL = "SELECT mar_codigo,mar_nombre,mar_descripcion,mar_ruta_imagen,est_nombre,est_codigo FROM Marcas INNER JOIN Estados ON Marcas.mar_codigo_estado=Estados.est_codigo ORDER BY mar_nombre ASC";
 			return accDatos.ObtenerTabla(strTabla, srtSQL);
 		}
 		public int agregarMarca(Marcas marca)

@@ -4,141 +4,128 @@
     <link rel="stylesheet" type="text/css" href="Recursos/css/dataTables.bootstrap5.min.css" />
     <main class="content">
         <div class="container-fluid">
-            <br />
-            <%--            <nav aria-label="breadcrumb">--%>
-            <%--                <div class="card-body text-left">
-                <div class="mb-3">--%>
-            <%--						<div class="row">
-                <div class="col-md-6">
-                		<asp:LinkButton ID="IrListarArticulos" runat="server" class="btn btn-outline-primary" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>
-                		<asp:LinkButton ID="IrListarMarcas" runat="server" class="btn btn-outline-warning" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
-                		<asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-success" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
-                		<asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary" OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
-                	</div>
-                <div class="col-md-6">
-                		<asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-outline-primary" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>
-                		<asp:LinkButton ID="LinkButton2" runat="server" class="btn btn-outline-warning" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
-                		<asp:LinkButton ID="LinkButton3" runat="server" class="btn btn-outline-success" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
-                		<asp:LinkButton ID="LinkButton4" runat="server" class="btn btn-outline-primary" OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
-                	</div>
-                			</div>--%>
-            <%--                    </div>
-                </div>--%>
-            <%--            </nav>--%>
+            <nav aria-label="breadcrumb">
+                <div class="card-body text-left">
+                    <div class="mb-3">
+                        <asp:LinkButton ID="IrListarArticulos" runat="server" class="btn btn-outline-primary" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarMarcas" runat="server" class="btn btn-outline-warning" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-success" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary" OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarVentas" runat="server" class="btn btn-outline-warning" OnClick="IrListarVentas_Click">Listado de Ventas</asp:LinkButton>
+                    </div>
+                </div>
+            </nav>
             <div class="row">
                 <div class="col-12">
                     <div class="card shadow mb-4"">
                         <div class="card-header">
                             <div class ="row">
-                                <div class="col-md-6">
-                                    <h5 class="h2 card-title mb-0">Listado de Artículos</h5>
-                                </div>
-                                <div class="col-md-6">
-                                    <asp:LinkButton ID="LnAgregarArticulos" class="btn btn-outline-dark float-right" runat="server" OnClick="LnAgregarArticulos_Click">+ Agregar Artículos</asp:LinkButton>
+                                <div class="card-body card bg-light">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="h2 card-title mb-0">Listado de Artículos</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <asp:LinkButton ID="LnAgregarArticulos" class="btn btn-outline-dark float-right" runat="server" OnClick="LnAgregarArticulos_Click">+ Agregar Artículos</asp:LinkButton>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row ">
-                                <div class="col-md-2 text-left">
-                                    <div class="card-body">
-                                        <selected class="form-group">
-                                            <label class="form-label">Marcas</label>
-                                            <asp:DropDownList ID="DdlMarcas"  class="custom-select form-control" runat="server" value="Marca" > </asp:DropDownList>
-                                        </selected>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 text-left">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label class="form-label">Categorías</label>
-                                            <asp:DropDownList ID="DdlCategorias" class="custom-select form-control" runat="server" > </asp:DropDownList>
+                            <div class ="row">
+                                <div class="card-body card bg-light">
+                                    <div class="row">
+                                        <div class="col-md-4 text-left">
+                                            <label class="form-label">Buscar por código o nombre</label>
+                                        </div>
+                                        <div class="col-md-3 text-left">
+                                            <label class="form-label">Buscar por marca</label>
+                                        </div>
+                                        <div class="col-md-5 text-left">
+                                            <label class="form-label">Buscar por categoría</label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2 text-left">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label class="form-label">Código</label>
-                                            <asp:TextBox ID="TxtCodigo" type="text" runat="server" class="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 text-left">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label class="form-label">Nombre</label>
+                                    <div class="row">
+                                        <div class="col-md-4 text-center">
                                             <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control"></asp:TextBox>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 text-left">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <br />
-                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary float-left" runat="server" Text="Filtrado" />
+                                        <div class="col-md-3 text-left">
+                                            <asp:DropDownList ID="DdlMarcas" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                        </div>
+                                        <div class="col-md-3 text-left">
+                                            <asp:DropDownList ID="DdlCategorias" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                        </div>
+                                        <div class="col-md-2 text-center">
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" />
+                                            &nbsp;&nbsp;
+                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <asp:GridView ID="GrdArticulos" runat="server" AutoGenerateColumns="False"
-                                OnPreRender="GrdArticulos_PreRender"
-                                CssClass="table display" OnRowCommand="GrdArticulos_RowCommand">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Código">
-                                        <ItemTemplate>
-                                            <asp:Label ID="art_codigo" runat="server" Text='<%# Eval("art_codigo") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Foto">
-                                        <ItemTemplate>
-                                            <asp:Image ID="art_ruta_imagen" Height="50px" Width="50px" runat="server" ImageUrl='<%# Bind("art_ruta_imagen") %>' />
-                                            <asp:HiddenField ID="urlImage" runat="server" Value='<%# Eval("art_ruta_imagen") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Nombre">
-                                        <ItemTemplate>
-                                            <asp:Label ID="art_nombre" runat="server" Text='<%# Eval("art_nombre") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Descripción">
-                                        <ItemTemplate>
-                                            <asp:Label ID="art_descripcion" runat="server" Text='<%# Eval("art_descripcion") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Punto de Pedido">
-                                        <ItemTemplate>
-                                            <asp:Label ID="art_punto_pedido" runat="server" Text='<%# Eval("art_punto_pedido") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Precio">
-                                        <ItemTemplate>
-                                            <asp:Label ID="art_precio_lista" runat="server" Text='<%# Eval("art_precio_lista") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Estado">
-                                        <ItemTemplate>
-                                            <asp:Label ID="est_nombre" runat="server" Text='<%# Eval("est_nombre") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Marca">
-                                        <ItemTemplate>
-                                            <asp:Label ID="mar_nombre" runat="server" Text='<%# Eval("mar_nombre") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Categoría">
-                                        <ItemTemplate>
-                                            <asp:Label ID="cat_nombre" runat="server" Text='<%# Eval("cat_nombre") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <%--BOTONES VER - EDITAR - ELIMINAR--%>
-                                    <asp:ButtonField ButtonType="Image" CommandName="eventoVer" ImageUrl="Recursos/img/ver.png" />
-                                    <%--<asp:ButtonField ButtonType="Image" CommandName="eventoAgregarCarrito" ImageUrl="Recursos/img/ca.png" />--%>
-                                    <asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
-                                    <asp:ButtonField ButtonType="Image" CommandName="eventoEliminar" ImageUrl="Recursos/img/eliminar.png" />
-                                </Columns>
-                            </asp:GridView>
-                            <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+                            <div class ="row">
+                                <div class="card-body card bg-light">
+                                    <asp:GridView ID="GrdArticulos" runat="server" AutoGenerateColumns="False"
+                                        OnPreRender="GrdArticulos_PreRender"
+                                        CssClass="table-striped dataTable dtr-inline table-hover row-border"
+                                        OnRowCommand="GrdArticulos_RowCommand">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="Código">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="art_codigo" runat="server" Text='<%# Eval("art_codigo") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Foto">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="art_ruta_imagen" Height="50px" Width="50px" runat="server" ImageUrl='<%# Bind("art_ruta_imagen") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Nombre">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="art_nombre" runat="server" Text='<%# Eval("art_nombre") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Descripción">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="art_descripcion" runat="server" Text='<%# Eval("art_descripcion") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Punto de Pedido">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="art_punto_pedido" runat="server" Text='<%# Eval("art_punto_pedido") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Precio">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="art_precio_lista" runat="server" Text='<%# Eval("art_precio_lista") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Estado">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="est_nombre" runat="server" Text='<%# Eval("est_nombre") %>' />
+                                                    <asp:Label ID="est_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("est_codigo") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Marca">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="mar_nombre" runat="server" Text='<%# Eval("mar_nombre") %>' />
+                                                    <asp:Label ID="mar_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("mar_codigo") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Categoría">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="cat_nombre" runat="server" Text='<%# Eval("cat_nombre") %>' />
+                                                    <asp:Label ID="cat_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("cat_codigo") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <%--BOTONES VER - EDITAR - ELIMINAR--%>
+                                            <asp:ButtonField ButtonType="Image" CommandName="eventoVerDetalle" ImageUrl="Recursos/img/ver.png" />
+                                            <%--<asp:ButtonField ButtonType="Image" CommandName="eventoAgregarCarrito" ImageUrl="Recursos/img/ca.png" />--%>
+                                            <asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
+                                            <asp:ButtonField ButtonType="Image" CommandName="eventoEliminar" ImageUrl="Recursos/img/eliminar.png" />
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -198,26 +185,32 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <div class="text-center">
-                        <h5 class="modal-title" >Atención</h5>
-                    </div>
+                    <h4 class="modal-title">Atención</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="text-left">
-                            Está a punto de eliminar un artículo, este procedimiento es irreversible. ¿Quiere proceder?
+                            Está a punto de eliminar un Artículo, este procedimiento es irreversible. ¿Quiere proceder?
                         </div>
                         <br />
-                        <div class="form-group">
-                            <asp:TextBox ID="TxtNombreModalEliminar" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                        <div class="text-center">
+                            <asp:Image ID="ImageModalEliminar" Height="200px" Width="200px" runat="server" class="img-fluid rounded-circle"/>
                         </div>
+                        <div class="form-group text-center">
+                            <asp:Label ID="TxtNombreModalEliminar" runat="server" ReadOnly="true" class ="form-control form-control-lg"></asp:Label>
+                        </div>
+                        <%--                        <div class="form-group">
+                            <label>Código</label>
+                            <asp:TextBox ID="TxtCodigoModalEliminar" ReadOnly="true" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                            </div>--%>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="form-group">
-                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-warning">Eliminar</button>
+                        <%--BOTONES VER - EDITAR - ELIMINAR--%>
+                        <asp:Button runat="server" ID="BtnEliminarArticulo" type="button" class="btn btn-warning" data-mdb-dismiss="modal"  Text="Eliminar" OnClick="BtnEliminarArticulo_Click" ></asp:Button>
                     </div>
                 </div>
             </div>
@@ -230,10 +223,10 @@
     <!-- DATATABLE JQUERY JAVASCRIPT -->
     <script type="text/javascript">
         $(document).ready(function () {
-        	$('#<%= GrdArticulos.ClientID %>').dataTable({
-                "aLengthMenu": [[10, 50, 75, -1], [10, 50, 75, "All"]],
-                "iDisplayLength": 10,
-                "order": [[1, "asc"]],
+            $('#<%= GrdArticulos.ClientID %>').dataTable({
+                "aLengthMenu": [[6, 25, 50, -1], [6, 25, 50, "All"]],
+                "iDisplayLength": 6,
+                "order": [[3, "asc"]],
                 stateSave: true,
                 stateSaveCallback: function (settings, data) {
                     localStorage.setItem

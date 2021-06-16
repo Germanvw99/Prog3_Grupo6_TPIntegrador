@@ -1,58 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="CategoriasModificar.aspx.cs" Inherits="Vistas.CategoriasModificar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-	<main class="content">
-		<div class="container-fluid">
-			<br />
-			<nav aria-label="breadcrumb">
-				<div class="card-body text-left">
-					<div class="mb-3">
-					</div>
-				</div>
-			</nav>
-			<div class="row">
-				<div class="col-12">
-					<div class="card shadow mb-4"">
-						<div class="card-header">
-							<h5 class="card-title mb-0">Modificar Categorías</h5>
-						</div>
-						<br />
-						<div class="row">
-							<div class="col-12 col-xl-6">
-								<div class="card">
-									<div class="card-header">
-										<h5 class="card-title">Datos actuales</h5>
-									</div>
-									<div class="card-body">
-										<div class="form-group">
-											<asp:Image ID="ImgLogo" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
-										</div>
-							<div class="form-group">
-								<label class="form-label">Nombre</label>
-	
-								<asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="Nombre" ReadOnly="True"></asp:TextBox>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Descripción</label>
-	
-								<asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Estado</label>
-	
-
-								<asp:TextBox ID="TxtEstado" class="form-control"   runat="server" ReadOnly="True" ></asp:TextBox>
-							</div>
-
-									</div>
-								</div>
-							</div>
-							<div class="col-12 col-xl-6">
-								<div class="card">
-									<div class="card-header">
-										<h5 class="card-title">Nuevos datos </h5>
-									</div>
-									
-
+    <main class="content">
+        <div class="container-fluid">
+            <br />
+            <nav aria-label="breadcrumb">
+                <div class="card-body text-left">
+                    <div class="mb-3">
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow mb-4"">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Modificar Categorías</h5>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-12 col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Datos actuales</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <asp:Image ID="ImgLogo" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Nombre</label>
+                                            <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="Nombre" ReadOnly="True"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Descripción</label>
+                                            <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Estado</label>
+                                            <asp:TextBox ID="TxtEstado" class="form-control"   runat="server" ReadOnly="True" ></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Nuevos datos </h5>
+                                    </div>
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label class="form-label">Nombre</label>
@@ -69,9 +62,6 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label">Imágen</label>
-                                        <div>
-                                            <asp:Image ID="ImageModificar" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
-                                        </div>
                                             <div>
                                                 <asp:FileUpload ID="FUCategoria" runat="server" />
                                             </div>
@@ -81,13 +71,12 @@
                                             </div>
                                         </div>
                                     </div>
-		</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </asp:Content>
