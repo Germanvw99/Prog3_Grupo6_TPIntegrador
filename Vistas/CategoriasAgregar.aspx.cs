@@ -99,14 +99,9 @@ namespace Vistas
             Response.Redirect("ProveedoresListado.aspx");
         }
 
-        protected void LnAgregarMarcas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("MarcasAgregar.aspx");
-        }
-
         protected void IrListarVentas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ProveedoresListado.aspx");
+            Response.Redirect("VentasListado.aspx");
         }
     }
 }

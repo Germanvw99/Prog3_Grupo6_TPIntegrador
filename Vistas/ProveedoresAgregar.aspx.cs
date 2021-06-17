@@ -87,7 +87,7 @@ namespace Vistas
         }
         protected void IrListarVentas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ProveedoresListado.aspx");
+            Response.Redirect("VentasListado.aspx");
         }
     }
 }
