@@ -17,32 +17,45 @@
                 <div class="col-12">
                     <div class="card shadow mb-4"">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Agregar Proveedores</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
+                            <div class ="row">
+                                <div class="card-body card bg-light">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="h2 card-title mb-0">Agregar Proveedor</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div class="card-body card bg-light">
+                                    <div class ="row">
+                                        <div class="col-md-6">
+<div class="form-group">
                                 <label class="form-label">Razón Social</label>
-                                <asp:TextBox ID="TxtRazonSocial" type="text" runat="server" class="form-control" placeholder="Razón Social"></asp:TextBox>
+                                <asp:TextBox ID="TxtRazonSocial" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">DNI o CUIL</label>
-                                <asp:TextBox ID="TxtDni" type="text" runat="server" class="form-control" placeholder="DNI o CUIL" ></asp:TextBox>
+                                <asp:TextBox ID="TxtDni" type="text" runat="server" class="form-control" placeholder="" ></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Dirección</label>
-                                <asp:TextBox ID="TxtDireccion" type="text" runat="server" class="form-control" placeholder="Dirección"></asp:TextBox>
+                                <asp:TextBox ID="TxtDireccion" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Email</label>
-                                <asp:TextBox ID="TxtEmail" type="text" runat="server" class="form-control" placeholder="Email" ></asp:TextBox>
+                                <asp:TextBox ID="TxtEmail" type="text" runat="server" class="form-control" placeholder="" ></asp:TextBox>
                             </div>
-                            <div class="form-group">
+
+                                        </div>
+                                        <div class="col-md-6">
+                                                                        <div class="form-group">
                                 <label class="form-label">Teléfono</label>
-                                <asp:TextBox ID="TxtTelefono" type="text" runat="server" class="form-control" placeholder="Teléfono"></asp:TextBox>
+                                <asp:TextBox ID="TxtTelefono" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Nombre del Contacto</label>
-                                <asp:TextBox ID="TxtContacto" type="text" runat="server" class="form-control" placeholder="Nombre del Contacto" ></asp:TextBox>
+                                <asp:TextBox ID="TxtContacto" type="text" runat="server" class="form-control" placeholder="" ></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Estado</label>
@@ -55,7 +68,10 @@
                                     <asp:FileUpload ID="FUProveedor" runat="server" />
                                 </div>
                             </div>
-                            <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar Proveedor" OnClick="BtnAgregar_Click" />
+                            <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar Proveedor" OnClick="BtnAgregar_Click" /> </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
