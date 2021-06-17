@@ -73,6 +73,13 @@
     <Content Include="CategoriasModificar.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="DetalleArticulo.aspx" />
+    <Content Include="Imagenes\articulos\2.png" />
+    <Content Include="Imagenes\articulos\__default.png" />
+    <Content Include="Imagenes\categorias\__default.png" />
+    <Content Include="Imagenes\marcas\__default.png" />
+    <Content Include="Imagenes\mediosPago\__default.png" />
+    <Content Include="Imagenes\proveedores\__default.png" />
+    <Content Include="Imagenes\usuarios\__default.png" />
     <Content Include="Recursos\Base_de_datos\01_BaseDatos.txt" />
     <Content Include="Recursos\Base_de_datos\02_ClavesForaneas.txt" />
     <Content Include="Recursos\Base_de_datos\03_Estados.txt" />
@@ -103,6 +110,28 @@
     <Content Include="Recursos\Base_de_datos\storeProcedure\spModificarMarca.txt" />
     <Content Include="Recursos\Base_de_datos\storeProcedure\spModificarProveedor.txt" />
     <Content Include="Recursos\Base_de_datos\storeProcedure\spRegistroUsuario.sql" />
+    <Content Include="Recursos\css\all.css" />
+    <Content Include="Recursos\css\bootstrap.min.css" />
+    <Content Include="Recursos\css\dataTables.bootstrap5.min.css" />
+    <Content Include="Recursos\css\estilos.css" />
+    <Content Include="Recursos\css\jquery.dataTables.min.css" />
+    <Content Include="Recursos\css\sidebar.css" />
+    <Content Include="Recursos\css\theme.css" />
+    <Content Include="Recursos\img\avatar.png" />
+    <Content Include="Recursos\img\ca.png" />
+    <Content Include="Recursos\img\Carrito.png" />
+    <Content Include="Recursos\img\CarritoAgregar.png" />
+    <Content Include="Recursos\img\editar.png" />
+    <Content Include="Recursos\img\eliminar.png" />
+    <Content Include="Recursos\img\ver.png" />
+    <Content Include="Recursos\js\bootstrap.min.js" />
+    <Content Include="Recursos\js\jquery-3.3.1.slim.min.js" />
+    <Content Include="Recursos\js\jquery-3.6.0.min.js" />
+    <Content Include="Recursos\js\jquery.dataTables.min.js" />
+    <Content Include="Recursos\js\popper.min.js" />
+    <Content Include="Recursos\webfonts\fa-brands-400.svg" />
+    <Content Include="Recursos\webfonts\fa-regular-400.svg" />
+    <Content Include="Recursos\webfonts\fa-solid-900.svg" />
     <Content Include="Vistausuario.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -229,27 +258,6 @@
     <Content Include="ProveedoresAgregar.aspx" />
     <Content Include="ProveedoresListado.aspx" />
     <Content Include="ProveedoresModificar.aspx" />
-    <Content Include="Recursos\css\all.css" />
-    <Content Include="Recursos\css\bootstrap.min.css" />
-    <Content Include="Recursos\css\dataTables.bootstrap5.min.css" />
-    <Content Include="Recursos\css\estilos.css" />
-    <Content Include="Recursos\css\jquery.dataTables.min.css" />
-    <Content Include="Recursos\css\theme.css" />
-    <Content Include="Recursos\img\avatar.png" />
-    <Content Include="Recursos\img\ca.png" />
-    <Content Include="Recursos\img\Carrito.png" />
-    <Content Include="Recursos\img\CarritoAgregar.png" />
-    <Content Include="Recursos\img\editar.png" />
-    <Content Include="Recursos\img\eliminar.png" />
-    <Content Include="Recursos\img\ver.png" />
-    <Content Include="Recursos\js\bootstrap.min.js" />
-    <Content Include="Recursos\js\jquery-3.3.1.slim.min.js" />
-    <Content Include="Recursos\js\jquery-3.6.0.min.js" />
-    <Content Include="Recursos\js\jquery.dataTables.min.js" />
-    <Content Include="Recursos\js\popper.min.js" />
-    <Content Include="Recursos\webfonts\fa-brands-400.svg" />
-    <Content Include="Recursos\webfonts\fa-regular-400.svg" />
-    <Content Include="Recursos\webfonts\fa-solid-900.svg" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -402,6 +410,7 @@
   <ItemGroup>
     <Content Include="MasterPage.Master" />
     <Content Include="Imagenes\marcas\desktop.ini" />
+    <None Include="packages.config" />
     <Content Include="Recursos\webfonts\fa-brands-400.eot" />
     <Content Include="Recursos\webfonts\fa-brands-400.ttf" />
     <Content Include="Recursos\webfonts\fa-brands-400.woff" />
@@ -414,7 +423,6 @@
     <Content Include="Recursos\webfonts\fa-solid-900.ttf" />
     <Content Include="Recursos\webfonts\fa-solid-900.woff" />
     <Content Include="Recursos\webfonts\fa-solid-900.woff2" />
-    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -42,6 +42,24 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrListarCategorias;
 
         /// <summary>
+        /// Control IrListarProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarProveedores;
+
+        /// <summary>
+        /// Control IrListarVentas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarVentas;
+
+        /// <summary>
         /// Control TxtNombre.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DdlEstados;
+
+        /// <summary>
+        /// Control FUCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FUCategoria;
 
         /// <summary>
         /// Control BtnAgregar.
