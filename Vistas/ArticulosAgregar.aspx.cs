@@ -112,11 +112,11 @@ namespace Vistas
         }
         protected void IrListarProveedores_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ProveedoresListar.aspx");
+            Response.Redirect("ProveedoresListado.aspx");
         }
         protected void IrListarVentas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("VentasListar.aspx");
+            Response.Redirect("VentasListado.aspx");
         }
         // AGREGAR MARCAS Y CATEGORIAS
         protected void IrAgregarMarca_Click(object sender, EventArgs e)
