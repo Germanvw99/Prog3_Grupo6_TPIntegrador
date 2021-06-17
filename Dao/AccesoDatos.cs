@@ -12,7 +12,6 @@ namespace Dao
 	{
 		private readonly string rutaDB = "Data Source=Localhost\\SQLEXPRESS;Initial Catalog=Grupo6_TPIntegradorV6;Integrated Security=True";
 
-
 		public SqlConnection ObtenerConexion()
 		{
 			try
