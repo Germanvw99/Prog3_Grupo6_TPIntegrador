@@ -7,100 +7,141 @@ using Dao;
 using Entidades;
 using System.Data;
 using System.Web.SessionState;
-
 namespace Negocio
 {
-    public class NegocioMarcas : System.Web.UI.Page
-    {
-        private readonly DaoMarcas daoMarcas = new Dao.DaoMarcas();
-        public DataTable ObtenerMarcas() {
-            return daoMarcas.ObtenerMarcas();
-        }
+	public class NegocioMarcas : System.Web.UI.Page
+	{
+		private readonly DaoMarcas daoMarca = new Dao.DaoMarcas();
+		public DataTable ObtenerMarcas()
+		{
+			return daoMarca.ObtenerMarcas();
+		}
 
-        //USO SESION PARA EDITAR MARCAS
+		#region SESION MARCAS
 
-        //SI NO EXISTE, CREA LA SESION
-        public void CrearSesion()
-        {
-            if (Session["TablaSesionMarcas"] == null)
-            {
-                Session["TablaSesionMarcas"] = CrearTablaSesion();
-            }
-        }
-        private DataTable CrearTablaSesion()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("mar_codigo", typeof(string));
-            dt.Columns.Add("mar_nombre", typeof(string));
-            dt.Columns.Add("mar_descripcion", typeof(string));
-            dt.Columns.Add("mar_ruta_imagen", typeof(string));
-            dt.Columns.Add("mar_codigo_estado", typeof(string));
-            return dt;
-        }
+		public void AgregarMarcaEliminar(Marcas marca)
+		{
+			Session["SesionMarcaEliminar"] = marca;
+		}
 
-        // RETORNA UNA TABLA DE LA SESION.
-        // EN CASO DE QUE LA SESION SEA NULL RETORNA UNA TABLA NULL
-        public DataTable ObtenerTablaSesion()
-        {
-            DataTable dt = new DataTable();
-            if (Session["TablaSesionMarcas"] != null)
-            {
-                dt = (DataTable)Session["TablaSesionMarcas"];
-            }
-            return dt;
-        }
+		public Marcas ObtenerMarcaEliminar()
+		{
+			Marcas marca = new Marcas();
+			if (Session["SesionMarcaEliminar"] != null)
+			{
+				marca = (Marcas)Session["SesionMarcaEliminar"];
+			}
+			return marca;
+		}
 
-        // SI NO EXISTE MAR_CODIGO AGREGA LA MARCA A LA SESION
-        // RETORNA TRUE SI AGREGO
-        // RETORNA FALSE SI NO AGREGO
-        public bool AgregarMarcaEnLaSesion(Marcas Marca)
-        {
-            if (VerificarItem(Marca.GetCodigo()))
-            {
-                AgregarMarca(Marca);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        // VERIFICA LA EXISTENCIA DEL DNI EN LA SESION
-        // SI EL DNI EXISTE RETORNA FALSE
-        // SI EL DNI NO EXISTE RETORNA TRUE
-        private bool VerificarItem(int marCodigo)
-        {
-            DataTable dt = ObtenerTablaSesion();
-            foreach (DataRow row in dt.Rows)
-            {
-                if (Int32.Parse(row["mar_codigo"].ToString()) == marCodigo)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        private void AgregarMarca(Marcas Marca)
-        {
-            DataTable dt = ObtenerTablaSesion();
-            DataRow dr = dt.NewRow();
-            dr["mar_codigo"] = Marca.GetCodigo();
-            dr["mar_nombre"] = Marca.GetNombre();
-            dr["mar_descripcion"] = Marca.GetDescripcion();
-            dr["mar_ruta_imagen"] = Marca.GetRutaImagen();
-            dr["mar_codigo_estado"] = Marca.GetEstado().GetCodigo(); 
+		//USO SESION PARA MODIFICAR MARCAS. SI NO EXISTE, CREA LA SESION
+		private void CrearSesionMarca()
+		{
+			if (Session["SesionMarca"] == null)
+			{
+				Marcas marca = new Marcas();
+				Session["SesionMarca"] = marca;
+			}
+		}
 
-            dt.Rows.Add(dr);
-        }
+		// RETORNA LA SESION MARCA. EN CASO DE QUE LA SESION SEA NULL RETORNA UNA MARCA NULL
+		public Marcas ObtenerSesionMarca()
+		{
+			Marcas marca = new Marcas();
+			if (Session["SesionMarca"] != null)
+			{
+				marca = (Marcas)Session["SesionMarca"];
+			}
+			return marca;
+		}
+		// AGREGA UNA MARCA A LA SESION
+		public void AgregarMarcaEnLaSesion(Marcas Marca)
+		{
+			EliminarSesionMarca();
+			CrearSesionMarca();
+			Marcas marcaSesion = ObtenerSesionMarca();
+			marcaSesion.SetCodigo(Marca.GetCodigo());
+			marcaSesion.SetNombre(Marca.GetNombre());
+			marcaSesion.SetDescripcion(Marca.GetDescripcion());
+			marcaSesion.SetRutaImagen(Marca.GetRutaImagen());
+			Estados estado = new Estados();
+			estado.SetNombre(Marca.GetEstado().GetNombre());
+			estado.SetCodigo(Marca.GetEstado().GetCodigo());
+			marcaSesion.SetEstado(estado);
+		}
 
-        public bool EliminarSesion()
-        {
-            if (Session["TablaSesionMarcas"] != null)
-            {
-                Session["TablaSesionMarcas"] = null;
-                return true;
-            }
-            return false;
-        }
-    }
+		// ELIMINA LA SESION MARCA
+		private void EliminarSesionMarca()
+		{
+			if (Session["SesionMarca"] != null)
+			{
+				Session["SesionMarca"] = null;
+			}
+		}
+
+		#endregion
+
+
+
+
+
+
+		//AGREGAR MARCA
+		// RETORNA 0 --> NO AGREGO LA MARCA
+		// RETORNA 1 --> AGREGO LA MARCA
+		// RETORNA 2 --> LA MARCA YA EXISTE, NO FUE AGREGADA
+		public int agregarMarca(Marcas marca)
+		{
+			if (buscarMarcaPorNombre(marca) == 0)
+			{
+				int agregar = daoMarca.agregarMarca(marca);
+				if (agregar == 1) return 1;
+				else return 0;
+			}
+			else
+			{
+				return 2;
+			}
+		}
+		//BUSCAR MARCA POR NOMBRE
+		private int buscarMarcaPorNombre(Marcas marca)
+		{
+			return daoMarca.buscarMarcaPorNombre(marca);
+		}
+
+		//BUSCAR MARCA POR NOMBRE Y CODIGO DE MARCA NO COINCIDENTE PARA EVITAR QUE EXISTAN MARCAS CON EL MISMO NOMBRE
+		private int buscarMarcaPorNombreCodigoNoCoincidente(Marcas marca)
+		{
+			return daoMarca.buscarMarcaPorNombreCodigoNoCoincidente(marca);
+		}
+
+		//MODIFICAR MARCA
+		public int modificarMarca(Marcas marca)
+		{
+			if (buscarMarcaPorNombreCodigoNoCoincidente(marca) == 0)
+			{
+				int agregar = daoMarca.modificarMarca(marca);
+				if (agregar == 1) return 1;
+				else return 0;
+			}
+			else
+			{
+				return 2;
+			}
+		}
+
+		//ELIMINAR MARCA
+		public bool eliminarMarca(Marcas marca)
+		{
+			int eliminar = daoMarca.eliminarMarca(marca);
+			if (eliminar == 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
 }
