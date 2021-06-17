@@ -45,7 +45,7 @@
                                             <label class="form-label">Buscar por Provincia</label>
                                         </div>
                                         <div class="col-md-4 text-left">
-                                            <label class="form-label">Buscar por Ciudad</label>
+                                            <label class="form-label">Buscar por Estado</label>
                                         </div>
                                     </div>
                                     <div class="row">

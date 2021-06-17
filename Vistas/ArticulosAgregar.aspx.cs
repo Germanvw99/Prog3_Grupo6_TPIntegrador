@@ -108,9 +108,14 @@ namespace Vistas
 			}
 
 		}
+
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
+		}
+		protected void IrListarUsuarios_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("UsuariosListado.aspx");
 		}
 		protected void IrListarMarcas_Click(object sender, EventArgs e)
 		{
