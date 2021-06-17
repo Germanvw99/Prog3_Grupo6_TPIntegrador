@@ -20,15 +20,13 @@ namespace Vistas
         private readonly Categorias categoria = new Categorias();
         private readonly Estados estado = new Estados();
         private readonly Marcas marca = new Marcas();
-        //
-        private string imagenURL = "Imagenes/articulos/__default.png";
-        //
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (NegocioUsuarios.getInstance().isAdmin() != true)
-            //{
-            //    Response.Redirect("home.aspx");
-            //}
+            if (NegocioUsuarios.getInstance().isAdmin() != true)
+            {
+                Response.Redirect("home.aspx");
+            }
             if (!Page.IsPostBack)
             {
                 CargarMarcas();
@@ -38,7 +36,9 @@ namespace Vistas
         }
         private void CargarMarcas()
         {
-            DdlMarcas.Items.Add(new ListItem("", "0"));
+            DdlMarcas.Items.Add(new ListItem("Seleccione Marca", "-1"));
+            DdlMarcas.Items[0].Selected = true;
+            DdlMarcas.Items[0].Attributes["disabled"] = "disabled";
             DataTable dt = negocioMarcas.ObtenerMarcas();
             foreach (DataRow dr in dt.Rows)
             {
@@ -47,7 +47,9 @@ namespace Vistas
         }
         private void CargarCategorias()
         {
-            DdlCategorias.Items.Add(new ListItem("", "0"));
+            DdlCategorias.Items.Add(new ListItem("Seleccione Categoría", "-1"));
+            DdlCategorias.Items[0].Selected = true;
+            DdlCategorias.Items[0].Attributes["disabled"] = "disabled";
             DataTable dt = negocioCategorias.ObtenerCategorias();
             foreach (DataRow dr in dt.Rows)
             {
@@ -56,7 +58,9 @@ namespace Vistas
         }
         private void CargarEstados()
         {
-            DdlEstados.Items.Add(new ListItem("", "0"));
+            DdlEstados.Items.Add(new ListItem("Seleccione Estado", "-1"));
+            DdlEstados.Items[0].Selected = true;
+            DdlEstados.Items[0].Attributes["disabled"] = "disabled";
             DataTable dt = negocioEstados.ObtenerEstados();
             foreach (DataRow dr in dt.Rows)
             {
@@ -65,38 +69,44 @@ namespace Vistas
         }
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) && !string.IsNullOrEmpty(TxtDescripcion.Text.Trim()) &&
-            !string.IsNullOrEmpty(TxtPuntoPedido.Text.Trim()) && !string.IsNullOrEmpty(DdlCategorias.SelectedItem.ToString()) &&
-            !string.IsNullOrEmpty(DdlEstados.SelectedItem.ToString()) && !string.IsNullOrEmpty(DdlMarcas.SelectedItem.ToString()))
+            if (UploadImage.HasFile)
             {
-                if (FUArticulo.HasFile)
+                // Valida que el archivo sea correcto.
+                if (NegocioImagenes.validarArchivo(UploadImage.PostedFile))
                 {
-                    string imagenNombre = FUArticulo.PostedFile.FileName;
-                    imagenURL = "Imagenes/articulos/" + imagenNombre;
+                    // Sube archivo.
+                    string rutaImagen = NegocioImagenes.SubirImagenArticulo(UploadImage.PostedFile);
+
+                    // Se rellena el objeto Articulo
+                    GetEntity(rutaImagen);
+
+                    // Una vez validado, se sube el registro del articulo.
+                    int agrego = negocioArticulo.agregarArticulo(articulo);
+                    if (agrego == 0) 
+                    {
+                        lblNotificacion.ForeColor = System.Drawing.Color.Red;
+                        lblNotificacion.Text = "No se puso agregar el artículo!";
+                    }
+                    if (agrego == 1) 
+                    {
+                        lblNotificacion.ForeColor = System.Drawing.Color.Green;
+                        lblNotificacion.Text = "Se agregó el artículo!";
+                    }
+                    if (agrego == 2)
+                    {
+                        lblNotificacion.ForeColor = System.Drawing.Color.Red;
+                        lblNotificacion.Text = "El artículo ya existe!";
+                    }
+                    //LimpiarCampos();
+                    clearForm();
                 }
-                articulo.SetNombre(TxtNombre.Text.Trim());
-                articulo.SetDescripcion(TxtDescripcion.Text.Trim());
-                //
-                marca.SetCodigo(Int32.Parse(DdlMarcas.SelectedValue));
-                articulo.SetMarca(marca);
-                //
-                categoria.SetCodigo(Int32.Parse(DdlCategorias.SelectedValue));
-                articulo.SetCategoria(categoria);
-                //
-                estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
-                articulo.SetEstado(estado);
-                //
-                articulo.SetPuntoPedido(Int32.Parse(TxtPuntoPedido.Text.Trim()));
-                articulo.SetPrecioLista(Decimal.Parse(TxtPrecioLista.Text.Trim()));
-                //
-                articulo.SetRutaImagen(imagenURL);
-                //
-                int agrego = negocioArticulo.agregarArticulo(articulo);
-                if (agrego == 0) { ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso agregar el artículo');", true); }
-                if (agrego == 1) { ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se agregó el artículo');", true); }
-                if (agrego == 2) { ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El artículo ya existe');", true); }
-                //LimpiarCampos();
+                else
+                {
+                    lblNotificacion.ForeColor = System.Drawing.Color.Red;
+                    lblNotificacion.Text = "Error al subir la imagen!";
+                }
             }
+            
         }
         protected void IrListarArticulos_Click(object sender, EventArgs e)
         {
@@ -126,6 +136,34 @@ namespace Vistas
         protected void IrAgregarCategoria_Click(object sender, EventArgs e)
         {
             Response.Redirect("CategoriasAgregar.aspx");
+        }
+        private Articulos GetEntity(String rutaImagen)
+        {
+            articulo.SetNombre(TxtNombre.Text.Trim());
+            articulo.SetDescripcion(TxtDescripcion.Text.Trim());
+            //
+            marca.SetCodigo(Int32.Parse(DdlMarcas.SelectedValue));
+            articulo.SetMarca(marca);
+            //
+            categoria.SetCodigo(Int32.Parse(DdlCategorias.SelectedValue));
+            articulo.SetCategoria(categoria);
+            //
+            estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
+            articulo.SetEstado(estado);
+            //
+            articulo.SetPuntoPedido(Int32.Parse(txtPedido.Text.Trim()));
+            articulo.SetPrecioLista(Decimal.Parse(txtPrecio.Text.Trim()));
+            //
+            articulo.SetRutaImagen(rutaImagen);
+            return articulo;
+        }
+
+        private void clearForm()
+        {
+            txtPedido.Text = "";
+            TxtNombre.Text = "";
+            TxtDescripcion.Text = "";
+            txtPrecio.Text = "";
         }
     }
 }
