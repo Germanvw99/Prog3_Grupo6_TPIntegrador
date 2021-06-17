@@ -11,105 +11,150 @@ using System.Web.SessionState;
 
 namespace Negocio
 {
-    public class NegocioProveedores : System.Web.UI.Page
-    {
-        private readonly DaoProveedores daoProveedores = new DaoProveedores();
+	public class NegocioProveedores : System.Web.UI.Page
+	{
+		private readonly DaoProveedores daoProveedor = new DaoProveedores();
 
-        public DataTable ObtenerProveedores()
-        {
-            return daoProveedores.ObtenerProveedores();
-        }
+		public DataTable ObtenerProveedores()
+		{
+			return daoProveedor.ObtenerProveedores();
+		}
 
-        //USO SESION PARA EDITAR PROVEEDORES
+		#region SESION PROVEEDOR
 
-        //SI NO EXISTE, CREA LA SESION
-        public void CrearSesion()
-        {
-            if (Session["TablaSesionProveedor"] == null)
-            {
-                Session["TablaSesionProveedor"] = CrearTablaSesion();
-            }
-        }
-        private DataTable CrearTablaSesion()
-        {
-            DataTable dt = new DataTable();
-                    dt.Columns.Add("pro_dni", typeof(string));
-                    dt.Columns.Add("pro_razon_social", typeof(string));
-                    dt.Columns.Add("pro_direccion", typeof(string));
-                    dt.Columns.Add("pro_email", typeof(string));
-                    dt.Columns.Add("pro_telefono", typeof(string));
-                    dt.Columns.Add("pro_nombre_contacto", typeof(string));
-                    dt.Columns.Add("pro_ruta_imagen", typeof(string));
-                    dt.Columns.Add("pro_codigo_estado", typeof(string));
-            return dt;
-        }
+		public void AgregarProveedorEliminar(Proveedores proveedor)
+		{
+			Session["SesionProveedorEliminar"] = proveedor;
+		}
 
-        // RETORNA UNA TABLA DE LA SESION.
-        // EN CASO DE QUE LA SESION SEA NULL RETORNA UNA TABLA NULL
-        public DataTable ObtenerTablaSesion()
-        {
-            DataTable dt = new DataTable();
-            if (Session["TablaSesionProveedor"] != null)
-            {
-                dt = (DataTable)Session["TablaSesionProveedor"];
-            }
-            return dt;
-        }
+		public Proveedores ObtenerProveedorEliminar()
+		{
+			Proveedores proveedor = new Proveedores();
+			if (Session["SesionProveedorEliminar"] != null)
+			{
+				proveedor = (Proveedores)Session["SesionProveedorEliminar"];
+			}
+			return proveedor;
+		}
 
-        // SI NO EXISTE PRO_DNI AGREGA EL PROVEEDOR A LA SESION
-        // RETORNA TRUE SI AGREGO
-        // RETORNA FALSE SI NO AGREGO
-        public bool AgregarProveedorEnLaSesion(Proveedores Proveedor)
-        {
-            if (VerificarItem(Proveedor.GetDni()))
-            {
-                AgregarProveedor(Proveedor);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        // VERIFICA LA EXISTENCIA DEL DNI EN LA SESION
-        // SI EL DNI EXISTE RETORNA FALSE
-        // SI EL DNI NO EXISTE RETORNA TRUE
-        private bool VerificarItem(string Dni)
-        {
-            DataTable dt = ObtenerTablaSesion();
-            foreach (DataRow row in dt.Rows)
-            {
-                if (row["pro_dni"].ToString().Equals(Dni)) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        private void AgregarProveedor(Proveedores Proveedor)
-        {
-            DataTable dt = ObtenerTablaSesion();
-            DataRow dr = dt.NewRow();
+		//USO SESION PARA MODIFICAR PROVEEDORES. SI NO EXISTE, CREA LA SESION
+		private void CrearSesionProveedor()
+		{
+			if (Session["SesionProveedor"] == null)
+			{
+				Proveedores proveedor = new Proveedores();
+				Session["SesionProveedor"] = proveedor;
+			}
+		}
 
-            dr["pro_dni"] = Proveedor.GetDni();
-            dr["pro_razon_social"] = Proveedor.GetRazonSocial();
-            dr["pro_direccion"] = Proveedor.GetDireccion();
-            dr["pro_email"] = Proveedor.GetEmail();
-            dr["pro_telefono"] = Proveedor.GetTelefono();
-            dr["pro_nombre_contacto"] = Proveedor.GetNombreContacto();
-            dr["pro_ruta_imagen"] = Proveedor.GetRutaImagen();
-            dr["pro_codigo_estado"] = Proveedor.GetEstado().GetCodigo();
+		// RETORNA LA SESION PROVEEDOR. EN CASO DE QUE LA SESION SEA NULL RETORNA UN PROVEEDOR NULL
+		public Proveedores ObtenerSesionProveedor()
+		{
+			Proveedores proveedor = new Proveedores();
+			if (Session["SesionProveedor"] != null)
+			{
+				proveedor = (Proveedores)Session["SesionProveedor"];
+			}
+			return proveedor;
+		}
+		// AGREGA UNA PROVEEDOR A LA SESION
+		public void AgregarProveedorEnLaSesion(Proveedores proveedor)
+		{
+			EliminarSesionProveedor();
+			CrearSesionProveedor();
+			Proveedores proveedorSesion = ObtenerSesionProveedor();
+			proveedorSesion.SetDni(proveedor.GetDni());
+			proveedorSesion.SetRazonSocial(proveedor.GetRazonSocial());
+			proveedorSesion.SetDireccion(proveedor.GetDireccion());
+			proveedorSesion.SetEmail(proveedor.GetEmail());
+			proveedorSesion.SetTelefono(proveedor.GetTelefono());
+			proveedorSesion.SetNombreContacto(proveedor.GetNombreContacto());
+			proveedorSesion.SetRutaImagen(proveedor.GetRutaImagen());
+			Estados estado = new Estados();
+			estado.SetNombre(proveedor.GetEstado().GetNombre());
+			estado.SetCodigo(proveedor.GetEstado().GetCodigo());
+			proveedorSesion.SetEstado(estado);
+		}
 
-            dt.Rows.Add(dr);
-        }
+		// ELIMINA LA SESION CATEGORIA
+		private void EliminarSesionProveedor()
+		{
+			if (Session["SesionProveedor"] != null)
+			{
+				Session["SesionProveedor"] = null;
+			}
+		}
 
-        public bool EliminarSesion()
-        {
-            if (Session["TablaSesionProveedor"] != null)
-            {
-                Session["TablaSesionProveedor"] = null;
-                return true;
-            }
-            return false;
-        }
-    }
+		#endregion
+
+		#region AGREGAR PROVEEDOR
+		// RETORNA 0 --> NO AGREGO EL PROVEEDOR
+		// RETORNA 1 --> AGREGO EL PROVEEDOR
+		// RETORNA 2 --> EL PROVEEDOR YA EXISTE, NO FUE AGREGADO
+		public int agregarProveedor(Proveedores proveedor)
+		{
+			if (buscarProveedorPorDni(proveedor) == 0)
+			{
+				int agregar = daoProveedor.agregarProveedor(proveedor);
+				if (agregar == 1) return 1;
+				else return 0;
+			}
+			else
+			{
+				return 2;
+			}
+		}
+		//BUSCAR MARCA POR NOMBRE
+		private int buscarProveedorPorDni(Proveedores proveedor)
+		{
+			return daoProveedor.buscarProveedorPorDni(proveedor);
+		}
+
+		#endregion
+
+		#region MODIFICAR PROVEEDOR
+
+		//USADO PARA MODIFICAR PROVEEDOR
+		//BUSCAR PROVEEDOR POR NOMBRE Y CODIGO DE PROVEEDOR NO COINCIDENTE PARA EVITAR QUE EXISTAN PROVEEDORES CON EL MISMO NOMBRE
+		private int buscarProveedorPorNombreCodigoNoCoincidente(Proveedores proveedor)
+		{
+			return daoProveedor.buscarProveedorPorNombreCodigoNoCoincidente(proveedor);
+		}
+
+		//MODIFICAR PROVEEDOR
+		public int modificarProveedor(Proveedores proveedor)
+		{
+			if (buscarProveedorPorNombreCodigoNoCoincidente(proveedor) == 0)
+			{
+				int agregar = daoProveedor.modificarProveedor(proveedor);
+				if (agregar == 1) return 1;
+				else return 0;
+			}
+			else
+			{
+				return 2;
+			}
+		}
+
+		#endregion
+
+		#region ELIMINAR PROVEEDOR
+
+		//ELIMINAR MARCA
+		public bool eliminarProveedor(Proveedores proveedor)
+		{
+			int eliminar = daoProveedor.eliminarProveedor(proveedor);
+			if (eliminar == 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		#endregion
+
+	}
 }

@@ -24,13 +24,13 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Image ImgLogo;
 
         /// <summary>
-        /// Control TxtNombre.
+        /// Control TxtRazonSocial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
+        protected global::System.Web.UI.WebControls.TextBox TxtRazonSocial;
 
         /// <summary>
         /// Control TxtDni.
@@ -78,84 +78,84 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox TxtContacto;
 
         /// <summary>
-        /// Control TxtEstados.
+        /// Control TxtEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEstados;
+        protected global::System.Web.UI.WebControls.TextBox TxtEstado;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control TxtRazonSocialModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtRazonSocialModificar;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control TxtDireccionModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TxtDireccionModificar;
 
         /// <summary>
-        /// Control TextBox3.
+        /// Control TxtEmailModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TxtEmailModificar;
 
         /// <summary>
-        /// Control TextBox4.
+        /// Control TxtTelefonoModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox TxtTelefonoModificar;
 
         /// <summary>
-        /// Control TextBox5.
+        /// Control TxtContactoModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox TxtContactoModificar;
 
         /// <summary>
-        /// Control TextBox6.
+        /// Control DdlEstadoModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.DropDownList DdlEstadoModificar;
 
         /// <summary>
-        /// Control DropDownList1.
+        /// Control FUProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.FileUpload FUProveedor;
 
         /// <summary>
-        /// Control Button1.
+        /// Control BtnModificarProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button BtnModificarProveedor;
     }
 }
