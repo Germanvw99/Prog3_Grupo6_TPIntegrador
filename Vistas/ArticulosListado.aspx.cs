@@ -158,7 +158,7 @@ namespace Vistas
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar el artículo');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar el artículo');", true);
 			}
 			//Response.Redirect("ArticulosListado.aspx");
 		}

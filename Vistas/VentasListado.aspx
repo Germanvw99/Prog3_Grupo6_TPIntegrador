@@ -1,26 +1,79 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="VentasListado.aspx.cs" Inherits="Vistas.VentasListado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link rel="stylesheet" type="text/css" href="Recursos/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" type="text/css" href="Recursos/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="Recursos/css/dataTables.bootstrap5.min.css" />
     <main class="content">
         <div class="container-fluid">
-            <br />
+            <nav aria-label="breadcrumb">
+                <div class="card-body text-left">
+                    <div class="mb-3">
+                        <asp:LinkButton ID="IrListarArticulos" runat="server" class="btn btn-outline-primary" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarMarcas" runat="server" class="btn btn-outline-warning" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-success" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary" OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarVentas" runat="server" class="btn btn-outline-warning" OnClick="IrListarVentas_Click">Listado de Ventas</asp:LinkButton>
+                    </div>
+                </div>
+            </nav>
             <div class="row">
                 <div class="col-12">
                     <div class="card shadow mb-4"">
                         <div class="card-header">
                             <div class ="row">
-                                <div class="col-md-6">
-                                    <h5 class="h2 card-title mb-0">Listado de Ventas</h5>
-                                </div>
-                                <div class="col-md-6">
+                                <div class="card-body card bg-light">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="h2 card-title mb-0">Listado de ventas</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
+                            <div class ="row">
+                                <div class="card-body card bg-light">
+                                    <div class="row">
+                                        <div class="col-md-3 text-left">
+                                            <label class="form-label">Buscar cliente</label>
+                                        </div>
+
+                                        <div class="col-md-3 text-left">
+                                            <label class="form-label">Buscar artículo</label>
+                                        </div>
+                                        <div class="col-md-2 text-left">
+                                            <label class="form-label">Buscar marca</label>
+                                        </div>
+                                        <div class="col-md-4 text-left">
+                                            <label class="form-label">Buscar categoría</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 text-center">
+                                            <asp:TextBox ID="TxtCliente" type="text" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <asp:TextBox ID="TxtArticulo" type="text" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2 text-left">
+                                            <asp:DropDownList ID="DdlMarcas" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                        </div>
+                                        <div class="col-md-2 text-left">
+                                            <asp:DropDownList ID="DdlCategorias" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                        </div>
+                                        <div class="col-md-2 text-center">
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" />
+                                            &nbsp;&nbsp;
+                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div class="card-body card bg-light">
                             <asp:GridView ID="GrdVentas" runat="server" AutoGenerateColumns="False"
                                 OnPreRender="GrdVentas_PreRender"
-                                CssClass="table display" OnRowCommand="GrdVentas_RowCommand" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                CssClass="table-striped dataTable dtr-inline table-hover row-border"
+                                OnRowCommand="GrdVentas_RowCommand">
                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
                                     <asp:TemplateField HeaderText="N° Factura">
@@ -83,12 +136,63 @@
                                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                             </asp:GridView>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <!-- MODAL VER-->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <asp:Image ID="ImgLogo" Height="200px" Width="200px" runat="server" class="img-fluid rounded-circle"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <asp:TextBox ID="TxtNombreModal" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <asp:TextBox ID="TxtMarcaNombre" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio</label>
+                        <asp:TextBox ID="TxtPrecioListaModal" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <asp:TextBox ID="TxtDescripcionModal" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoria</label>
+                        <asp:TextBox ID="TxtCategoriaNombre" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Código de artículo</label>
+                        <asp:TextBox ID="TxtCodigoModal" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Punto de pedido</label>
+                        <asp:TextBox ID="TxtPuntoPedidoModal" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <asp:TextBox ID="TxtEstadoModal" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+            </div>
+        </div>
+    </div>
+    <!-- MODAL ELIMINAR-->
+
     <script src="Recursos/js/jquery-3.6.0.min.js"></script>
     <script src="Recursos/js/jquery.dataTables.min.js"></script>
     <script src="Recursos/js/popper.min.js"></script>
@@ -96,10 +200,10 @@
     <!-- DATATABLE JQUERY JAVASCRIPT -->
     <script type="text/javascript">
         $(document).ready(function () {
-        	$('#<%= GrdVentas.ClientID %>').dataTable({
-                "aLengthMenu": [[10, 50, 75, -1], [10, 50, 75, "All"]],
-                "iDisplayLength": 10,
-                "order": [[1, "asc"]],
+            $('#<%= GrdVentas.ClientID %>').dataTable({
+                "aLengthMenu": [[6, 25, 50, -1], [6, 25, 50, "All"]],
+                "iDisplayLength": 6,
+                "order": [[3, "asc"]],
                 stateSave: true,
                 stateSaveCallback: function (settings, data) {
                     localStorage.setItem
@@ -139,4 +243,5 @@
             });
         });
     </script>
+    
 </asp:Content>

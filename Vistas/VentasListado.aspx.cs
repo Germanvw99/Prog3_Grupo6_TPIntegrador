@@ -102,5 +102,29 @@ namespace Vistas
             }
 
         }
+        protected void IrListarArticulos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ArticulosListado.aspx");
+        }
+
+        protected void IrListarMarcas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MarcasListado.aspx");
+        }
+
+        protected void IrListarCategorias_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CategoriasListado.aspx");
+        }
+        protected void IrListarProveedores_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ProveedoresListado.aspx");
+        }
+
+        protected void IrListarVentas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("VentasListado.aspx");
+        }
+
     }
 }
