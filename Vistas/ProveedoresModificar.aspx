@@ -2,27 +2,40 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main class="content">
         <div class="container-fluid">
-            <br />
-            <nav aria-label="breadcrumb">
-                <div class="card-body text-left">
-                    <div class="mb-3">
-                    </div>
+        <nav aria-label="breadcrumb">
+            <div class="card-body text-left">
+                <div class="mb-3">
+                    <asp:LinkButton ID="IrListarArticulos" runat="server" class="btn btn-outline-primary" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>
+                    <asp:LinkButton ID="IrListarMarcas" runat="server" class="btn btn-outline-warning" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
+                    <asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-success" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
+                    <asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary" OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                    <asp:LinkButton ID="IrListarVentas" runat="server" class="btn btn-outline-warning" OnClick="IrListarVentas_Click">Listado de Ventas</asp:LinkButton>
                 </div>
-            </nav>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card shadow mb-4"">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Modificar Proveedores</h5>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-12 col-xl-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">Datos actuales</h5>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4"">
+                    <div class="card-header">
+                        <div class ="row">
+                            <div class="card-body card bg-light">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 class="h2 card-title mb-0">Modificar Proveedor</h5>
                                     </div>
-                                    <div class="card-body">
+                                </div>
+                            </div>
+                        </div>
+                        <div class ="row">
+                            <div class="card-body card bg-light">
+                                <div class ="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Datos actuales</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="card-body">
                                         <div class="form-group">
                                             <asp:Image ID="ImgLogo" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
                                         </div>
@@ -55,15 +68,16 @@
                                             <asp:TextBox ID="TxtEstado"  class="form-control" runat="server" ReadOnly="True" ></asp:TextBox>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xl-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">Nuevos datos </h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Nuevos datos</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group">
                                             <label class="form-label">Razón Social</label>
                                             <asp:TextBox ID="TxtRazonSocialModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                         </div>
@@ -100,6 +114,8 @@
                                             <div class="form-group float-right">
                                                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>&nbsp &nbsp
                                                 <asp:Button ID="BtnModificarProveedor" class="btn btn-primary float-right" runat="server" Text="Modificar Proveedor" OnClick="BtnModificarProveedor_Click" />
+                                            </div>
+                                        </div>
                                             </div>
                                         </div>
                                     </div>
