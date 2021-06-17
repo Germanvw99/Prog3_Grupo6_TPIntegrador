@@ -73,6 +73,7 @@
     <Content Include="CategoriasModificar.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="DetalleArticulo.aspx" />
+    <Content Include="DetalleVenta.aspx" />
     <Content Include="Imagenes\articulos\2.png" />
     <Content Include="Imagenes\articulos\__default.png" />
     <Content Include="Imagenes\categorias\__default.png" />
@@ -318,6 +319,13 @@
     </Compile>
     <Compile Include="DetalleArticulo.aspx.designer.cs">
       <DependentUpon>DetalleArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleVenta.aspx.cs">
+      <DependentUpon>DetalleVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleVenta.aspx.designer.cs">
+      <DependentUpon>DetalleVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="VentasListado.aspx.cs">
       <DependentUpon>VentasListado.aspx</DependentUpon>
