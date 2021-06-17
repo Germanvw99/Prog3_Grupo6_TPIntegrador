@@ -26,7 +26,7 @@
                                             <h5 class="h2 card-title mb-0">Listado de Categorías</h5>
                                         </div>
                                         <div class="col-md-6">
-											<asp:LinkButton ID="LnAgregarCategorias" class="btn btn-outline-dark float-right" runat="server" OnClick="LnAgregarCategorias_Click">+ Agregar Categorías</asp:LinkButton>
+                                            <asp:LinkButton ID="LnAgregarCategorias" class="btn btn-outline-dark float-right" runat="server" OnClick="LnAgregarCategorias_Click">+ Agregar Categorías</asp:LinkButton>
                                         </div>
                                     </div>
                                 </div>
@@ -35,10 +35,10 @@
                                 <div class="card-body card bg-light">
                                     <div class="row">
                                         <div class="col-md-6 text-left">
-                                            <label class="form-label">Buscar categoría por nombre o código</label>
+                                            <label class="form-label">Buscar por nombre</label>
                                         </div>
                                         <div class="col-md-6 text-left">
-                                            <label class="form-label">Buscar categoría por estado</label>
+                                            <label class="form-label">Buscar por estado</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -49,9 +49,9 @@
                                             <asp:DropDownList ID="DdlEstados" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Filtrar búsqueda" />
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Filtrar búsqueda" OnClick="BtnFiltrar_Click" />
                                             &nbsp;&nbsp;
-                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" />
+                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" OnClick="BtnQuitarFiltro_Click" />
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +174,6 @@
             </div>
         </div>
     </div>
-
     <script src="Recursos/js/jquery-3.6.0.min.js"></script>
     <script src="Recursos/js/jquery.dataTables.min.js"></script>
     <script src="Recursos/js/popper.min.js"></script>

@@ -306,6 +306,7 @@ namespace Negocio
 		{
 			return daoArticulo.ObtenerArticulosBus(busquedad);
 		}
+
 		//FILTRADO DE ARTICULOS
 		public DataTable filtrarConsultaArticulos(string Codigo, string Nombre, string codMarca, string codCategoria)
 		{

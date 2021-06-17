@@ -125,7 +125,6 @@
                                             </asp:TemplateField>
                                             <%--BOTONES VER - EDITAR - ELIMINAR--%>
                                             <asp:ButtonField ButtonType="Image" CommandName="eventoVerDetalle" ImageUrl="Recursos/img/ver.png" />
-                                            <%--<asp:ButtonField ButtonType="Image" CommandName="eventoAgregarCarrito" ImageUrl="Recursos/img/ca.png" />--%>
                                             <asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
                                             <asp:ButtonField ButtonType="Image" CommandName="eventoEliminar" ImageUrl="Recursos/img/eliminar.png" />
                                         </Columns>
@@ -207,10 +206,6 @@
                         <div class="form-group text-center">
                             <asp:Label ID="TxtNombreModalEliminar" runat="server" ReadOnly="true" class ="form-control form-control-lg"></asp:Label>
                         </div>
-                        <%--                        <div class="form-group">
-                            <label>Código</label>
-                            <asp:TextBox ID="TxtCodigoModalEliminar" ReadOnly="true" runat="server" class="form-control form-control-lg"></asp:TextBox>
-                            </div>--%>
                     </div>
                 </div>
                 <div class="modal-footer">

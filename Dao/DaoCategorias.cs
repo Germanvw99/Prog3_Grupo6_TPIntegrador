@@ -106,5 +106,11 @@ namespace Dao
 
 		#endregion
 
+		public DataTable filtrarConsultaCategoria(ref string ClausulaSQLConsultaArticulos)
+		{
+			string strTabla = "Categoria";
+			string srtSQL = "SELECT cat_codigo, cat_nombre, cat_descripcion, cat_ruta_imagen, est_nombre, est_codigo FROM Categorias INNER JOIN Estados ON Categorias.cat_codigo_estado=Estados.est_codigo " + ClausulaSQLConsultaArticulos + " ORDER BY cat_nombre ASC";
+			return accDatos.ObtenerTabla(strTabla, srtSQL);
+		}
 	}
 }
