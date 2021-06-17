@@ -34,30 +34,36 @@
                             <div class ="row">
                                 <div class="card-body card bg-light">
                                     <div class="row">
-                                        <div class="col-md-4 text-left">
-                                            <label class="form-label">Buscar por código o nombre</label>
+                                        <div class="col-md-3 text-left">
+                                            <label class="form-label">Buscar por código</label>
                                         </div>
                                         <div class="col-md-3 text-left">
+                                            <label class="form-label">Buscar por nombre</label>
+                                        </div>
+                                        <div class="col-md-2 text-left">
                                             <label class="form-label">Buscar por marca</label>
                                         </div>
-                                        <div class="col-md-5 text-left">
+                                        <div class="col-md-4 text-left">
                                             <label class="form-label">Buscar por categoría</label>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-4 text-center">
+                                        <div class="col-md-3 text-center">
+                                            <asp:TextBox ID="TxtCodigo" type="text" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-3 text-center">
                                             <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control"></asp:TextBox>
                                         </div>
-                                        <div class="col-md-3 text-left">
+                                        <div class="col-md-2 text-left">
                                             <asp:DropDownList ID="DdlMarcas" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
-                                        <div class="col-md-3 text-left">
+                                        <div class="col-md-2 text-left">
                                             <asp:DropDownList ID="DdlCategorias" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" />
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" OnClick="BtnFiltrar_Click" />
                                             &nbsp;&nbsp;
-                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" />
+                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" OnClick="BtnQuitarFiltro_Click" />
                                         </div>
                                     </div>
                                 </div>

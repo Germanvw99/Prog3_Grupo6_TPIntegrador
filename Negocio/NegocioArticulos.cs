@@ -306,6 +306,63 @@ namespace Negocio
 		{
 			return daoArticulo.ObtenerArticulosBus(busquedad);
 		}
+		//FILTRADO DE ARTICULOS
+		public DataTable filtrarConsultaArticulos(string Codigo, string Nombre, string codMarca, string codCategoria)
+		{
+			string ClausulaSQLConsultaArticulos = "";
+			if (!Codigo.Equals(""))
+			{
+				ConstruirClausulaSQL("art_codigo", Codigo, ref ClausulaSQLConsultaArticulos);
+			}
+			if (!codMarca.Equals("0"))
+			{
+				ConstruirClausulaSQL("art_marca_codigo", codMarca, ref ClausulaSQLConsultaArticulos);
+			}
+			if (!codCategoria.Equals("0"))
+			{
+				ConstruirClausulaSQL("art_categoria_codigo", codCategoria, ref ClausulaSQLConsultaArticulos);
+			}
+			if (!Nombre.Equals(""))
+			{
+				ConstruirClausulaSQL("art_nombre", Nombre, ref ClausulaSQLConsultaArticulos);
+			}
+			return daoArticulo.filtrarConsultaArticulos(ref ClausulaSQLConsultaArticulos);
+		}
 
+		private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Clausula)
+		{
+			string d1 = ""; // Delimitador 1
+			string d2 = ""; // Delimitador 2
+			if (Clausula == "")
+			{
+				Clausula = Clausula + " WHERE ";
+			}
+			else
+			{
+				Clausula = Clausula + " AND ";
+			}
+			// USO UN SWITCH
+			switch (NombreCampo)
+			{
+				case "art_codigo":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "art_marca_codigo":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "art_categoria_codigo":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "art_nombre":
+					d1 = " LIKE '%";
+					d2 = "%'";
+					break;
+			}
+			// CONSTRUYO LA CLAUSULA
+			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
+		}
 	}
 }
