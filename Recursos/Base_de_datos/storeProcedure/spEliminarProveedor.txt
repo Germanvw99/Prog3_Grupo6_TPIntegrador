@@ -1,0 +1,8 @@
+CREATE PROCEDURE spEliminarProveedor
+(
+@pro_dni CHAR(8)
+) 
+AS
+DELETE FROM Proveedores
+WHERE pro_dni=@pro_dni
+RETURN

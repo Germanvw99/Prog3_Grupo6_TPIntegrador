@@ -1,0 +1,8 @@
+INSERT INTO DetalleFactura (dt_venta_codigo,dt_numero_linea,dt_articulo_codigo,dt_cantidad_unidades,dt_precio_unitario)
+SELECT 1,1,10,1,'120000.00' UNION
+SELECT 2,1,11,1,'10000.00' UNION
+SELECT 2,2,12,1,'80000.00' UNION
+SELECT 3,1,11,1,'10000.00' UNION
+SELECT 3,2,7,4,'10000.00' UNION
+SELECT 3,3,9,1,'140000.00'
+GO

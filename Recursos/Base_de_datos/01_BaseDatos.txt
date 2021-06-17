@@ -1,0 +1,117 @@
+CREATE DATABASE Grupo6_TPIntegrador 
+GO
+
+USE Grupo6_TPIntegrador 
+GO
+
+CREATE TABLE Articulos(
+ art_codigo INT IDENTITY(1, 1) NOT NULL,
+ art_marca_codigo INT NOT NULL,
+ art_categoria_codigo INT NOT NULL,
+ art_nombre VARCHAR(255) NOT NULL,
+ art_descripcion VARCHAR(255) NOT NULL,
+ art_punto_pedido INT DEFAULT 0 NOT NULL,
+ art_precio_lista DECIMAL(18, 2) DEFAULT '0,00' NULL,
+ art_ruta_imagen VARCHAR(255) NULL,
+ art_codigo_estado INT NULL,
+ CONSTRAINT PK_Articulos PRIMARY KEY (art_codigo))
+GO
+
+CREATE TABLE Articulos_por_Proveedor(
+ axp_codigo INT IDENTITY(1, 1) NOT NULL,
+ axp_proveedor_dni CHAR(8) NOT NULL,
+ axp_articulo_codigo INT NOT NULL,
+ axp_stock_actual INT DEFAULT 0 NOT NULL,
+ axp_stock_anterior INT DEFAULT 0 NOT NULL,
+ axp_entrada INT DEFAULT 0 NOT NULL,
+ axp_salida INT DEFAULT 0 NOT NULL,
+ axp_precio_unitario DECIMAL(18, 2) DEFAULT '0,00' NULL,
+ CONSTRAINT PK_Articulos_por_Proveedor PRIMARY KEY (axp_codigo))
+GO
+
+CREATE TABLE Categorias(
+ cat_codigo INT IDENTITY(1, 1) NOT NULL,
+ cat_nombre VARCHAR(255) NOT NULL,
+ cat_descripcion VARCHAR(255) NULL,
+ cat_ruta_imagen VARCHAR(255) NULL,
+ cat_codigo_estado INT NULL,
+ CONSTRAINT PK_Categorias PRIMARY KEY (cat_codigo))
+GO
+
+CREATE TABLE DetalleFactura(
+ dt_venta_codigo INT NOT NULL,
+ dt_numero_linea INT NOT NULL,
+ dt_articulo_codigo INT NOT NULL,
+ dt_cantidad_unidades INT DEFAULT 0 NULL,
+ dt_precio_unitario DECIMAL(18, 2) DEFAULT '0,00' NULL,
+ CONSTRAINT PK_DetalleFactura PRIMARY KEY (dt_venta_codigo, dt_numero_linea, dt_articulo_codigo))
+GO
+
+CREATE TABLE Estados(
+ est_codigo INT IDENTITY(1, 1) NOT NULL,
+ est_nombre VARCHAR(255) NOT NULL,
+ CONSTRAINT PK_estado PRIMARY KEY (est_codigo))
+GO
+
+CREATE TABLE Marcas(
+ mar_codigo INT IDENTITY(1, 1) NOT NULL,
+ mar_nombre VARCHAR(255) NOT NULL,
+ mar_descripcion VARCHAR(255) NULL,
+ mar_ruta_imagen VARCHAR(255) NULL,
+ mar_codigo_estado INT NULL,
+ CONSTRAINT PK_Marcas PRIMARY KEY (mar_codigo))
+GO
+
+CREATE TABLE Medios_de_pago(
+ mp_codigo INT IDENTITY(1, 1) NOT NULL,
+ mp_nombre VARCHAR(255) NOT NULL,
+ mp_otros_detalles VARCHAR(255) NULL,
+ CONSTRAINT PK_Medios_de_pago PRIMARY KEY (mp_codigo))
+GO
+
+CREATE TABLE Perfiles(
+ per_codigo INT IDENTITY(1, 1) NOT NULL,
+ per_nombre VARCHAR(255) NOT NULL,
+ CONSTRAINT PK_Perfiles PRIMARY KEY (per_codigo))
+GO
+
+CREATE TABLE Proveedores(
+ pro_dni CHAR(8) NOT NULL,
+ pro_razon_social VARCHAR(255) NOT NULL,
+ pro_direccion VARCHAR(255) NOT NULL,
+ pro_email VARCHAR(255) NULL,
+ pro_telefono VARCHAR(255) NULL,
+ pro_nombre_contacto VARCHAR(255) NULL,
+ pro_ruta_imagen VARCHAR(255) NULL,
+ pro_codigo_estado INT NULL, CONSTRAINT PK_Proveedores PRIMARY KEY (pro_dni))
+GO
+
+CREATE TABLE Usuarios(
+ usu_dni CHAR(8) NOT NULL,
+ usu_username VARCHAR(20) NOT NULL,
+ usu_pass VARCHAR(20) NOT NULL,
+ usu_nombre VARCHAR(255) NOT NULL,
+ usu_apellido VARCHAR(255) NULL,
+ usu_telefono VARCHAR(255) NULL,
+ usu_email VARCHAR(255) NULL,
+ usu_direccion VARCHAR(255) NULL,
+ usu_ciudad VARCHAR(255) NULL,
+ usu_provincia VARCHAR(255) NULL,
+ usu_codigo_postal VARCHAR(255) NULL,
+ usu_ruta_imagen VARCHAR(255) NULL,
+ usu_codigo_estado INT NOT NULL,
+ usu_perfil_codigo INT NOT NULL,
+ CONSTRAINT PK_usuarios PRIMARY KEY (usu_dni))
+GO
+
+CREATE TABLE Ventas(
+ ven_codigo INT IDENTITY(1, 1) NOT NULL,
+ ven_usuarios_dni CHAR(8) NOT NULL,
+ ven_medio_pago_codigo INT NOT NULL,
+ ven_fecha SMALLDATETIME NOT NULL,
+ ven_fecha_requerida SMALLDATETIME NULL,
+ ven_fecha_envio SMALLDATETIME NULL,
+ ven_total_facturado DECIMAL(18, 2) DEFAULT '0,00' NULL,
+ ven_codigo_estado INT NULL,
+ CONSTRAINT PK_Ventas PRIMARY KEY (ven_codigo))
+GO

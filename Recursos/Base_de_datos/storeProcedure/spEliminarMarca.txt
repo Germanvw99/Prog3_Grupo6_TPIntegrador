@@ -1,0 +1,8 @@
+CREATE PROCEDURE spEliminarMarca
+(
+@mar_codigo INT
+) 
+AS
+DELETE FROM Marcas
+WHERE mar_codigo = @mar_codigo
+RETURN

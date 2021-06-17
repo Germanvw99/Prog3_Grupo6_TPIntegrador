@@ -1,0 +1,23 @@
+CREATE PROCEDURE spAgregarMarca
+(
+@mar_nombre VARCHAR(255),
+@mar_descripcion VARCHAR(255),
+@mar_ruta_imagen VARCHAR(255),
+@mar_codigo_estado INT
+)
+AS
+INSERT INTO Marcas
+(
+mar_nombre,
+mar_descripcion,
+mar_ruta_imagen,
+mar_codigo_estado
+)
+VALUES
+(
+@mar_nombre,
+@mar_descripcion,
+@mar_ruta_imagen,
+@mar_codigo_estado
+)
+RETURN

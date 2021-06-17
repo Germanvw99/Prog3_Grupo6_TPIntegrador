@@ -1,0 +1,23 @@
+CREATE PROCEDURE spModificarProveedor
+(
+@pro_dni CHAR(8),
+@pro_razon_social VARCHAR(255),
+@pro_direccion VARCHAR(255),
+@pro_email VARCHAR(255),
+@pro_telefono VARCHAR(255),
+@pro_nombre_contacto VARCHAR(255),
+@pro_ruta_imagen VARCHAR(255),
+@pro_codigo_estado INT
+)
+AS
+UPDATE Proveedores
+SET
+pro_razon_social=@pro_razon_social,
+pro_direccion=@pro_direccion,
+pro_email=@pro_email,
+pro_telefono=@pro_telefono,
+pro_nombre_contacto=@pro_nombre_contacto,
+pro_ruta_imagen=@pro_ruta_imagen,
+pro_codigo_estado=@pro_codigo_estado
+WHERE pro_dni=@pro_dni
+RETURN

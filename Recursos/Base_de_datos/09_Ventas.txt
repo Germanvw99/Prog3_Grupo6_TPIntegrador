@@ -1,0 +1,5 @@
+INSERT INTO Ventas (ven_usuarios_dni,ven_medio_pago_codigo,ven_fecha,ven_fecha_requerida,ven_fecha_envio,ven_total_facturado,ven_codigo_estado)
+SELECT '20898083', 3,'2021-05-05','2021-05-05','2021-05-05','120000.00',2 UNION
+SELECT '79447981', 1,'2021-06-06','2021-06-06','2021-06-06','90000.00',2 UNION
+SELECT '65753616', 4,'2021-04-04','2021-04-04','2021-04-04','190000.00',2
+GO
