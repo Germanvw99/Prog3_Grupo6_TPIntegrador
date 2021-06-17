@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Vistas.MasterPage" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Vistas.MasterPage" %>
 <!DOCTYPE html>
 <html>
     <head runat="server">
@@ -72,7 +72,6 @@
 
                                     Marcas
                                 </li>
-
                                     </li>
 
                                 <li class="sidebar-item">

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Collections.Generic;
 using System.Linq;
@@ -137,9 +137,11 @@ namespace Vistas
             Response.Redirect("Home.aspx");
         }
 
+
         protected void LbVentasListado_Click(object sender, EventArgs e)
         {
             Response.Redirect("VentasListado.aspx");
+
         protected void ImageButton2_Command(object sender, CommandEventArgs e)
         {
             if (e.CommandName == "marcas")

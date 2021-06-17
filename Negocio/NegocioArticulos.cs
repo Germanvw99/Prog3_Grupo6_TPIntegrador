@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -221,6 +221,7 @@ namespace Negocio
 
 		#endregion
 
+
         public DataTable ObtenerArticulosdemarca(string marca)
         {
             return daoArticulos.ObtenerArticulospormarca(marca);
@@ -237,8 +238,8 @@ namespace Negocio
 
 
 
+        //USO SESION PARA EDITAR ARTICULOS
 
-      /*   //USO SESION PARA EDITAR ARTICULOS
 
         //SI NO EXISTE, CREA LA SESION
         public void CrearSesion()
@@ -330,7 +331,9 @@ namespace Negocio
                 return true;
             }
             return false;
-        } */
+
+        }
+
 
 
         public void agregarfilacarrito(Articulos Articulo, Int16 cantidad = 1)
@@ -415,7 +418,9 @@ namespace Negocio
 
             Session["carrito"] = dt;
 
+
+
+
         }
     }
 }
-
