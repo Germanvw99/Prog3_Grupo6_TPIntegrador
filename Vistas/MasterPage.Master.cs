@@ -11,7 +11,11 @@ using Negocio;
 namespace Vistas
 {
     public partial class MasterPage : System.Web.UI.MasterPage
+
+
     {
+        NegocioArticulos n = new NegocioArticulos();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -33,6 +37,7 @@ namespace Vistas
 
                     // HEADER GENERAL
                     userPanelLoggedIn.Visible = true;
+                    
                     userPanelLoggedOff.Visible = false;
 
                     // SIDEBAR GENERAL
@@ -51,6 +56,8 @@ namespace Vistas
                     {
                         // Usuario
                         lblTipoUsuario.Text = objUsuario.Username + " (Usuario)";
+                        
+
                     }
                 }
             }else
@@ -133,6 +140,20 @@ namespace Vistas
         protected void LbVentasListado_Click(object sender, EventArgs e)
         {
             Response.Redirect("VentasListado.aspx");
+        protected void ImageButton2_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "marcas")
+            {
+                    
+                Session["tablapormarca"] = e.CommandArgument.ToString();
+                Response.Redirect("Vistausuario.aspx");
+                
+            }
+        }
+
+        protected void btbuscar_Click(object sender, EventArgs e)
+        {
+            Session["Busquedad"] = tbbuscardor.Text;
         }
     }
 }

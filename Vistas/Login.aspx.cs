@@ -15,6 +15,7 @@ namespace Vistas
         {
             // Checkeo si el usuario esta autorizado a entrar a el link
             if(Session["User"] != null)
+
             {
                 Response.Redirect("home.aspx");
             }
@@ -30,7 +31,18 @@ namespace Vistas
             }
             else
             {
-                Response.Redirect("home.aspx");
+
+
+                if (objUsuario.Codigo_Perfil == 2)
+                {
+                    Response.Redirect("Vistausuario.aspx");
+                    Session["tablapormarca"] = null;
+                    //BORRA EL FILTRO PARA EL LISTVIEW Y CARGA TODOS LOS ARTICULOS
+                }
+                else
+                {
+                    Response.Redirect("home.aspx");
+                }
 
             }
         }
