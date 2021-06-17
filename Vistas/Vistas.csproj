@@ -132,6 +132,7 @@
     <Content Include="Recursos\webfonts\fa-brands-400.svg" />
     <Content Include="Recursos\webfonts\fa-regular-400.svg" />
     <Content Include="Recursos\webfonts\fa-solid-900.svg" />
+    <Content Include="VentasListado.aspx" />
     <Content Include="Vistausuario.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -317,6 +318,13 @@
     </Compile>
     <Compile Include="DetalleArticulo.aspx.designer.cs">
       <DependentUpon>DetalleArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VentasListado.aspx.cs">
+      <DependentUpon>VentasListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VentasListado.aspx.designer.cs">
+      <DependentUpon>VentasListado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistausuario.aspx.cs">
       <DependentUpon>Vistausuario.aspx</DependentUpon>
