@@ -87,8 +87,6 @@ namespace Dao
 			SqlParametros.Value = categoria.GetEstado().GetCodigo();
 		}
 
-
-
 		#endregion
 
 		#region ELIMINAR CATEGORIA
@@ -110,5 +108,3 @@ namespace Dao
 
 	}
 }
-
-
