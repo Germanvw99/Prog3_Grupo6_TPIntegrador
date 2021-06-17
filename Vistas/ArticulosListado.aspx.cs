@@ -189,5 +189,26 @@ namespace Vistas
 		{
 			Response.Redirect("VentasListado.aspx");
 		}
+
+		//FILTRADO DE ARTICULOS
+		protected void BtnFiltrar_Click(object sender, EventArgs e)
+		{
+
+			GrdArticulos.DataSource = negocioArticulo.filtrarConsultaArticulos(TxtCodigo.Text, TxtNombre.Text, DdlMarcas.SelectedValue, DdlCategorias.SelectedValue);
+			GrdArticulos.DataBind();
+		}
+		protected void BtnQuitarFiltro_Click(object sender, EventArgs e)
+		{
+			CargarGridView();
+			limpiarCampos();
+		}
+
+		private void limpiarCampos()
+		{
+			TxtCodigo.Text = string.Empty;
+			TxtNombre.Text = string.Empty;
+			DdlMarcas.SelectedValue = "0";
+			DdlCategorias.SelectedValue = "0";
+		}
 	}
 }
