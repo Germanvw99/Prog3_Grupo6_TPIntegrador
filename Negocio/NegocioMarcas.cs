@@ -81,11 +81,6 @@ namespace Negocio
 
 		#endregion
 
-
-
-
-
-
 		//AGREGAR MARCA
 		// RETORNA 0 --> NO AGREGO LA MARCA
 		// RETORNA 1 --> AGREGO LA MARCA
