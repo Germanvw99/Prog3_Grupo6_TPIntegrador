@@ -224,11 +224,7 @@ namespace Negocio
 		{
 			DataTable dt = obtenercarritosesion();
 
-
 			agregarfilacarrito(dt, Articulo, cantidad);
-
-
-
 
 		}
 
@@ -245,15 +241,11 @@ namespace Negocio
 
 		//		return dt;
 
-
-
 		//	}
 
 		//	dt = (DataTable)Session["carrito"];
 
 		//	return dt;
-
-
 
 		//}
 
@@ -282,9 +274,6 @@ namespace Negocio
 
 			return dt;
 
-
-
-
 		}
 
 		public void agregarfilacarrito(DataTable dt, Articulos Articulo, Int16 cantidad)
@@ -302,10 +291,6 @@ namespace Negocio
 
 			Session["carrito"] = dt;
 
-
-
-
-
 		}
 
 		public DataTable ObtenerArticulosdemarca(string marca)
@@ -322,7 +307,5 @@ namespace Negocio
 			return daoArticulo.ObtenerArticulosBus(busquedad);
 		}
 
-
 	}
 }
-	
