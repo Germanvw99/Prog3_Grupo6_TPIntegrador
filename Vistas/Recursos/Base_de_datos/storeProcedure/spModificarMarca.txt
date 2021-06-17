@@ -1,0 +1,18 @@
+CREATE PROCEDURE spModificarMarca
+(
+@mar_codigo INT,
+@mar_nombre VARCHAR(255),
+@mar_descripcion VARCHAR(255),
+@mar_ruta_imagen VARCHAR(255),
+@mar_codigo_estado INT
+)
+AS
+UPDATE Marcas
+SET
+mar_nombre=@mar_nombre,
+mar_descripcion=@mar_descripcion,
+mar_ruta_imagen=@mar_ruta_imagen,
+mar_codigo_estado=@mar_codigo_estado
+WHERE
+mar_codigo = @mar_codigo
+RETURN

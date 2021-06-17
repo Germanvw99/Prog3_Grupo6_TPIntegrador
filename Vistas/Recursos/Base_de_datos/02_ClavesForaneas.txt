@@ -1,0 +1,59 @@
+ALTER TABLE Articulos ADD CONSTRAINT FK_Articulos_Estados FOREIGN KEY (art_codigo_estado)
+REFERENCES Estados (est_codigo)
+GO
+
+ALTER TABLE Articulos ADD CONSTRAINT FK_Articulos_Marcas FOREIGN KEY (art_marca_codigo)
+REFERENCES Marcas (mar_codigo)
+GO
+
+ALTER TABLE Articulos_por_Proveedor ADD CONSTRAINT FK_Articulos_por_Proveedor_Articulos FOREIGN KEY (axp_articulo_codigo)
+REFERENCES Articulos (art_codigo)
+GO
+
+ALTER TABLE Articulos_por_Proveedor ADD CONSTRAINT FK_Articulos_por_Proveedor_Proveedores FOREIGN KEY (axp_proveedor_dni)
+REFERENCES Proveedores (pro_dni)
+GO
+
+ALTER TABLE Categorias ADD CONSTRAINT FK_Categorias_Estados FOREIGN KEY (cat_codigo_estado)
+REFERENCES Estados (est_codigo)
+GO
+
+ALTER TABLE DetalleFactura ADD CONSTRAINT FK_DetalleFactura_Articulos FOREIGN KEY (dt_articulo_codigo)
+REFERENCES Articulos (art_codigo)
+GO
+
+ALTER TABLE DetalleFactura ADD CONSTRAINT FK_DetalleFactura_Ventas FOREIGN KEY (dt_venta_codigo)
+REFERENCES Ventas (ven_codigo)
+GO
+
+ALTER TABLE Marcas ADD CONSTRAINT FK_Marcas_Estados FOREIGN KEY (mar_codigo_estado)
+REFERENCES Estados (est_codigo)
+GO
+
+ALTER TABLE Proveedores ADD CONSTRAINT FK_Proveedores_Estados FOREIGN KEY (pro_codigo_estado)
+REFERENCES Estados (est_codigo)
+GO
+
+ALTER TABLE Usuarios ADD CONSTRAINT FK_Usuarios_Estados FOREIGN KEY (usu_codigo_estado)
+REFERENCES Estados (est_codigo)
+GO
+
+ALTER TABLE Usuarios ADD CONSTRAINT FK_Usuarios_Perfiles FOREIGN KEY (usu_perfil_codigo)
+REFERENCES Perfiles (per_codigo)
+GO
+
+ALTER TABLE Ventas ADD CONSTRAINT FK_Ventas_Estados FOREIGN KEY (ven_codigo_estado)
+REFERENCES Estados (est_codigo)
+GO
+
+ALTER TABLE Ventas ADD CONSTRAINT FK_Ventas_Medios_de_pago FOREIGN KEY (ven_medio_pago_codigo)
+REFERENCES Medios_de_pago (mp_codigo)
+GO
+
+ALTER TABLE Ventas ADD CONSTRAINT FK_Ventas_Usuarios FOREIGN KEY (ven_usuarios_dni)
+REFERENCES Usuarios (usu_dni)
+GO
+
+ALTER TABLE Articulos ADD CONSTRAINT FK_Articulos_Categorias FOREIGN KEY (art_categoria_codigo)
+REFERENCES Categorias (cat_codigo)
+GO

@@ -10,7 +10,7 @@ namespace Dao
 {
 	public class AccesoDatos
 	{
-		private readonly string rutaDB = "Data Source=Localhost\\SQLEXPRESS;Initial Catalog=Grupo6_TPIntegrador;Integrated Security=True";
+		private readonly string rutaDB = "Data Source=Localhost\\SQLEXPRESS;Initial Catalog=Grupo6_TPIntegradorV6;Integrated Security=True";
 		
 
 		public SqlConnection ObtenerConexion()
@@ -50,27 +50,27 @@ namespace Dao
 			return Ds.Tables[strTabla];
 		}
 
-		//public int EjecutarConsulta(string strSQL)
-		//{
-		//	SqlConnection Conn = ObtenerConexion();
-		//	SqlCommand Comm = new SqlCommand(strSQL, Conn);
-		//	int filasAfectadas = Comm.ExecuteNonQuery();
-		//	Conn.Close();
-		//	return filasAfectadas;
-		//}
+        public int EjecutarConsulta(string strSQL)
+        {
+            SqlConnection Conn = ObtenerConexion();
+            SqlCommand Comm = new SqlCommand(strSQL, Conn);
+            int filasAfectadas = Comm.ExecuteNonQuery();
+            Conn.Close();
+            return filasAfectadas;
+        }
 
-		//public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)
-		//{
-		//	int FilasCambiadas;
-		//	SqlConnection Conn = ObtenerConexion();
-		//	SqlCommand cmd = new SqlCommand();
-		//	cmd = Comando;
-		//	cmd.Connection = Conn;
-		//	cmd.CommandType = CommandType.StoredProcedure;
-		//	cmd.CommandText = NombreSP;
-		//	FilasCambiadas = cmd.ExecuteNonQuery();
-		//	Conn.Close();
-		//	return FilasCambiadas;
-		//}
-	}
+        public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)
+        {
+            int FilasCambiadas;
+            SqlConnection Conn = ObtenerConexion();
+            SqlCommand cmd = new SqlCommand();
+            cmd = Comando;
+            cmd.Connection = Conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = NombreSP;
+            FilasCambiadas = cmd.ExecuteNonQuery();
+            Conn.Close();
+            return FilasCambiadas;
+        }
+    }
 }

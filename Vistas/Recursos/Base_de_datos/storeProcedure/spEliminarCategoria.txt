@@ -1,0 +1,8 @@
+CREATE PROCEDURE spEliminarCategoria
+(
+@cat_codigo INT
+) 
+AS
+DELETE FROM Categorias
+WHERE cat_codigo = @cat_codigo
+RETURN

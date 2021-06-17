@@ -1,0 +1,8 @@
+INSERT INTO Medios_de_pago (mp_nombre,mp_otros_detalles)
+SELECT 'American Express','Imagenes/mediosPago/americanExpress.png' UNION
+SELECT 'Cabal','Imagenes/mediosPago/cabal.png' UNION
+SELECT 'Diners','Imagenes/mediosPago/diners.png' UNION
+SELECT 'Mastercard','Imagenes/mediosPago/mastercard.png' UNION
+SELECT 'Naranja','Imagenes/mediosPago/naranja.png' UNION
+SELECT 'Visa','Imagenes/mediosPago/visa.png'
+GO

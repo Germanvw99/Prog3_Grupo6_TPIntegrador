@@ -1,0 +1,8 @@
+INSERT INTO Usuarios (usu_dni,usu_username,usu_pass,usu_nombre,usu_apellido,usu_telefono,usu_email,usu_direccion,usu_ciudad,usu_provincia,usu_codigo_postal,usu_ruta_imagen,usu_codigo_estado,usu_perfil_codigo)
+SELECT '00000000','admin','admin','admin','admin','00 0000 0000','admin@yopmail.com','admin','Buenos Aires','Buenos Aires','1000','Recursos/img/avatar.png', 2, 1 UNION
+SELECT '06854122','InAnOtAT','yWaRyLeY','Antonio Jose','Salazar','11 4655 3833','neippuharonnoi-2953@yopmail.com','Moreno 3653','Lomas del Mirador','Buenos Aires','1751','Imagenes/usuarios/1.png', 2, 2 UNION
+SELECT '20898083','invitado','invitado','Otilia','Prada','38 2242 9373','quohegetanei-2241@yopmail.com','Sanicolas  526','La Rioja','La Rioja','5300','Imagenes/usuarios/2.png', 2, 2 UNION
+SELECT '65753616','LetChTat','LetChTat','Tania','Pellicer','11 4585 2819','fodettaummuja-9696@yopmail.com','Don Tomas 207','Villa Del Parque','Buenos Aires','1417','Imagenes/usuarios/4.png', 2, 2 UNION
+SELECT '69811171','nesTIAme','nesTIAme','Laura Maria','Cuellar','38 3342 3817','bruxoyaralau-4667@yopmail.com','General Pico','General Pico','La Pampa','6360','Imagenes/usuarios/3.png', 2, 2 UNION
+SELECT '79447981','CIAlaNTe','CIAlaNTe','Gracia','Herrera','11 4483 3992','priboikosibro-4325@yopmail.com','Alsina 520','Morón','Buenos Aires','1708','Imagenes/usuarios/1.png', 2, 2
+GO

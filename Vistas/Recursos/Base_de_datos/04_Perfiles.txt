@@ -1,0 +1,4 @@
+INSERT INTO Perfiles (per_nombre)
+SELECT 'Administrador' UNION
+SELECT 'Cliente'
+GO

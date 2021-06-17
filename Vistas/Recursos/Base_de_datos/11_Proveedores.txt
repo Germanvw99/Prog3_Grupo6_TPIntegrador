@@ -1,0 +1,10 @@
+INSERT INTO Proveedores (pro_dni, pro_razon_social, pro_direccion, pro_email, pro_telefono, pro_nombre_contacto, pro_ruta_imagen, pro_codigo_estado)
+SELECT '05905952', 'Samsonite', 'San Luis 597, CABA', 'Samsonite@yopmail.com', '011 5290-1053', 'Roque Gaspar', 'Imagenes/proveedores/1.png', 1 UNION
+SELECT '08397217', 'Amec', 'Moldes 2658, CABA', 'Amec@yopmail.com', '011 4641-1359', 'Manuel Clemente', 'Imagenes/proveedores/2.png', 1 UNION
+SELECT '38503846', 'Lenovo', 'Fray Rodríguez 3798, Lanus', 'Lenovo@yopmail.com', '011 3817-7518', 'Arsenio Gonzalo', 'Imagenes/proveedores/3.png', 1 UNION
+SELECT '50408159', 'Hansa', 'Sarmiento 958, Villa Dominico', 'Hansa@yopmail.com', '011 6356-9715', 'Eulogio de Miguel', 'Imagenes/proveedores/4.png', 1 UNION
+SELECT '65465388', 'Semak ', 'Olazábal 1515,  CABA', 'Semak@yopmail.com', '011 5368-5300', 'Pepe Laguna', 'Imagenes/proveedores/5.png', 1 UNION
+SELECT '70951091', 'DNA', 'Larrea 1325, San Isidro', 'DNA@yopmail.com', '011 4922-4801', 'Luis Andreu', 'Imagenes/proveedores/6.png', 1 UNION
+SELECT '74922070', 'Awara', 'Elizalde 155, Avellaneda', 'Awara@yopmail.com', '011 5588-9533', 'Sarah Nicolas', 'Imagenes/proveedores/7.png', 1 UNION
+SELECT '98219940', 'Ametic', 'Maipu 734, CABA', 'Ametic@yopmail.com', '011 2107-5861', 'Almudena Sempere', 'Imagenes/proveedores/8.png', 1
+GO

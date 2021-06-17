@@ -1,0 +1,7 @@
+INSERT INTO Articulos_por_Proveedor (axp_proveedor_dni,axp_articulo_codigo,axp_stock_actual,axp_stock_anterior,axp_entrada,axp_salida,axp_precio_unitario)
+SELECT '05905952', 10, 20, 0, 20, 0,'55000.00' UNION
+SELECT '65465388', 12, 12, 0, 12, 0,'60000.00' UNION
+SELECT '08397217', 11, 22, 0, 22, 0,'22000.00' UNION
+SELECT '98219940', 7, 23, 0, 23, 0,'7000.00' UNION
+SELECT '70951091', 9, 3, 0, 3, 0,'120000.00'
+GO

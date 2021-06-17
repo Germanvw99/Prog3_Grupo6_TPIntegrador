@@ -1,0 +1,4 @@
+INSERT INTO Estados (est_nombre)
+SELECT 'No Activo' UNION
+SELECT 'Activo'
+GO

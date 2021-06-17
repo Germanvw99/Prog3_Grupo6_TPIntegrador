@@ -1,0 +1,8 @@
+CREATE PROCEDURE spEliminarArticulo
+(
+@art_codigo INT
+) 
+AS
+DELETE FROM Articulos
+WHERE art_codigo=@art_codigo
+RETURN

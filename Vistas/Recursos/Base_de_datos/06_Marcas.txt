@@ -1,0 +1,80 @@
+INSERT INTO Marcas (mar_nombre,mar_descripcion,mar_ruta_imagen,mar_codigo_estado)
+SELECT 'ActiVision','','Imagenes/marcas/ActiVision.png',2 UNION
+SELECT 'Admiral','One Touch','Imagenes/marcas/Admiral.png',2 UNION
+SELECT 'Alcatel','','Imagenes/marcas/Alcatel.png',2 UNION
+SELECT 'AMD','','Imagenes/marcas/AMD.png',2 UNION
+SELECT 'Apple','Piensa diferente','Imagenes/marcas/Apple.png',2 UNION
+SELECT 'Atma','','Imagenes/marcas/Atma.png',2 UNION
+SELECT 'Benro','','Imagenes/marcas/Benro.png',2 UNION
+SELECT 'BGH','','Imagenes/marcas/BGH.png',2 UNION
+SELECT 'Black & Decker','','Imagenes/marcas/Black & Decker.png',2 UNION
+SELECT 'BlackBerry','','Imagenes/marcas/BlackBerry.png',2 UNION
+SELECT 'Bosch','','Imagenes/marcas/Bosch.png',2 UNION
+SELECT 'Canon','','Imagenes/marcas/Canon.png',2 UNION
+SELECT 'Celestron','','Imagenes/marcas/Celestron.png',2 UNION
+SELECT 'Corsair','','Imagenes/marcas/Corsair.png',2 UNION
+SELECT 'Dell','','Imagenes/marcas/Dell.png',2 UNION
+SELECT 'DeWalt','','Imagenes/marcas/DeWalt.png',2 UNION
+SELECT 'EA','','Imagenes/marcas/EA.png',2 UNION
+SELECT 'Einhell','','Imagenes/marcas/Einhell.png',2 UNION
+SELECT 'Electrolux','','Imagenes/marcas/Electrolux.png',2 UNION
+SELECT 'Exo','','Imagenes/marcas/Exo.png',2 UNION
+SELECT 'Fuji Film','','Imagenes/marcas/Fuji Film.png',2 UNION
+SELECT 'Gafa','','Imagenes/marcas/Gafa.png',2 UNION
+SELECT 'Go Pro','','Imagenes/marcas/Go Pro.png',2 UNION
+SELECT 'Godox','','Imagenes/marcas/Godox.png',2 UNION
+SELECT 'Hisense','','Imagenes/marcas/Hisense.png',2 UNION
+SELECT 'Hitachi','','Imagenes/marcas/Hitachi.png',2 UNION
+SELECT 'HP','','Imagenes/marcas/HP.png',2 UNION
+SELECT 'Huawei','Hazlo Posible','Imagenes/marcas/Huawei.png',2 UNION
+SELECT 'HyperX','Drive your way','Imagenes/marcas/HyperX.png',2 UNION
+SELECT 'Hyundai','','Imagenes/marcas/Hyundai.png',2 UNION
+SELECT 'JVC','','Imagenes/marcas/JVC.png',2 UNION
+SELECT 'Kanji','','Imagenes/marcas/Kanji.png',2 UNION
+SELECT 'Karcher','','Imagenes/marcas/Karcher.png',2 UNION
+SELECT 'Ken Brown','','Imagenes/marcas/Ken Brown.png',2 UNION
+SELECT 'Kingston','','Imagenes/marcas/Kingston.png',2 UNION
+SELECT 'KitchenAid','','Imagenes/marcas/KitchenAid.png',2 UNION
+SELECT 'Kodak','Tú pulsas el botón,osotros haremos el resto','Imagenes/marcas/Kodak.png',2 UNION
+SELECT 'Kodak Alaris','','Imagenes/marcas/Kodak Alaris.png',2 UNION
+SELECT 'LG','Life´s Good','Imagenes/marcas/LG.png',2 UNION
+SELECT 'Liliana','','Imagenes/marcas/Liliana.png',2 UNION
+SELECT 'Logitech','','Imagenes/marcas/Logitech.png',2 UNION
+SELECT 'Lusqtoff','','Imagenes/marcas/Lusqtoff.png',2 UNION
+SELECT 'Makita','','Imagenes/marcas/Makita.png',2 UNION
+SELECT 'Marumi','','Imagenes/marcas/Marumi.png',2 UNION
+SELECT 'Microsoft','','Imagenes/marcas/Microsoft.png',2 UNION
+SELECT 'Motorola','HelloMoto','Imagenes/marcas/Motorola.png',2 UNION
+SELECT 'MSI','','Imagenes/marcas/MSI.png',2 UNION
+SELECT 'Multilaser','','Imagenes/marcas/Multilaser.png',2 UNION
+SELECT 'Nespresso','','Imagenes/marcas/Nespresso.png',2 UNION
+SELECT 'Nikom','','Imagenes/marcas/Nikom.png',2 UNION
+SELECT 'Noblex','','Imagenes/marcas/Noblex.png',2 UNION
+SELECT 'Nokia','Connecting people','Imagenes/marcas/Nokia.png',2 UNION
+SELECT 'Nvidia','','Imagenes/marcas/Nvidia.png',2 UNION
+SELECT 'Oster','','Imagenes/marcas/Oster.png',2 UNION
+SELECT 'Peabody','','Imagenes/marcas/Peabody.png',2 UNION
+SELECT 'Philco','','Imagenes/marcas/Philco.png',2 UNION
+SELECT 'Philips','','Imagenes/marcas/Philips.png',2 UNION
+SELECT 'Phottix','','Imagenes/marcas/Phottix.png',2 UNION
+SELECT 'PlayStation','','Imagenes/marcas/PlayStation.png',2 UNION
+SELECT 'Quantum','','Imagenes/marcas/Quantum.png',2 UNION
+SELECT 'RCA','','Imagenes/marcas/RCA.png',2 UNION
+SELECT 'Redagon','','Imagenes/marcas/Redagon.png',2 UNION
+SELECT 'Samsung','Designed for','Imagenes/marcas/Samsung.png',2 UNION
+SELECT 'Sanyo','','Imagenes/marcas/Sanyo.png',2 UNION
+SELECT 'Sigma','','Imagenes/marcas/Sigma.png',2 UNION
+SELECT 'Sony','Make dot believe','Imagenes/marcas/Sony.png',2 UNION
+SELECT 'Stanley','','Imagenes/marcas/Stanley.png',2 UNION
+SELECT 'Starcam','','Imagenes/marcas/Starcam.png',2 UNION
+SELECT 'TCL','The Creative Life','Imagenes/marcas/TCL.png',2 UNION
+SELECT 'Telefunken','','Imagenes/marcas/Telefunken.png',2 UNION
+SELECT 'Think Tank','','Imagenes/marcas/Think Tank.png',2 UNION
+SELECT 'TopHouse','','Imagenes/marcas/TopHouse.png',2 UNION
+SELECT 'Trust','','Imagenes/marcas/Trust.png',2 UNION
+SELECT 'Trust Gaming','','Imagenes/marcas/Trust Gaming.png',2 UNION
+SELECT 'Ubisoft','','Imagenes/marcas/Ubisoft.png',2 UNION
+SELECT 'Whirlpool','','Imagenes/marcas/Whirlpool.png',2 UNION
+SELECT 'Xiaomi','Innovación para todos','Imagenes/marcas/Xiaomi.png',2 UNION
+SELECT 'ZTE','El mañanaunca espera','Imagenes/marcas/ZTE.png',2
+GO

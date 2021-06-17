@@ -1,0 +1,18 @@
+CREATE PROCEDURE spModificarCategoria
+(
+@cat_codigo INT,
+@cat_nombre VARCHAR(255),
+@cat_descripcion VARCHAR(255),
+@cat_ruta_imagen VARCHAR(255),
+@cat_codigo_estado INT
+)
+AS
+UPDATE Categorias
+SET
+cat_nombre=@cat_nombre,
+cat_descripcion=@cat_descripcion,
+cat_ruta_imagen=@cat_ruta_imagen,
+cat_codigo_estado=@cat_codigo_estado
+WHERE
+cat_codigo = @cat_codigo
+RETURN
