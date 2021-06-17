@@ -17,29 +17,45 @@
                 <div class="col-12">
                     <div class="card shadow mb-4"">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Agregar Marcas</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label class="form-label">Nombre</label>
-                                <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="Nombre"></asp:TextBox>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Descripción</label>
-                                <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine"></asp:TextBox>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Estado</label>
-                                <br />
-                                <asp:DropDownList ID="DdlEstados" class="custom-select form-control"  runat="server" > </asp:DropDownList>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Imágen</label>
-                                <div>
-                                    <asp:FileUpload ID="FUMarca" runat="server" />
+                            <div class ="row">
+                                <div class="card-body card bg-light">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="h2 card-title mb-0">Agregar Marca</h5>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar Marca" OnClick="BtnAgregar_Click" />
+                            <div class ="row">
+                                <div class="card-body card bg-light">
+                                    <div class ="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Nombre</label>
+                                                <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Descripción</label>
+                                                <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="" TextMode="MultiLine"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Estado</label>
+                                                <br />
+                                                <asp:DropDownList ID="DdlEstados" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Imágen</label>
+                                                <div>
+                                                    <asp:FileUpload ID="FUMarca" runat="server" />
+                                                </div>
+                                            </div>
+                                            <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar Marca" OnClick="BtnAgregar_Click" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
