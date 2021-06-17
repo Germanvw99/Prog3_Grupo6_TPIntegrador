@@ -23,6 +23,10 @@ namespace Vistas
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+				Response.Redirect("home.aspx");
+			}
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
@@ -162,6 +166,11 @@ namespace Vistas
 			}
 			//Response.Redirect("ArticulosListado.aspx");
 		}
+
+		protected void IrListarUsuarios_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("UsuariosListado.aspx");
+		}
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
@@ -210,5 +219,6 @@ namespace Vistas
 			DdlMarcas.SelectedValue = "0";
 			DdlCategorias.SelectedValue = "0";
 		}
-	}
+
+    }
 }

@@ -11,7 +11,7 @@ namespace Vistas
 {
 
 
-    public partial class MarcasListado
+    public partial class UsuariosAdministrar
     {
 
         /// <summary>
@@ -69,13 +69,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrListarVentas;
 
         /// <summary>
-        /// Control LnAgregarMarcas.
+        /// Control LnAgregarArticulos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LnAgregarMarcas;
+        protected global::System.Web.UI.WebControls.LinkButton LnAgregarArticulos;
+
+        /// <summary>
+        /// Control TxtCodigo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCodigo;
 
         /// <summary>
         /// Control TxtNombre.
@@ -87,13 +96,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox TxtNombre;
 
         /// <summary>
-        /// Control DdlEstados.
+        /// Control DdlMarcas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlEstados;
+        protected global::System.Web.UI.WebControls.DropDownList DdlMarcas;
+
+        /// <summary>
+        /// Control DdlCategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlCategorias;
 
         /// <summary>
         /// Control BtnFiltrar.
@@ -114,93 +132,12 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Button BtnQuitarFiltro;
 
         /// <summary>
-        /// Control GrdMarcas.
+        /// Control GrdUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrdMarcas;
-
-        /// <summary>
-        /// Control ImgLogo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImgLogo;
-
-        /// <summary>
-        /// Control TxtNombreModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombreModal;
-
-        /// <summary>
-        /// Control TxtEsloganModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEsloganModal;
-
-        /// <summary>
-        /// Control TxtCodigoModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCodigoModal;
-
-        /// <summary>
-        /// Control TxtEstadoModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEstadoModal;
-
-        /// <summary>
-        /// Control ImageModalEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageModalEliminar;
-
-        /// <summary>
-        /// Control TxtNombreModalEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TxtNombreModalEliminar;
-
-        /// <summary>
-        /// Control TxtCodigoModalEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCodigoModalEliminar;
-
-        /// <summary>
-        /// Control BtnEliminarMarca.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEliminarMarca;
+        protected global::System.Web.UI.WebControls.GridView GrdUsuarios;
     }
 }

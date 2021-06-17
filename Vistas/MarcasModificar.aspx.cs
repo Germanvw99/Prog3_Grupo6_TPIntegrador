@@ -102,6 +102,11 @@ namespace Vistas
 			//LimpiarCampos();
 
 		}
+
+		protected void IrListarUsuarios_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("UsuariosListado.aspx");
+		}
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
