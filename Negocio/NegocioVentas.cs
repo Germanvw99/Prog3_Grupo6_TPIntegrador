@@ -11,10 +11,10 @@ namespace Negocio
 {
 	public class NegocioVentas : System.Web.UI.Page
 	{
-		private readonly DaoVentas daoVentas = new DaoVentas();
+		private readonly DaoVentas daoVenta = new DaoVentas();
 		public DataTable ObtenerVentas()
 		{
-			return daoVentas.ObtenerVentas();
+			return daoVenta.ObtenerVentas();
 		}
 		//USO SESION PARA VER VENTAS
 		//SI NO EXISTE, CREA LA SESION
@@ -113,6 +113,65 @@ namespace Negocio
 				return true;
 			}
 			return false;
+		}
+
+		//FILTRADO DE VENTAS
+		public DataTable filtrarConsultaVenta(string clienteDNI, string articuloNombre, string codMarca, string codCategoria)
+		{
+			string ClausulaSQLConsulta = "";
+			if (!clienteDNI.Equals(""))
+			{
+				ConstruirClausulaSQL("ven_usuarios_dni", clienteDNI, ref ClausulaSQLConsulta);
+			}
+			if (!articuloNombre.Equals(""))
+			{
+				ConstruirClausulaSQL("art_nombre", articuloNombre, ref ClausulaSQLConsulta);
+			}
+			if (!codMarca.Equals("0"))
+			{
+				ConstruirClausulaSQL("mar_codigo", codMarca, ref ClausulaSQLConsulta);
+			}
+			if (!codCategoria.Equals("0"))
+			{
+				ConstruirClausulaSQL("cat_codigo", codCategoria, ref ClausulaSQLConsulta);
+			}
+			return daoVenta.filtrarConsultaVenta(ref ClausulaSQLConsulta);
+		}
+
+		private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Clausula)
+		{
+			string d1 = ""; // Delimitador 1
+			string d2 = ""; // Delimitador 2
+			if (Clausula == "")
+			{
+				Clausula = Clausula + " WHERE ";
+			}
+			else
+			{
+				Clausula = Clausula + " AND ";
+			}
+			// USO UN SWITCH
+			switch (NombreCampo)
+			{
+				case "ven_usuarios_dni":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "mar_codigo":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "cat_codigo":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "art_nombre":
+					d1 = " LIKE '%";
+					d2 = "%'";
+					break;
+			}
+			// CONSTRUYO LA CLAUSULA
+			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
 		}
 	}
 }

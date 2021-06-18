@@ -170,8 +170,8 @@ namespace Vistas
 			Response.Redirect("VentasListado.aspx");
 		}
 
-		//FILTRADO DE MARCAS
-		protected void BtnFiltrar_Click(object sender, EventArgs e)
+        #region FILTRADO DE MARCAS
+        protected void BtnFiltrar_Click(object sender, EventArgs e)
         {
 			GrdMarcas.DataSource = negocioMarca.filtrarConsultaMarca(TxtNombre.Text, DdlEstados.SelectedValue);
 			GrdMarcas.DataBind();
@@ -187,5 +187,6 @@ namespace Vistas
 			TxtNombre.Text = string.Empty;
 			DdlEstados.SelectedValue = "0";
 		}
-	}
+        #endregion
+    }
 }

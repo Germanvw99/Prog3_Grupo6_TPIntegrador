@@ -172,9 +172,9 @@ namespace Vistas
 			Response.Redirect("VentasListado.aspx");
 		}
 
-		//FILTRADO DE PROVEEDORES
+        #region FILTRADO DE PROVEEDORES
 
-		protected void BtnFiltrar_Click(object sender, EventArgs e)
+        protected void BtnFiltrar_Click(object sender, EventArgs e)
 		{
 			GrdProveedores.DataSource = negocioProveedor.filtrarConsultaProveedor(TxtCodigo.Text, TxtNombre.Text, DdlEstados.SelectedValue);
 			GrdProveedores.DataBind();
@@ -188,8 +188,10 @@ namespace Vistas
 
 		private void limpiarCampos()
 		{
+			TxtCodigo.Text = string.Empty;
 			TxtNombre.Text = string.Empty;
 			DdlEstados.SelectedValue = "0";
 		}
-	}
+        #endregion
+    }
 }

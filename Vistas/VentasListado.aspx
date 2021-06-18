@@ -35,17 +35,17 @@
                                 <div class="card-body card bg-light">
                                     <div class="row">
                                         <div class="col-md-3 text-left">
-                                            <label class="form-label">Buscar cliente</label>
+                                            <label class="form-label">Buscar por DNI cliente</label>
                                         </div>
 
                                         <div class="col-md-3 text-left">
-                                            <label class="form-label">Buscar artículo</label>
+                                            <label class="form-label">Buscar por nombre de artículo</label>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <label class="form-label">Buscar marca</label>
+                                            <label class="form-label">Buscar por marca</label>
                                         </div>
                                         <div class="col-md-4 text-left">
-                                            <label class="form-label">Buscar categoría</label>
+                                            <label class="form-label">Buscar por categoría</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -62,9 +62,9 @@
                                             <asp:DropDownList ID="DdlCategorias" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" />
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" OnClick="BtnFiltrar_Click" />
                                             &nbsp;&nbsp;
-                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" />
+                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" OnClick="BtnQuitarFiltro_Click" />
                                         </div>
                                     </div>
                                 </div>
