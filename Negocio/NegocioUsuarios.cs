@@ -56,6 +56,7 @@ namespace Negocio
             return answ;
         }
 
+
         public bool EditUser(Usuarios objUsuario)
         {
             try
@@ -72,6 +73,11 @@ namespace Negocio
             {
                 throw exc;
             }
+        }
+
+        public DataTable ObtenerUsuarios()
+        {
+            return DaoUsuarios.GetInstance().ObtenerUsuarios();
         }
 
         public bool EditPassword(String nuevaPassword, String Dni)

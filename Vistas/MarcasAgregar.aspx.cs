@@ -19,10 +19,10 @@ namespace Vistas
         private string imagenURL = "Imagenes/marcas/__default.png";
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (NegocioUsuarios.getInstance().isAdmin() != true)
-            //{
-            //    Response.Redirect("home.aspx");
-            //}
+            if (NegocioUsuarios.getInstance().isAdmin() != true)
+            {
+                Response.Redirect("home.aspx");
+            }
             if (!Page.IsPostBack)
             {
                 CargarEstados();
@@ -66,6 +66,11 @@ namespace Vistas
 
                 LimpiarCampos();
             }
+        }
+
+        protected void IrListarUsuarios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UsuariosListado.aspx");
         }
 
         protected void IrListarArticulos_Click(object sender, EventArgs e)

@@ -107,7 +107,12 @@ namespace Dao
             return filasEditadas;
         }
 
-
+        public DataTable ObtenerUsuarios()
+        {
+            string strTabla = "Usuarios";
+            string srtSQL = "SELECT usu_dni,usu_ruta_imagen, usu_username, usu_nombre,usu_apellido,usu_email,usu_ciudad,usu_provincia,est_codigo, est_nombre FROM Usuarios INNER JOIN Estados ON Usuarios.usu_codigo_estado = Estados.est_codigo";
+            return conex.ObtenerTabla(strTabla, srtSQL);
+        }
 
 
         public bool EditUser(Usuarios objUsuario)

@@ -11,7 +11,7 @@ namespace Vistas
 {
 
 
-    public partial class ArticulosAgregar
+    public partial class UsuariosAdministrar
     {
 
         /// <summary>
@@ -69,6 +69,24 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrListarVentas;
 
         /// <summary>
+        /// Control LnAgregarArticulos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LnAgregarArticulos;
+
+        /// <summary>
+        /// Control TxtCodigo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCodigo;
+
+        /// <summary>
         /// Control TxtNombre.
         /// </summary>
         /// <remarks>
@@ -76,42 +94,6 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtNombre;
-
-        /// <summary>
-        /// Control RfvNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvNombre;
-
-        /// <summary>
-        /// Control TxtDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
-
-        /// <summary>
-        /// Control RfvDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDescripcion;
-
-        /// <summary>
-        /// Control IrAgregarMarca.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton IrAgregarMarca;
 
         /// <summary>
         /// Control DdlMarcas.
@@ -123,24 +105,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.DropDownList DdlMarcas;
 
         /// <summary>
-        /// Control RfvMarca.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvMarca;
-
-        /// <summary>
-        /// Control IrAgregarCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton IrAgregarCategoria;
-
-        /// <summary>
         /// Control DdlCategorias.
         /// </summary>
         /// <remarks>
@@ -150,93 +114,30 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.DropDownList DdlCategorias;
 
         /// <summary>
-        /// Control RfvCategorias.
+        /// Control BtnFiltrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvCategorias;
+        protected global::System.Web.UI.WebControls.Button BtnFiltrar;
 
         /// <summary>
-        /// Control DdlEstados.
+        /// Control BtnQuitarFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlEstados;
+        protected global::System.Web.UI.WebControls.Button BtnQuitarFiltro;
 
         /// <summary>
-        /// Control RfvEstados.
+        /// Control GrdUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvEstados;
-
-        /// <summary>
-        /// Control txtPedido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPedido;
-
-        /// <summary>
-        /// Control RfvPedido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvPedido;
-
-        /// <summary>
-        /// Control txtPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrecio;
-
-        /// <summary>
-        /// Control RfvPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvPrecio;
-
-        /// <summary>
-        /// Control UploadImage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadImage;
-
-        /// <summary>
-        /// Control BtnAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAgregar;
-
-        /// <summary>
-        /// Control lblNotificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNotificacion;
+        protected global::System.Web.UI.WebControls.GridView GrdUsuarios;
     }
 }
