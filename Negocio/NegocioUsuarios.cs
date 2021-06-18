@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Entidades;
+using System.Data;
 using Dao;
 
 namespace Negocio
 {
-    public class NegocioUsuarios
+    public class NegocioUsuarios : System.Web.UI.Page
     {
         #region
         private static NegocioUsuarios objUsuario = null;
@@ -73,6 +74,27 @@ namespace Negocio
             {
                 throw exc;
             }
+        }
+
+        public bool EliminarUsuarioDni(String Dni, int Codigo_perfil)
+        {
+
+            bool answ;
+            if (Codigo_perfil == 1)
+            {
+                answ = false;
+            }
+            else
+            {
+            int filasEditadas = DaoUsuarios.GetInstance().EliminarUsuarioDni(Dni);
+
+            if (filasEditadas > 0)
+            {
+                    // SE ELIMINO.
+            }
+               answ = true;
+            }
+            return answ;
         }
 
         public DataTable ObtenerUsuarios()
@@ -143,6 +165,24 @@ namespace Negocio
             }
         }
 
+
+        // SESSION PARA ELIMINAR USUARIOS
+        public void AgregarUsuarioAEliminar(Usuarios objUsuario)
+        {
+            Session["UsuarioAEliminar"] = objUsuario;
+        }
+
+        public Usuarios ObtenerUsuarioAEliminar()
+        {
+            Usuarios objUsuario = new Usuarios();
+            if (Session["UsuarioAEliminar"] != null)
+            {
+                objUsuario = (Usuarios)Session["UsuarioAEliminar"];
+            }
+            return objUsuario;
+        }
+
+
         // Verificaciones del registro
 
         public bool VerificarUsernameDuplicado(String username)
@@ -201,12 +241,12 @@ namespace Negocio
                DataTable dt = CrearTablaUsuario(objUsuario);
 
                 // Se crea la Session con el DataTable creado
-                System.Web.HttpContext.Current.Session["User"] = dt;
+                Session["User"] = dt;
             }
             else
             {
                 // Elimino el Session
-                System.Web.HttpContext.Current.Session.Remove("User");
+                Session.Remove("User");
             }
             return objUsuario;
         }
@@ -277,7 +317,7 @@ namespace Negocio
 
         public bool isAdmin()
         {
-            DataTable dt = (DataTable)System.Web.HttpContext.Current.Session["User"];
+            DataTable dt = (DataTable)Session["User"];
             Usuarios objUsuario = LeerTablaUsuario(dt);
 
             if(objUsuario.Codigo_Perfil == 1)

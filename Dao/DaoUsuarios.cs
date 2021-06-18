@@ -153,6 +153,21 @@ namespace Dao
             return answ;
         }
        
+        public int EliminarUsuarioDni(String Dni)
+        {
+            try
+            {
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spEliminarUsuarioDni", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prm_dni", Dni.ToString());
+                return conex.EjecutarProcedimientoAlmacenado(cmd, "spEliminarProveedor");
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public Usuarios LeerUsuario(String dni)
         {
             Usuarios objUsuario = null;

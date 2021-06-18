@@ -158,7 +158,6 @@
                             <label>Username</label>
 						    <asp:TextBox ID="TxtUsername" runat="server" class="form-control"></asp:TextBox>
                         </div>
-                        
                     </div>
                     <div class="row d-flex">
                         <div class="form-group col-md-6">
@@ -214,7 +213,46 @@
              </div>
 		</div>
     </div>
-				<!-- Modal footer -->
+	<!-- MODAL ELIMINAR-->
+    <div class="modal fade" id="myModalEliminar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Atención</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="text-left">
+                            Está a punto de eliminar un usuario, este procedimiento es irreversible. ¿Quiere proceder?
+                        </div>
+                        <br />
+                        <div class="text-center">
+                            <asp:Image ID="ImageModalEliminar" Height="200px" Width="200px" runat="server" class="img-fluid rounded-circle"/>
+                        </div>
+                        <div class="row d-flex mt-3">
+                            <div class="form-group col-md-6">
+                                <label>Dni Personal</label>
+						        <asp:TextBox ID="txtDniEliminar" runat="server" class="form-control"></asp:TextBox>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Username</label>
+						        <asp:TextBox ID="txtUsernameEliminar" runat="server" class="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <%--BOTONES VER - EDITAR - ELIMINAR--%>
+                        <asp:Button runat="server" ID="BtnEliminarUsuario" type="button" class="btn btn-warning" data-mdb-dismiss="modal"  Text="Eliminar" OnClick="BtnEliminarUsuario_Click" ></asp:Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
       
      <script src="Recursos/js/jquery-3.6.0.min.js"></script>
     <script src="Recursos/js/jquery.dataTables.min.js"></script>

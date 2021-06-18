@@ -47,7 +47,7 @@ namespace Vistas
 		{
 			if (e.CommandName == "eventoVerDetalle")
 			{
-				// RECUPERO EL CONTENIDO DEL WEBFORM USUARIOSLISTADO.ASPX
+				// RECUPERO EL CONTENIDO DEL WEBFORM
 				int fila = Convert.ToInt32(e.CommandArgument);
 				// OBTENGO LOS DATOS DEL USUARIO
 				Usuarios objUsuario = NegocioUsuarios.getInstance().LeerUsuarioDni(((Label)GrdUsuarios.Rows[fila].FindControl("usu_dni")).Text);
@@ -93,14 +93,49 @@ namespace Vistas
 			}
 			if (e.CommandName == "eventoEditar")
 			{
-				// RECUPERO EL CONTENIDO DEL WEBFORM MARCASLISTADO.ASPX
+				// RECUPERO EL CONTENIDO DEL WEBFORM
 				
+
 			}
 			if (e.CommandName == "eventoEliminar")
 			{
 
-				// RECUPERO EL CONTENIDO DEL WEBFORM PROVEEDORESLISTADO.ASPX
-				
+				// RECUPERO EL CONTENIDO DEL WEBFORM
+				int fila = Convert.ToInt32(e.CommandArgument);
+				// OBTENGO LOS DATOS DEL USUARIO
+				Usuarios objUsuario = NegocioUsuarios.getInstance().LeerUsuarioDni(((Label)GrdUsuarios.Rows[fila].FindControl("usu_dni")).Text);
+
+				ImageModalEliminar.ImageUrl = objUsuario.Ruta_Img;
+				txtDniEliminar.Text = objUsuario.Dni;
+				txtUsernameEliminar.Text = objUsuario.Username;
+
+				// CREO EL SESSION PARA TRANSPORTAR LOS DATOS DEL USUARIO A ELIMINAR.
+				NegocioUsuarios.getInstance().AgregarUsuarioAEliminar(objUsuario);
+
+				//MOSTRAR MODAL
+				ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModalEliminar').modal('show');</script>", false);
+
+
+			}
+		}
+
+		protected void BtnEliminarUsuario_Click(object sender, EventArgs e)
+        {
+			// RECUPERO EL CONTENIDO DEL WEBFORM
+			Usuarios objUsuario = NegocioUsuarios.getInstance().ObtenerUsuarioAEliminar();
+
+			// ELIMINO AL USUARIO DE LA BASE DE DATOS
+			bool eliminado = NegocioUsuarios.getInstance().EliminarUsuarioDni(objUsuario.Dni, objUsuario.Codigo_Perfil);
+
+			if(eliminado)
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se eliminó al usuario " + objUsuario.Username + "');", true);
+				CargarGridView();
+			}
+            else
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar al usuario " + objUsuario.Username + " porque es administrador');", true);
+				CargarGridView();
 			}
 		}
 
