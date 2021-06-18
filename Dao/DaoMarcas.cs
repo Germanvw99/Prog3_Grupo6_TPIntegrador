@@ -95,5 +95,11 @@ namespace Dao
 			SqlParametros = Comando.Parameters.Add("@mar_codigo", SqlDbType.Int);
 			SqlParametros.Value = marca.GetCodigo();
 		}
+		public DataTable filtrarConsultaMarca(ref string ClausulaSQLConsultaMarcas)
+		{
+			string strTabla = "Marca";
+			string srtSQL = "SELECT mar_codigo,mar_nombre,mar_descripcion,mar_ruta_imagen,est_nombre,est_codigo FROM Marcas INNER JOIN Estados ON Marcas.mar_codigo_estado=Estados.est_codigo " + ClausulaSQLConsultaMarcas + " ORDER BY mar_nombre ASC";
+			return accDatos.ObtenerTabla(strTabla, srtSQL);
+		}
 	}
 }

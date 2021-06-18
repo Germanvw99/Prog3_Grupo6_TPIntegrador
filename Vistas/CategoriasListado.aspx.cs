@@ -156,7 +156,7 @@ namespace Vistas
 			Response.Redirect("VentasListado.aspx");
 		}
 
-		//FILTRADO DE ARTICULOS
+		//FILTRADO DE CATEGORIAS
 
 		protected void BtnFiltrar_Click(object sender, EventArgs e)
 		{

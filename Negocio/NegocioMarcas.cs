@@ -138,5 +138,47 @@ namespace Negocio
 				return false;
 			}
 		}
+		//FILTRADO DE MARCAS
+		public DataTable filtrarConsultaMarca(string Nombre, string codEstado)
+		{
+			string ClausulaSQLConsultaCategoria = "";
+			if (!codEstado.Equals("0"))
+			{
+				ConstruirClausulaSQL("mar_codigo_estado", codEstado, ref ClausulaSQLConsultaCategoria);
+			}
+			if (!Nombre.Equals(""))
+			{
+				ConstruirClausulaSQL("mar_nombre", Nombre, ref ClausulaSQLConsultaCategoria);
+			}
+			return daoMarca.filtrarConsultaMarca(ref ClausulaSQLConsultaCategoria);
+		}
+
+		private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Clausula)
+		{
+			string d1 = ""; // Delimitador 1
+			string d2 = ""; // Delimitador 2
+			if (Clausula == "")
+			{
+				Clausula = Clausula + " WHERE ";
+			}
+			else
+			{
+				Clausula = Clausula + " AND ";
+			}
+			// USO UN SWITCH
+			switch (NombreCampo)
+			{
+				case "mar_codigo_estado":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "mar_nombre":
+					d1 = " LIKE '%";
+					d2 = "%'";
+					break;
+			}
+			// CONSTRUYO LA CLAUSULA
+			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
+		}
 	}
 }
