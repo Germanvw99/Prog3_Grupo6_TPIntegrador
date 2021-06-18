@@ -141,16 +141,16 @@ namespace Negocio
 		//FILTRADO DE MARCAS
 		public DataTable filtrarConsultaMarca(string Nombre, string codEstado)
 		{
-			string ClausulaSQLConsultaCategoria = "";
+			string ClausulaSQLConsulta = "";
 			if (!codEstado.Equals("0"))
 			{
-				ConstruirClausulaSQL("mar_codigo_estado", codEstado, ref ClausulaSQLConsultaCategoria);
+				ConstruirClausulaSQL("mar_codigo_estado", codEstado, ref ClausulaSQLConsulta);
 			}
 			if (!Nombre.Equals(""))
 			{
-				ConstruirClausulaSQL("mar_nombre", Nombre, ref ClausulaSQLConsultaCategoria);
+				ConstruirClausulaSQL("mar_nombre", Nombre, ref ClausulaSQLConsulta);
 			}
-			return daoMarca.filtrarConsultaMarca(ref ClausulaSQLConsultaCategoria);
+			return daoMarca.filtrarConsultaMarca(ref ClausulaSQLConsulta);
 		}
 
 		private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Clausula)

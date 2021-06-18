@@ -97,5 +97,12 @@ namespace Dao
             SqlParametros.Value = proveedor.GetDni();
         }
         #endregion
+
+        public DataTable filtrarConsultaProveedor(ref string ClausulaSQLConsultaProveedor)
+        {
+            string strTabla = "Proveedor";
+            string srtSQL = "SELECT pro_dni,pro_razon_social,pro_direccion,pro_email,pro_telefono,pro_nombre_contacto,pro_ruta_imagen, est_codigo, est_nombre  FROM Proveedores INNER JOIN Estados ON Proveedores.pro_codigo_estado=Estados.est_codigo " + ClausulaSQLConsultaProveedor;
+            return accDatos.ObtenerTabla(strTabla, srtSQL);
+        }
     }
 }
