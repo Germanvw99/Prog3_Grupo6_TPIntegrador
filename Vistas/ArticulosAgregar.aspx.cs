@@ -98,7 +98,7 @@ namespace Vistas
 						lblNotificacion.Text = "El artículo ya existe!";
 					}
 					//LimpiarCampos();
-					clearForm();
+					ClearForm();
 				}
 				else
 				{
@@ -163,7 +163,7 @@ namespace Vistas
 			return articulo;
 		}
 
-		private void clearForm()
+		private void ClearForm()
 		{
 			txtPedido.Text = "";
 			TxtNombre.Text = "";

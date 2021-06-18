@@ -129,6 +129,20 @@ namespace Negocio
             }
         }
 
+        public Usuarios LeerUsuarioDni(String Dni)
+        {
+            try
+            {
+                Usuarios objUsuario = DaoUsuarios.GetInstance().LeerUsuario(Dni);
+
+                return objUsuario;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
         // Verificaciones del registro
 
         public bool VerificarUsernameDuplicado(String username)

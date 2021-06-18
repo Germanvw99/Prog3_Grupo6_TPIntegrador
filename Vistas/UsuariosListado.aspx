@@ -53,7 +53,7 @@
                                             <asp:TextBox ID="TxtCodigo" type="text" runat="server" class="form-control"></asp:TextBox>
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="TxtNombre1" type="text" runat="server" class="form-control"></asp:TextBox>
                                         </div>
                                         <div class="col-md-2 text-left">
                                             <asp:DropDownList ID="DdlMarcas" class="custom-select form-control"  runat="server" > </asp:DropDownList>
@@ -136,6 +136,86 @@
             </div>
         </div>
     </main>
+    <!-- MODAL -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalles</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="text-center">
+						<asp:Image ID="ProfilePic" Height="200px" Width="200px" runat="server" class="img-fluid"/>
+					</div>
+                    <div class="row d-flex mt-3">
+                        <div class="form-group col-md-6">
+                            <label>Dni Personal</label>
+						    <asp:TextBox ID="TxtDni" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Username</label>
+						    <asp:TextBox ID="TxtUsername" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Nombre</label>
+						    <asp:TextBox ID="TxtNombre" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Apellido</label>
+						    <asp:TextBox ID="TxtApellido" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Telefono</label>
+						    <asp:TextBox ID="TxtTelefono" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Email</label>
+						    <asp:TextBox ID="TxtEmail" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Ciudad</label>
+						    <asp:TextBox ID="TxtCiudad" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Provincia</label>
+						    <asp:TextBox ID="TxtProvincia" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Codigo Postal</label>
+						    <asp:TextBox ID="TxtCodigo_Postal" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Estado</label>
+						    <asp:TextBox ID="TxtEstado" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Direccion</label>
+						    <asp:TextBox ID="txtDireccion" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Tipo de Usuario</label>
+						    <asp:TextBox ID="TxtCodigo_Perfil" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>  
+             </div>
+		</div>
+    </div>
+				<!-- Modal footer -->
+      
      <script src="Recursos/js/jquery-3.6.0.min.js"></script>
     <script src="Recursos/js/jquery.dataTables.min.js"></script>
     <script src="Recursos/js/popper.min.js"></script>

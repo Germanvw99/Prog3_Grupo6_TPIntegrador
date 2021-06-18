@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Entidades;
 
 namespace Vistas
 {
@@ -46,8 +47,49 @@ namespace Vistas
 		{
 			if (e.CommandName == "eventoVerDetalle")
 			{
-				// RECUPERO EL CONTENIDO DEL WEBFORM CATEGORIASLISTADO.ASPX
-				
+				// RECUPERO EL CONTENIDO DEL WEBFORM USUARIOSLISTADO.ASPX
+				int fila = Convert.ToInt32(e.CommandArgument);
+				// OBTENGO LOS DATOS DEL USUARIO
+				Usuarios objUsuario = NegocioUsuarios.getInstance().LeerUsuarioDni(((Label)GrdUsuarios.Rows[fila].FindControl("usu_dni")).Text);
+
+				// RELLENO CON DATOS
+
+				TxtDni.Text = objUsuario.Dni;
+				TxtUsername.Text = objUsuario.Username;
+				TxtNombre.Text = objUsuario.Nombre;
+				TxtApellido.Text = objUsuario.Apellido;
+				TxtTelefono.Text = objUsuario.Telefono;
+				TxtEmail.Text = objUsuario.Email;
+				TxtCiudad.Text = objUsuario.Ciudad;
+				TxtProvincia.Text = objUsuario.Provincia;
+				TxtCodigo_Postal.Text = objUsuario.Codigo_Postal;
+				ProfilePic.ImageUrl = objUsuario.Ruta_Img;
+				txtDireccion.Text = objUsuario.Direccion;
+				TxtEstado.Text = ((Label)GrdUsuarios.Rows[fila].FindControl("est_nombre")).Text;
+				if(objUsuario.Codigo_Perfil == 1)
+                {
+					TxtCodigo_Perfil.Text = "Administrador";
+                }
+                else { TxtCodigo_Perfil.Text = "Usuario"; }
+
+
+				TxtDni.Enabled = false;
+				TxtUsername.Enabled = false;
+				TxtNombre.Enabled = false;
+				TxtApellido.Enabled = false;
+				TxtTelefono.Enabled = false;
+				TxtEmail.Enabled = false;
+				TxtCiudad.Enabled = false;
+				TxtProvincia.Enabled = false;
+				TxtEstado.Enabled = false;
+				TxtCodigo_Postal.Enabled = false;
+				TxtCodigo_Perfil.Enabled = false;
+				txtDireccion.Enabled = false;
+
+
+				//MOSTRAR MODAL
+				ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModal').modal('show');</script>", false);
+
 			}
 			if (e.CommandName == "eventoEditar")
 			{
