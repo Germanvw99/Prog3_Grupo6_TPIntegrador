@@ -133,6 +133,10 @@ namespace Vistas
 		}
 
 		//
+		protected void IrListarUsuarios_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("UsuariosListado.aspx");
+		}
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
@@ -147,12 +151,17 @@ namespace Vistas
 		}
 		protected void IrListarProveedores_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("ProveedoresListar.aspx");
+			Response.Redirect("ProveedoresListado.aspx");
 		}
 		protected void IrListarVentas_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("VentasListar.aspx");
+			Response.Redirect("VentasListado.aspx");
 		}
+		protected void IrListarStock_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ControlStockListado.aspx");
+		}
+
 		// AGREGAR MARCAS Y CATEGORIAS
 		protected void IrAgregarMarca_Click(object sender, EventArgs e)
 		{
