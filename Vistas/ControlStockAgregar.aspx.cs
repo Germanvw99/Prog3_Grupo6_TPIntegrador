@@ -24,7 +24,7 @@ namespace Vistas
 
 		private void CargarProveedores()
 		{
-			DdlProveedores.Items.Add(new ListItem("", "0"));
+			DdlProveedores.Items.Add(new ListItem("-- Elija un proveedor --", "0"));
 			DataTable dt = negocioProveedor.ObtenerProveedores();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -34,7 +34,7 @@ namespace Vistas
 
 		private void CargarArticulos()
 		{
-			DdlArticulos.Items.Add(new ListItem("", "0"));
+			DdlArticulos.Items.Add(new ListItem("-- Elija un articulo --", "0"));
 			DataTable dt = negocioArticulo.ObtenerArticulos();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -73,7 +73,7 @@ namespace Vistas
 
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if (Int32.Parse(DdlProveedores.SelectedValue) != 0 && Int32.Parse(DdlArticulos.SelectedValue) != 0 && !string.IsNullOrEmpty(txtCantidad.Text) && !string.IsNullOrEmpty(txtPrecio.Text))
+			if (Int32.Parse(DdlProveedores.SelectedValue) != 0 && Int32.Parse(DdlArticulos.SelectedValue) != 0 && !string.IsNullOrEmpty(TxtCantidad.Text) && !string.IsNullOrEmpty(TxtPrecio.Text))
 			{
 				Proveedores proveedor = new Proveedores();
 				proveedor.SetDni(DdlProveedores.SelectedValue);
@@ -82,8 +82,8 @@ namespace Vistas
 				Articulos articulo = new Articulos();
 				articulo.SetCodigo(int.Parse(DdlArticulos.SelectedValue));
 				articuloProveedor.SetArticulo(articulo);
-				articuloProveedor.SetEntrada(int.Parse(txtCantidad.Text));
-				articuloProveedor.SetPrecioUnitario(decimal.Parse(txtPrecio.Text));
+				articuloProveedor.SetEntrada(int.Parse(TxtCantidad.Text));
+				articuloProveedor.SetPrecioUnitario(decimal.Parse(TxtPrecio.Text));
 
 				if (negocioArticuloProveedor.agregarStock(articuloProveedor))
 				{
@@ -100,8 +100,8 @@ namespace Vistas
 
 		private void LimpiarCampos()
 		{
-			txtCantidad.Text = string.Empty;
-			txtPrecio.Text = string.Empty;
+			TxtCantidad.Text = string.Empty;
+			TxtPrecio.Text = string.Empty;
 			DdlProveedores.SelectedValue = "0";
 			DdlArticulos.SelectedValue = "0";
 		}
