@@ -86,7 +86,7 @@ namespace Dao
 			SqlParametros = Comando.Parameters.Add("@art_punto_pedido", SqlDbType.Int);
 			SqlParametros.Value = articulo.GetPuntoPedido();
 			SqlParametros = Comando.Parameters.Add("@art_precio_lista", SqlDbType.Decimal);
-			SqlParametros.Value = articulo.GetPuntoPedido();
+			SqlParametros.Value = articulo.GetPrecioLista();
 			SqlParametros = Comando.Parameters.Add("@art_ruta_imagen", SqlDbType.VarChar, 255);
 			SqlParametros.Value = articulo.GetRutaImagen();
 			SqlParametros = Comando.Parameters.Add("@art_codigo_estado", SqlDbType.Int);

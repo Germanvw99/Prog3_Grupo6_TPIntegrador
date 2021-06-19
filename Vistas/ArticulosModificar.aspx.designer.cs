@@ -195,6 +195,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.DropDownList DdlEstadoModificar;
 
         /// <summary>
+        /// Control CvTxtPuntoPedidoModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CvTxtPuntoPedidoModificar;
+
+        /// <summary>
         /// Control TxtPuntoPedidoModificar.
         /// </summary>
         /// <remarks>
@@ -202,6 +211,24 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtPuntoPedidoModificar;
+
+        /// <summary>
+        /// Control CvTxtPrecioListaModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CvTxtPrecioListaModificar;
+
+        /// <summary>
+        /// Control RevTxtPrecioListaModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RevTxtPrecioListaModificar;
 
         /// <summary>
         /// Control TxtPrecioListaModificar.
@@ -220,6 +247,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FUArticulo;
+
+        /// <summary>
+        /// Control VsModificarArticulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary VsModificarArticulo;
 
         /// <summary>
         /// Control BtnModificarArticulo.
