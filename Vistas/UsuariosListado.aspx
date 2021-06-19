@@ -23,11 +23,8 @@
                             <div class ="row">
                                 <div class="card-body card bg-light">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <h5 class="h2 card-title mb-0">Listado de Artículos</h5>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <asp:LinkButton ID="LnAgregarArticulos" class="btn btn-outline-dark float-right" runat="server">+ Agregar Artículos</asp:LinkButton>
+                                        <div class="col-md-12">
+                                            <h5 class="h2 card-title mb-0">Listado de Usuarios</h5>
                                         </div>
                                     </div>
                                 </div>

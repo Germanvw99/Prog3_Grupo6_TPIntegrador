@@ -106,6 +106,7 @@
     <Content Include="Recursos\Base_de_datos\storeProcedure\spEliminarCategoria.txt" />
     <Content Include="Recursos\Base_de_datos\storeProcedure\spEliminarMarca.txt" />
     <Content Include="Recursos\Base_de_datos\storeProcedure\spEliminarProveedor.txt" />
+    <Content Include="Recursos\Base_de_datos\storeProcedure\spLeerUsername.sql" />
     <Content Include="Recursos\Base_de_datos\storeProcedure\spLeerUsuario.sql" />
     <Content Include="Recursos\Base_de_datos\storeProcedure\spLoginUsuario.sql" />
     <Content Include="Recursos\Base_de_datos\storeProcedure\spModificarArticulo.txt" />
