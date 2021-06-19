@@ -57,9 +57,10 @@
 &nbsp;<asp:TextBox ID="TxtCantidad" type="text" runat="server" class="form-control" placeholder="" TextMode="Number"></asp:TextBox>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label">Precio por unidad</label><asp:RequiredFieldValidator ID="RfvTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="****Debe ingresar valores hasta con dos decimales" ForeColor="Red" ValidationGroup="agregar">****</asp:RequiredFieldValidator>
-&nbsp;<asp:RegularExpressionValidator ID="RevTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="****Debe ingresar valores hasta con dos decimales" ForeColor="Red" ValidationExpression="^(\d{1}\.)?(\d+\.?)+(,\d{2})?$" ValidationGroup="agregar">****</asp:RegularExpressionValidator>
-                                                <asp:TextBox ID="TxtPrecio" type="text" runat="server" class="form-control" placeholder="" TextMode="Number"></asp:TextBox>
+                                                <label class="form-label">Precio por unidad</label><asp:RequiredFieldValidator ID="RfvTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="****Debe ingresar un valor" ForeColor="Red" ValidationGroup="agregar">****</asp:RequiredFieldValidator>
+&nbsp;<asp:RegularExpressionValidator ID="RevTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="****Debe ingresar valores hasta con dos decimales (Usar . [punto]  como separador)" ForeColor="Red" ValidationExpression="^[0-9]+(\.[0-9]{1,2})?$" ValidationGroup="agregar">****</asp:RegularExpressionValidator>
+                                                <asp:CompareValidator ID="CvTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="**** El valor debe ser monetario (hasta dos decimales)" ForeColor="Red" Operator="GreaterThanEqual" Type="Currency" ValidationGroup="agregar" ValueToCompare="0">****</asp:CompareValidator>
+                                                <asp:TextBox ID="TxtPrecio" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                             </div>
                                             <asp:ValidationSummary ID="VsAgregarArticuloStock" runat="server" ForeColor="Red" ValidationGroup="agregar" />
                                             <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar artículo al stock" OnClick="BtnAgregar_Click" ValidationGroup="agregar"/>
