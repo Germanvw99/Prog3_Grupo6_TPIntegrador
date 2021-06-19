@@ -1,0 +1,43 @@
+CREATE PROCEDURE spActualizarStock
+(
+@axp_proveedor_dni CHAR(8),
+@axp_articulo_codigo INT,
+@axp_entrada INT,
+@axp_salida INT,
+@axp_precio_unitario DECIMAL(18,2)
+)
+AS
+	IF EXISTS (SELECT * FROM Articulos_por_Proveedor WHERE axp_proveedor_dni=@axp_proveedor_dni AND axp_articulo_codigo=@axp_articulo_codigo)
+		BEGIN
+			IF EXISTS (SELECT * FROM Articulos_por_Proveedor WHERE axp_stock_actual >= @axp_salida)
+				BEGIN
+					UPDATE Articulos_por_Proveedor
+					SET
+					axp_entrada=@axp_entrada,
+					axp_salida=@axp_salida,
+					axp_precio_unitario=@axp_precio_unitario,
+					axp_stock_anterior=axp_stock_actual,
+					axp_stock_actual=axp_stock_actual+@axp_entrada-@axp_salida
+					WHERE axp_proveedor_dni=@axp_proveedor_dni
+					AND axp_articulo_codigo=@axp_articulo_codigo
+				END
+		END
+	ELSE
+		BEGIN
+			INSERT INTO Articulos_por_Proveedor
+			(
+			axp_proveedor_dni,
+			axp_articulo_codigo,
+			axp_precio_unitario,
+			axp_stock_actual,
+			axp_entrada
+			)
+			VALUES (
+			@axp_proveedor_dni,
+			@axp_articulo_codigo,
+			@axp_precio_unitario,
+			@axp_entrada,
+			@axp_entrada
+			)
+		END
+RETURN

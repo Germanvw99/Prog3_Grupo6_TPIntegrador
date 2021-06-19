@@ -45,6 +45,9 @@
     <Compile Include="NegocioArticulos.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="NegocioArticulosProveedores.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="NegocioCategorias.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
