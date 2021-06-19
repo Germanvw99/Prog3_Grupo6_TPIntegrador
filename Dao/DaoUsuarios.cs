@@ -106,53 +106,9 @@ namespace Dao
             }
             return filasEditadas;
         }
-
-        public DataTable ObtenerUsuarios()
-        {
-            string strTabla = "Usuarios";
-            string srtSQL = "SELECT usu_dni,usu_ruta_imagen, usu_username, usu_nombre,usu_apellido,usu_email,usu_ciudad,usu_provincia,est_codigo, est_nombre FROM Usuarios INNER JOIN Estados ON Usuarios.usu_codigo_estado = Estados.est_codigo";
-            return conex.ObtenerTabla(strTabla, srtSQL);
-        }
-
-
-        public bool EditUser(Usuarios objUsuario)
-        {
-            bool answ = false;
-            try
-            {   
-                // Edita la información del registro en la BD
-                conn = conex.ObtenerConexion();
-                SqlCommand cmd = new SqlCommand("spEditarUsuario", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@prmDni", objUsuario.Dni);
-                cmd.Parameters.AddWithValue("@prmNombre", objUsuario.Nombre);
-                cmd.Parameters.AddWithValue("@prmApellido", objUsuario.Apellido);
-                cmd.Parameters.AddWithValue("@prmEmail", objUsuario.Email);
-                cmd.Parameters.AddWithValue("@prmTelefono", objUsuario.Telefono);
-                cmd.Parameters.AddWithValue("@prmDireccion", objUsuario.Direccion);
-                cmd.Parameters.AddWithValue("@prmCodigo_Postal", objUsuario.Codigo_Postal);
-                cmd.Parameters.AddWithValue("@prmCiudad", objUsuario.Ciudad);
-                cmd.Parameters.AddWithValue("@prmProvincia", objUsuario.Provincia);
-
-                int filasEditadas = cmd.ExecuteNonQuery();
-
-                // Chekea si hubo modificaciones
-                if (filasEditadas > 0)
-                {
-                    answ = true;
-                }
-            }
-            catch (Exception exc)
-            {
-                throw exc;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return answ;
-        }
        
+        // ELIMINAR CAMPOS
+
         public int EliminarUsuarioDni(String Dni)
         {
             try
@@ -167,6 +123,13 @@ namespace Dao
             {
                 conn.Close();
             }
+        }
+
+        public DataTable ObtenerUsuarios()
+        {
+            string strTabla = "Usuarios";
+            string srtSQL = "SELECT usu_dni,usu_ruta_imagen, usu_username, usu_nombre,usu_apellido,usu_email,usu_ciudad,usu_provincia,est_codigo, est_nombre FROM Usuarios INNER JOIN Estados ON Usuarios.usu_codigo_estado = Estados.est_codigo";
+            return conex.ObtenerTabla(strTabla, srtSQL);
         }
         public Usuarios LeerUsuario(String dni)
         {
@@ -211,62 +174,7 @@ namespace Dao
             return objUsuario;
         }
 
-        public int EditPassword(String nuevaPassword, String Dni)
-        {
-            int filasEditadas;
-            try
-            {
-                // Se modifica la contraseña
-                conn = conex.ObtenerConexion();
-                SqlCommand cmd = new SqlCommand("spEditarContraseña", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@prmNuevaPassword", nuevaPassword);
-                cmd.Parameters.AddWithValue("@prmDni", Dni);
-
-                filasEditadas = cmd.ExecuteNonQuery();
-            }
-            catch (Exception exc)
-            {
-                throw exc;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return filasEditadas;
-        }
-        // Verificaciones
-        public Usuarios VerificarAntiguaPassword(String username, String antiguaPassword)
-        {
-            Usuarios objUsuario = null;
-            try
-            {
-                // Se modifica la contraseña
-                conn = conex.ObtenerConexion();
-                SqlCommand cmd = new SqlCommand("spLoginUsuario", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@prmUsername", username);
-                cmd.Parameters.AddWithValue("@prmPassword", antiguaPassword);
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                // En caso de encontrar el usuario y verificar la contraseña recolecta información:
-                if (dr.Read())
-                {
-                    objUsuario = new Usuarios();
-                    objUsuario.Dni = dr["usu_dni"].ToString();
-                }
-            }
-            catch (Exception exc)
-            {
-                throw exc;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return objUsuario ;
-        }
+        // LEER CAMPOS
 
         public Usuarios LeerUsername(String username)
         {
@@ -309,6 +217,113 @@ namespace Dao
                 conn.Close();
             }
             return objUsuario;
+        }
+
+        // EDITAR CAMPOS
+
+        public bool EditUser(Usuarios objUsuario)
+        {
+            bool answ = false;
+            try
+            {
+                // Edita la información del registro en la BD
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spEditarUsuario", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmDni", objUsuario.Dni);
+                cmd.Parameters.AddWithValue("@prmNombre", objUsuario.Nombre);
+                cmd.Parameters.AddWithValue("@prmApellido", objUsuario.Apellido);
+                cmd.Parameters.AddWithValue("@prmEmail", objUsuario.Email);
+                cmd.Parameters.AddWithValue("@prmTelefono", objUsuario.Telefono);
+                cmd.Parameters.AddWithValue("@prmDireccion", objUsuario.Direccion);
+                cmd.Parameters.AddWithValue("@prmCodigo_Postal", objUsuario.Codigo_Postal);
+                cmd.Parameters.AddWithValue("@prmCiudad", objUsuario.Ciudad);
+                cmd.Parameters.AddWithValue("@prmProvincia", objUsuario.Provincia);
+
+                int filasEditadas = cmd.ExecuteNonQuery();
+
+                // Chekea si hubo modificaciones
+                if (filasEditadas > 0)
+                {
+                    answ = true;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return answ;
+        }
+
+        public int EditPassword(String nuevaPassword, String Dni)
+        {
+            int filasEditadas;
+            try
+            {
+                // Se modifica la contraseña
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spEditarContraseña", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmNuevaPassword", nuevaPassword);
+                cmd.Parameters.AddWithValue("@prmDni", Dni);
+
+                filasEditadas = cmd.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return filasEditadas;
+        }
+
+        // FILTROS
+
+        public DataTable filtrarConsultaUsuarios(ref string Consulta)
+        {
+            string strTabla = "Usuarios";
+            string srtSQL = "SELECT usu_dni,usu_ruta_imagen, usu_username, usu_nombre,usu_apellido,usu_email,usu_ciudad,usu_provincia, est_nombre, est_codigo FROM Usuarios INNER JOIN Estados ON Usuarios.usu_codigo_estado = Estados.est_codigo " + Consulta + " ORDER BY usu_dni ASC";
+            return conex.ObtenerTabla(strTabla, srtSQL);
+        }
+
+        // VERIFICACIONES
+        public Usuarios VerificarAntiguaPassword(String username, String antiguaPassword)
+        {
+            Usuarios objUsuario = null;
+            try
+            {
+                // Se modifica la contraseña
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spLoginUsuario", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmUsername", username);
+                cmd.Parameters.AddWithValue("@prmPassword", antiguaPassword);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                // En caso de encontrar el usuario y verificar la contraseña recolecta información:
+                if (dr.Read())
+                {
+                    objUsuario = new Usuarios();
+                    objUsuario.Dni = dr["usu_dni"].ToString();
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return objUsuario ;
         }
     }
 }

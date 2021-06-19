@@ -78,40 +78,40 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton LnAgregarArticulos;
 
         /// <summary>
-        /// Control TxtCodigo.
+        /// Control txtFiltrarDni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCodigo;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltrarDni;
 
         /// <summary>
-        /// Control TxtNombre1.
+        /// Control txtFiltrarUsername.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre1;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltrarUsername;
 
         /// <summary>
-        /// Control DdlMarcas.
+        /// Control DdlFiltrarProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlMarcas;
+        protected global::System.Web.UI.WebControls.DropDownList DdlFiltrarProvincia;
 
         /// <summary>
-        /// Control DdlCategorias.
+        /// Control DdlFiltrarEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlCategorias;
+        protected global::System.Web.UI.WebControls.DropDownList DdlFiltrarEstado;
 
         /// <summary>
         /// Control BtnFiltrar.

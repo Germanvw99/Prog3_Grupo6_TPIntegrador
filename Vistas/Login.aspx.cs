@@ -31,8 +31,6 @@ namespace Vistas
             }
             else
             {
-
-
                 if (objUsuario.Codigo_Perfil == 2)
                 {
                     Response.Redirect("Vistausuario.aspx");

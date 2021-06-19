@@ -165,6 +165,65 @@ namespace Negocio
             }
         }
 
+        // Filtros
+
+        public DataTable filtrarUsuarios(String Dni, String Username, String Provincia, String Estado)
+        {
+            string Consulta = "";
+            if (!Dni.Equals(""))
+            {
+                ConstruirClausulaSQL("usu_dni", Dni, ref Consulta);
+            }
+            if (!Username.Equals(""))
+            {
+                ConstruirClausulaSQL("usu_username", Username, ref Consulta);
+            }
+            if (!Provincia.Equals("- Elegir -"))
+            {
+                ConstruirClausulaSQL("usu_provincia", Provincia, ref Consulta);
+            }
+            if (!Estado.Equals("0"))
+            {
+                ConstruirClausulaSQL("usu_codigo_estado", Estado, ref Consulta);
+            }
+            return DaoUsuarios.GetInstance().filtrarConsultaUsuarios(ref Consulta);
+        }
+
+        private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Consulta)
+        {
+            string d1 = ""; // Delimitador 1
+            string d2 = ""; // Delimitador 2
+            if (Consulta == "")
+            {
+                Consulta = Consulta + " WHERE ";
+            }
+            else
+            {
+                Consulta = Consulta + " AND ";
+            }
+            // USO UN SWITCH
+            switch (NombreCampo)
+            {
+                case "usu_dni":
+                    d1 = " = ";
+                    d2 = "";
+                    break;
+                case "usu_username":
+                    d1 = " LIKE '%";
+                    d2 = "%'";
+                    break;
+                case "usu_provincia":
+                    d1 = " = '";
+                    d2 = "'";
+                    break;
+                case "usu_codigo_estado":
+                    d1 = " = ";
+                    d2 = "";
+                    break;
+            }
+            // CONSTRUYO LA CLAUSULA
+            Consulta = Consulta + NombreCampo + d1 + Valor + d2;
+        }
 
         // SESSION PARA ELIMINAR USUARIOS
         public void AgregarUsuarioAEliminar(Usuarios objUsuario)
@@ -182,8 +241,52 @@ namespace Negocio
             return objUsuario;
         }
 
+        // Obtener Campos
+        public DataTable ObtenerProvincias()
+        {
+            DataTable dt = new DataTable("Provincias");
+            dt = ListadoProvincias();
+            return dt;
+        }
 
-        // Verificaciones del registro
+        private DataTable ListadoProvincias()
+        {
+            DataTable dt = new DataTable("Provincias");
+            dt.Clear();
+            // SE CREAN LAS COLUMNAS
+            dt.Columns.Add("prov_nombre", typeof(String));
+            dt.Columns.Add("prov_codigo", typeof(int));
+
+            // SE CREAN LAS FILAS CON PROVINCIAS.
+            DataRow row = dt.NewRow();
+            dt.Rows.Add(new Object[] { "Buenos Aires", 1 });
+            dt.Rows.Add(new Object[] { "Capital Federal", 2 });
+            dt.Rows.Add(new Object[] { "Catamarca", 3 });
+            dt.Rows.Add(new Object[] { "Chaco", 4 });
+            dt.Rows.Add(new Object[] { "Chubut", 5 });
+            dt.Rows.Add(new Object[] { "Córdoba", 6 });
+            dt.Rows.Add(new Object[] { "Corrientes", 7 });
+            dt.Rows.Add(new Object[] { "Entre Ríos", 8 });
+            dt.Rows.Add(new Object[] { "Formosa", 9 });
+            dt.Rows.Add(new Object[] { "Jujuy", 10 });
+            dt.Rows.Add(new Object[] { "La Pampa", 11 });
+            dt.Rows.Add(new Object[] { "La Rioja", 12 });
+            dt.Rows.Add(new Object[] { "Mendoza", 13 });
+            dt.Rows.Add(new Object[] { "Misiones", 14 });
+            dt.Rows.Add(new Object[] { "Neuquén", 15 });
+            dt.Rows.Add(new Object[] { "Río Negro", 16 });
+            dt.Rows.Add(new Object[] { "Salta", 17 });
+            dt.Rows.Add(new Object[] { "San Juan", 18 });
+            dt.Rows.Add(new Object[] { "San Luis", 19 });
+            dt.Rows.Add(new Object[] { "Santa Cruz", 20 });
+            dt.Rows.Add(new Object[] { "Santa Fe", 21 });
+            dt.Rows.Add(new Object[] { "Santiago del Estero", 22 });
+            dt.Rows.Add(new Object[] { "Tierra del Fuego", 23 });
+            dt.Rows.Add(new Object[] { "Tucumán", 24 });
+            return dt;
+        }
+
+        // VERIFICACIONES
 
         public bool VerificarUsernameDuplicado(String username)
         {

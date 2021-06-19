@@ -50,21 +50,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-3 text-center">
-                                            <asp:TextBox ID="TxtCodigo" type="text" runat="server" class="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtFiltrarDni" type="text" runat="server" class="form-control"></asp:TextBox>
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <asp:TextBox ID="TxtNombre1" type="text" runat="server" class="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtFiltrarUsername" type="text" runat="server" class="form-control"></asp:TextBox>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <asp:DropDownList ID="DdlMarcas" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                            <asp:DropDownList ID="DdlFiltrarProvincia" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
                                         <div class="col-md-2 text-left">
-                                            <asp:DropDownList ID="DdlCategorias" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                                            <asp:DropDownList ID="DdlFiltrarEstado" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar"  />
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" OnClick="BtnFiltrar_Click"  />
                                             &nbsp;&nbsp;
-                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" />
+                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" OnClick="BtnQuitarFiltro_Click" />
                                         </div>
                                     </div>
                                 </div>

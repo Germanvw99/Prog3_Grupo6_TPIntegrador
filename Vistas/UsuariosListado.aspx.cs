@@ -6,12 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using Entidades;
+using System.Data;
 
 namespace Vistas
 {
     public partial class UsuariosAdministrar : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+		NegocioEstados negocioEstados = new NegocioEstados();
+		protected void Page_Load(object sender, EventArgs e)
         {
 			//if (NegocioUsuarios.getInstance().isAdmin() != true)
 			//{
@@ -20,6 +22,8 @@ namespace Vistas
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
+				CargarEstados();
+				CargarProvincias();
 			}
 		}
 		private void CargarGridView()
@@ -139,6 +143,57 @@ namespace Vistas
 			}
 		}
 
+		protected void BtnFiltrar_Click(object sender, EventArgs e)
+		{
+			GrdUsuarios.DataSource = NegocioUsuarios.getInstance().filtrarUsuarios(txtFiltrarDni.Text, txtFiltrarUsername.Text, DdlFiltrarProvincia.SelectedItem.Text, DdlFiltrarEstado.SelectedValue);
+			GrdUsuarios.DataBind();
+		}
+
+
+
+		protected void BtnQuitarFiltro_Click(object sender, EventArgs e)
+		{
+			CargarGridView();
+			limpiarCampos();
+		}
+		// Filtros
+		private void limpiarCampos()
+		{
+			txtFiltrarDni.Text = string.Empty;
+			txtFiltrarUsername.Text = string.Empty;
+			DdlFiltrarProvincia.SelectedValue = "0";
+			DdlFiltrarEstado.SelectedValue = "0";
+		}
+
+		// Rellenar Campos
+		private void CargarEstados()
+		{
+			DdlFiltrarEstado.Items.Add(new ListItem("- Elegir -", "0"));
+			DdlFiltrarEstado.Items[0].Selected = true;
+			DdlFiltrarEstado.Items[0].Attributes["disabled"] = "disabled";
+			DataTable dt = negocioEstados.ObtenerEstados();
+			foreach (DataRow dr in dt.Rows)
+			{
+				DdlFiltrarEstado.Items.Add(new ListItem(dr["est_nombre"].ToString(), dr["est_codigo"].ToString()));
+			}
+		}
+
+		private void CargarProvincias()
+		{
+			DdlFiltrarProvincia.Items.Add(new ListItem("- Elegir -", "0"));
+			DdlFiltrarProvincia.Items[0].Selected = true;
+			DdlFiltrarProvincia.Items[0].Attributes["disabled"] = "disabled";
+			DataTable dt = NegocioUsuarios.getInstance().ObtenerProvincias();
+			foreach (DataRow dr in dt.Rows)
+			{
+				DdlFiltrarProvincia.Items.Add(new ListItem(dr["prov_nombre"].ToString(), dr["prov_codigo"].ToString()));
+			}
+		}
+
+
+
+		// Botones redireccion
+
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
@@ -171,6 +226,5 @@ namespace Vistas
 		{
 			Response.Redirect("VentasListado.aspx");
 		}
-
-	}
+    }
 }
