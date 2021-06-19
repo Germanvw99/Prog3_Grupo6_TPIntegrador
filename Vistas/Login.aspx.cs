@@ -31,17 +31,23 @@ namespace Vistas
             }
             else
             {
-                if (objUsuario.Codigo_Perfil == 2)
+                if (objUsuario.Estado == 2)
                 {
-                    Response.Redirect("Vistausuario.aspx");
-                    Session["tablapormarca"] = null;
-                    //BORRA EL FILTRO PARA EL LISTVIEW Y CARGA TODOS LOS ARTICULOS
+                    if (objUsuario.Codigo_Perfil == 2)
+                    {
+                        Response.Redirect("Vistausuario.aspx");
+                        Session["tablapormarca"] = null;
+                        //BORRA EL FILTRO PARA EL LISTVIEW Y CARGA TODOS LOS ARTICULOS
+                    }
+                    else
+                    {
+                        Response.Redirect("home.aspx");
+                    }
                 }
                 else
                 {
-                    Response.Redirect("home.aspx");
+                    lblError.Text = "Usuario dado de baja";
                 }
-
             }
         }
     }

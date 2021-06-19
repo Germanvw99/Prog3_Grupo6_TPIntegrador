@@ -69,8 +69,8 @@
                       <asp:RequiredFieldValidator ID="RfvCiudad" runat="server" ControlToValidate="txtCiudad" ErrorMessage="Ciudad invalida" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
                   </div>
                   <div class="form-group col-md-6 pr-0 d-flex">
-                      <asp:TextBox ID="txtProvincia" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1'  placeholder="Provincia"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RfvProvincia" runat="server" ControlToValidate="txtProvincia" ErrorMessage="Provincia invalida" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
+                      <asp:DropDownList ID="DdlProvincia" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                      <asp:RequiredFieldValidator ID="RfvProvincia" runat="server" ControlToValidate="DdlProvincia" ErrorMessage="Provincia invalida" ForeColor="Red" ValidationGroup="VgRegister" InitialValue="-1">*</asp:RequiredFieldValidator>
                   </div>
               </div>
                 <div class="row">

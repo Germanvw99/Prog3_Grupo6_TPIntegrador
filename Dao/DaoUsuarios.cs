@@ -221,6 +221,31 @@ namespace Dao
 
         // EDITAR CAMPOS
 
+        public int EditarEstadoUsuario(Usuarios objUsuario)
+        {
+            int filasEditadas = 0;
+            try
+            {
+                // Edita la información del registro en la BD
+                conn = conex.ObtenerConexion();
+                SqlCommand cmd = new SqlCommand("spEditarEstadoUsuario", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@prmDni", objUsuario.Dni);
+                cmd.Parameters.AddWithValue("@prmEstado", objUsuario.Estado);
+                filasEditadas = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return filasEditadas;
+        }
+
         public bool EditUser(Usuarios objUsuario)
         {
             bool answ = false;

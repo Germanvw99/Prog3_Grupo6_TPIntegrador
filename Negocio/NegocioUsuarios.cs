@@ -75,9 +75,29 @@ namespace Negocio
             }
         }
 
+        public bool EditarUsuarioEstado(Usuarios objUsuario, int nuevoEstado)
+        {
+            bool answ;
+            if (objUsuario.Codigo_Perfil == 1)
+            {
+                answ = false;
+            }
+            else
+            {
+                objUsuario.Estado = nuevoEstado;
+                int filasEditadas = DaoUsuarios.GetInstance().EditarEstadoUsuario(objUsuario);
+
+                if (filasEditadas > 0)
+                {
+                    // SE EDITO.
+                }
+                answ = true;
+            }
+            return answ;
+        }
+
         public bool EliminarUsuarioDni(String Dni, int Codigo_perfil)
         {
-
             bool answ;
             if (Codigo_perfil == 1)
             {
@@ -230,12 +250,26 @@ namespace Negocio
             Session["UsuarioAEliminar"] = objUsuario;
         }
 
+        public void AgregarUsuarioAEditar(Usuarios objUsuario)
+        {
+            Session["UsuarioAEditar"] = objUsuario;
+        }
         public Usuarios ObtenerUsuarioAEliminar()
         {
             Usuarios objUsuario = new Usuarios();
             if (Session["UsuarioAEliminar"] != null)
             {
                 objUsuario = (Usuarios)Session["UsuarioAEliminar"];
+            }
+            return objUsuario;
+        }
+
+        public Usuarios ObtenerUsuarioAEditar()
+        {
+            Usuarios objUsuario = new Usuarios();
+            if (Session["UsuarioAEditar"] != null)
+            {
+                objUsuario = (Usuarios)Session["UsuarioAEditar"];
             }
             return objUsuario;
         }
@@ -340,10 +374,18 @@ namespace Negocio
         {
             if(objUsuario != null)
             {
-               DataTable dt = CrearTablaUsuario(objUsuario);
+                if (objUsuario.Estado == 2)
+                {
+                    DataTable dt = CrearTablaUsuario(objUsuario);
 
-                // Se crea la Session con el DataTable creado
-                Session["User"] = dt;
+                    // Se crea la Session con el DataTable creado
+                    Session["User"] = dt;
+                }
+                else
+                {
+                    // Elimino el Session
+                    Session.Remove("User");
+                }
             }
             else
             {

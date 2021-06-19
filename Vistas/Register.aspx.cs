@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using Negocio;
+using System.Data;
 
 namespace Vistas
 {
@@ -17,6 +18,10 @@ namespace Vistas
             if (Session["User"] != null)
             {
                 Response.Redirect("home.aspx");
+            }
+            if (!Page.IsPostBack)
+            {
+                CargarProvincias();
             }
         }
 
@@ -54,14 +59,27 @@ namespace Vistas
             objUsuario.Email = txtEmail.Text;
             objUsuario.Direccion = txtDireccion.Text;
             objUsuario.Ciudad = txtCiudad.Text;
-            objUsuario.Provincia = txtProvincia.Text;
+            objUsuario.Provincia = DdlProvincia.SelectedItem.Text;
             objUsuario.Codigo_Postal = txtCodigoPostal.Text;
             objUsuario.Ruta_Img = "../Recursos/img/avatar.png";
-            objUsuario.Estado = 1;
+            // Los usuarios registrados siempre estan "Estado Activo" y poseen Rol de "Usuario"
+            objUsuario.Estado = 2;
             objUsuario.Codigo_Perfil = 2;
 
             return objUsuario;
         }
+
+        private void CargarProvincias()
+        {
+            DdlProvincia.Items.Add(new ListItem("- Provincia -", "-1"));
+            DdlProvincia.Items[0].Selected = true;
+            DdlProvincia.Items[0].Attributes["disabled"] = "disabled";
+            DataTable dt = NegocioUsuarios.getInstance().ObtenerProvincias();
+            foreach (DataRow dr in dt.Rows)
+            {
+                DdlProvincia.Items.Add(new ListItem(dr["prov_nombre"].ToString(), dr["prov_codigo"].ToString()));
+            }
+        }
     }
-    
+
 }

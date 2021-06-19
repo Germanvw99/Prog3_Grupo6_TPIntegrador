@@ -213,6 +213,89 @@
              </div>
 		</div>
     </div>
+    <!-- MODAL -->
+    <div id="myModalEditar" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalles</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="text-center">
+						<asp:Image ID="ProfilePicEditar" Height="200px" Width="200px" runat="server" class="img-fluid"/>
+					</div>
+                    <div class="row d-flex mt-3">
+                        <div class="form-group col-md-6">
+                            <label>Dni Personal</label>
+						    <asp:TextBox ID="txtEditarDni" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Username</label>
+						    <asp:TextBox ID="txtEditarUsername" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Nombre</label>
+						    <asp:TextBox ID="txtEditarNombre" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Apellido</label>
+						    <asp:TextBox ID="txtEditarApellido" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Telefono</label>
+						    <asp:TextBox ID="txtEditarTelefono" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Email</label>
+						    <asp:TextBox ID="txtEditarEmail" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Ciudad</label>
+						    <asp:TextBox ID="txtEditarCiudad" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Provincia</label>
+						    <asp:TextBox ID="txtEditarProvincia" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Codigo Postal</label>
+						    <asp:TextBox ID="txtEditarCodigo_Postal" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Tipo de Usuario</label>
+						    <asp:TextBox ID="txtEditarCodigo_Estado" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="form-group col-md-6">
+                            <label>Direccion</label>
+						    <asp:TextBox ID="txtEditarDireccion" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Estado</label>
+                            <asp:DropDownList ID="DdlEditarTipo_usuario" class="custom-select form-control"  runat="server"></asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <%--BOTONES VER - EDITAR - ELIMINAR--%>
+                        <asp:Button runat="server" ID="BtnEditar" type="button" class="btn btn-warning" data-mdb-dismiss="modal"  Text="Editar" OnClick="BtnEditarUsuario_Click"></asp:Button>
+                    </div>
+                </div>
+             </div>
+		</div>
+    </div>
 	<!-- MODAL ELIMINAR-->
     <div class="modal fade" id="myModalEliminar">
         <div class="modal-dialog">

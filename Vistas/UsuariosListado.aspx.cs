@@ -98,8 +98,63 @@ namespace Vistas
 			if (e.CommandName == "eventoEditar")
 			{
 				// RECUPERO EL CONTENIDO DEL WEBFORM
-				
+				int fila = Convert.ToInt32(e.CommandArgument);
+				// OBTENGO LOS DATOS DEL USUARIO
+				Usuarios objUsuario = NegocioUsuarios.getInstance().LeerUsuarioDni(((Label)GrdUsuarios.Rows[fila].FindControl("usu_dni")).Text);
+				// RELLENO CON DATOS
 
+				txtEditarDni.Text = objUsuario.Dni;
+				txtEditarUsername.Text = objUsuario.Username;
+				txtEditarNombre.Text = objUsuario.Nombre;
+				txtEditarApellido.Text = objUsuario.Apellido;
+				txtEditarTelefono.Text = objUsuario.Telefono;
+				txtEditarEmail.Text = objUsuario.Email;
+				txtEditarCiudad.Text = objUsuario.Ciudad;
+				txtEditarProvincia.Text = objUsuario.Provincia;
+				txtEditarCodigo_Postal.Text = objUsuario.Codigo_Postal;
+				ProfilePicEditar.ImageUrl = objUsuario.Ruta_Img;
+				txtEditarDireccion.Text = objUsuario.Direccion;
+				txtEditarCodigo_Estado.Text = ((Label)GrdUsuarios.Rows[fila].FindControl("est_nombre")).Text;
+				if (objUsuario.Codigo_Perfil == 1)
+				{
+					txtEditarCodigo_Estado.Text = "Administrador";
+				}
+				else { txtEditarCodigo_Estado.Text = "Usuario"; }
+
+				// COMPLETA DDL CON ESTADOS DE DATABASE
+				if (DdlEditarTipo_usuario.Items.Count == 0)
+                {
+					DataTable dt = negocioEstados.ObtenerEstados();
+					foreach (DataRow dr in dt.Rows)
+					{
+						DdlEditarTipo_usuario.Items.Add(new ListItem(dr["est_nombre"].ToString(), dr["est_codigo"].ToString()));
+					}
+                }
+
+				if(objUsuario.Estado == 1)
+                {
+					DdlEditarTipo_usuario.Items[0].Selected = true;
+				}
+                else { DdlEditarTipo_usuario.Items[1].Selected = true; }
+
+				txtEditarDni.Enabled = false;
+				txtEditarUsername.Enabled = false;
+				txtEditarNombre.Enabled = false;
+				txtEditarApellido.Enabled = false;
+				txtEditarTelefono.Enabled = false;
+				txtEditarEmail.Enabled = false;
+				txtEditarCiudad.Enabled = false;
+				txtEditarProvincia.Enabled = false;
+				txtEditarCodigo_Postal.Enabled = false;
+				TxtCodigo_Perfil.Enabled = false;
+				txtEditarDireccion.Enabled = false;
+				txtEditarCodigo_Estado.Enabled = false;
+
+				// CREO EL SESSION PARA TRANSPORTAR LOS DATOS DEL USUARIO A EDITAR.
+				NegocioUsuarios.getInstance().AgregarUsuarioAEditar(objUsuario);
+
+				//MOSTRAR MODAL
+				ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModalEditar').modal('show');</script>", false);
 			}
 			if (e.CommandName == "eventoEliminar")
 			{
@@ -119,7 +174,26 @@ namespace Vistas
 				//MOSTRAR MODAL
 				ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModalEliminar').modal('show');</script>", false);
 
+			}
+		}
 
+		protected void BtnEditarUsuario_Click(object sender, EventArgs e)
+        {
+			// RECUPERO EL CONTENIDO DEL WEBFORM
+			Usuarios objUsuario = NegocioUsuarios.getInstance().ObtenerUsuarioAEditar();
+			// EDITO AL USUARIO DE LA BASE DE DATOS
+			int nuevoEstado = Convert.ToInt32(DdlEditarTipo_usuario.SelectedValue);
+			bool editado = NegocioUsuarios.getInstance().EditarUsuarioEstado(objUsuario, nuevoEstado);
+
+			if(editado)
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se editó el usuario " + objUsuario.Username + "');", true);
+				CargarGridView();
+			}
+			else
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar al usuario " + objUsuario.Username + " porque es administrador');", true);
+				CargarGridView();
 			}
 		}
 
@@ -143,6 +217,7 @@ namespace Vistas
 			}
 		}
 
+	
 		protected void BtnFiltrar_Click(object sender, EventArgs e)
 		{
 			GrdUsuarios.DataSource = NegocioUsuarios.getInstance().filtrarUsuarios(txtFiltrarDni.Text, txtFiltrarUsername.Text, DdlFiltrarProvincia.SelectedItem.Text, DdlFiltrarEstado.SelectedValue);
