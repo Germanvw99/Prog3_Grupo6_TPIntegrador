@@ -199,8 +199,8 @@ namespace Vistas
 			Response.Redirect("VentasListado.aspx");
 		}
 
-        #region FILTRADO DE ARTICULOS
-        protected void BtnFiltrar_Click(object sender, EventArgs e)
+		#region FILTRADO DE ARTICULOS
+		protected void BtnFiltrar_Click(object sender, EventArgs e)
 		{
 
 			GrdArticulos.DataSource = negocioArticulo.filtrarConsultaArticulos(TxtCodigo.Text, TxtNombre.Text, DdlMarcas.SelectedValue, DdlCategorias.SelectedValue);
@@ -219,7 +219,7 @@ namespace Vistas
 			DdlMarcas.SelectedValue = "0";
 			DdlCategorias.SelectedValue = "0";
 		}
-        #endregion
+		#endregion
 
-    }
+	}
 }
