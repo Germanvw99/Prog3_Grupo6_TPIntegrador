@@ -20,6 +20,14 @@ namespace Negocio
             return ("Imagenes/articulos/")+nombreArchivo;
         }
 
+        public static string SubirImagenCategoria(HttpPostedFile file)
+        {
+            string nombreArchivo = Path.GetFileName(file.FileName);
+            string finalPath = globalPath + "categorias/" + nombreArchivo;
+            file.SaveAs(finalPath);
+            return ("Imagenes/categorias/") + nombreArchivo;
+        }
+
         public static bool validarArchivo(HttpPostedFile file)
         {
             bool answ;

@@ -33,13 +33,18 @@
                                     <div class ="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="form-label">Nombre</label><asp:RequiredFieldValidator ID="RfvTxtNombre" runat="server" ControlToValidate="TxtNombre" ErrorMessage="*Debe ingregar un nombre" ForeColor="Red" ValidationGroup="agregar">*</asp:RequiredFieldValidator>
-&nbsp;<asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                                                <label class="form-label">Nombre</label>
+                                                <asp:RequiredFieldValidator ID="RfvTxtNombre" runat="server" ControlToValidate="TxtNombre" ErrorMessage="*Debe ingregar un nombre" ForeColor="Red" ValidationGroup="agregar">*</asp:RequiredFieldValidator>
+                                                &nbsp;
+                                                <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label">Descripción<asp:RequiredFieldValidator ID="RfvTxtDescripcion" runat="server" ControlToValidate="TxtDescripcion" ErrorMessage="**Debe ingresar una descripción" ForeColor="Red" ValidationGroup="agregar">**</asp:RequiredFieldValidator>
+                                                <label class="form-label">
+                                                    Descripción
+                                                    <asp:RequiredFieldValidator ID="RfvTxtDescripcion" runat="server" ControlToValidate="TxtDescripcion" ErrorMessage="**Debe ingresar una descripción" ForeColor="Red" ValidationGroup="agregar">**</asp:RequiredFieldValidator>
                                                 </label>
-                                                &nbsp;<asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="" TextMode="MultiLine"></asp:TextBox>
+                                                &nbsp;
+                                                <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="" TextMode="MultiLine"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
