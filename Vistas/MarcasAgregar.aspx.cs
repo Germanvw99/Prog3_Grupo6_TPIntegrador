@@ -19,10 +19,10 @@ namespace Vistas
         private string imagenURL = "Imagenes/marcas/__default.png";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (NegocioUsuarios.getInstance().isAdmin() != true)
-            {
-                Response.Redirect("home.aspx");
-            }
+            //if (NegocioUsuarios.getInstance().isAdmin() != true)
+            //{
+            //    Response.Redirect("home.aspx");
+            //}
             if (!Page.IsPostBack)
             {
                 CargarEstados();
@@ -72,35 +72,29 @@ namespace Vistas
         {
             Response.Redirect("UsuariosListado.aspx");
         }
-
         protected void IrListarArticulos_Click(object sender, EventArgs e)
         {
             Response.Redirect("ArticulosListado.aspx");
         }
-
         protected void IrListarMarcas_Click(object sender, EventArgs e)
         {
             Response.Redirect("MarcasListado.aspx");
         }
-
         protected void IrListarCategorias_Click(object sender, EventArgs e)
         {
             Response.Redirect("CategoriasListado.aspx");
         }
-
         protected void IrListarProveedores_Click(object sender, EventArgs e)
         {
             Response.Redirect("ProveedoresListado.aspx");
         }
-
-        protected void LnAgregarMarcas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("MarcasAgregar.aspx");
-        }
-
         protected void IrListarVentas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ProveedoresListado.aspx");
+            Response.Redirect("VentasListado.aspx");
+        }
+        protected void IrListarStock_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ControlStockListado.aspx");
         }
     }
 }
