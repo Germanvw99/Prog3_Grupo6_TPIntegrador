@@ -40,6 +40,7 @@ namespace Vistas
 
         private void CargarEstados()
         {
+            DdlEstados.Items.Add(new ListItem("-- Elija un estado --", "0"));
             DataTable dt = negocioEstado.ObtenerEstados();
             foreach (DataRow dr in dt.Rows)
             {
@@ -49,7 +50,7 @@ namespace Vistas
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text))
+            if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text) && Int32.Parse(DdlEstados.SelectedValue) != 0)
             {
                 if (FUCategoria.HasFile)
                 {
