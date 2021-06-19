@@ -35,6 +35,13 @@ namespace Negocio
 			file.SaveAs(finalPath);
 			return ("Imagenes/marcas/") + nombreArchivo;
 		}
+		public static string SubirImagenProveedor(HttpPostedFile file)
+		{
+			string nombreArchivo = Path.GetFileName(file.FileName);
+			string finalPath = globalPath + "proveedores/" + nombreArchivo;
+			file.SaveAs(finalPath);
+			return ("Imagenes/proveedores/") + nombreArchivo;
+		}
 
 		public static bool validarArchivo(HttpPostedFile file)
 		{
