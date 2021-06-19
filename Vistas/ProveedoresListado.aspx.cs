@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using System.Data;
 using Entidades;
 
 namespace Vistas
@@ -12,6 +13,7 @@ namespace Vistas
 	public partial class ProveedoresListado : System.Web.UI.Page
 	{
 		private readonly NegocioProveedores negocioProveedor = new NegocioProveedores();
+		private readonly NegocioEstados negocioEstado = new NegocioEstados();
 		private Proveedores proveedor = new Proveedores();
 		private readonly Estados estado = new Estados();
 
@@ -24,6 +26,17 @@ namespace Vistas
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
+				CargarEstados();
+			}
+		}
+
+		private void CargarEstados()
+		{
+			DdlEstados.Items.Add(new ListItem("", "0"));
+			DataTable dt = negocioEstado.ObtenerEstados();
+			foreach (DataRow dr in dt.Rows)
+			{
+				DdlEstados.Items.Add(new ListItem(dr["est_nombre"].ToString(), dr["est_codigo"].ToString()));
 			}
 		}
 		private void CargarGridView()
@@ -158,5 +171,27 @@ namespace Vistas
 		{
 			Response.Redirect("VentasListado.aspx");
 		}
-	}
+
+        #region FILTRADO DE PROVEEDORES
+
+        protected void BtnFiltrar_Click(object sender, EventArgs e)
+		{
+			GrdProveedores.DataSource = negocioProveedor.filtrarConsultaProveedor(TxtCodigo.Text, TxtNombre.Text, DdlEstados.SelectedValue);
+			GrdProveedores.DataBind();
+		}
+
+		protected void BtnQuitarFiltro_Click(object sender, EventArgs e)
+		{
+			CargarGridView();
+			limpiarCampos();
+		}
+
+		private void limpiarCampos()
+		{
+			TxtCodigo.Text = string.Empty;
+			TxtNombre.Text = string.Empty;
+			DdlEstados.SelectedValue = "0";
+		}
+        #endregion
+    }
 }

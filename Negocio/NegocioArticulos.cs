@@ -310,24 +310,24 @@ namespace Negocio
 		//FILTRADO DE ARTICULOS
 		public DataTable filtrarConsultaArticulos(string Codigo, string Nombre, string codMarca, string codCategoria)
 		{
-			string ClausulaSQLConsultaArticulos = "";
+			string ClausulaSQLConsulta = "";
 			if (!Codigo.Equals(""))
 			{
-				ConstruirClausulaSQL("art_codigo", Codigo, ref ClausulaSQLConsultaArticulos);
+				ConstruirClausulaSQL("art_codigo", Codigo, ref ClausulaSQLConsulta);
 			}
 			if (!codMarca.Equals("0"))
 			{
-				ConstruirClausulaSQL("art_marca_codigo", codMarca, ref ClausulaSQLConsultaArticulos);
+				ConstruirClausulaSQL("art_marca_codigo", codMarca, ref ClausulaSQLConsulta);
 			}
 			if (!codCategoria.Equals("0"))
 			{
-				ConstruirClausulaSQL("art_categoria_codigo", codCategoria, ref ClausulaSQLConsultaArticulos);
+				ConstruirClausulaSQL("art_categoria_codigo", codCategoria, ref ClausulaSQLConsulta);
 			}
 			if (!Nombre.Equals(""))
 			{
-				ConstruirClausulaSQL("art_nombre", Nombre, ref ClausulaSQLConsultaArticulos);
+				ConstruirClausulaSQL("art_nombre", Nombre, ref ClausulaSQLConsulta);
 			}
-			return daoArticulo.filtrarConsultaArticulos(ref ClausulaSQLConsultaArticulos);
+			return daoArticulo.filtrarConsultaArticulos(ref ClausulaSQLConsulta);
 		}
 
 		private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Clausula)

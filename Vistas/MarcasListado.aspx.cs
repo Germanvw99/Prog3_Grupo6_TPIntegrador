@@ -23,7 +23,6 @@ namespace Vistas
 			}
 			CargarGridView();
 		}
-
 		private void CargarGridView()
 		{
 			GrdMarcas.DataSource = negocioMarca.ObtenerMarcas();
@@ -170,5 +169,24 @@ namespace Vistas
 		{
 			Response.Redirect("VentasListado.aspx");
 		}
-	}
+
+        #region FILTRADO DE MARCAS
+        protected void BtnFiltrar_Click(object sender, EventArgs e)
+        {
+			GrdMarcas.DataSource = negocioMarca.filtrarConsultaMarca(TxtNombre.Text, DdlEstados.SelectedValue);
+			GrdMarcas.DataBind();
+		}
+
+        protected void BtnQuitarFiltro_Click(object sender, EventArgs e)
+        {
+			CargarGridView();
+			limpiarCampos();
+		}
+		private void limpiarCampos()
+		{
+			TxtNombre.Text = string.Empty;
+			DdlEstados.SelectedValue = "0";
+		}
+        #endregion
+    }
 }

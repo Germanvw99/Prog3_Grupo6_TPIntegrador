@@ -156,5 +156,55 @@ namespace Negocio
 
 		#endregion
 
+		//FILTRADO DE PROVEEDORES
+		public DataTable filtrarConsultaProveedor(string Codigo, string Nombre, string codEstado)
+		{
+			string ClausulaSQLConsulta = "";
+			if (!Codigo.Equals(""))
+			{
+				ConstruirClausulaSQL("pro_dni", Codigo, ref ClausulaSQLConsulta);
+			}
+			if (!Nombre.Equals(""))
+			{
+				ConstruirClausulaSQL("pro_razon_social", Nombre, ref ClausulaSQLConsulta);
+			}
+			if (!codEstado.Equals("0"))
+			{
+				ConstruirClausulaSQL("pro_codigo_estado", codEstado, ref ClausulaSQLConsulta);
+			}
+			return daoProveedor.filtrarConsultaProveedor(ref ClausulaSQLConsulta);
+		}
+
+		private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Clausula)
+		{
+			string d1 = ""; // Delimitador 1
+			string d2 = ""; // Delimitador 2
+			if (Clausula == "")
+			{
+				Clausula = Clausula + " WHERE ";
+			}
+			else
+			{
+				Clausula = Clausula + " AND ";
+			}
+			// USO UN SWITCH
+			switch (NombreCampo)
+			{
+				case "pro_dni":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "pro_codigo_estado":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "pro_razon_social":
+					d1 = " LIKE '%";
+					d2 = "%'";
+					break;
+			}
+			// CONSTRUYO LA CLAUSULA
+			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
+		}
 	}
 }

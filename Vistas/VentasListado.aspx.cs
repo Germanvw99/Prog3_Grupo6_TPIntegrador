@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using Negocio;
 using Entidades;
 using System.Globalization;
@@ -13,7 +14,9 @@ namespace Vistas
     public partial class VentasListado : System.Web.UI.Page
     {
 
-        private readonly NegocioVentas negocioVentas = new NegocioVentas();
+        private readonly NegocioVentas negocioVenta = new NegocioVentas();
+        private readonly NegocioMarcas negocioMarca = new NegocioMarcas();
+        private readonly NegocioCategorias negocioCategoria = new NegocioCategorias();
         private readonly Ventas venta = new Ventas();
         private readonly Usuarios usuario = new Usuarios();
         private readonly MediosPago medioPago = new MediosPago();
@@ -24,12 +27,34 @@ namespace Vistas
             if (!Page.IsPostBack)
             {
                 CargarGridView();
+                CargarMarcas();
+                CargarCategorias();
             }
         }
         private void CargarGridView()
         {
-            GrdVentas.DataSource = negocioVentas.ObtenerVentas();
+            GrdVentas.DataSource = negocioVenta.ObtenerVentas();
             GrdVentas.DataBind();
+        }
+
+        private void CargarMarcas()
+        {
+            DdlMarcas.Items.Add(new ListItem("", "0"));
+            DataTable dt = negocioMarca.ObtenerMarcas();
+            foreach (DataRow dr in dt.Rows)
+            {
+                DdlMarcas.Items.Add(new ListItem(dr["mar_nombre"].ToString(), dr["mar_codigo"].ToString()));
+            }
+        }
+
+        private void CargarCategorias()
+        {
+            DdlCategorias.Items.Add(new ListItem("", "0"));
+            DataTable dt = negocioCategoria.ObtenerCategorias();
+            foreach (DataRow dr in dt.Rows)
+            {
+                DdlCategorias.Items.Add(new ListItem(dr["cat_nombre"].ToString(), dr["cat_codigo"].ToString()));
+            }
         }
         protected void GrdVentas_PreRender(object sender, EventArgs e)
         {
@@ -93,10 +118,10 @@ namespace Vistas
                 venta.SetMedioPago(medioPago);
                 venta.SetEstado(estado);
                 //
-                negocioVentas.CrearSesion();
+                negocioVenta.CrearSesion();
 
                 negocioDetalleVentas.CrearSesionDetalleVenta(codigoVenta);
-                negocioVentas.AgregarVentaEnLaSesion(venta);
+                negocioVenta.AgregarVentaEnLaSesion(venta);
                 //
                 Response.Redirect("DetalleVenta.aspx");
             }
@@ -131,5 +156,25 @@ namespace Vistas
             Response.Redirect("VentasListado.aspx");
         }
 
+        #region FILTRADO DE VENTAS
+        protected void BtnFiltrar_Click(object sender, EventArgs e)
+        {
+            GrdVentas.DataSource = negocioVenta.filtrarConsultaVenta(TxtCliente.Text, TxtArticulo.Text, DdlMarcas.SelectedValue, DdlCategorias.SelectedValue);
+            GrdVentas.DataBind();
+        }
+
+        protected void BtnQuitarFiltro_Click(object sender, EventArgs e)
+        {
+            CargarGridView();
+            limpiarCampos();
+        }
+        private void limpiarCampos()
+        {
+            TxtCliente.Text = string.Empty;
+            TxtArticulo.Text = string.Empty;
+            DdlMarcas.SelectedValue = "0";
+            DdlCategorias.SelectedValue = "0";
+        }
+        #endregion
     }
 }

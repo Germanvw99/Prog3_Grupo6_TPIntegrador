@@ -36,10 +36,10 @@
                                 <div class="card-body card bg-light">
                                     <div class="row">
                                         <div class="col-md-6 text-left">
-                                            <label class="form-label">Buscar marca por nombre o código</label>
+                                            <label class="form-label">Buscar por nombre</label>
                                         </div>
                                         <div class="col-md-6 text-left">
-                                            <label class="form-label">Buscar marca por estado</label>
+                                            <label class="form-label">Buscar por estado</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -50,9 +50,9 @@
                                             <asp:DropDownList ID="DdlEstados" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Filtrar búsqueda" />
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Filtrar búsqueda" OnClick="BtnFiltrar_Click" />
                                             &nbsp;&nbsp;
-                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" />
+                                            <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" OnClick="BtnQuitarFiltro_Click" />
                                         </div>
                                     </div>
                                 </div>

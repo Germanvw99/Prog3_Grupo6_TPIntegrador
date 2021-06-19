@@ -153,16 +153,16 @@ namespace Negocio
 		//FILTRADO DE ARTICULOS
 		public DataTable filtrarConsultaCategoria(string Nombre, string codEstado)
 		{
-			string ClausulaSQLConsultaCategoria = "";
+			string ClausulaSQLConsulta = "";
 			if (!codEstado.Equals("0"))
 			{
-				ConstruirClausulaSQL("cat_codigo_estado", codEstado, ref ClausulaSQLConsultaCategoria);
+				ConstruirClausulaSQL("cat_codigo_estado", codEstado, ref ClausulaSQLConsulta);
 			}
 			if (!Nombre.Equals(""))
 			{
-				ConstruirClausulaSQL("cat_nombre", Nombre, ref ClausulaSQLConsultaCategoria);
+				ConstruirClausulaSQL("cat_nombre", Nombre, ref ClausulaSQLConsulta);
 			}
-			return daoCategoria.filtrarConsultaCategoria(ref ClausulaSQLConsultaCategoria);
+			return daoCategoria.filtrarConsultaCategoria(ref ClausulaSQLConsulta);
 		}
 
 		private void ConstruirClausulaSQL(string NombreCampo, string Valor, ref string Clausula)
