@@ -47,7 +47,7 @@ namespace Vistas
 
 		private void CargarCategorias()
 		{
-			DdlCategoriaModificar.Items.Add(new ListItem("", "0"));
+			DdlCategoriaModificar.Items.Add(new ListItem("-- Elija una categoría --", "0"));
 			DataTable dt = negocioCategoria.ObtenerCategorias();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -57,7 +57,7 @@ namespace Vistas
 
 		private void CargarEstados()
 		{
-			DdlEstadoModificar.Items.Add(new ListItem("", "0"));
+			DdlEstadoModificar.Items.Add(new ListItem("-- Elija un estado --", "0"));
 			DataTable dt = negocioEstado.ObtenerEstados();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -66,7 +66,7 @@ namespace Vistas
 		}
 		private void CargarMarcas()
 		{
-			DdlMarcaModificar.Items.Add(new ListItem("", "0"));
+			DdlMarcaModificar.Items.Add(new ListItem("-- Elija una marca --", "0"));
 			DataTable dt = negocioMarca.ObtenerMarcas();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -108,12 +108,18 @@ namespace Vistas
 			{
 				articulo.SetPrecioLista(Decimal.Parse(TxtPrecioListaModificar.Text.Trim()));
 			}
+
 			if (FUArticulo.HasFile)
 			{
-				string imagenNombre = FUArticulo.PostedFile.FileName;
-				imagenNombre = "Imagenes/articulos/" + imagenNombre;
-				articulo.SetRutaImagen(imagenNombre);
+				// VALIDA QUE EL ARCHIVO SEA CORRECTO.
+				if (NegocioImagenes.validarArchivo(FUArticulo.PostedFile))
+				{
+					// SUBE ARCHIVO.
+					string imagenNombre = NegocioImagenes.SubirImagenArticulo(FUArticulo.PostedFile);
+					articulo.SetRutaImagen(imagenNombre);
+				}
 			}
+
 			int agrego = negocioArticulo.modificarArticulo(articulo);
 
 			if (agrego == 0)
@@ -129,7 +135,18 @@ namespace Vistas
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El nombre del artículo ya existe');", true);
 			}
 
-			//LimpiarCampos();
+			LimpiarCampos();
+		}
+
+		private void LimpiarCampos()
+		{
+			TxtNombreModificar.Text = string.Empty;
+			TxtDescripcionModificar.Text = string.Empty;
+			DdlMarcaModificar.SelectedValue = "0";
+			DdlCategoriaModificar.SelectedValue = "0";
+			DdlEstadoModificar.SelectedValue = "0";
+			TxtPuntoPedidoModificar.Text = string.Empty;
+			TxtPrecioListaModificar.Text = string.Empty;
 		}
 
 		//
@@ -170,6 +187,11 @@ namespace Vistas
 		protected void IrAgregarCategoria_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("CategoriasAgregar.aspx");
+		}
+
+		protected void BtnCancelar_Click(object sender, EventArgs e)
+		{
+			LimpiarCampos();
 		}
 	}
 }

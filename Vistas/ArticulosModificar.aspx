@@ -120,8 +120,9 @@
                                                 <asp:FileUpload ID="FUArticulo" runat="server" />
                                             </div>
                                             <div class="form-group float-right">
-                                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>&nbsp &nbsp
-                                                <asp:Button ID="BtnModificarArticulo" class="btn btn-primary float-right" runat="server" Text="Modificar Artículo" OnClick="BtnModificarArticulo_Click" />
+                                                                                                <asp:Button ID="BtnModificarArticulo" class="btn btn-primary float-right" runat="server" Text="Modificar Artículo" OnClick="BtnModificarArticulo_Click" />
+                                                                                                &nbsp &nbsp
+                                                <asp:Button ID="BtnCancelar" class="btn btn-secondary float-right" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" />
                                             </div>
                                                 </div>
                                             </div>
