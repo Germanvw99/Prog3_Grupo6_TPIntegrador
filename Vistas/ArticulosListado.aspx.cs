@@ -23,10 +23,10 @@ namespace Vistas
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (NegocioUsuarios.getInstance().isAdmin() != true)
-			{
-				Response.Redirect("home.aspx");
-			}
+			//if (NegocioUsuarios.getInstance().isAdmin() != true)
+			//{
+			//	Response.Redirect("home.aspx");
+			//}
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
@@ -175,12 +175,10 @@ namespace Vistas
 		{
 			Response.Redirect("ArticulosListado.aspx");
 		}
-
 		protected void IrListarMarcas_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("MarcasListado.aspx");
 		}
-
 		protected void IrListarCategorias_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("CategoriasListado.aspx");
@@ -189,14 +187,19 @@ namespace Vistas
 		{
 			Response.Redirect("ProveedoresListado.aspx");
 		}
-
-		protected void LnAgregarArticulos_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("ArticulosAgregar.aspx");
-		}
 		protected void IrListarVentas_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("VentasListado.aspx");
+		}
+		protected void IrListarStock_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ControlStockListado.aspx");
+		}
+
+		// LINKBUTTON AGREGAR
+		protected void LnAgregarArticulos_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ArticulosAgregar.aspx");
 		}
 
 		#region FILTRADO DE ARTICULOS

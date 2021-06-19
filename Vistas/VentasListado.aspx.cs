@@ -136,12 +136,10 @@ namespace Vistas
         {
             Response.Redirect("ArticulosListado.aspx");
         }
-
         protected void IrListarMarcas_Click(object sender, EventArgs e)
         {
             Response.Redirect("MarcasListado.aspx");
         }
-
         protected void IrListarCategorias_Click(object sender, EventArgs e)
         {
             Response.Redirect("CategoriasListado.aspx");
@@ -150,10 +148,13 @@ namespace Vistas
         {
             Response.Redirect("ProveedoresListado.aspx");
         }
-
         protected void IrListarVentas_Click(object sender, EventArgs e)
         {
             Response.Redirect("VentasListado.aspx");
+        }
+        protected void IrListarStock_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ControlStockListado.aspx");
         }
 
         #region FILTRADO DE VENTAS

@@ -268,22 +268,18 @@ namespace Vistas
 
 
 		// Botones redireccion
-
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
 		}
-
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
 		}
-
 		protected void IrListarMarcas_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("MarcasListado.aspx");
 		}
-
 		protected void IrListarCategorias_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("CategoriasListado.aspx");
@@ -292,14 +288,13 @@ namespace Vistas
 		{
 			Response.Redirect("ProveedoresListado.aspx");
 		}
-
-		protected void LnAgregarArticulos_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("ArticulosAgregar.aspx");
-		}
 		protected void IrListarVentas_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("VentasListado.aspx");
 		}
-    }
+		protected void IrListarStock_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ControlStockListado.aspx");
+		}
+	}
 }

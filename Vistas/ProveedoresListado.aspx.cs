@@ -142,11 +142,11 @@ namespace Vistas
 
 			//Response.Redirect("ProveedoresListado.aspx");
 		}
+
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
 		}
-
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
@@ -163,13 +163,19 @@ namespace Vistas
 		{
 			Response.Redirect("ProveedoresListado.aspx");
 		}
-		protected void LnAgregarProveedor_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("ProveedoresAgregar.aspx");
-		}
 		protected void IrListarVentas_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("VentasListado.aspx");
+		}
+		protected void IrListarStock_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ControlStockListado.aspx");
+		}
+
+		// LINKBUTTUN AGREGAR
+		protected void LnAgregarProveedor_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ProveedoresAgregar.aspx");
 		}
 
         #region FILTRADO DE PROVEEDORES
