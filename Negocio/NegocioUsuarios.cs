@@ -28,7 +28,15 @@ namespace Negocio
         {
             try
             {
-                return CrearSessionUsuario(DaoUsuarios.GetInstance().Login(username, password));
+                Usuarios objUsuario = DaoUsuarios.GetInstance().Login(username, password);
+                if(objUsuario.Estado == 2)
+                {
+                    return CrearSessionUsuario(DaoUsuarios.GetInstance().Login(username, password));
+                }
+                else
+                { 
+                    return objUsuario;
+                }
             }
             catch (Exception exc)
             {
