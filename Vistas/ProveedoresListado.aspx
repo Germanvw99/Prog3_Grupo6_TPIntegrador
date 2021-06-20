@@ -28,7 +28,8 @@
                                             <h5 class="h2 card-title mb-0">Listado de Proveedores</h5>
                                         </div>
                                         <div class="col-md-6">
-											<asp:LinkButton ID="LnAgregarProveedor" class="btn btn-outline-dark float-right" runat="server" OnClick="LnAgregarProveedor_Click">+ Agregar Proveedor</asp:LinkButton>                                        </div>
+                                            <asp:LinkButton ID="LnAgregarProveedor" class="btn btn-outline-dark float-right" runat="server" OnClick="LnAgregarProveedor_Click">+ Agregar Proveedor</asp:LinkButton>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -69,54 +70,54 @@
                                         OnPreRender="GrdProveedores_PreRender"
                                         CssClass="table-striped dataTable dtr-inline table-hover row-border"
                                         OnRowCommand="GrdProveedores_RowCommand">
-								<Columns>
-									<asp:TemplateField HeaderText="CUIL">
-										<ItemTemplate>
-											<asp:Label ID="pro_dni" runat="server" Text='<%# Eval("pro_dni") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									<asp:TemplateField HeaderText="Logo">
-										<ItemTemplate>
-											<asp:Image ID="pro_ruta_imagen" Height="50px" Width="50px" runat="server" ImageUrl='<%# Eval("pro_ruta_imagen") %>' />											
-										</ItemTemplate>
-									</asp:TemplateField>
-									<asp:TemplateField HeaderText="Razón Social">
-										<ItemTemplate>
-											<asp:Label ID="pro_razon_social" runat="server" Text='<%# Eval("pro_razon_social") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									<asp:TemplateField HeaderText="Dirección">
-										<ItemTemplate>
-											<asp:Label ID="pro_direccion" runat="server" Text='<%# Eval("pro_direccion") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									<asp:TemplateField HeaderText="Correo">
-										<ItemTemplate>
-											<asp:Label ID="pro_email" runat="server" Text='<%# Eval("pro_email") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									<asp:TemplateField HeaderText="Teléfono">
-										<ItemTemplate>
-											<asp:Label ID="pro_telefono" runat="server" Text='<%# Eval("pro_telefono") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									<asp:TemplateField HeaderText="Contacto">
-										<ItemTemplate>
-											<asp:Label ID="pro_nombre_contacto" runat="server" Text='<%# Eval("pro_nombre_contacto") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									<asp:TemplateField HeaderText="Estado">
-										<ItemTemplate>
-											<asp:Label ID="est_nombre" runat="server" Text='<%# Eval("est_nombre") %>' />
-                                            <asp:Label ID="est_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("est_codigo") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									<%--BOTONES VER - EDITAR - ELIMINAR--%>
-									<asp:ButtonField ButtonType="Image" CommandName="eventoVerDetalle" ImageUrl="Recursos/img/ver.png" />
-									<asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
-									<asp:ButtonField ButtonType="Image" CommandName="eventoEliminar" ImageUrl="Recursos/img/eliminar.png" />
-								</Columns>
-							</asp:GridView>
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="CUIL">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="pro_dni" runat="server" Text='<%# Eval("pro_dni") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Logo">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="pro_ruta_imagen" Height="50px" Width="50px" runat="server" ImageUrl='<%# Eval("pro_ruta_imagen") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Razón Social">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="pro_razon_social" runat="server" Text='<%# Eval("pro_razon_social") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Dirección">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="pro_direccion" runat="server" Text='<%# Eval("pro_direccion") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Correo">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="pro_email" runat="server" Text='<%# Eval("pro_email") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Teléfono">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="pro_telefono" runat="server" Text='<%# Eval("pro_telefono") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Contacto">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="pro_nombre_contacto" runat="server" Text='<%# Eval("pro_nombre_contacto") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Estado">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="est_nombre" runat="server" Text='<%# Eval("est_nombre") %>' />
+                                                    <asp:Label ID="est_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("est_codigo") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <%--BOTONES VER - EDITAR - ELIMINAR--%>
+                                            <asp:ButtonField ButtonType="Image" CommandName="eventoVerDetalle" ImageUrl="Recursos/img/ver.png" />
+                                            <asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
+                                            <asp:ButtonField ButtonType="Image" CommandName="eventoEliminar" ImageUrl="Recursos/img/eliminar.png" />
+                                        </Columns>
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>
@@ -133,37 +134,37 @@
                     <h4 class="modal-title">Detalles</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
-				<!-- Modal body -->
-				<div class="modal-body">
-					<div class="text-center">
-						<asp:Image ID="ImgLogo" Height="200px" Width="200px" runat="server" class="img-fluid"/>
-					</div>
-					<div class="form-group">
-						<label>Razón Social</label>
-						<asp:TextBox ID="TxtRazonSocial" runat="server" class="form-control form-control-lg"></asp:TextBox>
-					</div>
-					<div class="form-group">
-						<label>CUIL</label>
-						<asp:TextBox ID="TxtCuil" runat="server" class="form-control form-control-lg"></asp:TextBox>
-					</div>
-					<div class="form-group">
-						<label>Dirección</label>
-						<asp:TextBox ID="TxtDireccion" runat="server" class="form-control form-control-lg"></asp:TextBox>
-					</div>
-					<div class="form-group">
-						<label>Email</label>
-						<asp:TextBox ID="TxtMail" runat="server" class="form-control form-control-lg"></asp:TextBox>
-					</div>
-					<div class="form-group">
-						<label>Teléfono</label>
-						<asp:TextBox ID="TxtTelefono" runat="server" class="form-control form-control-lg"></asp:TextBox>
-					</div>
-					<div class="form-group">
-						<label>Nombre del Contacto</label>
-						<asp:TextBox ID="TxtNombreContacto" runat="server" class="form-control form-control-lg"></asp:TextBox>
-					</div>
-				</div>
-				<!-- Modal footer -->
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <asp:Image ID="ImgLogo" Height="200px" Width="200px" runat="server" class="img-fluid"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Razón Social</label>
+                        <asp:TextBox ID="TxtRazonSocial" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>CUIL</label>
+                        <asp:TextBox ID="TxtCuil" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <asp:TextBox ID="TxtDireccion" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <asp:TextBox ID="TxtMail" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <asp:TextBox ID="TxtTelefono" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre del Contacto</label>
+                        <asp:TextBox ID="TxtNombreContacto" runat="server" class="form-control form-control-lg"></asp:TextBox>
+                    </div>
+                </div>
+                <!-- Modal footer -->
             </div>
         </div>
     </div>
@@ -189,22 +190,16 @@
                         <div class="form-group text-center">
                             <asp:Label ID="TxtNombreModalEliminar" runat="server" ReadOnly="true" class ="form-control form-control-lg"></asp:Label>
                         </div>
-<%--                        <div class="form-group">
-                            <label>Código</label>
-                            <asp:TextBox ID="TxtCodigoModalEliminar" ReadOnly="true" runat="server" class="form-control form-control-lg"></asp:TextBox>
-                        </div>--%>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="form-group">
-                        <%--BOTONES VER - EDITAR - ELIMINAR--%>
                         <asp:Button runat="server" ID="BtnEliminarProveedor" type="button" class="btn btn-warning" data-mdb-dismiss="modal"  Text="Eliminar" OnClick="BtnEliminarProveedor_Click" ></asp:Button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="Recursos/js/jquery-3.6.0.min.js"></script>
     <script src="Recursos/js/jquery.dataTables.min.js"></script>
     <script src="Recursos/js/popper.min.js"></script>

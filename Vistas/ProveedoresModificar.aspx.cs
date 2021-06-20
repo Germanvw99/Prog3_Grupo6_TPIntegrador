@@ -28,7 +28,7 @@ namespace Vistas
 				CargarEstados();
 			}
 
-			// OBTENGO LA SESION DE CATEGORIAS
+			// OBTENGO LA SESION DE PROVEEDORES
 			proveedor = negocioProveedor.ObtenerSesionProveedor();
 			//
 			ImgLogo.ImageUrl = proveedor.GetRutaImagen();
@@ -43,7 +43,7 @@ namespace Vistas
 
 		private void CargarEstados()
 		{
-			DdlEstadoModificar.Items.Add(new ListItem("Elija un estado", "0"));
+			DdlEstadoModificar.Items.Add(new ListItem("-- Elija un estado --", "0"));
 			DataTable dt = negocioEstado.ObtenerEstados();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -84,15 +84,19 @@ namespace Vistas
 			}
 			if (FUProveedor.HasFile)
 			{
-				string imagenNombre = FUProveedor.PostedFile.FileName;
-				imagenNombre = "Imagenes/proveedores/" + imagenNombre;
-				proveedor.SetRutaImagen(imagenNombre);
+				// VALIDA QUE EL ARCHIVO SEA CORRECTO.
+				if (NegocioImagenes.validarArchivo(FUProveedor.PostedFile))
+				{
+					// SUBE ARCHIVO.
+					string imagenNombre = NegocioImagenes.SubirImagenProveedor(FUProveedor.PostedFile);
+					proveedor.SetRutaImagen(imagenNombre);
+				}
 			}
 			int agrego = negocioProveedor.modificarProveedor(proveedor);
 
 			if (agrego == 0)
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso modificar el proveedor');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo modificar el proveedor');", true);
 			}
 			if (agrego == 1)
 			{
@@ -103,7 +107,17 @@ namespace Vistas
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El nombre del proveedor ya existe');", true);
 			}
 
-			//LimpiarCampos();
+			LimpiarCampos();
+		}
+
+		private void LimpiarCampos()
+		{
+			TxtRazonSocialModificar.Text = string.Empty;
+			TxtDireccionModificar.Text = string.Empty;
+			TxtEmailModificar.Text = string.Empty;
+			TxtTelefonoModificar.Text = string.Empty;
+			TxtContactoModificar.Text = string.Empty;
+			DdlEstadoModificar.SelectedValue = "0";
 		}
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
@@ -133,6 +147,11 @@ namespace Vistas
 		protected void IrListarStock_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ControlStockListado.aspx");
+		}
+
+		protected void BtnCancelar_Click(object sender, EventArgs e)
+		{
+			LimpiarCampos();
 		}
 	}
 }

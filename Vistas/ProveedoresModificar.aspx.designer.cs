@@ -168,6 +168,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox TxtDireccionModificar;
 
         /// <summary>
+        /// Control RevTxtEmailModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RevTxtEmailModificar;
+
+        /// <summary>
         /// Control TxtEmailModificar.
         /// </summary>
         /// <remarks>
@@ -213,6 +222,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.FileUpload FUProveedor;
 
         /// <summary>
+        /// Control VsModificarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary VsModificarProveedor;
+
+        /// <summary>
         /// Control BtnModificarProveedor.
         /// </summary>
         /// <remarks>
@@ -220,5 +238,14 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnModificarProveedor;
+
+        /// <summary>
+        /// Control BtnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCancelar;
     }
 }
