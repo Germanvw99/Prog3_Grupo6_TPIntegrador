@@ -107,27 +107,32 @@
                                                         <asp:DropDownList ID="DdlEstadoModificar"  class="custom-select form-control" runat="server" > </asp:DropDownList>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label">Punto de pedido</label><asp:CompareValidator ID="CvTxtPuntoPedidoModificar" runat="server" ErrorMessage="*Debe ingresar un numero mayor a cero" ControlToValidate="TxtPuntoPedidoModificar" ForeColor="Red" Operator="GreaterThanEqual" Type="Integer" ValidationGroup="modificar" ValueToCompare="0">*</asp:CompareValidator>
-&nbsp;<asp:TextBox ID="TxtPuntoPedidoModificar" type="text" runat="server" TextMode="Number" class="form-control" placeholder=""></asp:TextBox>
+                                                        <label class="form-label">Punto de pedido</label>
+                                                        <asp:CompareValidator ID="CvTxtPuntoPedidoModificar" runat="server" ErrorMessage="*Debe ingresar un numero mayor a cero" ControlToValidate="TxtPuntoPedidoModificar" ForeColor="Red" Operator="GreaterThanEqual" Type="Integer" ValidationGroup="modificar" ValueToCompare="0">*</asp:CompareValidator>
+                                                        &nbsp;
+                                                        <asp:TextBox ID="TxtPuntoPedidoModificar" type="text" runat="server" TextMode="Number" class="form-control" placeholder=""></asp:TextBox>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label">Precio de Lista</label><asp:CompareValidator ID="CvTxtPrecioListaModificar" runat="server" ErrorMessage="** El valor debe ser monetario (hasta dos decimales)" ControlToValidate="TxtPrecioListaModificar" ForeColor="Red" Operator="GreaterThanEqual" Type="Currency" ValidationGroup="modificar" ValueToCompare="0">**</asp:CompareValidator>
-&nbsp;<asp:RegularExpressionValidator ID="RevTxtPrecioListaModificar" runat="server" ControlToValidate="TxtPrecioListaModificar" ErrorMessage="**Debe ingresar valores hasta con dos decimales (Usar . [punto]  como separador)" ForeColor="Red" ValidationExpression="^[0-9]+(\.[0-9]{1,2})?$" ValidationGroup="modificar">**</asp:RegularExpressionValidator>
+                                                        <label class="form-label">Precio de Lista</label>
+                                                        <asp:CompareValidator ID="CvTxtPrecioListaModificar" runat="server" ErrorMessage="** El valor debe ser monetario (hasta dos decimales)" ControlToValidate="TxtPrecioListaModificar" ForeColor="Red" Operator="GreaterThanEqual" Type="Currency" ValidationGroup="modificar" ValueToCompare="0">**</asp:CompareValidator>
+                                                        &nbsp;
+                                                        <asp:RegularExpressionValidator ID="RevTxtPrecioListaModificar" runat="server" ControlToValidate="TxtPrecioListaModificar" ErrorMessage="**Debe ingresar valores hasta con dos decimales (Usar . [punto]  como separador)" ForeColor="Red" ValidationExpression="^[0-9]+(\.[0-9]{1,2})?$" ValidationGroup="modificar">**</asp:RegularExpressionValidator>
                                                         <asp:TextBox ID="TxtPrecioListaModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                                     </div>
-                                                                                            <div class="form-group">
-                                            <label class="form-label">Imágen</label>
-                                            <div>
-                                                <asp:FileUpload ID="FUArticulo" runat="server" />
-                                                <br />
-                                                <br />
-                                                <asp:ValidationSummary ID="VsModificarArticulo" runat="server" ForeColor="Red" ValidationGroup="modificar" />
-                                            </div>
-                                            <div class="form-group float-right">
-                                                                                                <asp:Button ID="BtnModificarArticulo" class="btn btn-primary float-right" runat="server" Text="Modificar Artículo" OnClick="BtnModificarArticulo_Click" ValidationGroup="modificar" />
-                                                                                                &nbsp &nbsp
-                                                <asp:Button ID="BtnCancelar" class="btn btn-secondary float-right" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" />
-                                            </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label">Imágen</label>
+                                                        <div>
+                                                            <asp:FileUpload ID="FUArticulo" runat="server" />
+                                                            <br />
+                                                            <br />
+                                                            <asp:ValidationSummary ID="VsModificarArticulo" runat="server" ForeColor="Red" ValidationGroup="modificar" />
+                                                        </div>
+                                                        <div class="form-group float-right">
+                                                            <asp:Button ID="BtnModificarArticulo" class="btn btn-primary float-right" runat="server" Text="Modificar Artículo" OnClick="BtnModificarArticulo_Click" ValidationGroup="modificar" />
+                                                            &nbsp &nbsp
+                                                            <asp:Button ID="BtnCancelar" class="btn btn-secondary float-right" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,11 +140,9 @@
                                 </div>
                             </div>
                         </div>
-</div>
                     </div>
                 </div>
             </div>
         </div>
-  
     </main>
 </asp:Content>
