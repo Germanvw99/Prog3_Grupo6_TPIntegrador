@@ -169,7 +169,6 @@
                 </div>
                 <div class="modal-footer">
                     <div class="form-group">
-                        <%--BOTONES VER - EDITAR - ELIMINAR--%>
                         <asp:Button runat="server" ID="BtnEliminarCategoria" type="button" class="btn btn-warning" data-mdb-dismiss="modal"  Text="Eliminar" OnClick="BtnEliminarCategoria_Click" ></asp:Button>
                     </div>
                 </div>

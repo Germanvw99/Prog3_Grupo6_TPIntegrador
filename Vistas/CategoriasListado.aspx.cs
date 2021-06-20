@@ -29,7 +29,7 @@ namespace Vistas
 
 		private void CargarEstados()
 		{
-			DdlEstados.Items.Add(new ListItem("", "0"));
+			DdlEstados.Items.Add(new ListItem("-- Elija un estado --", "0"));
 			DataTable dt = negocioEstado.ObtenerEstados();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -127,8 +127,6 @@ namespace Vistas
 			{
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar la categoría');", true);
 			}
-
-			//Response.Redirect("CategoriasListado.aspx");
 		}
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
@@ -166,9 +164,9 @@ namespace Vistas
 			Response.Redirect("CategoriasAgregar.aspx");
 		}
 
-		# region FILTRADO DE CATEGORIAS
+		#region FILTRADO DE CATEGORIAS
 
-        protected void BtnFiltrar_Click(object sender, EventArgs e)
+		protected void BtnFiltrar_Click(object sender, EventArgs e)
 		{
 			GrdCategorias.DataSource = negocioCategoria.filtrarConsultaCategoria(TxtNombre.Text, DdlEstados.SelectedValue);
 			GrdCategorias.DataBind();
@@ -185,6 +183,6 @@ namespace Vistas
 			TxtNombre.Text = string.Empty;
 			DdlEstados.SelectedValue = "0";
 		}
-        #endregion
-    }
+		#endregion
+	}
 }
