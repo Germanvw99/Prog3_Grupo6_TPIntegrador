@@ -78,6 +78,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrListarStock;
 
         /// <summary>
+        /// Control RvTxtCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RvTxtCliente;
+
+        /// <summary>
         /// Control TxtCliente.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnQuitarFiltro;
+
+        /// <summary>
+        /// Control VsBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary VsBuscar;
 
         /// <summary>
         /// Control GrdVentas.
