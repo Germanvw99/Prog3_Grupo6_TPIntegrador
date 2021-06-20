@@ -15,6 +15,8 @@ namespace Vistas
 		private readonly NegocioProveedores negocioProveedor = new NegocioProveedores();
 		private readonly NegocioArticulos negocioArticulo = new NegocioArticulos();
 
+		private ArticulosProveedores articuloProveedor = new ArticulosProveedores();
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (NegocioUsuarios.getInstance().isAdmin() != true)
@@ -72,14 +74,30 @@ namespace Vistas
 
 		protected void GrdControlStock_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
-			if (e.CommandName == "eventoVerDetalle")
-			{
-				//EN PROCESO
-			}
 			if (e.CommandName == "eventoEditar")
 			{
-				//EN PROCESO
+				// RECUPERO EL CONTENIDO DEL WEBFORM ARTICULOPROVEEDORLISTADO.ASPX
+				int fila = Convert.ToInt32(e.CommandArgument);
+				//
+				Proveedores proveedor = new Proveedores();
+				proveedor.SetDni(((Label)GrdControlStock.Rows[fila].FindControl("axp_proveedor_dni")).Text);
+				proveedor.SetRazonSocial(((Label)GrdControlStock.Rows[fila].FindControl("pro_razon_social")).Text);
+				articuloProveedor.SetProveedor(proveedor);
+				//
+				Articulos articulo = new Articulos();
+				articulo.SetCodigo(Int32.Parse(((Label)GrdControlStock.Rows[fila].FindControl("axp_articulo_codigo")).Text));
+				articulo.SetNombre(((Label)GrdControlStock.Rows[fila].FindControl("art_nombre")).Text);
+				articuloProveedor.SetArticulo(articulo);
+				//
+				articuloProveedor.SetPrecioUnitario(Decimal.Parse(((Label)GrdControlStock.Rows[fila].FindControl("axp_precio_unitario")).Text));
+				articuloProveedor.SetStockActual(Int32.Parse(((Label)GrdControlStock.Rows[fila].FindControl("axp_stock_actual")).Text));
+
+				// AGREGO LO SELECCIONADO EN LA SESION
+				negocioArticuloProveedor.AgregarArticuloProveedorEnLaSesion(articuloProveedor);
+
+				Response.Redirect("ControlStockModificar.aspx");
 			}
+
 		}
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
