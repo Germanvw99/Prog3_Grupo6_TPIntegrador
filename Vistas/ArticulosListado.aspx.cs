@@ -23,10 +23,10 @@ namespace Vistas
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//if (NegocioUsuarios.getInstance().isAdmin() != true)
-			//{
-			//	Response.Redirect("home.aspx");
-			//}
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+				Response.Redirect("home.aspx");
+			}
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
@@ -52,7 +52,7 @@ namespace Vistas
 
 		private void CargarCategorias()
 		{
-			DdlCategorias.Items.Add(new ListItem("-- Elija una ctegoría --", "0"));
+			DdlCategorias.Items.Add(new ListItem("-- Elija una categoría --", "0"));
 			DataTable dt = negocioCategoria.ObtenerCategorias();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -162,7 +162,7 @@ namespace Vistas
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar el artículo');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar el " + TxtNombreModalEliminar.Text + " porque contiene dependencias en la DB.');", true);
 			}
 			//Response.Redirect("ArticulosListado.aspx");
 		}

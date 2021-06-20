@@ -19,10 +19,10 @@ namespace Vistas
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//if (NegocioUsuarios.getInstance().isAdmin() != true)
-			//{
-			//    Response.Redirect("home.aspx");
-			//}
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+				Response.Redirect("home.aspx");
+			}
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
@@ -137,7 +137,7 @@ namespace Vistas
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar el proveedor');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar el proveedor " + TxtNombreModalEliminar.Text + " porque contiene dependencias en la DB.');", true);
 			}
 		}
 

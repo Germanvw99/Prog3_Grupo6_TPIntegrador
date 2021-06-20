@@ -29,14 +29,18 @@ namespace Negocio
             try
             {
                 Usuarios objUsuario = DaoUsuarios.GetInstance().Login(username, password);
-                if(objUsuario.Estado == 2)
+                if(objUsuario != null)
                 {
-                    return CrearSessionUsuario(DaoUsuarios.GetInstance().Login(username, password));
+                    if (objUsuario.Estado == 2)
+                    {
+                        return CrearSessionUsuario(DaoUsuarios.GetInstance().Login(username, password));
+                    }
                 }
                 else
                 { 
-                    return objUsuario;
+                    objUsuario=null;
                 }
+                return objUsuario;
             }
             catch (Exception exc)
             {
@@ -104,22 +108,27 @@ namespace Negocio
             return answ;
         }
 
-        public bool EliminarUsuarioDni(String Dni, int Codigo_perfil)
+        public int EliminarUsuarioDni(String Dni, int Codigo_perfil)
         {
-            bool answ;
+            int answ;
             if (Codigo_perfil == 1)
             {
-                answ = false;
+                answ = 2;
             }
             else
             {
-            int filasEditadas = DaoUsuarios.GetInstance().EliminarUsuarioDni(Dni);
+                int filasEditadas = DaoUsuarios.GetInstance().EliminarUsuarioDni(Dni);
 
-            if (filasEditadas > 0)
-            {
+                if (filasEditadas > 0)
+                {
                     // SE ELIMINO.
-            }
-               answ = true;
+                    answ = filasEditadas;
+                }
+                else
+                {
+                    // NO SE PUDO ELIMINAR
+                    answ = filasEditadas;
+                }
             }
             return answ;
         }
@@ -382,18 +391,10 @@ namespace Negocio
         {
             if(objUsuario != null)
             {
-                if (objUsuario.Estado == 2)
-                {
-                    DataTable dt = CrearTablaUsuario(objUsuario);
+                DataTable dt = CrearTablaUsuario(objUsuario);
 
-                    // Se crea la Session con el DataTable creado
-                    Session["User"] = dt;
-                }
-                else
-                {
-                    // Elimino el Session
-                    Session.Remove("User");
-                }
+                // Se crea la Session con el DataTable creado
+                Session["User"] = dt;
             }
             else
             {

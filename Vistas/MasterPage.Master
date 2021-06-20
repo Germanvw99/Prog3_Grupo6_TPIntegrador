@@ -71,7 +71,7 @@
                                     </small>
                                 </div>
                             </div>
-                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
+                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0" id="userPanelMarcas" runat="server">
                                 <li class="mt-4 sidebar-header">
                                     </li>
                                 <li class="sidebar-item">
@@ -81,33 +81,30 @@
                                         <ItemTemplate>
                                             <asp:ImageButton ID="ImageButton2" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="38px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImageButton2_Command" Width="65px" />
                                            
-<br />
+                                <br />
                                         </ItemTemplate>
                                     </asp:DataList>
                                     </a>
                                 </li>
-                                <li class="sidebar-item">
+                                <li class="sidebar-item" runat="server">
                                     <a class="sidebar-link" href="#">
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
                                     </a>
                                 </li>
                             </ul>
-                            <p>
-                                &nbsp;</p>
-                            <p>
-                                &nbsp;</p>
-                            <p>
-                                &nbsp;</p>
+
                             <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
                                 <li class="sidebar-item">
                                 </li>
                             </ul>
                             <div runat="server" id="funcionesAdmin">
                                 <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
-                                    <li class="sidebar-header">
+                                    <li class="sidebar-header mb-3 font-weight-bold">
                                         FUNCIONES DEL ADMINISTRADOR
                                     </li>
-
+                                    <li class="sidebar-header">
+                                        AGREGAR
+                                    </li>
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LbAgregarArticulos" runat="server" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
                                     </li>
@@ -123,12 +120,18 @@
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LbAgregarMarcas" runat="server" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
                                     </li>
-
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarControlStock" runat="server" OnClick="LbAgregarControlStock_Click">Agregar Stock</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-header">
+                                        LISTADOS
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LblListadoUsuarios" runat="server" OnClick="LblListadoUsuarios_Click">Listado de Usuarios</asp:LinkButton>
+                                    </li>
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LbListadoArticulos" runat="server" OnClick="LbListadoArticulos_Click">Listado de Artículos</asp:LinkButton>
                                     </li>
-
-
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LbListadoProveedores" runat="server" OnClick="LbListadoProveedores_Click">Listado de Proveedores</asp:LinkButton>
                                     </li>
@@ -136,15 +139,14 @@
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LbListadoCategorias" runat="server" OnClick="LbListadoCategorias_Click">Listado de Categorías</asp:LinkButton>
                                     </li>
-
-
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LbListadoMarcas" runat="server" OnClick="LbListadoMarcas_Click">Listado de Marcas</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbListadoControlStock" runat="server" OnClick="LbListadoControlStock_Click">Listado de Stock</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
-                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">ArticulosModificar</asp:LinkButton>
+                                        <asp:LinkButton ID="LbListadoVentas" runat="server" OnClick="LbListadoVentas_Click">Listado de Ventas</asp:LinkButton>
                                     </li>
                                 </ul>
                             </div>

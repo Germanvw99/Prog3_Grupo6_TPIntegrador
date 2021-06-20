@@ -24,7 +24,6 @@ namespace Vistas
                 Session["tablacarrito"] = null;
 
             }
-
             // Modifica la parte visual dependiendo del tipo de usuario
             if (Session["User"] != null)
             {
@@ -37,18 +36,22 @@ namespace Vistas
 
                     // HEADER GENERAL
                     userPanelLoggedIn.Visible = true;
-                    
+
                     userPanelLoggedOff.Visible = false;
 
                     // SIDEBAR GENERAL
                     heroUser.Visible = true;
                     funcionesAdmin.Visible = false;
+                    userPanelMarcas.Visible = false;
+
+
 
                     // En caso de que haya un usuario Logueado, identificar si es Administrador o Usuario
                     if (objUsuario.Codigo_Perfil == 1)
                     {
                         // Admin
                         // SIDEBAR
+                        userPanelMarcas.Visible = false;
                         lblTipoUsuario.Text = objUsuario.Username+" (Administrador)";
                         funcionesAdmin.Visible = true;
                     }
@@ -56,6 +59,7 @@ namespace Vistas
                     {
                         // Usuario
                         lblTipoUsuario.Text = objUsuario.Username + " (Usuario)";
+                        userPanelMarcas.Visible = true;
                         
 
                     }
@@ -67,6 +71,7 @@ namespace Vistas
                 //HEADER GENERAL
                 userPanelLoggedIn.Visible = false;
                 userPanelLoggedOff.Visible = true;
+                userPanelMarcas.Visible = true;
 
                 //SIDEBAR GENERAL
                 heroUser.Visible = false;
@@ -85,7 +90,7 @@ namespace Vistas
 
 
 
-
+        // REDIRECCIONES AGREGAR
         protected void LbAgregarArticulos_Click(object sender, EventArgs e)
         {
             Response.Redirect("ArticulosAgregar.aspx");
@@ -106,9 +111,20 @@ namespace Vistas
             Response.Redirect("MarcasAgregar.aspx");
         }
 
+        protected void LbAgregarControlStock_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ControlStockAgregar.aspx");
+        }
+
+        // REDIRECCIONES LISTADOS
         protected void LbListadoArticulos_Click(object sender, EventArgs e)
         {
             Response.Redirect("ArticulosListado.aspx");
+        }
+
+        protected void LblListadoUsuarios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UsuariosListado.aspx");
         }
 
         protected void LbListadoProveedores_Click(object sender, EventArgs e)
@@ -126,10 +142,16 @@ namespace Vistas
             Response.Redirect("MarcasListado.aspx");
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void LbListadoControlStock_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ArticulosModificar.aspx");
+            Response.Redirect("ControlStockListado.aspx");
         }
+
+        protected void LbListadoVentas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("VentasListado.aspx");
+        }
+
 
         protected void btnCart_Click(object sender, EventArgs e)
         {

@@ -20,10 +20,10 @@ namespace Vistas
 		private string imagenURL = "Imagenes/categorias/__default.png";
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//if (NegocioUsuarios.getInstance().isAdmin() != true)
-			//{
-			//    Response.Redirect("home.aspx");
-			//}
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+			    Response.Redirect("home.aspx");
+			}
 
 			if (!Page.IsPostBack)
 			{

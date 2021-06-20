@@ -67,7 +67,14 @@ namespace Dao
 			cmd.Connection = Conn;
 			cmd.CommandType = CommandType.StoredProcedure;
 			cmd.CommandText = NombreSP;
-			FilasCambiadas = cmd.ExecuteNonQuery();
+            try
+            {
+				FilasCambiadas = cmd.ExecuteNonQuery();
+			}
+			catch
+            {
+				FilasCambiadas = -1;
+            }
 			Conn.Close();
 			return FilasCambiadas;
 		}

@@ -141,6 +141,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblTipoUsuario;
 
         /// <summary>
+        /// Control userPanelMarcas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userPanelMarcas;
+
+        /// <summary>
         /// Control DataList1.
         /// </summary>
         /// <remarks>
@@ -204,6 +213,24 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton LbAgregarMarcas;
 
         /// <summary>
+        /// Control LbAgregarControlStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LbAgregarControlStock;
+
+        /// <summary>
+        /// Control LblListadoUsuarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LblListadoUsuarios;
+
+        /// <summary>
         /// Control LbListadoArticulos.
         /// </summary>
         /// <remarks>
@@ -240,13 +267,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton LbListadoMarcas;
 
         /// <summary>
-        /// Control LinkButton1.
+        /// Control LbListadoControlStock.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton LbListadoControlStock;
+
+        /// <summary>
+        /// Control LbListadoVentas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LbListadoVentas;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

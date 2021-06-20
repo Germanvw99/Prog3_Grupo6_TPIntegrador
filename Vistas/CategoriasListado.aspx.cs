@@ -15,6 +15,10 @@ namespace Vistas
 		private Categorias categoria = new Categorias();
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+				Response.Redirect("home.aspx");
+			}
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
@@ -125,7 +129,7 @@ namespace Vistas
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar la categoría');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar la categoria porque contiene dependencias en la DB.');", true);
 			}
 		}
 

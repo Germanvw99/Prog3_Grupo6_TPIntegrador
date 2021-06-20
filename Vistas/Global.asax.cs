@@ -14,9 +14,7 @@ namespace Vistas
         {
             // Se ejecuta cuando la aplicación incia por PRIMERA VEZ.
             // Routing Handler.
-            System.Web.Routing.RouteTable.Routes.MapPageRoute("Home", "Home.aspx", "~/Home.aspx");
-            System.Web.Routing.RouteTable.Routes.MapPageRoute("Register", "Register.aspx", "~/Register.aspx");
-            System.Web.Routing.RouteTable.Routes.MapPageRoute("Login", "Login.aspx", "~/Login.aspx");
+            System.Web.Routing.RouteTable.Routes.MapPageRoute("Home", "", "~/Home.aspx");
         }
 
         protected void Session_Start(object sender, EventArgs e)

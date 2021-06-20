@@ -15,10 +15,10 @@ namespace Vistas
 		NegocioEstados negocioEstados = new NegocioEstados();
 		protected void Page_Load(object sender, EventArgs e)
         {
-			//if (NegocioUsuarios.getInstance().isAdmin() != true)
-			//{
-			//   Response.Redirect("home.aspx");
-			// }
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+			   Response.Redirect("home.aspx");
+			 }
 			if (!Page.IsPostBack)
 			{
 				CargarGridView();
@@ -203,16 +203,21 @@ namespace Vistas
 			Usuarios objUsuario = NegocioUsuarios.getInstance().ObtenerUsuarioAEliminar();
 
 			// ELIMINO AL USUARIO DE LA BASE DE DATOS
-			bool eliminado = NegocioUsuarios.getInstance().EliminarUsuarioDni(objUsuario.Dni, objUsuario.Codigo_Perfil);
+			int eliminado = NegocioUsuarios.getInstance().EliminarUsuarioDni(objUsuario.Dni, objUsuario.Codigo_Perfil);
 
-			if(eliminado)
+			if(eliminado == 1)
             {
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se eliminó al usuario " + objUsuario.Username + "');", true);
 				CargarGridView();
 			}
-            else
+            else if(eliminado == 2)
             {
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar al usuario " + objUsuario.Username + " porque es administrador');", true);
+				CargarGridView();
+			}
+			else if(eliminado == -1)
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar al usuario " + objUsuario.Username + " porque tiene dependencias en la BD.');", true);
 				CargarGridView();
 			}
 		}

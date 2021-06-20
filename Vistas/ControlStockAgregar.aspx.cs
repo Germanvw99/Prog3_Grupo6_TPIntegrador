@@ -18,6 +18,10 @@ namespace Vistas
 		private ArticulosProveedores articuloProveedor = new ArticulosProveedores();
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+				Response.Redirect("home.aspx");
+			}
 			CargarProveedores();
 			CargarArticulos();
 		}

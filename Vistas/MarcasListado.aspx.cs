@@ -16,6 +16,10 @@ namespace Vistas
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+				Response.Redirect("home.aspx");
+			}
 			if (!Page.IsPostBack)
 			{
 				CargarEstados();
@@ -132,7 +136,7 @@ namespace Vistas
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar la marca');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar la marca porque contiene dependencias en la DB.');", true);
 			}
 		}
 

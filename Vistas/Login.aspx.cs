@@ -31,6 +31,7 @@ namespace Vistas
             }
             else
             {
+                // CHECKEO QUE ESTA DADO DE ALTA
                 if (objUsuario.Estado == 2)
                 {
                     if (objUsuario.Codigo_Perfil == 2)
