@@ -31,7 +31,7 @@ namespace Vistas
 
 		private void CargarEstados()
 		{
-			DdlEstados.Items.Add(new ListItem("", "0"));
+			DdlEstados.Items.Add(new ListItem("-- Elija un estado --", "0"));
 			DataTable dt = negocioEstado.ObtenerEstados();
 			foreach (DataRow dr in dt.Rows)
 			{
