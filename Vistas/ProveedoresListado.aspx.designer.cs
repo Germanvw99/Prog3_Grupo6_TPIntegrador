@@ -87,6 +87,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton LnAgregarProveedor;
 
         /// <summary>
+        /// Control RvTxtCodigo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RvTxtCodigo;
+
+        /// <summary>
         /// Control TxtCodigo.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnQuitarFiltro;
+
+        /// <summary>
+        /// Control VsBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary VsBuscar;
 
         /// <summary>
         /// Control GrdProveedores.

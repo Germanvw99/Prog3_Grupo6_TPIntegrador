@@ -32,7 +32,7 @@ namespace Vistas
 
 		private void CargarEstados()
 		{
-			DdlEstados.Items.Add(new ListItem("", "0"));
+			DdlEstados.Items.Add(new ListItem("-- Elija un estado --", "0"));
 			DataTable dt = negocioEstado.ObtenerEstados();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -137,10 +137,8 @@ namespace Vistas
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar el proveedor');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar el proveedor');", true);
 			}
-
-			//Response.Redirect("ProveedoresListado.aspx");
 		}
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
@@ -178,9 +176,9 @@ namespace Vistas
 			Response.Redirect("ProveedoresAgregar.aspx");
 		}
 
-        #region FILTRADO DE PROVEEDORES
+		#region FILTRADO DE PROVEEDORES
 
-        protected void BtnFiltrar_Click(object sender, EventArgs e)
+		protected void BtnFiltrar_Click(object sender, EventArgs e)
 		{
 			GrdProveedores.DataSource = negocioProveedor.filtrarConsultaProveedor(TxtCodigo.Text, TxtNombre.Text, DdlEstados.SelectedValue);
 			GrdProveedores.DataBind();
@@ -198,6 +196,6 @@ namespace Vistas
 			TxtNombre.Text = string.Empty;
 			DdlEstados.SelectedValue = "0";
 		}
-        #endregion
-    }
+		#endregion
+	}
 }
