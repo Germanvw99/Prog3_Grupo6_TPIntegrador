@@ -78,15 +78,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrListarStock;
 
         /// <summary>
-        /// Control ImgLogo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImgLogo;
-
-        /// <summary>
         /// Control TxtNombreProveedor.
         /// </summary>
         /// <remarks>
@@ -141,49 +132,31 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox TxtPrecioUnitario;
 
         /// <summary>
-        /// Control TxtNombreModificar.
+        /// Control TxtStockActualModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombreModificar;
+        protected global::System.Web.UI.WebControls.TextBox TxtStockActualModificar;
 
         /// <summary>
-        /// Control TxtDescripcionModificar.
+        /// Control TxtPrecioUnitarioModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripcionModificar;
+        protected global::System.Web.UI.WebControls.TextBox TxtPrecioUnitarioModificar;
 
         /// <summary>
-        /// Control DdlEstadoModificar.
+        /// Control BtnModificarArticuloProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlEstadoModificar;
-
-        /// <summary>
-        /// Control FUCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FUCategoria;
-
-        /// <summary>
-        /// Control BtnModificarCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnModificarCategoria;
+        protected global::System.Web.UI.WebControls.Button BtnModificarArticuloProveedor;
 
         /// <summary>
         /// Control BtnCancelar.

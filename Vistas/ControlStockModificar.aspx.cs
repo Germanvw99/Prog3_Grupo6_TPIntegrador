@@ -28,8 +28,8 @@ namespace Vistas
 			//
 			TxtNombreProveedor.Text = articuloProveedor.GetProveedor().GetRazonSocial();
 			TxtCuilProveedor.Text = articuloProveedor.GetProveedor().GetDni();
-			TextNombreArticulo.Text = articuloProveedor.GetArticulo().GetCodigo().ToString();
-			TextCodigoArticulo.Text = articuloProveedor.GetArticulo().GetNombre();
+			TextNombreArticulo.Text = articuloProveedor.GetArticulo().GetNombre();
+			TextCodigoArticulo.Text = articuloProveedor.GetArticulo().GetCodigo().ToString();
 			TxtStockActual.Text = articuloProveedor.GetStockActual().ToString();
 			TxtPrecioUnitario.Text = articuloProveedor.GetPreciounitario().ToString();
 		}
@@ -62,7 +62,7 @@ namespace Vistas
 			Response.Redirect("ControlStockListado.aspx");
 		}
 
-		protected void BtnModificarCategoria_Click(object sender, EventArgs e)
+		protected void BtnModificarArticuloProveedor_Click(object sender, EventArgs e)
 		{
 			////AQUI SOLO SE SETEAN SOLO LOS CAMBIOS QUE SE HAYAN EFECTUADO
 			//if (!string.IsNullOrWhiteSpace(TxtNombreModificar.Text.Trim()))
@@ -109,14 +109,13 @@ namespace Vistas
 
 		private void LimpiarCampos()
 		{
-			TxtNombreModificar.Text = string.Empty;
-			TxtDescripcionModificar.Text = string.Empty;
-			DdlEstadoModificar.SelectedValue = "0";
+			TxtStockActual.Text = string.Empty;
+			TxtPrecioUnitario.Text = string.Empty;
 		}
 
 		protected void BtnCancelar_Click(object sender, EventArgs e)
 		{
-			//LimpiarCampos();
+			LimpiarCampos();
 		}
 	}
 }

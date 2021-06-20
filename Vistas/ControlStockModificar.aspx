@@ -23,7 +23,7 @@
                             <div class="card-body card bg-light">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h5 class="h2 card-title mb-0">Modificar Categoría</h5>
+                                        <h5 class="h2 card-title mb-0">Modificar Stocks</h5>
                                     </div>
                                 </div>
                             </div>
@@ -37,9 +37,6 @@
                                                 <h5 class="card-title">Datos actuales</h5>
                                             </div>
                                             <div class="card-body">
-                                                <div class="form-group">
-                                                    <asp:Image ID="ImgLogo" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
-                                                </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Nombre del proveedor</label>
                                                     <asp:TextBox ID="TxtNombreProveedor" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
@@ -74,25 +71,15 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <label class="form-label">Nombre</label>
-                                                    <asp:TextBox ID="TxtNombreModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                                                    <label class="form-label">Stock actual</label>
+                                                    <asp:TextBox ID="TxtStockActualModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="form-label">Descripción</label>
-                                                    <asp:TextBox ID="TxtDescripcionModificar" type="text" runat="server" class="form-control" placeholder="" TextMode="MultiLine"></asp:TextBox>
+                                                    <label class="form-label">Precio unitario</label>
+                                                    <asp:TextBox ID="TxtPrecioUnitarioModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Estado</label>
-                                                    <br />
-                                                    <asp:DropDownList ID="DdlEstadoModificar"  class="custom-select form-control"   runat="server" > </asp:DropDownList>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Imágen</label>
-                                                    <div>
-                                                        <asp:FileUpload ID="FUCategoria" runat="server" />
-                                                    </div>
                                                     <div class="form-group float-right">
-                                                        <asp:Button ID="BtnModificarCategoria" class="btn btn-primary float-right" runat="server" Text="Modificar Categoría" OnClick="BtnModificarCategoria_Click" />
+                                                        <asp:Button ID="BtnModificarArticuloProveedor" class="btn btn-primary float-right" runat="server" Text="Modificar Stock" OnClick="BtnModificarArticuloProveedor_Click" />
                                                         &nbsp &nbsp
                                                         <asp:Button ID="BtnCancelar" class="btn btn-secondary float-right" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" />
                                                     </div>
