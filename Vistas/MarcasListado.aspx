@@ -65,7 +65,6 @@
                                         CssClass="table-striped dataTable dtr-inline table-hover row-border"
                                         OnRowCommand="GrdMarcas_RowCommand">
                                         <Columns>
-                                            <%--BOTONES VER - EDITAR - ELIMINAR--%>
                                             <asp:TemplateField HeaderText="Código">
                                                 <ItemTemplate>
                                                     <asp:Label ID="mar_codigo" runat="server" Text='<%# Eval("mar_codigo") %>' />
@@ -92,6 +91,7 @@
                                                     <asp:Label ID="est_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("est_codigo") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+                                            <%--BOTONES VER - EDITAR - ELIMINAR--%>
                                             <asp:ButtonField ButtonType="Image" CommandName="eventoVerDetalle" ImageUrl="Recursos/img/ver.png" />
                                             <asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
                                             <asp:ButtonField ButtonType="Image" CommandName="eventoEliminar" ImageUrl="Recursos/img/eliminar.png" />

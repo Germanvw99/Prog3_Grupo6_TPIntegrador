@@ -62,9 +62,13 @@ namespace Vistas
 			}
 			if (FUMarca.HasFile)
 			{
-				string imagenNombre = FUMarca.PostedFile.FileName;
-				imagenNombre = "Imagenes/marcas/" + imagenNombre;
-				marca.SetRutaImagen(imagenNombre);
+				// VALIDA QUE EL ARCHIVO SEA CORRECTO.
+				if (NegocioImagenes.validarArchivo(FUMarca.PostedFile))
+				{
+					// SUBE ARCHIVO.
+					string imagenNombre = NegocioImagenes.SubirImagenMarca(FUMarca.PostedFile);
+					marca.SetRutaImagen(imagenNombre);
+				}
 			}
 			int agrego = negocioMarca.modificarMarca(marca);
 
@@ -81,7 +85,14 @@ namespace Vistas
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El nombre de la marca ya existe');", true);
 			}
 
-			//LimpiarCampos();
+			LimpiarCampos();
+		}
+
+		private void LimpiarCampos()
+		{
+			TxtNombreModificar.Text = string.Empty;
+			TxtDescripcionModificar.Text = string.Empty;
+			DdlEstadoModificar.SelectedValue = "0";
 		}
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
@@ -111,6 +122,11 @@ namespace Vistas
 		protected void IrListarStock_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ControlStockListado.aspx");
+		}
+
+		protected void BtnCancelar_Click(object sender, EventArgs e)
+		{
+			LimpiarCampos();
 		}
 	}
 }
