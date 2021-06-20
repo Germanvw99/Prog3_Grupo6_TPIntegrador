@@ -126,10 +126,12 @@ namespace Negocio
 			//
 			Articulos articulo = new Articulos();
 			articulo.SetCodigo(articuloProveedor.GetArticulo().GetCodigo());
+			articulo.SetNombre(articuloProveedor.GetArticulo().GetNombre());
 			articuloProveedorSession.SetArticulo(articulo);
 			//
 			Proveedores proveedor = new Proveedores();
 			proveedor.SetDni(articuloProveedor.GetProveedor().GetDni());
+			proveedor.SetRazonSocial(articuloProveedor.GetProveedor().GetRazonSocial());
 			articuloProveedorSession.SetProveedor(proveedor);
 			//
 			articuloProveedorSession.SetPrecioUnitario(articuloProveedor.GetPreciounitario());
