@@ -1,15 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="DetalleVenta.aspx.cs" Inherits="Vistas.DetalleVenta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link rel="stylesheet" type="text/css" href="Recursos/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="Recursos/css/dataTables.bootstrap5.min.css" />
     <main class="content">
         <div class="container-fluid">
             <nav aria-label="breadcrumb">
                 <div class="card-body text-left">
                     <div class="mb-3">
+                        <asp:LinkButton ID="IrListarUsuarios" runat="server" class="btn btn-outline-success" OnClick="IrListarUsuarios_Click" >Listado de Usuarios</asp:LinkButton>
                         <asp:LinkButton ID="IrListarArticulos" runat="server" class="btn btn-outline-primary" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>
                         <asp:LinkButton ID="IrListarMarcas" runat="server" class="btn btn-outline-warning" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
                         <asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-success" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
                         <asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary" OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
                         <asp:LinkButton ID="IrListarVentas" runat="server" class="btn btn-outline-warning" OnClick="IrListarVentas_Click">Listado de Ventas</asp:LinkButton>
+                        <asp:LinkButton ID="IrListarStock" runat="server" class="btn btn-outline-success" OnClick="IrListarStock_Click">Listado de Stocks</asp:LinkButton>
                     </div>
                 </div>
             </nav>
@@ -99,8 +103,8 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <asp:GridView ID="GrdDetalleVentas" runat="server" AutoGenerateColumns="False"
-                                                        CssClass="table display" CellPadding="4" ForeColor="#333333" GridLines="None">
-                                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                        OnPreRender="GrdDetalleVentas_PreRender"
+                                                        CssClass="table-striped dataTable dtr-inline table-hover row-border">
                                                         <Columns>
                                                             <asp:TemplateField HeaderText="Cod. Art.">
                                                                 <ItemTemplate>
@@ -129,16 +133,6 @@
                                                             </asp:TemplateField>
                                                             <%-- AGREGAR BOTONOS--%>
                                                         </Columns>
-                                                        <EditRowStyle BackColor="#999999" />
-                                                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                                                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                                                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                                                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                     </asp:GridView>
                                                     <div class="row">
                                                         <div class="col-md-2 text-center"></div>
@@ -167,4 +161,54 @@
             </div>
         </div>
     </main>
+    <script src="Recursos/js/jquery-3.6.0.min.js"></script>
+    <script src="Recursos/js/jquery.dataTables.min.js"></script>
+    <script src="Recursos/js/popper.min.js"></script>
+    <script src="Recursos/js/bootstrap.min.js"></script>
+    <!-- DATATABLE JQUERY JAVASCRIPT -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= GrdDetalleVentas.ClientID %>').dataTable({
+                "aLengthMenu": [[6, 25, 50, -1], [6, 25, 50, "All"]],
+                "iDisplayLength": 6,
+                "order": [[3, "asc"]],
+                stateSave: true,
+                stateSaveCallback: function (settings, data) {
+                    localStorage.setItem
+                        ('DataTables_' + settings.sInstance, JSON.stringify(data));
+                },
+                stateLoadCallback: function (settings) {
+                    return JSON.parse
+                        (localStorage.getItem('DataTables_' + settings.sInstance));
+                },
+
+                language: {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    },
+                    "buttons": {
+                        "copy": "Copiar",
+                        "colvis": "Visibilidad"
+                    }
+                }
+            });
+        });
+    </script>
 </asp:Content>

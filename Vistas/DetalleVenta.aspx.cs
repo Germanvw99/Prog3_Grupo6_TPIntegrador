@@ -45,35 +45,56 @@ namespace Vistas
 				CargarGridView(LblNumeroFactura.Text);
 			}
 		}
+
+		protected void GrdDetalleVentas_PreRender(object sender, EventArgs e)
+		{
+			GridView gv = (GridView)sender;
+
+			if ((gv.ShowHeader == true && gv.Rows.Count > 0) || (gv.ShowHeaderWhenEmpty == true))
+			{
+				// OBLIGAR A GRIDVIEW A USAR <THEAD> EN LUGAR DE <TBODY>
+				gv.HeaderRow.TableSection = TableRowSection.TableHeader;
+			}
+			if (gv.ShowFooter == true && gv.Rows.Count > 0)
+			{
+				// OBLIGA A GRIDVIEW A USAR <TFOOT> EN LUGAR DE <TBODY>
+				gv.FooterRow.TableSection = TableRowSection.TableFooter;
+			}
+		}
+
 		private void CargarGridView(string CodigoVenta)
 		{
 			GrdDetalleVentas.DataSource = negocioDetalleVentas.ObtenerDetalleVentas(CodigoVenta);
 			GrdDetalleVentas.DataBind();
 		}
 
+		protected void IrListarUsuarios_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("UsuariosListado.aspx");
+		}
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
 		}
-
 		protected void IrListarMarcas_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("MarcasListado.aspx");
 		}
-
 		protected void IrListarCategorias_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("CategoriasListado.aspx");
 		}
-
 		protected void IrListarProveedores_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ProveedoresListado.aspx");
 		}
-
 		protected void IrListarVentas_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("VentasListado.aspx");
+		}
+		protected void IrListarStock_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ControlStockListado.aspx");
 		}
 	}
 }
