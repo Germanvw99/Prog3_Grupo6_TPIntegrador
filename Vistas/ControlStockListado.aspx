@@ -80,6 +80,12 @@
                                             <asp:TemplateField HeaderText="CUIL">
                                                 <ItemTemplate>
                                                     <asp:Label ID="axp_proveedor_dni"  runat="server" Text='<%# Bind("axp_proveedor_dni") %>' />
+                                                    <asp:Label ID="axp_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("axp_codigo") %>' />
+                                                    <asp:Label ID="mar_codigo" visible="false" runat="server" type="Hidden" Text='<%# Eval("mar_codigo") %>' />
+                                                    <asp:Label ID="mar_nombre" visible="false" runat="server" type="Hidden" Text='<%# Eval("mar_nombre") %>' />
+                                                    <asp:Label ID="axp_stock_anterior" visible="false" runat="server" type="Hidden" Text='<%# Eval("axp_stock_anterior") %>' />
+                                                    <asp:Label ID="axp_entrada" visible="false" runat="server" type="Hidden" Text='<%# Eval("axp_entrada") %>' />
+                                                    <asp:Label ID="axp_salida" visible="false" runat="server" type="Hidden" Text='<%# Eval("axp_salida") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Razón Social">
@@ -107,6 +113,8 @@
                                                     <asp:Label ID="axp_precio_unitario" runat="server" Text='<%# Eval("axp_precio_unitario") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+                                            <%--BOTONES VER - EDITAR - ELIMINAR--%>
+                                            <asp:ButtonField ButtonType="Image" CommandName="eventoEditar" ImageUrl="Recursos/img/editar.png" />
                                         </Columns>
                                     </asp:GridView>
                                 </div>

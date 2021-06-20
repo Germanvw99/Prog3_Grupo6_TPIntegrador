@@ -129,7 +129,7 @@ namespace Vistas
 			}
 			else
 			{
-				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso eliminar la categoria porque contiene dependencias en la DB.');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar la categoría porque contiene dependencias en la DB.');", true);
 			}
 		}
 

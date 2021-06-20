@@ -74,6 +74,7 @@
     <Content Include="Carrito.aspx" />
     <Content Include="ControlStockAgregar.aspx" />
     <Content Include="ControlStockListado.aspx" />
+    <Content Include="ControlStockModificar.aspx" />
     <Content Include="DetalleArticulo.aspx" />
     <Content Include="DetalleVenta.aspx" />
     <Content Include="Imagenes\articulos\2.png" />
@@ -331,6 +332,13 @@
     </Compile>
     <Compile Include="ControlStockListado.aspx.designer.cs">
       <DependentUpon>ControlStockListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlStockModificar.aspx.cs">
+      <DependentUpon>ControlStockModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlStockModificar.aspx.designer.cs">
+      <DependentUpon>ControlStockModificar.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetalleArticulo.aspx.cs">
       <DependentUpon>DetalleArticulo.aspx</DependentUpon>

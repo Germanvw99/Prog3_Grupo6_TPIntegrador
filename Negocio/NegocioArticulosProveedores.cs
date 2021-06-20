@@ -95,6 +95,56 @@ namespace Negocio
 				return false;
 			}
 		}
+        #endregion
+
+        #region USO SESION PARA MODIFICAR STOCK. SI NO EXISTE, CREA LA SESION
+        private void CrearSesionArticuloProveedor()
+		{
+			if (Session["SesionArticuloProveedor"] == null)
+			{
+				ArticulosProveedores articuloProveedor = new ArticulosProveedores();
+				Session["SesionArticuloProveedor"] = articuloProveedor;
+			}
+		}
+
+		// RETORNA LA SESION ARTICULOPROVEEDOR. EN CASO DE QUE LA SESION SEA NULL RETORNA UN ARTICULOPROVEEDOR NULL
+		public ArticulosProveedores ObtenerSesionArticuloProveedor()
+		{
+			ArticulosProveedores articuloProveedor = new ArticulosProveedores();
+			if (Session["SesionArticuloProveedor"] != null)
+			{
+				articuloProveedor = (ArticulosProveedores)Session["SesionArticuloProveedor"];
+			}
+			return articuloProveedor;
+		}
+		// AGREGA UN ARTICULOPROVEEDOR A LA SESION
+		public void AgregarArticuloProveedorEnLaSesion(ArticulosProveedores articuloProveedor)
+		{
+			EliminarSesionArticulProveedor();
+			CrearSesionArticuloProveedor();
+			ArticulosProveedores articuloProveedorSession = ObtenerSesionArticuloProveedor();
+			//
+			Articulos articulo = new Articulos();
+			articulo.SetCodigo(articuloProveedor.GetArticulo().GetCodigo());
+			articuloProveedorSession.SetArticulo(articulo);
+			//
+			Proveedores proveedor = new Proveedores();
+			proveedor.SetDni(articuloProveedor.GetProveedor().GetDni());
+			articuloProveedorSession.SetProveedor(proveedor);
+			//
+			articuloProveedorSession.SetPrecioUnitario(articuloProveedor.GetPreciounitario());
+			articuloProveedorSession.SetStockActual(articuloProveedor.GetStockActual());
+		}
+
+		// ELIMINA LA SESION CATEGORIA
+		private void EliminarSesionArticulProveedor()
+		{
+			if (Session["SesionArticuloProveedor"] != null)
+			{
+				Session["SesionArticuloProveedor"] = null;
+			}
+		}
 		#endregion
+
 	}
 }
