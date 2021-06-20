@@ -4,17 +4,35 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Negocio;
+using Entidades;
+using System.Data;
 
 namespace Vistas
 {
     public partial class ControlStockModificar : System.Web.UI.Page
     {
+		private ArticulosProveedores articuloProveedor = new ArticulosProveedores();
+		private readonly NegocioArticulosProveedores negocioArticuloProveedor = new NegocioArticulosProveedores();
         protected void Page_Load(object sender, EventArgs e)
         {
+			if (NegocioUsuarios.getInstance().isAdmin() != true)
+			{
+				Response.Redirect("home.aspx");
+			}
 
+			if (!Page.IsPostBack) { }
 
-
-        }
+			// OBTENGO LA SESION DE ARTICULOPROVEEDOR
+			articuloProveedor = negocioArticuloProveedor.ObtenerSesionArticuloProveedor();
+			//
+			TxtNombreProveedor.Text = articuloProveedor.GetProveedor().GetRazonSocial();
+			TxtCuilProveedor.Text = articuloProveedor.GetProveedor().GetDni();
+			TextNombreArticulo.Text = articuloProveedor.GetArticulo().GetCodigo().ToString();
+			TextCodigoArticulo.Text = articuloProveedor.GetArticulo().GetNombre();
+			TxtStockActual.Text = articuloProveedor.GetStockActual().ToString();
+			TxtPrecioUnitario.Text = articuloProveedor.GetPreciounitario().ToString();
+		}
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");

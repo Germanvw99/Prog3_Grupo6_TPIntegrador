@@ -87,31 +87,58 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Image ImgLogo;
 
         /// <summary>
-        /// Control TxtNombre.
+        /// Control TxtNombreProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
+        protected global::System.Web.UI.WebControls.TextBox TxtNombreProveedor;
 
         /// <summary>
-        /// Control TxtDescripcion.
+        /// Control TxtCuilProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox TxtCuilProveedor;
 
         /// <summary>
-        /// Control TxtEstado.
+        /// Control TextNombreArticulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEstado;
+        protected global::System.Web.UI.WebControls.TextBox TextNombreArticulo;
+
+        /// <summary>
+        /// Control TextCodigoArticulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextCodigoArticulo;
+
+        /// <summary>
+        /// Control TxtStockActual.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtStockActual;
+
+        /// <summary>
+        /// Control TxtPrecioUnitario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtPrecioUnitario;
 
         /// <summary>
         /// Control TxtNombreModificar.

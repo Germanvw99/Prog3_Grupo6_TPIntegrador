@@ -41,16 +41,28 @@
                                                     <asp:Image ID="ImgLogo" Height="100px" Width="100" runat="server" class="img-fluid rounded-circle"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="form-label">Nombre</label>
-                                                    <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
+                                                    <label class="form-label">Nombre del proveedor</label>
+                                                    <asp:TextBox ID="TxtNombreProveedor" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="form-label">Descripción</label>
-                                                    <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="" TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
+                                                    <label class="form-label">N° CUIL - DNI</label>
+                                                    <asp:TextBox ID="TxtCuilProveedor" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="form-label">Estado</label>
-                                                    <asp:TextBox ID="TxtEstado" class="form-control"   runat="server" ReadOnly="True" ></asp:TextBox>
+                                                    <label class="form-label">Nombre del artículo</label>
+                                                    <asp:TextBox ID="TextNombreArticulo" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Código del artículo</label>
+                                                    <asp:TextBox ID="TextCodigoArticulo" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Stock actual</label>
+                                                    <asp:TextBox ID="TxtStockActual" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Precio unitario</label>
+                                                    <asp:TextBox ID="TxtPrecioUnitario" type="text" runat="server" class="form-control" placeholder="" ReadOnly="True"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
