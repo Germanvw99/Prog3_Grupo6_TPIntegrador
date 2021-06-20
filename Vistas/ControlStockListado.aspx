@@ -25,7 +25,7 @@
                                 <div class="card-body card bg-light">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h5 class="h2 card-title mb-0">Control de stock</h5>
+                                            <h5 class="h2 card-title mb-0">Control de stocks</h5>
                                         </div>
                                         <div class="col-md-6">
                                             <asp:LinkButton ID="LnAgregarStock" class="btn btn-outline-dark float-right" runat="server" OnClick="LnAgregarStock_Click">+ Agregar artículos al Stock</asp:LinkButton>
