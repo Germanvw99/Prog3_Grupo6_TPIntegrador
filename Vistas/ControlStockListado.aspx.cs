@@ -36,7 +36,7 @@ namespace Vistas
 
 		private void CargarProveedores()
 		{
-			DdlProveedores.Items.Add(new ListItem("", "0"));
+			DdlProveedores.Items.Add(new ListItem("-- Elija un Cuil de proveedor --", "0"));
 			DataTable dt = negocioProveedor.ObtenerProveedores();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -46,7 +46,7 @@ namespace Vistas
 
 		private void CargarArticulos()
 		{
-			DdlArticulos.Items.Add(new ListItem("", "0"));
+			DdlArticulos.Items.Add(new ListItem("-- Elija un código de artículo --", "0"));
 			DataTable dt = negocioArticulo.ObtenerArticulos();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -74,11 +74,11 @@ namespace Vistas
 		{
 			if (e.CommandName == "eventoVerDetalle")
 			{
-
+				//EN PROCESO
 			}
 			if (e.CommandName == "eventoEditar")
 			{
-
+				//EN PROCESO
 			}
 		}
 
