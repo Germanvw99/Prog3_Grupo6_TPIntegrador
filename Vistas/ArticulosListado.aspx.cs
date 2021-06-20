@@ -42,7 +42,7 @@ namespace Vistas
 
 		private void CargarMarcas()
 		{
-			DdlMarcas.Items.Add(new ListItem("", "0"));
+			DdlMarcas.Items.Add(new ListItem("-- Elija una marca --", "0"));
 			DataTable dt = negocioMarca.ObtenerMarcas();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -52,7 +52,7 @@ namespace Vistas
 
 		private void CargarCategorias()
 		{
-			DdlCategorias.Items.Add(new ListItem("", "0"));
+			DdlCategorias.Items.Add(new ListItem("-- Elija una ctegoría --", "0"));
 			DataTable dt = negocioCategoria.ObtenerCategorias();
 			foreach (DataRow dr in dt.Rows)
 			{
