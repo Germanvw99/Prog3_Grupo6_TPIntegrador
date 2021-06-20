@@ -129,6 +129,7 @@
     <Content Include="Recursos\img\eliminar.png" />
     <Content Include="Recursos\img\ver.png" />
     <Content Include="Recursos\js\bootstrap.min.js" />
+    <Content Include="Recursos\js\Carteles.js" />
     <Content Include="Recursos\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Recursos\js\jquery-3.6.0.min.js" />
     <Content Include="Recursos\js\jquery.dataTables.min.js" />
@@ -451,7 +452,6 @@
   <ItemGroup>
     <Content Include="MasterPage.Master" />
     <Content Include="Imagenes\marcas\desktop.ini" />
-    <None Include="packages.config" />
     <Content Include="Recursos\webfonts\fa-brands-400.eot" />
     <Content Include="Recursos\webfonts\fa-brands-400.ttf" />
     <Content Include="Recursos\webfonts\fa-brands-400.woff" />
@@ -464,6 +464,7 @@
     <Content Include="Recursos\webfonts\fa-solid-900.ttf" />
     <Content Include="Recursos\webfonts\fa-solid-900.woff" />
     <Content Include="Recursos\webfonts\fa-solid-900.woff2" />
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

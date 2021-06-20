@@ -34,12 +34,10 @@
                                             <div class="form-group">
                                                 <label class="form-label">Nombre</label>
                                                 <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="Nombre" ValidationGroup="VgAgregarArticulo"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RfvNombre" runat="server" ControlToValidate="txtnombre" ErrorMessage="Nombre invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Descripción</label>
                                                 <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="Descripción" TextMode="MultiLine" ValidationGroup="VgAgregarArticulo"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RfvDescripcion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="Descripcion invalida" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="form-group">
                                                 <div class="mb-3">
@@ -47,7 +45,6 @@
                                                     <asp:LinkButton ID="IrAgregarMarca" runat="server" class="btn btn-outline-primary float-right" OnClick="IrAgregarMarca_Click">+ Agregar Marca</asp:LinkButton>
                                                 </div>
                                                 <asp:DropDownList ID="DdlMarcas"  class="custom-select form-control"  runat="server" ValidationGroup="VgAgregarArticulo" > </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="RfvMarca" runat="server" ControlToValidate="DdlMarcas" ErrorMessage="Marca invalida" ForeColor="Red" ValidationGroup="VgAgregarArticulo" InitialValue="-1">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="form-group">
                                                 <div class="mb-3">
@@ -55,7 +52,6 @@
                                                     <asp:LinkButton ID="IrAgregarCategoria" runat="server" class="btn btn-outline-primary float-right" OnClick="IrAgregarCategoria_Click">+ Agregar Categoría</asp:LinkButton>
                                                 </div>
                                                 <asp:DropDownList ID="DdlCategorias" class="custom-select form-control"  runat="server" ValidationGroup="VgAgregarArticulo" > </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="RfvCategorias" runat="server" ControlToValidate="DdlCategorias" ErrorMessage="Categoria invalida" ForeColor="Red" ValidationGroup="VgAgregarArticulo" InitialValue="-1">*</asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -63,18 +59,15 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Estado</label>
                                                     <asp:DropDownList ID="DdlEstados" class="custom-select form-control"  runat="server" ValidationGroup="VgAgregarArticulo" > </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RfvEstados" runat="server" ControlToValidate="DdlEstados" ErrorMessage="Estado invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo" InitialValue="-1">*</asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Punto de pedido</label>
                                                 <asp:TextBox ID="txtPedido" type="text" runat="server" class="form-control" placeholder="Punto de pedido" TextMode="Number" ValidationGroup="VgAgregarArticulo"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RfvPedido" runat="server" ControlToValidate="txtPedido" ErrorMessage="Pedido invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Precio de Lista</label>
                                                 <asp:TextBox ID="txtPrecio" type="text" runat="server" class="form-control" placeholder="Precio de Lista" TextMode="Number" ValidationGroup="VgAgregarArticulo"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RfvPrecio" runat="server" ControlToValidate="txtPrecio" ErrorMessage="Precio invalido" ForeColor="Red" ValidationGroup="VgAgregarArticulo">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Imágen</label>

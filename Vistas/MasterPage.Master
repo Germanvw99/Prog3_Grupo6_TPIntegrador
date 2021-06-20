@@ -11,6 +11,10 @@
         <link href="Recursos/css/theme.css" rel="stylesheet" type="text/css" />
         <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css" />
         
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script src="Recursos/js/Carteles.js"></script>
+
         <title>Grupo 6 - TP Integrador</title>
 
         </head>

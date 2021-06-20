@@ -16,6 +16,8 @@ namespace Vistas
 		private readonly Proveedores proveedor = new Proveedores();
 		private readonly Estados estado = new Estados();
 
+		private string mensaje = string.Empty;
+
 		private string imagenURL = "Imagenes/proveedores/__default.png";
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -42,7 +44,7 @@ namespace Vistas
 		}
 		private void CargarEstados()
 		{
-			DdlEstados.Items.Add(new ListItem("", "0"));
+			DdlEstados.Items.Add(new ListItem("Seleccione Estado", "0"));
 			DataTable dt = negocioEstado.ObtenerEstados();
 			foreach (DataRow dr in dt.Rows)
 			{
@@ -51,7 +53,8 @@ namespace Vistas
 		}
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(TxtRazonSocial.Text.Trim()) && !string.IsNullOrEmpty(TxtDni.Text.Trim()) && !string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
+			//if (!string.IsNullOrEmpty(TxtRazonSocial.Text.Trim()) && !string.IsNullOrEmpty(TxtDni.Text.Trim()) && !string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
+			if(ValidarContenido())
 			{
 				if (FUProveedor.HasFile)
 				{
@@ -60,32 +63,72 @@ namespace Vistas
 					{
 						// SUBE ARCHIVO.
 						imagenURL = NegocioImagenes.SubirImagenProveedor(FUProveedor.PostedFile);
+						
+						GetEntity(imagenURL);
+
+						int agrego = negocioProveedor.agregarProveedor(proveedor);
+						if (agrego == 0)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se puso agregar el proveedor!','error')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo agregar el proveedor');", true);
+						}
+						if (agrego == 1)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agregó el proveedor!','success')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se agregó el proveedor');", true);
+						}
+						if (agrego == 2)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('El proveedor ya existe!','info')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El proveedor ya existe');", true);
+						}
+						LimpiarCampos();
+
 					}
+                    else
+                    {
+						ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Error al subir la imagen!','error')", true);
+
+					}
+
 				}
-				proveedor.SetDni(TxtDni.Text.Trim());
-				proveedor.SetRazonSocial(TxtRazonSocial.Text.Trim());
-				proveedor.SetDireccion(TxtDireccion.Text.Trim());
-				proveedor.SetEmail(TxtEmail.Text.Trim());
-				proveedor.SetTelefono(TxtTelefono.Text.Trim());
-				proveedor.SetNombreContacto(TxtContacto.Text.Trim());
-				proveedor.SetRutaImagen(imagenURL);
-				estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
-				proveedor.SetEstado(estado);
-				int agrego = negocioProveedor.agregarProveedor(proveedor);
-				if (agrego == 0)
+				else
 				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo agregar el proveedor');", true);
+					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Suba una imagen!','info')", true);
 				}
-				if (agrego == 1)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se agregó el proveedor');", true);
-				}
-				if (agrego == 2)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El proveedor ya existe');", true);
-				}
-				LimpiarCampos();
+
+				
 			}
+            else
+            {
+				//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('" + mensaje + "');", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "Mensaje('AGREGUE','" + mensaje + "','warning')", true);
+			}
+		}
+
+		protected bool ValidarContenido()
+		{
+
+			if (string.IsNullOrWhiteSpace(TxtRazonSocial.Text.Trim())) mensaje += "Razon social";
+			if (string.IsNullOrWhiteSpace(TxtDni.Text.Trim())){ mensaje += "-Dni/Cuil"; }
+			else if (!(TxtDni.Text.Trim().Count() >=8 && TxtDni.Text.Trim().Count()<=11)) mensaje += "-Dni/Cuil invalido";
+			if (string.IsNullOrWhiteSpace(TxtDireccion.Text.Trim())) mensaje += "-Dirección";
+			if (string.IsNullOrWhiteSpace(TxtEmail.Text.Trim())) mensaje += "-mail";
+			if (string.IsNullOrWhiteSpace(TxtTelefono.Text.Trim())) { mensaje += "-Teléfono"; }
+			//else if (TxtTelefono.Text.Trim().Count() != 11) mensaje += "-Teléfono invalido (11 digitos)"; 
+			if (string.IsNullOrWhiteSpace(TxtContacto.Text.Trim())) mensaje += "-Contacto";
+			if (DdlEstados.SelectedValue == "0") mensaje += " Estado";
+
+			if (string.IsNullOrEmpty(mensaje))
+			{
+				return true;
+			}
+
+			return false;
+
 		}
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
@@ -116,5 +159,26 @@ namespace Vistas
 		{
 			Response.Redirect("ControlStockListado.aspx");
 		}
+
+		private Proveedores GetEntity(string rutaImagen)
+        {
+			proveedor.SetDni(TxtDni.Text.Trim());
+			proveedor.SetRazonSocial(TxtRazonSocial.Text.Trim());
+			proveedor.SetDireccion(TxtDireccion.Text.Trim());
+			proveedor.SetEmail(TxtEmail.Text.Trim());
+			proveedor.SetTelefono(TxtTelefono.Text.Trim());
+			proveedor.SetNombreContacto(TxtContacto.Text.Trim());
+			proveedor.SetRutaImagen(rutaImagen);
+			estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
+			proveedor.SetEstado(estado);
+
+			return proveedor;
+		}
+
+     
+
+
+
+
 	}
 }

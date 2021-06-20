@@ -21,6 +21,8 @@ namespace Vistas
 		private readonly Estados estado = new Estados();
 		private readonly Marcas marca = new Marcas();
 
+		private string mensaje = string.Empty;
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (NegocioUsuarios.getInstance().isAdmin() != true)
@@ -69,45 +71,91 @@ namespace Vistas
 		}
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if (UploadImage.HasFile)
-			{
-				// Valida que el archivo sea correcto.
-				if (NegocioImagenes.validarArchivo(UploadImage.PostedFile))
+			if(ValidarContenido())
+            {
+				if (UploadImage.HasFile)
 				{
-					// Sube archivo.
-					string rutaImagen = NegocioImagenes.SubirImagenArticulo(UploadImage.PostedFile);
+					// Valida que el archivo sea correcto.
+					if (NegocioImagenes.validarArchivo(UploadImage.PostedFile))
+					{
+						// Sube archivo.
+						string rutaImagen = NegocioImagenes.SubirImagenArticulo(UploadImage.PostedFile);
 
-					// Se rellena el objeto Articulo
-					GetEntity(rutaImagen);
+						// Se rellena el objeto Articulo
+						GetEntity(rutaImagen);
 
-					// Una vez validado, se sube el registro del articulo.
-					int agrego = negocioArticulo.agregarArticulo(articulo);
-					if (agrego == 0)
-					{
-						lblNotificacion.ForeColor = System.Drawing.Color.Red;
-						lblNotificacion.Text = "No se puso agregar el artículo!";
+						// Una vez validado, se sube el registro del articulo.
+						int agrego = negocioArticulo.agregarArticulo(articulo);
+						if (agrego == 0)
+						{
+							//lblNotificacion.ForeColor = System.Drawing.Color.Red;
+							//lblNotificacion.Text = "No se puso agregar el artículo!";
+						
+						    ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se puso agregar el artículo!','error')", true);
+
+						}
+						if (agrego == 1)
+						{
+							//lblNotificacion.ForeColor = System.Drawing.Color.Green;
+							//lblNotificacion.Text = "Se agregó el artículo!";
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agregó el artículo!','success')", true);
+						}
+						if (agrego == 2)
+						{
+							//lblNotificacion.ForeColor = System.Drawing.Color.Red;
+							//lblNotificacion.Text = "El artículo ya existe!";
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('El artículo ya existe!','info')", true);
+						}
+						//LimpiarCampos();
+						ClearForm();
 					}
-					if (agrego == 1)
+					else
 					{
-						lblNotificacion.ForeColor = System.Drawing.Color.Green;
-						lblNotificacion.Text = "Se agregó el artículo!";
+						//lblNotificacion.ForeColor = System.Drawing.Color.Red;
+						//lblNotificacion.Text = "Error al subir la imagen!";
+						ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Error al subir la imagen!','error')", true);
+
 					}
-					if (agrego == 2)
-					{
-						lblNotificacion.ForeColor = System.Drawing.Color.Red;
-						lblNotificacion.Text = "El artículo ya existe!";
-					}
-					//LimpiarCampos();
-					ClearForm();
 				}
 				else
 				{
-					lblNotificacion.ForeColor = System.Drawing.Color.Red;
-					lblNotificacion.Text = "Error al subir la imagen!";
+					//lblNotificacion.ForeColor = System.Drawing.Color.Red;
+					//lblNotificacion.Text = "Suba una imagen!";
+					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Suba una imagen!','info')", true);
 				}
 			}
+            else
+            {
+				//lblNotificacion.ForeColor = System.Drawing.Color.Red;
+				//lblNotificacion.Text = mensaje;
+
+				ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "Mensaje('AGREGUE','"+mensaje+ "','warning')", true);
+			}
+
+
 
 		}
+
+		protected bool ValidarContenido()
+        {
+
+			if (string.IsNullOrEmpty(TxtNombre.Text.Trim())) mensaje += "Nombre"; 
+			if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim())) mensaje += "-Descripcion";
+			if (DdlMarcas.SelectedValue == "-1") mensaje += "-Marca";
+			if (DdlCategorias.SelectedValue == "-1") mensaje += "-Categoría";
+			if (DdlEstados.SelectedValue == "-1") mensaje += "-Estado";
+			if (string.IsNullOrEmpty(txtPrecio.Text.Trim())) mensaje += "-Precio"; 
+			if (string.IsNullOrEmpty(txtPedido.Text.Trim())) mensaje += "-PuntoPedido";
+			
+			if(string.IsNullOrEmpty(mensaje))
+            {
+				return true;
+			}
+			
+			return false;
+			
+		}
+
 
 		protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
@@ -170,5 +218,7 @@ namespace Vistas
 			TxtDescripcion.Text = "";
 			txtPrecio.Text = "";
 		}
-	}
+
+        
+    }
 }

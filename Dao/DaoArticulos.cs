@@ -28,26 +28,26 @@ namespace Dao
 		}
 		private void armarParametrosAgregarArticulo(ref SqlCommand Comando, Articulos articulo)
 		{
-			SqlParameter SqlParametros = new SqlParameter();
-			SqlParametros = Comando.Parameters.Add("@art_marca_codigo", SqlDbType.Int);
-			SqlParametros.Value = articulo.GetMarca().GetCodigo();
-			SqlParametros = Comando.Parameters.Add("@art_categoria_codigo ", SqlDbType.Int);
-			SqlParametros.Value = articulo.GetCategoria().GetCodigo();
-			SqlParametros = Comando.Parameters.Add("@art_nombre", SqlDbType.VarChar, 255);
-			SqlParametros.Value = articulo.GetNombre();
-			SqlParametros = Comando.Parameters.Add("@art_descripcion", SqlDbType.VarChar, 255);
-			SqlParametros.Value = articulo.GetDescripcion();
-			SqlParametros = Comando.Parameters.Add("@art_punto_pedido", SqlDbType.Int);
-			SqlParametros.Value = articulo.GetPuntoPedido();
-			SqlParametros = Comando.Parameters.Add("@art_precio_lista", SqlDbType.Decimal);
-			SqlParametros.Value = articulo.GetPuntoPedido();
-			SqlParametros = Comando.Parameters.Add("@art_ruta_imagen", SqlDbType.VarChar, 255);
-			SqlParametros.Value = articulo.GetRutaImagen();
-			SqlParametros = Comando.Parameters.Add("@art_codigo_estado", SqlDbType.Int);
-			SqlParametros.Value = articulo.GetEstado().GetCodigo();
-		}
-		//BUSCAR ARTICULO POR NOMBRE
-		public int buscarArticuloPorNombreMarca(Articulos articulo)
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = Comando.Parameters.Add("@art_marca_codigo", SqlDbType.Int);
+            SqlParametros.Value = articulo.GetMarca().GetCodigo();
+            SqlParametros = Comando.Parameters.Add("@art_categoria_codigo ", SqlDbType.Int);
+            SqlParametros.Value = articulo.GetCategoria().GetCodigo();
+            SqlParametros = Comando.Parameters.Add("@art_nombre", SqlDbType.VarChar, 255);
+            SqlParametros.Value = articulo.GetNombre();
+            SqlParametros = Comando.Parameters.Add("@art_descripcion", SqlDbType.VarChar, 255);
+            SqlParametros.Value = articulo.GetDescripcion();
+            SqlParametros = Comando.Parameters.Add("@art_punto_pedido", SqlDbType.Int);
+            SqlParametros.Value = articulo.GetPuntoPedido();
+            SqlParametros = Comando.Parameters.Add("@art_precio_lista", SqlDbType.Decimal);
+            SqlParametros.Value = articulo.GetPuntoPedido();
+            SqlParametros = Comando.Parameters.Add("@art_ruta_imagen", SqlDbType.VarChar, 255);
+            SqlParametros.Value = articulo.GetRutaImagen();
+            SqlParametros = Comando.Parameters.Add("@art_codigo_estado", SqlDbType.Int);
+            SqlParametros.Value = articulo.GetEstado().GetCodigo();
+        }
+        //BUSCAR ARTICULO POR NOMBRE
+        public int buscarArticuloPorNombreMarca(Articulos articulo)
 		{
 			string consultaSql = "SELECT COUNT(art_codigo) FROM Articulos WHERE art_nombre LIKE '" + articulo.GetNombre() + "' AND art_marca_codigo LIKE '" + articulo.GetMarca().GetCodigo() + "'";
 			int cantidad = accDatos.cantidadFilasAfectadas(consultaSql);
