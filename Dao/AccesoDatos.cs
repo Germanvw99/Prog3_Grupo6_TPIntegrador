@@ -10,11 +10,9 @@ namespace Dao
 {
 	public class AccesoDatos
 	{
+
 		private readonly string rutaDB = "Data Source=Localhost\\sqlexpress;Initial Catalog=Grupo6_TPIntegradorV6;Integrated Security=True";
 		
-		//private readonly string rutaDB = "Data Source=Localhost\\sqlexpress;Initial Catalog=Grupo6_TPIntegrador;Integrated Security=True";
-
-
 		public SqlConnection ObtenerConexion()
 		{
 			try

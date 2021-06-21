@@ -1,0 +1,15 @@
+CREATE PROCEDURE spModificarArticuloProveedor
+(
+@axp_proveedor_dni CHAR(8),
+@axp_articulo_codigo INT,
+@axp_stock_actual INT,
+@axp_precio_unitario DECIMAL(18,2)
+)
+AS
+UPDATE Articulos_por_Proveedor
+SET
+axp_stock_actual=@axp_stock_actual,
+axp_precio_unitario=@axp_precio_unitario
+WHERE axp_proveedor_dni=@axp_proveedor_dni
+AND axp_articulo_codigo=@axp_articulo_codigo
+RETURN

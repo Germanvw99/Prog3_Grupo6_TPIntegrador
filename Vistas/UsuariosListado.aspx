@@ -35,6 +35,7 @@
                                     <div class="row">
                                         <div class="col-md-3 text-left">
                                             <label class="form-label">Buscar por Dni</label>
+                                            <asp:RangeValidator ID="RvtxtFiltrarDni" runat="server" ControlToValidate="txtFiltrarDni" ErrorMessage="*Debe ingresar un número de DNI de ocho dígitos" ForeColor="Red" MaximumValue="99999999" MinimumValue="0" Type="Integer" ValidationGroup="buscar">*</asp:RangeValidator>
                                         </div>
                                         <div class="col-md-3 text-left">
                                             <label class="form-label">Buscar por Username</label>
@@ -60,12 +61,15 @@
                                             <asp:DropDownList ID="DdlFiltrarEstado" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                         </div>
                                         <div class="col-md-2 text-center">
-                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" OnClick="BtnFiltrar_Click"  />
+                                            <asp:Button ID="BtnFiltrar" class="btn btn-outline-primary" runat="server" Text="Buscar" OnClick="BtnFiltrar_Click" ValidationGroup="buscar"  />
                                             &nbsp;&nbsp;
                                             <asp:Button ID="BtnQuitarFiltro" class="btn btn-outline-primary" runat="server" Text="Quitar filtro" OnClick="BtnQuitarFiltro_Click" />
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class ="row">
+                                <asp:ValidationSummary ID="VsBuscar" runat="server" ForeColor="Red" ValidationGroup="buscar" />
                             </div>
                             <div class ="row">
                                 <div class="card-body card bg-light">
