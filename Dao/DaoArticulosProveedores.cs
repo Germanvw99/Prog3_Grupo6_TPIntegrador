@@ -46,5 +46,27 @@ namespace Dao
 			SqlParametros.Value = articuloProveedor.GetPreciounitario();
 		}
 		#endregion
+
+		#region MODICAR STOCK
+		public int modificarArticuloProveedor(ArticulosProveedores articuloProveedor)
+		{
+			SqlCommand comando = new SqlCommand();
+			armarParametroModificarArticuloProveedor(ref comando, articuloProveedor);
+			return accDatos.EjecutarProcedimientoAlmacenado(comando, "spModificarArticuloProveedor");
+		}
+
+		private void armarParametroModificarArticuloProveedor(ref SqlCommand Comando, ArticulosProveedores articuloProveedor)
+		{
+			SqlParameter SqlParametros = new SqlParameter();
+			SqlParametros = Comando.Parameters.Add("@axp_proveedor_dni", SqlDbType.Char);
+			SqlParametros.Value = articuloProveedor.GetProveedor().GetDni();
+			SqlParametros = Comando.Parameters.Add("@axp_articulo_codigo", SqlDbType.Int);
+			SqlParametros.Value = articuloProveedor.GetArticulo().GetCodigo();
+			SqlParametros = Comando.Parameters.Add("@axp_stock_actual", SqlDbType.Int);
+			SqlParametros.Value = articuloProveedor.GetStockActual();
+			SqlParametros = Comando.Parameters.Add("@axp_precio_unitario", SqlDbType.Decimal);
+			SqlParametros.Value = articuloProveedor.GetPreciounitario();
+		}
+		#endregion
 	}
 }

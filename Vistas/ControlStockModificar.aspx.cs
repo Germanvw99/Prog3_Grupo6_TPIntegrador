@@ -64,53 +64,32 @@ namespace Vistas
 
 		protected void BtnModificarArticuloProveedor_Click(object sender, EventArgs e)
 		{
-			////AQUI SOLO SE SETEAN SOLO LOS CAMBIOS QUE SE HAYAN EFECTUADO
-			//if (!string.IsNullOrWhiteSpace(TxtNombreModificar.Text.Trim()))
-			//{
-			//	categoria.SetNombre(TxtNombreModificar.Text.Trim());
-			//}
-			//if (!string.IsNullOrWhiteSpace(TxtDescripcionModificar.Text.Trim()))
-			//{
-			//	categoria.SetDescripcion(TxtDescripcionModificar.Text.Trim());
-			//}
-			//if (Int32.Parse(DdlEstadoModificar.SelectedValue) != 0)
-			//{
-			//	estado.SetCodigo(Int32.Parse(DdlEstadoModificar.SelectedValue));
-			//	categoria.SetEstado(estado);
-			//}
+			//AQUI SOLO SE SETEAN SOLO LOS CAMBIOS QUE SE HAYAN EFECTUADO
+			if (!string.IsNullOrWhiteSpace(TxtStockActualModificar.Text.Trim()))
+            {
+                articuloProveedor.SetStockActual(Int32.Parse(TxtStockActualModificar.Text.Trim()));
+            }
+            if (!string.IsNullOrWhiteSpace(TxtPrecioUnitarioModificar.Text.Trim()))
+            {
+				articuloProveedor.SetPrecioUnitario(Decimal.Parse(TxtPrecioUnitarioModificar.Text.Trim()));
+            }          
 
-			//if (FUCategoria.HasFile)
-			//{
-			//	// VALIDA QUE EL ARCHIVO SEA CORRECTO.
-			//	if (NegocioImagenes.validarArchivo(FUCategoria.PostedFile))
-			//	{
-			//		// SUBE ARCHIVO.
-			//		string imagenNombre = NegocioImagenes.SubirImagenCategoria(FUCategoria.PostedFile);
-			//		categoria.SetRutaImagen(imagenNombre);
-			//	}
-			//}
-			//int agrego = negocioCategoria.modificarMarca(categoria);
+            if (negocioArticuloProveedor.modificarArticuloProveedor(articuloProveedor))
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se modificó el stock');", true);
+			}
+            else
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo modificar el stock');", true);
+            }
 
-			//if (agrego == 0)
-			//{
-			//	ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo modificar la categoría');", true);
-			//}
-			//if (agrego == 1)
-			//{
-			//	ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se modificó la categoría');", true);
-			//}
-			//if (agrego == 2)
-			//{
-			//	ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('El nombre de la categoría ya existe');", true);
-			//}
-
-			LimpiarCampos();
+            LimpiarCampos();
 		}
 
 		private void LimpiarCampos()
 		{
-			TxtStockActual.Text = string.Empty;
-			TxtPrecioUnitario.Text = string.Empty;
+			TxtStockActualModificar.Text = string.Empty;
+			TxtPrecioUnitarioModificar.Text = string.Empty;
 		}
 
 		protected void BtnCancelar_Click(object sender, EventArgs e)
