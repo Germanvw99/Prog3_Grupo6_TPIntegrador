@@ -78,15 +78,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrListarStock;
 
         /// <summary>
-        /// Control RfvTxtNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvTxtNombre;
-
-        /// <summary>
         /// Control TxtNombre.
         /// </summary>
         /// <remarks>
@@ -96,15 +87,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox TxtNombre;
 
         /// <summary>
-        /// Control RfvTxtDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvTxtDescripcion;
-
-        /// <summary>
         /// Control TxtDescripcion.
         /// </summary>
         /// <remarks>
@@ -112,15 +94,6 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
-
-        /// <summary>
-        /// Control RfvDdlEstados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDdlEstados;
 
         /// <summary>
         /// Control DdlEstados.

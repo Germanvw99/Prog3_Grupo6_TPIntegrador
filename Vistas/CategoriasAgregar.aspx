@@ -34,23 +34,20 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Nombre</label>
-                                                <asp:RequiredFieldValidator ID="RfvTxtNombre" runat="server" ControlToValidate="TxtNombre" ErrorMessage="*Debe ingregar un nombre" ForeColor="Red" ValidationGroup="agregar">*</asp:RequiredFieldValidator>
                                                 &nbsp;
-                                                <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                                                <asp:TextBox ID="TxtNombre" type="text" runat="server" class="form-control" placeholder="Nombre categoría"></asp:TextBox>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">
                                                     Descripción
-                                                    <asp:RequiredFieldValidator ID="RfvTxtDescripcion" runat="server" ControlToValidate="TxtDescripcion" ErrorMessage="**Debe ingresar una descripción" ForeColor="Red" ValidationGroup="agregar">**</asp:RequiredFieldValidator>
-                                                </label>
+                                                    </label>
                                                 &nbsp;
-                                                <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="" TextMode="MultiLine"></asp:TextBox>
+                                                <asp:TextBox ID="TxtDescripcion" type="text" runat="server" class="form-control" placeholder="Descripción categoría" TextMode="MultiLine"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Estado</label>
-                                                <asp:RequiredFieldValidator ID="RfvDdlEstados" runat="server" ControlToValidate="DdlEstados" ErrorMessage="***Debe seleccionar un estado" ForeColor="Red" InitialValue="0" ValidationGroup="agregar" style="font-weight: 700">***</asp:RequiredFieldValidator>
                                                 <br />
                                                 <asp:DropDownList ID="DdlEstados" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                             </div>

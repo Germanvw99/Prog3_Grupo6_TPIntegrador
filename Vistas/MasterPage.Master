@@ -71,19 +71,26 @@
                                     </small>
                                 </div>
                             </div>
-                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0" id="userPanelMarcas" runat="server">
+                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0" id="userPanelMarcas" runat="server" style="padding-top:0px">
                                 <li class="mt-4 sidebar-header">
                                     </li>
                                 <li class="sidebar-item">
                                 </li>
                                 <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">&nbsp;<asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
+                                    <a class="sidebar-link" href="#">&nbsp;
+                                         <h5>Lista de Marcas</h5>
+                                        <div style=" height:500px; overflow:scroll; width:160px; text-align:center; margin:0px">
+                                           
+                                             <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="ImageButton2" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="38px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImageButton2_Command" Width="65px" />
+                                            <asp:ImageButton ID="ImageButton2" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImageButton2_Command" Width="114px" />
                                            
                                 <br />
                                         </ItemTemplate>
                                     </asp:DataList>
+                                        </div>
+                                       
+                                    
                                     </a>
                                 </li>
                                 <li class="sidebar-item" runat="server">

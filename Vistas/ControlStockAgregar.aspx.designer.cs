@@ -87,15 +87,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrAgregarProveedor;
 
         /// <summary>
-        /// Control RfvDdlProveedores.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDdlProveedores;
-
-        /// <summary>
         /// Control DdlProveedores.
         /// </summary>
         /// <remarks>
@@ -114,15 +105,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton IrAgregarArticulo;
 
         /// <summary>
-        /// Control RfvDdlArticulos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDdlArticulos;
-
-        /// <summary>
         /// Control DdlArticulos.
         /// </summary>
         /// <remarks>
@@ -132,24 +114,6 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.DropDownList DdlArticulos;
 
         /// <summary>
-        /// Control RfvtxtCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtCantidad;
-
-        /// <summary>
-        /// Control CvTxtCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CvTxtCantidad;
-
-        /// <summary>
         /// Control TxtCantidad.
         /// </summary>
         /// <remarks>
@@ -157,33 +121,6 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtCantidad;
-
-        /// <summary>
-        /// Control RfvTxtPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvTxtPrecio;
-
-        /// <summary>
-        /// Control RevTxtPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RevTxtPrecio;
-
-        /// <summary>
-        /// Control CvTxtPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CvTxtPrecio;
 
         /// <summary>
         /// Control TxtPrecio.

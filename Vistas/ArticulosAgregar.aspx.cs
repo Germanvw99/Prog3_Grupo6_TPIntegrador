@@ -144,10 +144,12 @@ namespace Vistas
 			if (DdlMarcas.SelectedValue == "-1") mensaje += "-Marca";
 			if (DdlCategorias.SelectedValue == "-1") mensaje += "-Categoría";
 			if (DdlEstados.SelectedValue == "-1") mensaje += "-Estado";
-			if (string.IsNullOrEmpty(txtPrecio.Text.Trim())) mensaje += "-Precio"; 
+			if (string.IsNullOrEmpty(txtPrecio.Text.Trim())) mensaje += "-Precio";
+			else if (decimal.Parse(txtPrecio.Text.Trim()) < 0) mensaje += "-Precio invalido";
 			if (string.IsNullOrEmpty(txtPedido.Text.Trim())) mensaje += "-PuntoPedido";
-			
-			if(string.IsNullOrEmpty(mensaje))
+			else if (int.Parse(txtPedido.Text.Trim()) < 0) mensaje += "-PuntoPedido invalido";
+
+			if (string.IsNullOrEmpty(mensaje))
             {
 				return true;
 			}
@@ -205,7 +207,10 @@ namespace Vistas
 			articulo.SetEstado(estado);
 			//
 			articulo.SetPuntoPedido(Int32.Parse(txtPedido.Text.Trim()));
-			articulo.SetPrecioLista(Decimal.Parse(txtPrecio.Text.Trim()));
+
+			string precionuevo = txtPrecio.Text.Replace('.', ',');
+
+			articulo.SetPrecioLista(Decimal.Parse(precionuevo.Trim()));
 			//
 			articulo.SetRutaImagen(rutaImagen);
 			return articulo;

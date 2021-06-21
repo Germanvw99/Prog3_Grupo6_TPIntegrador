@@ -36,7 +36,6 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Proveedor</label>
                                                     <asp:LinkButton ID="IrAgregarProveedor" runat="server" class="btn btn-outline-primary float-right" OnClick="IrAgregarProveedor_Click">+ Agregar Proveedor</asp:LinkButton>
-                                                    <asp:RequiredFieldValidator ID="RfvDdlProveedores" runat="server" ControlToValidate="DdlProveedores" ErrorMessage="*Debe seleccionar un proveedor" ForeColor="Red" ValidationGroup="agregar" InitialValue="0">*</asp:RequiredFieldValidator>
                                                 </div>
                                                 <asp:DropDownList ID="DdlProveedores"  class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                             </div>
@@ -44,23 +43,16 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Artículo</label>
                                                     <asp:LinkButton ID="IrAgregarArticulo" runat="server" class="btn btn-outline-primary float-right" OnClick="IrAgregarArticulo_Click">+ Agregar Artículo</asp:LinkButton>
-                                                    <asp:RequiredFieldValidator ID="RfvDdlArticulos" runat="server" ControlToValidate="DdlArticulos" ErrorMessage="**Debe seleccionar un artículo" ForeColor="Red" ValidationGroup="agregar" InitialValue="0">**</asp:RequiredFieldValidator>
                                                 </div>
                                                 <asp:DropDownList ID="DdlArticulos" class="custom-select form-control"  runat="server" > </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="form-label">Cantidad<asp:RequiredFieldValidator ID="RfvtxtCantidad" runat="server" ControlToValidate="txtCantidad" ErrorMessage="***Debe ingresar valores enteros positivos" ForeColor="Red" ValidationGroup="agregar">***</asp:RequiredFieldValidator>
-                                                </label>
-                                                <asp:CompareValidator ID="CvTxtCantidad" runat="server" ControlToValidate="TxtCantidad" ErrorMessage="***Debe ingresar valores enteros positivos" ForeColor="Red" Operator="GreaterThanEqual" Type="Integer" ValueToCompare="0" ValidationGroup="agregar">***</asp:CompareValidator>
-&nbsp;<asp:TextBox ID="TxtCantidad" type="text" runat="server" class="form-control" placeholder="" TextMode="Number"></asp:TextBox>
+                                                <label class="form-label">Cantidad</label>&nbsp;<asp:TextBox ID="TxtCantidad" type="text" runat="server" class="form-control" placeholder="cantidad" TextMode="Number"></asp:TextBox>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label">Precio por unidad</label><asp:RequiredFieldValidator ID="RfvTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="****Debe ingresar un valor" ForeColor="Red" ValidationGroup="agregar">****</asp:RequiredFieldValidator>
-&nbsp;<asp:RegularExpressionValidator ID="RevTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="****Debe ingresar valores hasta con dos decimales (Usar . [punto]  como separador)" ForeColor="Red" ValidationExpression="^[0-9]+(\.[0-9]{1,2})?$" ValidationGroup="agregar">****</asp:RegularExpressionValidator>
-                                                <asp:CompareValidator ID="CvTxtPrecio" runat="server" ControlToValidate="TxtPrecio" ErrorMessage="**** El valor debe ser monetario (hasta dos decimales)" ForeColor="Red" Operator="GreaterThanEqual" Type="Currency" ValidationGroup="agregar" ValueToCompare="0">****</asp:CompareValidator>
-                                                <asp:TextBox ID="TxtPrecio" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                                                <label class="form-label">Precio por unidad</label><asp:TextBox ID="TxtPrecio" type="number" step="any"  runat="server" class="form-control" placeholder="0.00"></asp:TextBox>
                                             </div>
                                             <asp:ValidationSummary ID="VsAgregarArticuloStock" runat="server" ForeColor="Red" ValidationGroup="agregar" />
                                             <asp:Button ID="BtnAgregar" class="btn btn-primary float-right" runat="server" Text="Agregar artículo al stock" OnClick="BtnAgregar_Click" ValidationGroup="agregar"/>

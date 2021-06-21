@@ -114,11 +114,13 @@ namespace Vistas
 
 			if (string.IsNullOrWhiteSpace(TxtRazonSocial.Text.Trim())) mensaje += "Razon social";
 			if (string.IsNullOrWhiteSpace(TxtDni.Text.Trim())){ mensaje += "-Dni/Cuil"; }
+			else if (int.Parse(TxtDni.Text.Trim()) < 0) mensaje += "-Dni/Cuil invalido";
 			else if (!(TxtDni.Text.Trim().Count() >=8 && TxtDni.Text.Trim().Count()<=11)) mensaje += "-Dni/Cuil invalido";
 			if (string.IsNullOrWhiteSpace(TxtDireccion.Text.Trim())) mensaje += "-Dirección";
 			if (string.IsNullOrWhiteSpace(TxtEmail.Text.Trim())) mensaje += "-mail";
 			if (string.IsNullOrWhiteSpace(TxtTelefono.Text.Trim())) { mensaje += "-Teléfono"; }
 			//else if (TxtTelefono.Text.Trim().Count() != 11) mensaje += "-Teléfono invalido (11 digitos)"; 
+			else if (int.Parse(TxtTelefono.Text.Trim()) < 0) mensaje += "-Telefono invalido";
 			if (string.IsNullOrWhiteSpace(TxtContacto.Text.Trim())) mensaje += "-Contacto";
 			if (DdlEstados.SelectedValue == "0") mensaje += " Estado";
 

@@ -16,7 +16,7 @@ namespace Vistas
 		private readonly NegocioCategorias negocioCategoria = new NegocioCategorias();
 		private readonly Categorias categoria = new Categorias();
 		private readonly Estados estado = new Estados();
-
+		private string mensaje = string.Empty;
 		private string imagenURL = "Imagenes/categorias/__default.png";
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -51,7 +51,8 @@ namespace Vistas
 
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text) && Int32.Parse(DdlEstados.SelectedValue) != 0)
+			//if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text) && Int32.Parse(DdlEstados.SelectedValue) != 0)
+			if(ValidarContenido())
 			{
 				if (FUCategoria.HasFile)
 				{
@@ -60,31 +61,67 @@ namespace Vistas
 					{
 						// SUBE ARCHIVO.
 						imagenURL = NegocioImagenes.SubirImagenCategoria(FUCategoria.PostedFile);
+						//categoria.SetNombre(TxtNombre.Text.Trim());
+						//categoria.SetDescripcion(TxtDescripcion.Text.Trim());
+						//estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
+						//categoria.SetEstado(estado);
+						//categoria.SetRutaImagen(imagenURL);
+
+						GetEntity(imagenURL);
+
+						int agrego = negocioCategoria.agregarCategoria(categoria);
+
+						if (agrego == 0)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se puso agregar la categoría!','error')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo agregar la categoria');", true);
+						}
+						if (agrego == 1)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agregó el categoría!','success')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se agregó la categoria');", true);
+						}
+						if (agrego == 2)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('La categoría ya existe!','info')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('La categoria ya existe');", true);
+						}
+						LimpiarCampos();
+					}
+                    else
+                    {
+						ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Error al subir la imagen!','error')", true);
 					}
 				}
-				categoria.SetNombre(TxtNombre.Text.Trim());
-				categoria.SetDescripcion(TxtDescripcion.Text.Trim());
-				estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
-				categoria.SetEstado(estado);
-				categoria.SetRutaImagen(imagenURL);
+                else
+                {
+					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Suba una imagen!','info')", true);
+				}
+				
+			}
+            else
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "Mensaje('AGREGUE','" + mensaje + "','warning')", true);
 
-				int agrego = negocioCategoria.agregarCategoria(categoria);
-
-				if (agrego == 0)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo agregar la categoria');", true);
-				}
-				if (agrego == 1)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se agregó la categoria');", true);
-				}
-				if (agrego == 2)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('La categoria ya existe');", true);
-				}
-				LimpiarCampos();
 			}
 		}
+		protected bool ValidarContenido()
+		{
+			if (string.IsNullOrEmpty(TxtNombre.Text.Trim())) mensaje += "Nombre";
+			if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim())) mensaje += "-Descripción";
+			if (DdlEstados.SelectedValue=="0") mensaje += "-Estado";
+
+            if (string.IsNullOrEmpty(mensaje))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
@@ -114,5 +151,17 @@ namespace Vistas
 		{
 			Response.Redirect("ControlStockListado.aspx");
 		}
-	}
+		
+		private Categorias GetEntity(String rutaImagen)
+		{
+			categoria.SetNombre(TxtNombre.Text.Trim());
+			categoria.SetDescripcion(TxtDescripcion.Text.Trim());
+			estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
+			categoria.SetEstado(estado);
+			categoria.SetRutaImagen(imagenURL);
+
+			return categoria;
+		}
+		
+    }
 }

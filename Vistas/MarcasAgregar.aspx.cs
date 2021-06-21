@@ -16,6 +16,7 @@ namespace Vistas
 		private readonly Marcas marca = new Marcas();
 		private readonly Estados estado = new Estados();
 		//
+		private string mensaje = string.Empty;
 		private string imagenURL = "Imagenes/marcas/__default.png";
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -46,7 +47,8 @@ namespace Vistas
 		}
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text) && Int32.Parse(DdlEstados.SelectedValue) != 0)
+			//if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text) && Int32.Parse(DdlEstados.SelectedValue) != 0)
+			if(ValidarContenido())
 			{
 				if (FUMarca.HasFile)
 				{
@@ -55,32 +57,75 @@ namespace Vistas
 					{
 						// SUBE ARCHIVO.
 						imagenURL = NegocioImagenes.SubirImagenMarca(FUMarca.PostedFile);
+
+						marca.SetNombre(TxtNombre.Text.Trim());
+						marca.SetDescripcion(TxtDescripcion.Text.Trim());
+						estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
+						marca.SetEstado(estado);
+						marca.SetRutaImagen(imagenURL);
+
+						int agrego = negocioMarca.agregarMarca(marca);
+
+						if (agrego == 0)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se puso agregar la marca!','error')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo agregar la marca');", true);
+						}
+						if (agrego == 1)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agregó la marca!','success')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se agregó la marca');", true);
+						}
+						if (agrego == 2)
+						{
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('La marca ya existe!','info')", true);
+
+							//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('La marca ya existe');", true);
+						}
+
+						LimpiarCampos();
 					}
-				}
-				marca.SetNombre(TxtNombre.Text.Trim());
-				marca.SetDescripcion(TxtDescripcion.Text.Trim());
-				estado.SetCodigo(Int32.Parse(DdlEstados.SelectedValue));
-				marca.SetEstado(estado);
-				marca.SetRutaImagen(imagenURL);
+                    else
+                    {
+						ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Error al subir la imagen!','error')", true);
 
-				int agrego = negocioMarca.agregarMarca(marca);
+					}
 
-				if (agrego == 0)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo agregar la marca');", true);
 				}
-				if (agrego == 1)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se agregó la marca');", true);
-				}
-				if (agrego == 2)
-				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('La marca ya existe');", true);
+                else
+                {
+					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Suba una imagen!','info')", true);
+
 				}
 
-				LimpiarCampos();
 			}
+            else
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "Mensaje('AGREGUE','" + mensaje + "','warning')", true);
+
+			}
+
 		}
+
+		protected bool ValidarContenido()
+		{
+
+			if (string.IsNullOrEmpty(TxtNombre.Text.Trim())) mensaje += "Nombre";
+			if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim())) mensaje += "-Descripcion";
+			if (DdlEstados.SelectedValue == "0") mensaje += "-Estado";
+
+			if (string.IsNullOrEmpty(mensaje))
+			{
+				return true;
+			}
+
+			return false;
+
+		}
+
+
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
@@ -110,5 +155,6 @@ namespace Vistas
 		{
 			Response.Redirect("ControlStockListado.aspx");
 		}
+
 	}
 }

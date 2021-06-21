@@ -16,6 +16,9 @@ namespace Vistas
 		private readonly NegocioProveedores negocioProveedor = new NegocioProveedores();
 		private readonly NegocioArticulos negocioArticulo = new NegocioArticulos();
 		private ArticulosProveedores articuloProveedor = new ArticulosProveedores();
+
+		private string mensaje = string.Empty;
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (NegocioUsuarios.getInstance().isAdmin() != true)
@@ -77,7 +80,8 @@ namespace Vistas
 
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if (Int32.Parse(DdlProveedores.SelectedValue) != 0 && Int32.Parse(DdlArticulos.SelectedValue) != 0 && !string.IsNullOrEmpty(TxtCantidad.Text) && !string.IsNullOrEmpty(TxtPrecio.Text))
+			//if (Int32.Parse(DdlProveedores.SelectedValue) != 0 && Int32.Parse(DdlArticulos.SelectedValue) != 0 && !string.IsNullOrEmpty(TxtCantidad.Text) && !string.IsNullOrEmpty(TxtPrecio.Text))
+			if(ValidarContenido())
 			{
 				Proveedores proveedor = new Proveedores();
 				proveedor.SetDni(DdlProveedores.SelectedValue);
@@ -87,20 +91,51 @@ namespace Vistas
 				articulo.SetCodigo(int.Parse(DdlArticulos.SelectedValue));
 				articuloProveedor.SetArticulo(articulo);
 				articuloProveedor.SetEntrada(int.Parse(TxtCantidad.Text));
-				articuloProveedor.SetPrecioUnitario(decimal.Parse(TxtPrecio.Text));
+
+				string precionuevo=TxtPrecio.Text.Replace('.',',');
+
+				articuloProveedor.SetPrecioUnitario(decimal.Parse(precionuevo));
 
 				if (negocioArticuloProveedor.agregarStock(articuloProveedor))
 				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se actualizó el stock');", true);
+					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se actualizó el stock!','success')", true);
+
+					//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Se actualizó el stock');", true);
 				}
 
 				else
 				{
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso actualizar el stock');", true);
+					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se puso actualizar el stock!','error')", true);
+
+					//ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se puso actualizar el stock');", true);
 				}
 				LimpiarCampos();
 			}
+            else
+            {
+				ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "Mensaje('AGREGUE','" + mensaje + "','warning')", true);
+
+			}
 		}
+
+		protected bool ValidarContenido()
+		{
+
+			if (DdlProveedores.SelectedValue=="0") mensaje += "Proveedor";
+			if (DdlArticulos.SelectedValue=="0") mensaje += "-Artículo";
+			if (string.IsNullOrEmpty(TxtCantidad.Text.Trim())) mensaje += "-Cantidad";
+			else if (int.Parse(TxtCantidad.Text) < 0) mensaje += "-Cantidad invalida";
+			if (string.IsNullOrEmpty(TxtPrecio.Text.Trim())) { mensaje += "-Precio"; }
+			else if (decimal.Parse(TxtPrecio.Text) < 0) mensaje += "-Precio invalido";
+			if (string.IsNullOrEmpty(mensaje))
+			{
+				return true;
+			}
+
+			return false;
+
+		}
+
 
 		private void LimpiarCampos()
 		{

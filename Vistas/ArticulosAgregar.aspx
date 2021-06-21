@@ -67,7 +67,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Precio de Lista</label>
-                                                <asp:TextBox ID="txtPrecio" type="text" runat="server" class="form-control" placeholder="Precio de Lista" TextMode="Number" ValidationGroup="VgAgregarArticulo"></asp:TextBox>
+                                                <asp:TextBox ID="txtPrecio"  type="number" step="any" runat="server" class="form-control" placeholder="Precio de Lista" TextMode="Number" ValidationGroup="VgAgregarArticulo"></asp:TextBox>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Imágen</label>
