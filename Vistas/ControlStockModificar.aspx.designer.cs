@@ -132,6 +132,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox TxtPrecioUnitario;
 
         /// <summary>
+        /// Control CvTxtStockActualModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CvTxtStockActualModificar;
+
+        /// <summary>
         /// Control TxtStockActualModificar.
         /// </summary>
         /// <remarks>
@@ -139,6 +148,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtStockActualModificar;
+
+        /// <summary>
+        /// Control RevTxtPrecioUnitarioModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RevTxtPrecioUnitarioModificar;
 
         /// <summary>
         /// Control TxtPrecioUnitarioModificar.
@@ -166,5 +184,14 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnCancelar;
+
+        /// <summary>
+        /// Control VsModificarStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary VsModificarStock;
     }
 }

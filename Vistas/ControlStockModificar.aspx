@@ -71,15 +71,15 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <label class="form-label">Stock actual</label>
-                                                    <asp:TextBox ID="TxtStockActualModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                                                    <label class="form-label">Stock actual</label><asp:CompareValidator ID="CvTxtStockActualModificar" runat="server" ControlToValidate="TxtStockActualModificar" ErrorMessage="*Debe ingresar valores enteros positivos" ForeColor="Red" Operator="GreaterThanEqual" Type="Integer" ValidationGroup="modificar" ValueToCompare="0">*</asp:CompareValidator>
+&nbsp;<asp:TextBox ID="TxtStockActualModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="form-label">Precio unitario</label>
-                                                    <asp:TextBox ID="TxtPrecioUnitarioModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                                                    <label class="form-label">Precio unitario</label><asp:RegularExpressionValidator ID="RevTxtPrecioUnitarioModificar" runat="server" ControlToValidate="TxtPrecioUnitarioModificar" ErrorMessage="**Debe ingresar valores hasta con dos decimales (Usar . [punto]  como separador)" ForeColor="Red" ValidationExpression="^[0-9]+(\.[0-9]{1,2})?$" ValidationGroup="modificar">**</asp:RegularExpressionValidator>
+&nbsp;<asp:TextBox ID="TxtPrecioUnitarioModificar" type="text" runat="server" class="form-control" placeholder=""></asp:TextBox>
                                                 </div>
                                                     <div class="form-group float-right">
-                                                        <asp:Button ID="BtnModificarArticuloProveedor" class="btn btn-primary float-right" runat="server" Text="Modificar Stock" OnClick="BtnModificarArticuloProveedor_Click" />
+                                                        <asp:Button ID="BtnModificarArticuloProveedor" class="btn btn-primary float-right" runat="server" Text="Modificar Stock" OnClick="BtnModificarArticuloProveedor_Click" ValidationGroup="modificar" />
                                                         &nbsp &nbsp
                                                         <asp:Button ID="BtnCancelar" class="btn btn-secondary float-right" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" />
                                                     </div>
@@ -95,4 +95,5 @@
             </div>
         </div>
     </main>
+    <asp:ValidationSummary ID="VsModificarStock" runat="server" ForeColor="Red" ValidationGroup="modificar" />
 </asp:Content>

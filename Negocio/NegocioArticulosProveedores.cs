@@ -12,6 +12,7 @@ namespace Negocio
 {
 	public class NegocioArticulosProveedores : System.Web.UI.Page
 	{
+		private readonly ArticulosProveedores articuloProveedor = new ArticulosProveedores();
 		private readonly DaoArticulosProveedores daoArticuloProveedor = new DaoArticulosProveedores();
 		public DataTable ObtenerArticulosProveedores()
 		{
@@ -97,7 +98,9 @@ namespace Negocio
 		}
         #endregion
 
-        #region USO SESION PARA MODIFICAR STOCK. SI NO EXISTE, CREA LA SESION
+        #region SESION
+		
+		//USO SESION PARA MODIFICAR STOCK. SI NO EXISTE, CREA LA SESION
         private void CrearSesionArticuloProveedor()
 		{
 			if (Session["SesionArticuloProveedor"] == null)
@@ -148,5 +151,17 @@ namespace Negocio
 		}
 		#endregion
 
+		//MODIFICAR ARTICULO PROVEEDOR
+		public bool modificarArticuloProveedor(ArticulosProveedores articuloProveedor)
+		{
+            if (daoArticuloProveedor.modificarArticuloProveedor(articuloProveedor) == 1)
+            {
+				return true;
+            }
+            else
+            {
+				return false;
+            }
+		}
 	}
 }
