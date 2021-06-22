@@ -116,41 +116,6 @@ namespace Vistas
             Response.Redirect("ControlStockAgregar.aspx");
         }
 
-        // REDIRECCIONES LISTADOS
-        protected void LbListadoArticulos_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ArticulosListado.aspx");
-        }
-
-        protected void LblListadoUsuarios_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UsuariosListado.aspx");
-        }
-
-        protected void LbListadoProveedores_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ProveedoresListado.aspx");
-        }
-
-        protected void LbListadoCategorias_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("CategoriasListado.aspx");
-        }
-
-        protected void LbListadoMarcas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("MarcasListado.aspx");
-        }
-
-        protected void LbListadoControlStock_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ControlStockListado.aspx");
-        }
-
-        protected void LbListadoVentas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("VentasListado.aspx");
-        }
 
 
         protected void btnCart_Click(object sender, EventArgs e)
@@ -181,3 +146,4 @@ namespace Vistas
         }
     }
 }
+

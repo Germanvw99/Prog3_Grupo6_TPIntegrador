@@ -130,31 +130,7 @@
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="LbAgregarControlStock" runat="server" OnClick="LbAgregarControlStock_Click">Agregar Stock</asp:LinkButton>
                                     </li>
-                                    <li class="sidebar-header">
-                                        LISTADOS
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LblListadoUsuarios" runat="server" OnClick="LblListadoUsuarios_Click">Listado de Usuarios</asp:LinkButton>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoArticulos" runat="server" OnClick="LbListadoArticulos_Click">Listado de Artículos</asp:LinkButton>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoProveedores" runat="server" OnClick="LbListadoProveedores_Click">Listado de Proveedores</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoCategorias" runat="server" OnClick="LbListadoCategorias_Click">Listado de Categorías</asp:LinkButton>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoMarcas" runat="server" OnClick="LbListadoMarcas_Click">Listado de Marcas</asp:LinkButton>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoControlStock" runat="server" OnClick="LbListadoControlStock_Click">Listado de Stock</asp:LinkButton>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbListadoVentas" runat="server" OnClick="LbListadoVentas_Click">Listado de Ventas</asp:LinkButton>
-                                    </li>
+                                 
                                 </ul>
                             </div>
                         </div> 

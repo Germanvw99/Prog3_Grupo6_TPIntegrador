@@ -1,3 +1,5 @@
+USE [Grupo6_TPIntegrador]
+GO
 CREATE PROCEDURE spLoginUsuario
 (
 @prmUsername varchar(255),
