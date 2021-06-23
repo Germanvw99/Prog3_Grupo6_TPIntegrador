@@ -206,5 +206,45 @@ namespace Negocio
 			// CONSTRUYO LA CLAUSULA
 			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
 		}
+
+		public bool ValidarContenido(ref string mensaje,string razonS, string dni, string direcc, string email, string telefo, string contac, string estado)
+        {
+			if (string.IsNullOrWhiteSpace(razonS.Trim())) mensaje += "Razon social";
+
+			try
+			{
+				if (string.IsNullOrWhiteSpace(dni.Trim())) { mensaje += "-Dni/Cuil"; }
+				else if (int.Parse(dni.Trim()) < 0) mensaje += "-Dni/Cuil invalido";
+				else if (!(dni.Trim().Count() >= 8 && dni.Trim().Count() <= 11)) mensaje += "-Dni/Cuil invalido";
+			}
+			catch (Exception)
+			{
+				mensaje += "-Dni/Cuil invalido";
+			}
+
+			if (string.IsNullOrWhiteSpace(direcc.Trim())) mensaje += "-Dirección";
+			if (string.IsNullOrWhiteSpace(email.Trim())) mensaje += "-mail";
+
+			try
+			{
+				if (string.IsNullOrWhiteSpace(telefo.Trim())) { mensaje += "-Teléfono"; }
+				//else if (telefo.Trim().Count() != 11) mensaje += "-Teléfono invalido (11 digitos)"; 
+				else if (int.Parse(telefo.Trim()) < 0) mensaje += "-Telefono invalido";
+			}
+			catch (Exception)
+			{
+				mensaje += "-Telefono invalido";
+			}
+
+			if (string.IsNullOrWhiteSpace(contac.Trim())) mensaje += "-Contacto";
+			if (estado == "0") mensaje += "-Estado";
+
+			if (string.IsNullOrEmpty(mensaje))
+			{
+				return true;
+			}
+
+			return false;
+		}
 	}
 }

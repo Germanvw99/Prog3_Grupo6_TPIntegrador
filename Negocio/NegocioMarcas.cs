@@ -180,5 +180,18 @@ namespace Negocio
 			// CONSTRUYO LA CLAUSULA
 			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
 		}
+		public bool ValidarContenido(ref string mensaje ,string nombre,string decripcion, string estado)
+        {
+			if (string.IsNullOrEmpty(nombre.Trim())) mensaje += "Nombre";
+			if (string.IsNullOrEmpty(decripcion.Trim())) mensaje += "-Descripcion";
+			if (estado == "0") mensaje += "-Estado";
+
+			if (string.IsNullOrEmpty(mensaje))
+			{
+				return true;
+			}
+
+			return false;
+		}
 	}
 }

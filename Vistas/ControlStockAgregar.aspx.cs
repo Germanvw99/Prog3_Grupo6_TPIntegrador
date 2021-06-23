@@ -81,22 +81,25 @@ namespace Vistas
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
 			//if (Int32.Parse(DdlProveedores.SelectedValue) != 0 && Int32.Parse(DdlArticulos.SelectedValue) != 0 && !string.IsNullOrEmpty(TxtCantidad.Text) && !string.IsNullOrEmpty(TxtPrecio.Text))
-			if(ValidarContenido())
+			if(negocioArticuloProveedor.ValidarContenido(ref mensaje,TxtPrecio.Text, TxtCantidad.Text, DdlProveedores.SelectedValue, DdlArticulos.SelectedValue))//;
+			
 			{
-				Proveedores proveedor = new Proveedores();
-				proveedor.SetDni(DdlProveedores.SelectedValue);
-				articuloProveedor.SetProveedor(proveedor);
-				//
-				Articulos articulo = new Articulos();
-				articulo.SetCodigo(int.Parse(DdlArticulos.SelectedValue));
-				articuloProveedor.SetArticulo(articulo);
-				articuloProveedor.SetEntrada(int.Parse(TxtCantidad.Text));
+				//Proveedores proveedor = new Proveedores();
+				//proveedor.SetDni(DdlProveedores.SelectedValue);
+				//articuloProveedor.SetProveedor(proveedor);
+				////
+				//Articulos articulo = new Articulos();
+				//articulo.SetCodigo(int.Parse(DdlArticulos.SelectedValue));
+				//articuloProveedor.SetArticulo(articulo);
+				//articuloProveedor.SetEntrada(int.Parse(TxtCantidad.Text));
 
-				string precionuevo=TxtPrecio.Text.Replace('.',',');
+				//string precionuevo = TxtPrecio.Text.Replace('.', ',');
 
-				articuloProveedor.SetPrecioUnitario(decimal.Parse(precionuevo));
+				//articuloProveedor.SetPrecioUnitario(decimal.Parse(precionuevo));
 
-				if (negocioArticuloProveedor.agregarStock(articuloProveedor))
+				CargarContenido();
+
+                if (negocioArticuloProveedor.agregarStock(articuloProveedor))
 				{
 					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se actualizó el stock!','success')", true);
 
@@ -118,26 +121,24 @@ namespace Vistas
 			}
 		}
 
-		protected bool ValidarContenido()
-		{
+		protected void CargarContenido()
+        {
+			Proveedores proveedor = new Proveedores();
+			proveedor.SetDni(DdlProveedores.SelectedValue);
+			articuloProveedor.SetProveedor(proveedor);
+			//
+			Articulos articulo = new Articulos();
+			articulo.SetCodigo(int.Parse(DdlArticulos.SelectedValue));
+			articuloProveedor.SetArticulo(articulo);
+			articuloProveedor.SetEntrada(int.Parse(TxtCantidad.Text));
 
-			if (DdlProveedores.SelectedValue=="0") mensaje += "Proveedor";
-			if (DdlArticulos.SelectedValue=="0") mensaje += "-Artículo";
-			if (string.IsNullOrEmpty(TxtCantidad.Text.Trim())) mensaje += "-Cantidad";
-			else if (int.Parse(TxtCantidad.Text) < 0) mensaje += "-Cantidad invalida";
-			if (string.IsNullOrEmpty(TxtPrecio.Text.Trim())) { mensaje += "-Precio"; }
-			else if (decimal.Parse(TxtPrecio.Text) < 0) mensaje += "-Precio invalido";
-			if (string.IsNullOrEmpty(mensaje))
-			{
-				return true;
-			}
+			string precionuevo = TxtPrecio.Text.Replace('.', ',');
 
-			return false;
-
+			articuloProveedor.SetPrecioUnitario(decimal.Parse(precionuevo));
 		}
 
 
-		private void LimpiarCampos()
+        private void LimpiarCampos()
 		{
 			TxtCantidad.Text = string.Empty;
 			TxtPrecio.Text = string.Empty;

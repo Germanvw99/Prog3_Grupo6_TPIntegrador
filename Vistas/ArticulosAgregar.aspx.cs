@@ -71,7 +71,7 @@ namespace Vistas
 		}
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if(ValidarContenido())
+			if(negocioArticulo.ValidarContenido(ref mensaje,TxtNombre.Text, TxtDescripcion.Text, DdlMarcas.SelectedValue, DdlCategorias.SelectedValue, DdlEstados.SelectedValue, txtPrecio.Text, txtPedido.Text))
             {
 				if (UploadImage.HasFile)
 				{
@@ -136,30 +136,8 @@ namespace Vistas
 
 		}
 
-		protected bool ValidarContenido()
-        {
 
-			if (string.IsNullOrEmpty(TxtNombre.Text.Trim())) mensaje += "Nombre"; 
-			if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim())) mensaje += "-Descripcion";
-			if (DdlMarcas.SelectedValue == "-1") mensaje += "-Marca";
-			if (DdlCategorias.SelectedValue == "-1") mensaje += "-Categoría";
-			if (DdlEstados.SelectedValue == "-1") mensaje += "-Estado";
-			if (string.IsNullOrEmpty(txtPrecio.Text.Trim())) mensaje += "-Precio";
-			else if (decimal.Parse(txtPrecio.Text.Trim()) < 0) mensaje += "-Precio invalido";
-			if (string.IsNullOrEmpty(txtPedido.Text.Trim())) mensaje += "-PuntoPedido";
-			else if (int.Parse(txtPedido.Text.Trim()) < 0) mensaje += "-PuntoPedido invalido";
-
-			if (string.IsNullOrEmpty(mensaje))
-            {
-				return true;
-			}
-			
-			return false;
-			
-		}
-
-
-		protected void IrListarArticulos_Click(object sender, EventArgs e)
+        protected void IrListarArticulos_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ArticulosListado.aspx");
 		}

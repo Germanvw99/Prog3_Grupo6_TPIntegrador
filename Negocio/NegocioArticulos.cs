@@ -365,5 +365,43 @@ namespace Negocio
 			// CONSTRUYO LA CLAUSULA
 			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
 		}
+
+		public bool ValidarContenido( ref string mensaje,string nombre, string descrip, string marca, string categ, string estado, string precio, string pedido)
+        {
+
+			if (string.IsNullOrEmpty(nombre.Trim())) mensaje += "Nombre";
+			if (string.IsNullOrEmpty(descrip.Trim())) mensaje += "-Descripcion";
+			if (marca == "-1") mensaje += "-Marca";
+			if (categ == "-1") mensaje += "-Categoría";
+			if (estado == "-1") mensaje += "-Estado";
+
+			try
+			{
+				if (string.IsNullOrEmpty(precio.Trim())) mensaje += "-Precio";
+				else if (decimal.Parse(precio.Trim()) < 0) mensaje += "-Precio invalido";
+			}
+			catch (Exception)
+			{
+				mensaje += "-Precio invalido";
+			}
+
+			try
+			{
+				if (string.IsNullOrEmpty(pedido.Trim())) mensaje += "-PuntoPedido";
+				else if (int.Parse(pedido.Trim()) < 0) mensaje += "-PuntoPedido invalido";
+			}
+			catch (Exception)
+			{
+				mensaje += "-PuntoPedido invalido";
+			}
+
+			if (string.IsNullOrEmpty(mensaje))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 	}
 }

@@ -163,5 +163,42 @@ namespace Negocio
 				return false;
             }
 		}
+
+		public  bool ValidarContenido( ref string mensaje,string prec, string cant, string prov, string art)
+        {
+			if (prov == "0") mensaje += "Proveedor";
+			if (art == "0") mensaje += "-Artículo";
+			//if (string.IsNullOrEmpty(TxtCantidad.Text.Trim())) mensaje += "-Cantidad";
+			//else if (int.Parse(TxtCantidad.Text) < 0) mensaje += "-Cantidad invalida";
+			try
+			{
+				if (string.IsNullOrEmpty(cant.Trim())) mensaje += "-Cantidad";
+				else if (int.Parse(cant.Trim()) < 0) mensaje += "-Cantidad invalida";
+			}
+			catch (Exception)
+			{
+				mensaje += "-Cantidad invalida";
+			}
+			try
+			{
+				if (string.IsNullOrEmpty(prec.Trim())) { mensaje += "-Precio"; }
+				else if (decimal.Parse(prec.Trim()) < 0) mensaje += "-Precio invalido";
+			}
+			catch (Exception)
+			{
+				mensaje += "-Precio invalido";
+			}
+
+			if (string.IsNullOrEmpty(mensaje))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+
+
+
 	}
 }

@@ -54,7 +54,7 @@ namespace Vistas
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
 			//if (!string.IsNullOrEmpty(TxtRazonSocial.Text.Trim()) && !string.IsNullOrEmpty(TxtDni.Text.Trim()) && !string.IsNullOrEmpty(TxtDireccion.Text.Trim()))
-			if(ValidarContenido())
+			if(negocioProveedor.ValidarContenido(ref mensaje,TxtRazonSocial.Text,TxtDni.Text,TxtDireccion.Text,TxtEmail.Text,TxtTelefono.Text,TxtContacto.Text,DdlEstados.SelectedValue))
 			{
 				if (FUProveedor.HasFile)
 				{
@@ -109,29 +109,7 @@ namespace Vistas
 			}
 		}
 
-		protected bool ValidarContenido()
-		{
 
-			if (string.IsNullOrWhiteSpace(TxtRazonSocial.Text.Trim())) mensaje += "Razon social";
-			if (string.IsNullOrWhiteSpace(TxtDni.Text.Trim())){ mensaje += "-Dni/Cuil"; }
-			else if (int.Parse(TxtDni.Text.Trim()) < 0) mensaje += "-Dni/Cuil invalido";
-			else if (!(TxtDni.Text.Trim().Count() >=8 && TxtDni.Text.Trim().Count()<=11)) mensaje += "-Dni/Cuil invalido";
-			if (string.IsNullOrWhiteSpace(TxtDireccion.Text.Trim())) mensaje += "-Dirección";
-			if (string.IsNullOrWhiteSpace(TxtEmail.Text.Trim())) mensaje += "-mail";
-			if (string.IsNullOrWhiteSpace(TxtTelefono.Text.Trim())) { mensaje += "-Teléfono"; }
-			//else if (TxtTelefono.Text.Trim().Count() != 11) mensaje += "-Teléfono invalido (11 digitos)"; 
-			else if (int.Parse(TxtTelefono.Text.Trim()) < 0) mensaje += "-Telefono invalido";
-			if (string.IsNullOrWhiteSpace(TxtContacto.Text.Trim())) mensaje += "-Contacto";
-			if (DdlEstados.SelectedValue == "0") mensaje += " Estado";
-
-			if (string.IsNullOrEmpty(mensaje))
-			{
-				return true;
-			}
-
-			return false;
-
-		}
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{

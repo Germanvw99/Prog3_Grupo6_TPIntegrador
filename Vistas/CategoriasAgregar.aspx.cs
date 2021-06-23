@@ -52,7 +52,8 @@ namespace Vistas
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
 			//if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text) && Int32.Parse(DdlEstados.SelectedValue) != 0)
-			if(ValidarContenido())
+			//if(ValidarContenido())
+			if(negocioCategoria.ValidarContenido(ref mensaje,TxtNombre.Text,TxtDescripcion.Text,DdlEstados.SelectedValue))
 			{
 				if (FUCategoria.HasFile)
 				{
@@ -108,19 +109,7 @@ namespace Vistas
 
 			}
 		}
-		protected bool ValidarContenido()
-		{
-			if (string.IsNullOrEmpty(TxtNombre.Text.Trim())) mensaje += "Nombre";
-			if (string.IsNullOrEmpty(TxtDescripcion.Text.Trim())) mensaje += "-Descripción";
-			if (DdlEstados.SelectedValue=="0") mensaje += "-Estado";
 
-            if (string.IsNullOrEmpty(mensaje))
-            {
-                return true;
-            }
-
-            return false;
-        }
 
 
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
