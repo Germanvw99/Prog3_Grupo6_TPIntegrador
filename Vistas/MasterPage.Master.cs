@@ -36,6 +36,7 @@ namespace Vistas
 
                     // HEADER GENERAL
                     userPanelLoggedIn.Visible = true;
+                    ImageButton1.ImageUrl = objUsuario.Ruta_Img;
 
                     userPanelLoggedOff.Visible = false;
 
