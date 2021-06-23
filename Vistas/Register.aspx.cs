@@ -29,7 +29,25 @@ namespace Vistas
         {
             bool usernameDuplicado = NegocioUsuarios.getInstance().VerificarUsernameDuplicado(txtUsername.Text);
             bool dniDuplicado = NegocioUsuarios.getInstance().VerificarDniDuplicado(txtDni.Text);
-            if(usernameDuplicado)
+            string rutaimg = "../Recursos/img/avatar.png";
+            if (UploadImageUsuario.HasFile)
+            {
+
+                //validar que el archivo sea correcto
+                if (NegocioImagenes.validarArchivo(UploadImageUsuario.PostedFile))
+                {
+
+                    //sube archivo
+                     rutaimg = NegocioImagenes.SubirImagen(UploadImageUsuario.PostedFile);
+                    GetEntity(rutaimg);
+
+
+                }
+
+            }
+
+
+            if (usernameDuplicado)
             {
                 lblNotificacion.Text = "El Username ingresado ya fue registrado.";
             }
@@ -39,15 +57,17 @@ namespace Vistas
             }
             if(dniDuplicado == false && usernameDuplicado == false)
             {
-                bool registered = NegocioUsuarios.getInstance().RegistUser(GetEntity());
+                bool registered = NegocioUsuarios.getInstance().RegistUser(GetEntity(rutaimg));
                 if (registered)
                 {
                     Response.Redirect("login.aspx");
                 }
             }
+
+           
         }
 
-        private Usuarios GetEntity()
+        private Usuarios GetEntity(String rutaImagen)
         {
             Usuarios objUsuario = new Usuarios();
             objUsuario.Dni = txtDni.Text;
@@ -61,7 +81,7 @@ namespace Vistas
             objUsuario.Ciudad = txtCiudad.Text;
             objUsuario.Provincia = DdlProvincia.SelectedItem.Text;
             objUsuario.Codigo_Postal = txtCodigoPostal.Text;
-            objUsuario.Ruta_Img = "../Recursos/img/avatar.png";
+            objUsuario.Ruta_Img = rutaImagen;
             // Los usuarios registrados siempre estan "Estado Activo" y poseen Rol de "Usuario"
             objUsuario.Estado = 2;
             objUsuario.Codigo_Perfil = 2;
