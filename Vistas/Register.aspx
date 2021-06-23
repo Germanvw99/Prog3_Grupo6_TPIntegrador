@@ -81,7 +81,14 @@
                   <div class="form-group col-md-6 pr-0 d-flex">
                       <asp:TextBox ID="txtDni" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1' placeholder="DNI"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="RfvDni" runat="server" ControlToValidate="txtDni" ErrorMessage="Dni invalido" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
-                  </div>
+                      
+
+                      <div class="form-group col-md-6 pr-0 d-flex">
+                          <br />
+                          <br />
+                      <asp:FileUpload ID="UploadImageUsuario" CssClass="form-control py-2 rounded-3" runat="server" />
+                        </div>                         
+                      </div>
                     </div>
               <div class="mb-3 row">
                   <asp:Button ID="btnRegister" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClick="btnRegister_Click" ValidationGroup="VgRegister"/>
@@ -100,6 +107,6 @@
                 <asp:HyperLink ID="hlHomepage" runat="server" CssClass="text-primary" NavigateUrl="~/Home.aspx">Volver al menu principal</asp:HyperLink>
             </div>
         </div>
-      </div>     
+      </div>
 </body>
 </html>
