@@ -31,10 +31,7 @@ namespace Vistas
 
                 Usuarios objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
 
-                if (objUsuario.Codigo_Perfil != 2)
-                {
-                    Response.Redirect("Home.aspx");
-                }
+                
             }
 
         }

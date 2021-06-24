@@ -83,13 +83,13 @@
                       <asp:RequiredFieldValidator ID="RfvDni" runat="server" ControlToValidate="txtDni" ErrorMessage="Dni invalido" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
                       
 
-                      <div class="form-group col-md-6 pr-0 d-flex">
-                          <br />
-                          <br />
-                      <asp:FileUpload ID="UploadImageUsuario" CssClass="form-control py-2 rounded-3" runat="server" />
-                        </div>                         
+                                              
                       </div>
                     </div>
+                <div class="mb-3 row">
+                         
+                      <asp:FileUpload ID="UploadImageUsuario" CssClass="form-control py-2 rounded-3" runat="server" />
+                        </div> 
               <div class="mb-3 row">
                   <asp:Button ID="btnRegister" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClick="btnRegister_Click" ValidationGroup="VgRegister"/>
               </div>

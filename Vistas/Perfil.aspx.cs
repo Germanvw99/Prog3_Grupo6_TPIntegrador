@@ -42,6 +42,9 @@ namespace Vistas
                 txtCodigo_Postal.Text = objUsuario.Codigo_Postal;
                 txtCiudad.Text = objUsuario.Ciudad;
                 txtProvincia.Text = objUsuario.Provincia;
+                
+             
+                
 
                 // Estado de los txt
                 EsconderUIUser();

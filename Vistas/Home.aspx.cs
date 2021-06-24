@@ -14,7 +14,7 @@ namespace Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Redirect("Vistausuario.aspx");
             if (Session["User"] != null)
             {
                 DataTable dt = (DataTable)Session["User"];

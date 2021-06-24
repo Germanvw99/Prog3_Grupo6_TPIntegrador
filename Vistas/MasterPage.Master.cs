@@ -22,6 +22,7 @@ namespace Vistas
             {
 
                 Session["tablacarrito"] = null;
+              //  Response.Redirect("Vistausuario.aspx");
 
             }
             // Modifica la parte visual dependiendo del tipo de usuario
@@ -78,6 +79,8 @@ namespace Vistas
                 heroUser.Visible = false;
                 funcionesAdmin.Visible = false;
             }
+
+            
                
         }
 
