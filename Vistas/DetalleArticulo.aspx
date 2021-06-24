@@ -67,17 +67,18 @@
                 </div>
                  <div class="item">Cantidad a Comprar: 
                 <asp:Button ID="Button1" runat="server" Text="-" Style="border-radius:5px; background-color:darkgray; border-style:none;color:white; font-size:14px " Width="20px" OnClick="Btmenos_Click" />
-                 <asp:TextBox ID="tbcantidad" runat="server" Width="51px" Text="1" style="text-align:center" ReadOnly="True"></asp:TextBox>
+                 <asp:TextBox ID="tbcantidad" type="number" min="0" oninput="validity.valid||(value='')" runat="server" Width="51px" Text="0" style="text-align:center" ReadOnly="false"></asp:TextBox>
                 <asp:Button ID="Button4" runat="server" Text="+" Style="border-radius:5px; background-color:darkgray; border-style:none;color:white; font-size:14px" Width="20px" OnClick="Btmas_Click"/>
                 </div>
                 
              </div>
             <div class="botones">
                 <div>
-                <asp:Button ID="Button3" runat="server" Text="Comprar ahora" Width="185px" style="padding:8px; background-color:#3498DB;color:white; border-style:none; border-radius:5px; letter-spacing:2px" OnClick="Button3_Click"/>
+                <asp:Button ID="BtcomprarAhora" runat="server" Text="Comprar ahora" Width="185px" style="padding:8px; background-color:#3498DB;color:white; border-style:none; border-radius:5px; letter-spacing:2px" OnClick="BtcomprarAhora_Click"/>
                 </div>
                 <div>
                 <asp:Button ID="btcarrito" runat="server" Text="Agregar a Carrito" Width="185px" style="padding:8px; background-color:#76D7C4;color:white; border-style:none; border-radius:5px; letter-spacing:2px" OnClick="btcarrito_Click" />
+                    <asp:Label ID="Label2" runat="server"></asp:Label>
                 </div>
                 
             </div>

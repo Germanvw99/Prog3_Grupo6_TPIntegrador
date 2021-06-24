@@ -132,11 +132,20 @@ namespace Dao
 			return accDatos.ObtenerTabla(strTabla, srtSQL);
 		}
 
+		public int ObtenerStockArticulo(string id_articulo)
+        {
+			string srtSQl = "select axp_stock_actual from Articulos_por_Proveedor where axp_articulo_codigo="+id_articulo;
+			return accDatos.EjecutarConsulta2(srtSQl);
+        }
+
+
 		public DataTable filtrarConsultaArticulos(ref string ClausulaSQLConsultaArticulos)
 		{
 			string strTabla = "Articulos";
 			string srtSQL = "SELECT art_codigo, art_nombre, art_descripcion, art_punto_pedido, art_precio_lista, art_ruta_imagen, est_nombre, est_codigo, mar_nombre, mar_codigo, cat_nombre, cat_codigo FROM Articulos INNER JOIN Estados ON Articulos.art_codigo_estado=Estados.est_codigo INNER JOIN Marcas ON Marcas.mar_codigo=Articulos.art_marca_codigo INNER JOIN Categorias ON Categorias.cat_codigo=Articulos.art_categoria_codigo " + ClausulaSQLConsultaArticulos + " ORDER BY art_nombre ASC";
 			return accDatos.ObtenerTabla(strTabla, srtSQL);
 		}
+
+		
 	}
 }

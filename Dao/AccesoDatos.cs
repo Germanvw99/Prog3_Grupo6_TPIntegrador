@@ -59,6 +59,14 @@ namespace Dao
 			return filasAfectadas;
 		}
 
+		public int EjecutarConsulta2(string strSQL)
+        {
+			SqlConnection Conn = ObtenerConexion();
+			SqlCommand cmd = new SqlCommand(strSQL, Conn);
+			int stock =Convert.ToInt32(cmd.ExecuteScalar());
+			return stock;
+        }
+
 		public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)
 		{
 			int FilasCambiadas;

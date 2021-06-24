@@ -174,6 +174,7 @@ namespace Negocio
 			return daoArticulo.buscarArticuloPorNombreMarca(articulo);
 		}
 
+
 		#endregion
 
 		#region MODIFICAR ARTICULO
@@ -307,6 +308,12 @@ namespace Negocio
 			return daoArticulo.ObtenerArticulosBus(busquedad);
 		}
 
+		public int ObtenerStockArticulo(string id_articulo)
+		{
+			int stock=daoArticulo.ObtenerStockArticulo(id_articulo);
+			return stock;
+		}
+
 		//FILTRADO DE ARTICULOS
 		public DataTable filtrarConsultaArticulos(string Codigo, string Nombre, string codMarca, string codCategoria)
 		{
@@ -402,6 +409,19 @@ namespace Negocio
 
 			return false;
 		}
+
+		public bool ControlDeStock(int cantidadComprar, string id_articulo)
+        {
+			int stock_actual = daoArticulo.ObtenerStockArticulo(id_articulo);
+
+			if(cantidadComprar<=stock_actual)
+            {
+				return true;
+            }
+			return false;
+        }
+
+	
 
 	}
 }

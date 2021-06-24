@@ -19,13 +19,15 @@ namespace Vistas
         {
             if (Session["ArticuloSelec"] != null)
             {
-                Label1.Text = Session["ArticuloSelec"].ToString();
+               // Label1.Text = Session["ArticuloSelec"].ToString();
                 CargarAtributos();
             }
             else
             {
                 Label1.Text = "Esta vacia";
             }
+            
+
         }
 
         protected void CargarAtributos()
@@ -43,6 +45,8 @@ namespace Vistas
 
         protected void Btmas_Click(object sender, EventArgs e)
         {
+            ValorDefecto();
+            
             int cantida = Convert.ToInt32(tbcantidad.Text);
 
             tbcantidad.Text = Convert.ToString(cantida + 1);
@@ -50,27 +54,79 @@ namespace Vistas
 
         protected void Btmenos_Click(object sender, EventArgs e)
         {
+
+            ValorDefecto();
+
             int cantida = Convert.ToInt32(tbcantidad.Text) - 1;
 
-            if (cantida >= 1)
+            if (cantida >= 0)
             {
                 tbcantidad.Text = Convert.ToString(cantida);
             }
+            
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void btcarrito_Click(object sender, EventArgs e)
         {
-            articu.SetCodigo(Convert.ToInt32(detalleArt.Split('@')[0]));
-            articu.SetNombre(Lbnombre.Text);
-            articu.SetDescripcion(Lbdetalle.Text);
-            articu.SetPrecioLista(Convert.ToDecimal(Lbprecio.Text));
-            Int16 cantidad = Convert.ToInt16(tbcantidad.Text);
-            nega.agregarfilacarrito(articu, cantidad);
+           
+            if (RealizarAccion())
+            {
+                articu.SetCodigo(Convert.ToInt32(detalleArt.Split('@')[0]));
+                articu.SetNombre(Lbnombre.Text);
+                articu.SetDescripcion(Lbdetalle.Text);
+                articu.SetPrecioLista(Convert.ToDecimal(Lbprecio.Text));
+                Int16 cantidad = Convert.ToInt16(tbcantidad.Text);
+                nega.agregarfilacarrito(articu, cantidad);
+
+                ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agrego al carrito!','success')", true);
+            }
+
+
+
+        }
+        
+        protected void BtcomprarAhora_Click(object sender, EventArgs e)
+        {
+            if(RealizarAccion())
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('se puede comprar!','success')", true);
+            }
+           
+        }
+
+        protected bool RealizarAccion()
+        {
+            ValorDefecto();
+
+            if (tbcantidad.Text != "0")
+            {
+                //Label2.Text = Convert.ToString(nega.ObtenerStockArticulo(detalleArt.Split('@')[0]));
+
+                if (nega.ControlDeStock(Convert.ToInt32(tbcantidad.Text), detalleArt.Split('@')[0]))
+                {
+                    
+                    return true;
+
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Cantidad no disponible!','warning')", true);
+                }
+
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Ingrese la cantidad!','info')", true);
+
+            }
+
+            return false;
+        }
+
+        protected void ValorDefecto()
+        {
+            if (string.IsNullOrEmpty(tbcantidad.Text.Trim())) tbcantidad.Text = "0";
         }
     }
 }
