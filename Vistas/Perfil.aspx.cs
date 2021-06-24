@@ -42,9 +42,11 @@ namespace Vistas
                 txtCodigo_Postal.Text = objUsuario.Codigo_Postal;
                 txtCiudad.Text = objUsuario.Ciudad;
                 txtProvincia.Text = objUsuario.Provincia;
-                
-             
-                
+                ImageButton3.ImageUrl = objUsuario.Ruta_Img;
+                    //ImageButton1.ImageUrl = objUsuario.Ruta_Img;
+
+
+
 
                 // Estado de los txt
                 EsconderUIUser();

@@ -12,9 +12,9 @@
 				  <div class="card">
 					<div class="card-body">
 					  <div class="d-flex flex-column align-items-center text-center">
-						<img src="Recursos/img/avatar.png" class="img-fluid rounded-circle mb-2" alt="imagen del usuario" id="imagen" />
-						<div class="mt-3">
-							<asp:Label ID="lblUsername" runat="server" Text="Label"></asp:Label>
+						&nbsp;<asp:ImageButton ID="ImageButton3"  class="img-fluid rounded-circle" runat="server" Width="193px" Height="216px" />
+&nbsp;<div class="mt-3">
+							<asp:Label ID="lblUsername" class="img-fluid rounded-circle mb-2" runat="server" Text="Label"></asp:Label>
 						</div>
 					  </div>
 					</div>
