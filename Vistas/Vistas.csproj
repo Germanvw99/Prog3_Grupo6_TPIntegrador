@@ -77,6 +77,7 @@
     <Content Include="ControlStockModificar.aspx" />
     <Content Include="DetalleArticulo.aspx" />
     <Content Include="DetalleVenta.aspx" />
+    <Content Include="Ventas.aspx" />
     <Content Include="Imagenes\articulos\2.png" />
     <Content Include="Imagenes\articulos\__default.png" />
     <Content Include="Imagenes\categorias\__default.png" />
@@ -353,6 +354,13 @@
     </Compile>
     <Compile Include="DetalleVenta.aspx.designer.cs">
       <DependentUpon>DetalleVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.aspx.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventas.aspx.designer.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsuariosListado.aspx.cs">
       <DependentUpon>UsuariosListado.aspx</DependentUpon>

@@ -30,6 +30,7 @@ namespace Vistas
 			}
 			if (!Page.IsPostBack)
 			{
+				//Session["ventas"] = null;
 				CargarGridView();
 				CargarMarcas();
 				CargarCategorias();

@@ -13,9 +13,34 @@ namespace Negocio
 	{
 		private readonly DaoVentas daoVenta = new DaoVentas();
 		public DataTable ObtenerVentas()
+			
 		{
 			return daoVenta.ObtenerVentas();
 		}
+
+		public DataTable obtenertabladeventas2()
+		{
+			Session["TablaSesionVentas2"] = CrearTablaSesion2();
+			DataTable dt = ObtenerTablaSesionVentas2();
+			DataTable ventas = daoVenta.ObtenerVentas();
+			foreach (DataRow r in ventas.Rows)
+			{
+
+
+				DataRow fila = dt.NewRow();
+				fila["Venta"] = r["ven_codigo"].ToString();
+				fila["Usuario"] = r["ven_usuarios_dni"].ToString();
+				fila["Mediodepago"] = r["ven_medio_pago_codigo"].ToString();
+				fila["Fecha"] = r["ven_fecha"].ToString();
+				fila["Total"] = r["ven_total_facturado"].ToString();
+				dt.Rows.Add(fila);
+
+
+			}
+			return dt;
+		}
+
+		
 		//USO SESION PARA VER VENTAS
 		//SI NO EXISTE, CREA LA SESION
 		public void CrearSesion()
@@ -23,6 +48,14 @@ namespace Negocio
 			if (Session["TablaSesionVentas"] == null)
 			{
 				Session["TablaSesionVentas"] = CrearTablaSesion();
+			}
+		}
+
+		public void CrearSesion2()
+		{
+			if (Session["TablaSesionVentas2"] == null)
+			{
+				Session["TablaSesionVentas2"] = CrearTablaSesion2();
 			}
 		}
 		private DataTable CrearTablaSesion()
@@ -44,6 +77,20 @@ namespace Negocio
 			dt.Columns.Add("est_nombre", typeof(string));
 			return dt;
 		}
+
+		private DataTable CrearTablaSesion2()
+		{
+			DataTable dt = new DataTable();
+			dt.Columns.Add("Venta", typeof(string));
+			dt.Columns.Add("Usuario", typeof(string));
+		    dt.Columns.Add("Mediodepago", typeof(string));
+			dt.Columns.Add("Fecha", typeof(string));
+            dt.Columns.Add("Total", typeof(string));
+		
+			return dt;
+		}
+
+
 		// RETORNA UNA TABLA DE LA SESION.
 		// EN CASO DE QUE LA SESION SEA NULL RETORNA UNA TABLA NULL
 		public DataTable ObtenerTablaSesionVentas()
@@ -54,6 +101,18 @@ namespace Negocio
 				dt = (DataTable)Session["TablaSesionVentas"];
 			}
 			return dt;
+		}
+
+		public DataTable ObtenerTablaSesionVentas2()
+        {
+			DataTable dt = new DataTable();
+			if (Session["TablaSesionVentas2"] != null)
+			{
+				dt = (DataTable)Session["TablaSesionVentas2"];
+			}
+			return dt;
+
+
 		}
 		// SI NO EXISTE VEN_CODIGO AGREGA LA VENTA A LA SESION
 		// RETORNA TRUE SI AGREGO
