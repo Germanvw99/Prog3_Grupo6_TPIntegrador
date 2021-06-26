@@ -11,8 +11,6 @@ namespace Entidades
 		private Usuarios usuario;
 		private MediosPago medioPago;
 		private DateTime ven_fecha;
-		//ven_fecha_requerida
-		//ven_fecha_envio
 		private Decimal ven_total_facturado;
 		private Estados estado;
 		public Ventas() { }

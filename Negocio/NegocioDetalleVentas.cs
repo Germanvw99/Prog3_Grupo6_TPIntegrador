@@ -25,6 +25,26 @@ namespace Negocio
             Session["detalleVenta"] = ven_codigo;
         }
 
+        public void GenerarDetallesVentas(int venta_cod)
+        {
+            DataTable dt = (DataTable)Session["carrito"];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                // GENERA UN DETALLE DE VENTA.
+                int dt_articulo_codigo = Convert.ToInt32(dr[0]);
+                int dt_cantidad_unidades = Convert.ToInt32(dr[4]);
+                decimal dt_precio_unitario = Convert.ToDecimal(dr[5]);
+                daoDetalleVentas.GenerarDetallesVentas(venta_cod, dt_articulo_codigo, dt_cantidad_unidades, dt_precio_unitario);
+
+                // LO ELIMINA DE STOCK
+
+            }
+
+            // ELIMINA EL SESSION DE CARRITO.
+
+        }
+
         public string ObtenerSesionDetalleVenta()
         {
             if (Session["detalleVenta"] != null)

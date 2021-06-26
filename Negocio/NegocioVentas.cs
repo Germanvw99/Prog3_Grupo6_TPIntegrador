@@ -144,6 +144,11 @@ namespace Negocio
 			}
 			return true;
 		}
+
+		public int NuevaVenta(Ventas objVentas)
+        {
+			return daoVenta.NuevaVenta(objVentas);
+		}
 		private void AgregarVenta(Ventas venta)
 		{
 			DataTable dt = ObtenerTablaSesionVentas();
@@ -157,8 +162,6 @@ namespace Negocio
 			dr["ven_medio_pago_codigo"] = venta.GetMedioPago().GetCodigo();
 			dr["mp_nombre"] = venta.GetMedioPago().GetNombre();
 			dr["ven_fecha"] = venta.GetFecha();
-			//dr["ven_fecha_requerida"]
-			//dr["ven_fecha_envio"]
 			dr["ven_total_facturado"] = venta.GetTotalFacturado();
 			dr["ven_codigo_estado"] = venta.GetEstado().GetCodigo();
 			dr["est_nombre"] = venta.GetEstado().GetNombre();

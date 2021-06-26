@@ -89,7 +89,21 @@
 					        <div class="card-body">
                                 <h4>Su Orden</h4>
                                 <hr />
-
+                                <div class="justify-content-center mb-3">
+                                    <asp:GridView ID="GvCarro" runat="server"  CssClass="table display"></asp:GridView>
+                                </div> 
+                                <hr />
+                                <div class="d-flex justify-content-around">
+                                    <h4>Productos</h4>
+                                    <asp:Label ID="lblCantProductos" runat="server" Text="$0.00" Font-Size="22px"></asp:Label>
+                                </div>
+                                <hr />
+                                <div class="d-flex justify-content-around">
+                                    <h3>Total a Pagar</h3>
+                                    <asp:Label ID="lblMontoPagar" runat="server" Text="$0.00" Font-Size="30px"></asp:Label>
+                                </div>
+                                <hr />
+                                <asp:Button ID="btnComprar" runat="server" CssClass="btn btn-primary btn-block" Text="Confirmar Pedido" ValidationGroup="VgPedido" OnClick="btnComprar_Click" />
                             </div>
                         </div>
                     </div>

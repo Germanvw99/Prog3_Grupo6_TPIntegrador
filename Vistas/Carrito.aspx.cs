@@ -55,15 +55,11 @@ namespace Vistas
 
                 DataTable dt = (DataTable)Session["carrito"];
 
-
                     foreach (DataRow f in dt.Rows)
                     {
-
                         if (Convert.ToInt32(f) == fila)
                         {
-
                             f.Delete();
-
                         }
 
                     }
