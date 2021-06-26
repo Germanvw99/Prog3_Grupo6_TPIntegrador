@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ConfirmarPedido.aspx.cs" Inherits="Vistas.ConfirmarPedido" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<main>
     <div class="container">
         <div class="main-body">
             <h2 class="text-center mt-4">Confirmar Pedido</h2>
@@ -110,4 +111,35 @@
                 </div>
             </div>
     </div>
+</main>
+    <!-- MODAL PEDIDO COMPLETO-->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+           <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Pedido Completado!</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="text-left">
+                            Su pedido se realizó con exito, muchas gracias por confiar en nosotros!
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <%--BOTONES VER - EDITAR - ELIMINAR--%>
+                        <asp:Button runat="server" ID="BtnSalirPedido" type="button" class="btn primary" data-mdb-dismiss="modal"  Text="Ok" OnClick="BtnSalirPedido_Click" ></asp:Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="Recursos/js/jquery-3.6.0.min.js"></script>
+    <script src="Recursos/js/jquery.dataTables.min.js"></script>
+    <script src="Recursos/js/popper.min.js"></script>
+    <script src="Recursos/js/bootstrap.min.js"></script>
 </asp:Content>

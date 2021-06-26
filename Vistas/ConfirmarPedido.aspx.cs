@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using Negocio;
 using Entidades;
 using System.Data;
@@ -64,8 +63,8 @@ namespace Vistas
             // Renderiza información en pantalla
             //cant productos
             lblCantProductos.Text = CantidadProductos().ToString();
-            lblMontoPagar.Text = "$ "+MontoPagar().ToString();
             // monto pagar
+            lblMontoPagar.Text = "$ "+MontoPagar().ToString();
 
         }
 
@@ -123,6 +122,14 @@ namespace Vistas
 
             // Genera los detalles de ventas correspondientes.
             negocioDetalleVentas.GenerarDetallesVentas(venta_cod);
+
+            //MOSTRAR MODAL
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModal').modal('show');</script>", false);
+        }
+
+        protected void BtnSalirPedido_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("perfil.aspx");
         }
     }
 }

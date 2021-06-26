@@ -26,7 +26,7 @@ namespace Dao
             try
             {
                 conn = accDatos.ObtenerConexion();
-                SqlCommand cmd = new SqlCommand("spAgregarDetalleVenta", conn);
+                SqlCommand cmd = new SqlCommand("spAgregarDetallesFactura", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prm_dt_venta_codigo", venta_cod);
                 cmd.Parameters.AddWithValue("@prm_dt_articulo_codigo", dt_articulo_codigo);

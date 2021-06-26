@@ -42,7 +42,7 @@ namespace Negocio
             }
 
             // ELIMINA EL SESSION DE CARRITO.
-
+            Session.Remove("carrito");
         }
 
         public string ObtenerSesionDetalleVenta()
