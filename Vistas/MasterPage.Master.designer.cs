@@ -177,6 +177,15 @@ namespace Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl funcionesAdmin;
 
         /// <summary>
+        /// Control IrListarUsuarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarUsuarios;
+
+        /// <summary>
         /// Control LbAgregarArticulos.
         /// </summary>
         /// <remarks>
@@ -184,6 +193,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LbAgregarArticulos;
+
+        /// <summary>
+        /// Control IrListarArticulos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarArticulos;
 
         /// <summary>
         /// Control LbAgregarProveedores.
@@ -195,6 +213,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton LbAgregarProveedores;
 
         /// <summary>
+        /// Control IrListarProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarProveedores;
+
+        /// <summary>
         /// Control LbAgregarCategorias.
         /// </summary>
         /// <remarks>
@@ -202,6 +229,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LbAgregarCategorias;
+
+        /// <summary>
+        /// Control IrListarCategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarCategorias;
 
         /// <summary>
         /// Control LbAgregarMarcas.
@@ -213,6 +249,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.LinkButton LbAgregarMarcas;
 
         /// <summary>
+        /// Control IrListarMarcas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarMarcas;
+
+        /// <summary>
         /// Control LbAgregarControlStock.
         /// </summary>
         /// <remarks>
@@ -220,6 +265,24 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LbAgregarControlStock;
+
+        /// <summary>
+        /// Control IrListarStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarStock;
+
+        /// <summary>
+        /// Control IrListarVentas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IrListarVentas;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

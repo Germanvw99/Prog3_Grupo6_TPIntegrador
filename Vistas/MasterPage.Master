@@ -86,32 +86,47 @@
                                 </li>
                             </ul>
                             <div runat="server" id="funcionesAdmin">
-                                <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
+                                <ul class="sidebar-nav d-flex flex-column align-items-center p-0 mt-4">
                                     <li class="sidebar-header mb-3 font-weight-bold">
                                         FUNCIONES DEL ADMINISTRADOR
                                     </li>
-                                    <li class="sidebar-header">
-                                        AGREGAR
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrListarUsuarios" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarUsuarios_Click" >Listado de Usuarios</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarArticulos" runat="server" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
+                                        <asp:LinkButton ID="LbAgregarArticulos" runat="server" class="btn btn-outline-primary mb-3" OnClick="LbAgregarArticulos_Click">Agregar Artículos</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrListarArticulos" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarProveedores" runat="server" class="btn btn-outline-primary mb-3" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary mb-3"  OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarCategorias" runat="server" class="btn btn-outline-primary mb-3"  OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarMarcas" runat="server" class="btn btn-outline-primary mb-3k" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrListarMarcas" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="LbAgregarControlStock" runat="server" class="btn btn-outline-primary mb-3" OnClick="LbAgregarControlStock_Click">Agregar Stock</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrListarStock" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarStock_Click">Listado de Stocks</asp:LinkButton>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrListarVentas" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarVentas_Click">Listado de Ventas</asp:LinkButton>
                                     </li>
 
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarProveedores" runat="server" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarCategorias" runat="server" OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
-                                    </li>
-
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarMarcas" runat="server" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarControlStock" runat="server" OnClick="LbAgregarControlStock_Click">Agregar Stock</asp:LinkButton>
-                                    </li>
-                                 
                                 </ul>
                             </div>
                         </div> 
