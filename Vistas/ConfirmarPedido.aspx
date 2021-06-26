@@ -80,7 +80,7 @@
                                     <div class="col-sm-9 text-secondary form-group d-flex p-0 m-0">
                                         <asp:TextBox ID="txtDireccionPago" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1' ValidationGroup="VgPedido"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RfvDireccionPago" runat="server" ControlToValidate="txtDireccionPago" ErrorMessage="Direccion de pago invalida" ForeColor="Red" ValidationGroup="VgPedido">*</asp:RequiredFieldValidator>
-                                        <asp:RangeValidator ID="RfvRangoDireccionPago" runat="server" ControlToValidate="txtDireccionPago" ErrorMessage="*Debe ingresar una direccion válida" ForeColor="Red" MaximumValue="999999999999999" MinimumValue="0" Type="Integer" ValidationGroup="buscar">*</asp:RangeValidator>
+                                        <asp:RangeValidator ID="RfvRangoDireccionPago" runat="server" ControlToValidate="txtDireccionPago" ErrorMessage="*Debe ingresar una direccion válida" ForeColor="Red" MaximumValue="99999999" MinimumValue="999" ValidationGroup="VgPedido" Type="Integer">*</asp:RangeValidator>
 						            </div>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                 <div class="modal-footer">
                     <div class="form-group">
                         <%--BOTONES VER - EDITAR - ELIMINAR--%>
-                        <asp:Button runat="server" ID="BtnSalirPedido" type="button" class="btn primary" data-mdb-dismiss="modal"  Text="Ok" OnClick="BtnSalirPedido_Click" ></asp:Button>
+                        <asp:Button runat="server" ID="BtnSalirPedido" type="button" class="btn btn-primary" data-mdb-dismiss="modal"  Text="Ok" OnClick="BtnSalirPedido_Click" ></asp:Button>
                     </div>
                 </div>
             </div>

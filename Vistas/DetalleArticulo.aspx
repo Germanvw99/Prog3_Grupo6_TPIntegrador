@@ -46,9 +46,6 @@
                     <p>Descripción</p>
                     <asp:Label ID="Lbdetalle" runat="server" Text="Label"></asp:Label>
                 </div>
-                <%--<div class="item">
-                    <p>Nombre del Producto</p>
-                </div>--%>
                  <div class="item">
                     <p>Marca</p>
                      <asp:Label ID="Lbmarca" runat="server" Text="Label"></asp:Label>
@@ -57,10 +54,7 @@
                     <p>Categoria</p>
                      <asp:Label ID="Lbcategoria" runat="server" Text="Label"></asp:Label>
                 </div>
-                <%--<div class="item">
-                    <p>Cantidad en Stock</p>
-                     <asp:Label ID="Lbstock" runat="server" Text="Label"></asp:Label>
-                </div>--%>
+
                  <div class="item">
                     <p>Precio</p>
                      $<asp:Label ID="Lbprecio" runat="server" Text="Label"></asp:Label>

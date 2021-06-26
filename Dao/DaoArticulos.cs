@@ -134,7 +134,7 @@ namespace Dao
 
 		public int ObtenerStockArticulo(string id_articulo)
         {
-			string srtSQl = "select axp_stock_actual from Articulos_por_Proveedor where axp_articulo_codigo="+id_articulo;
+			string srtSQl = "SELECT axp_stock_actual FROM Articulos_por_Proveedor WHERE axp_articulo_codigo = " + id_articulo;
 			return accDatos.EjecutarConsulta2(srtSQl);
         }
 

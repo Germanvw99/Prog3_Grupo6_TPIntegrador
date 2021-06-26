@@ -16,6 +16,7 @@ namespace Vistas
         private readonly NegocioVentas negocioVentas = new NegocioVentas();
         private readonly NegocioMetodoPago negocioMetodoPago = new NegocioMetodoPago();
         private readonly NegocioDetalleVentas negocioDetalleVentas = new NegocioDetalleVentas();
+        private readonly NegocioArticulos negocioArticulos = new NegocioArticulos();
 
         Usuarios objUsuario = new Usuarios();
 
@@ -105,27 +106,38 @@ namespace Vistas
 
         protected void btnComprar_Click(object sender, EventArgs e)
         {
-            Ventas objVentas = new Ventas();
-            MediosPago objMedioPago = new MediosPago();
-            DataTable dt = (DataTable)Session["User"];
-            objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
+            // VALIDAR STOCK
+            bool stockDisponible = negocioArticulos.ValidarStockCarrito();
+            if(stockDisponible)
+            {
+                // REALIZAR COMPRA
+                Ventas objVentas = new Ventas();
+                MediosPago objMedioPago = new MediosPago();
+                DataTable dt = (DataTable)Session["User"];
+                objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
 
 
-            // Settea valores
-            objMedioPago.SetCodigo(DdlPago.SelectedIndex);
-            objVentas.SetMedioPago(objMedioPago);
-            objVentas.SetUsuario(objUsuario);
-            objVentas.SetTotalFacturado(MontoPagar());
+                // Settea valores
+                objMedioPago.SetCodigo(DdlPago.SelectedIndex);
+                objVentas.SetMedioPago(objMedioPago);
+                objVentas.SetUsuario(objUsuario);
+                objVentas.SetTotalFacturado(MontoPagar());
 
-            // Genera una nueva venta.
-            int venta_cod = negocioVentas.NuevaVenta(objVentas);
+                // Genera una nueva venta.
+                int venta_cod = negocioVentas.NuevaVenta(objVentas);
 
-            // Genera los detalles de ventas correspondientes.
-            negocioDetalleVentas.GenerarDetallesVentas(venta_cod);
+                // Genera los detalles de ventas correspondientes.
+                negocioDetalleVentas.GenerarDetallesVentas(venta_cod);
 
-            //MOSTRAR MODAL
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModal').modal('show');</script>", false);
+                //MOSTRAR MODAL
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ModalView", "<script>$('#myModal').modal('show');</script>", false);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Stock no disponible!','warning')", true);
+            }
         }
+
 
         protected void BtnSalirPedido_Click(object sender, EventArgs e)
         {

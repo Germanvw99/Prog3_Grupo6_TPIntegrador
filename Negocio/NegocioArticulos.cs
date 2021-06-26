@@ -441,7 +441,20 @@ namespace Negocio
 			return false;
         }
 
-	
+		public bool ValidarStockCarrito()
+        {
+			DataTable dt = (DataTable)Session["carrito"];
+
+			foreach (DataRow dr in dt.Rows)
+			{
+				// Validar que haya stock
+				if (ControlDeStock(Convert.ToInt32(dr[4]), (dr[0]).ToString()) == false)
+                {
+					return false;
+                }
+			}
+			return true;
+        }
 
 	}
 }

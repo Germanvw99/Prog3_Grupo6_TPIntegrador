@@ -19,7 +19,6 @@ namespace Vistas
         {
             if (Session["ArticuloSelec"] != null)
             {
-               // Label1.Text = Session["ArticuloSelec"].ToString();
                 CargarAtributos();
             }
             else
@@ -88,9 +87,17 @@ namespace Vistas
         
         protected void BtcomprarAhora_Click(object sender, EventArgs e)
         {
+
             if(RealizarAccion())
             {
+                articu.SetCodigo(Convert.ToInt32(detalleArt.Split('@')[0]));
+                articu.SetNombre(Lbnombre.Text);
+                articu.SetDescripcion(Lbdetalle.Text);
+                articu.SetPrecioLista(Convert.ToDecimal(Lbprecio.Text));
+                Int16 cantidad = Convert.ToInt16(tbcantidad.Text);
+                nega.agregarfilacarrito(articu, cantidad);
                 ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('se puede comprar!','success')", true);
+                Response.Redirect("ConfirmarPedido.aspx");
             }
            
         }

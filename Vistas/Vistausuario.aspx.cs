@@ -86,6 +86,8 @@ namespace Vistas
                     articulo.SetDescripcion(arreglo[2]);
                     articulo.SetPrecioLista(Convert.ToDecimal(arreglo[3]));
                     n.agregarfilacarrito(articulo);
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agrego al carrito!','success')", true);
                 }
             }
         }
