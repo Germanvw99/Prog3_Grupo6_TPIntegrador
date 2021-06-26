@@ -69,15 +69,15 @@
                                 </div>
                             </div>
                             <ul class="sidebar-nav d-flex flex-column align-items-center pt-4" id="userPanelMarcas" runat="server">
-                                <li class="sidebar-item text-center">
+                                <li class="sidebar-item text-center m-0 w-100">
                                     <h5>Listado de Marcas</h5>
-                                        <div style=" height:500px; overflow:scroll; width:160px; text-align:center; margin:0px">
-                                            <asp:DataList ID="DataListMarcas" runat="server" DataSourceID="SqlDsMarcas">
+                                    <div style=" max-height:1000px; overflow:scroll; text-align:center" class="w-100 m-0">
+                                        <asp:DataList ID="DataListMarcas" runat="server" DataSourceID="SqlDsMarcas" CssClass="w-100">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgMarca" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImgMarca_Command" Width="114px" />  
-                                        </ItemTemplate>
+                                                <asp:ImageButton ID="ImgMarca" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImgMarca_Command"/>  
+                                            </ItemTemplate>
                                         </asp:DataList>
-                                        </div>
+                                    </div>
                                 </li>
                                 <li class="sidebar-item" runat="server">
                                     <a class="sidebar-link" href="#">
