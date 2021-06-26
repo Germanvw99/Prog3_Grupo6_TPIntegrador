@@ -39,7 +39,20 @@ namespace Vistas
         private void rellenarDatos()
         {
             txtDni.Enabled = false;
+            txtUsername.Enabled = false;
+            txtName.Enabled = false;
+            txtLastname.Enabled = false;
+            txtCodigo_Postal.Enabled = false;
+            txtDireccion.Enabled = false;
             txtDni.Text = objUsuario.Dni;
+            txtUsername.Text = objUsuario.Username;
+            txtName.Text = objUsuario.Nombre;
+            txtLastname.Text = objUsuario.Apellido;
+            txtCodigo_Postal.Text = objUsuario.Codigo_Postal;
+            txtDireccion.Text = objUsuario.Direccion;
+
+            txtDni.Text = objUsuario.Dni;
+
             CargarMetodosPago();
         }
 

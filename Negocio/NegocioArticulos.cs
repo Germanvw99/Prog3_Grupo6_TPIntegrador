@@ -279,18 +279,38 @@ namespace Negocio
 
 		public void agregarfilacarrito(DataTable dt, Articulos Articulo, Int16 cantidad)
 		{
+			// Valida que el articulo no se encuentre en el carrito, en caso de encontrarse solo aumenta la cantidad.
+			bool encontrado = false;
+			foreach (DataRow dr in dt.Rows)
+			{
+				if (dr["id"].ToString() == Articulo.GetCodigo().ToString())
+				{
+					encontrado = true;
+					dr["Cantidad"] = Convert.ToInt32(dr["Cantidad"]) + cantidad;
+					decimal total = Convert.ToDecimal(dr["Total"]) + (Articulo.GetPrecioLista() * cantidad);
+					dr["Total"] = Convert.ToString(total);
+				}
+			}
+			if (encontrado)
+            {
+				// Se aumenta la cantidad
+				Session["carrito"] = dt;
+			}
+			else
+            {
+				// Se agrega el articulo como nueva fila
+				DataRow dr = dt.NewRow();
 
-			DataRow dr = dt.NewRow();
+				dr["nombre"] = Articulo.GetNombre();
+				dr["id"] = Articulo.GetCodigo();
+				dr["descripcion"] = Articulo.GetDescripcion();
+				dr["precio"] = Articulo.GetPrecioLista();
+				dr["Cantidad"] = cantidad;
+				dr["Total"] = Convert.ToString(Articulo.GetPrecioLista() * cantidad);
+				dt.Rows.Add(dr);
 
-			dr["nombre"] = Articulo.GetNombre();
-			dr["id"] = Articulo.GetCodigo();
-			dr["descripcion"] = Articulo.GetDescripcion();
-			dr["precio"] = Articulo.GetPrecioLista();
-			dr["Cantidad"] = cantidad;
-			dr["Total"] = Convert.ToString(Articulo.GetPrecioLista() * cantidad);
-			dt.Rows.Add(dr);
-
-			Session["carrito"] = dt;
+				Session["carrito"] = dt;
+			}
 
 		}
 

@@ -112,7 +112,7 @@
                                         <asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarMarcas" runat="server" class="btn btn-outline-primary mb-3k" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
+                                        <asp:LinkButton ID="LbAgregarMarcas" runat="server" class="btn btn-outline-primary mb-3" OnClick="LbAgregarMarcas_Click">Agregar Marcas</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="IrListarMarcas" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarMarcas_Click">Listado de Marcas</asp:LinkButton>
