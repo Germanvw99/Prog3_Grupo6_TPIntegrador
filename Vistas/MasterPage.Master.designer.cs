@@ -87,31 +87,31 @@ namespace Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl userPanelLoggedOff;
 
         /// <summary>
-        /// Control HyperLink3.
+        /// Control HlIniciarSesion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+        protected global::System.Web.UI.WebControls.HyperLink HlIniciarSesion;
 
         /// <summary>
-        /// Control HyperLink4.
+        /// Control HlCrearCuenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
+        protected global::System.Web.UI.WebControls.HyperLink HlCrearCuenta;
 
         /// <summary>
-        /// Control LinkButton2.
+        /// Control HlCarrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton HlCarrito;
 
         /// <summary>
         /// Control heroUser.
@@ -123,13 +123,13 @@ namespace Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl heroUser;
 
         /// <summary>
-        /// Control ImageButton1.
+        /// Control ImgUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::System.Web.UI.WebControls.ImageButton ImgUser;
 
         /// <summary>
         /// Control lblTipoUsuario.
@@ -150,22 +150,22 @@ namespace Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl userPanelMarcas;
 
         /// <summary>
-        /// Control DataList1.
+        /// Control DataListMarcas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList1;
+        protected global::System.Web.UI.WebControls.DataList DataListMarcas;
 
         /// <summary>
-        /// Control SqlDataSource1.
+        /// Control SqlDsMarcas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDsMarcas;
 
         /// <summary>
         /// Control funcionesAdmin.

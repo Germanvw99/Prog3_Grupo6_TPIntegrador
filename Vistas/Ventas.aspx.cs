@@ -25,9 +25,6 @@ namespace Vistas
             string[] columnas = null;
             DataTable dt = new DataTable();
             dt = ng.obtenertabladeventas2();
-            
-
-
 
             GridView1.DataSource = dt;
             GridView1.DataBind();

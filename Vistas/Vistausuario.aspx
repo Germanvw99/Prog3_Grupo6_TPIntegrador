@@ -1,193 +1,59 @@
 ﻿<%@ Page Title=""  EnableEventValidation="false"  Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vistausuario.aspx.cs" Inherits="Vistas.Formulario_web11" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
-     <style type="text/css">
-        .c {
-            box-shadow: 10px 10px 10px  black;
-            border : 3px solid #d3d3d3; 
-        }
-         .b {
-            box-shadow: -1px 1px 1px 1px green;
-        }
-          .p {
-            box-shadow: -1px 1px 1px 1px red;
-        }
-
-
-
-
-</style>
-     <div >
-        <div >
-    <asp:ListView ID="ListView1" runat="server"  DataKeyNames="art_codigo" GroupItemCount="6"  style="margin-right: 0px" OnPreRender="ListView1_PreRender" >
-        <%--<AlternatingItemTemplate  >
-            <td runat="server"   Class=c  style="background-color: #FFF8DC;">art_codigo:
-                <asp:Label ID="art_codigoLabel" runat="server" Text='<%# Eval("art_codigo") %>' />
-                <br />art_nombre:
-                <asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
-             <br />
-                art_descripcion:
-                <asp:Label ID="art_descripcionLabel" runat="server" Text='<%# Eval("art_descripcion") %>' />
-                <br />
-                art_punto_pedido:
-                <asp:Label ID="art_punto_pedidoLabel" runat="server" Text='<%# Eval("art_punto_pedido") %>' />
-                <br />art_precio_lista:
-                <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>' />
-                <br />
-                art_ruta_imagen:
-                <asp:Label ID="art_ruta_imagenLabel" runat="server" Text='<%# Eval("art_ruta_imagen") %>' />
-                <br />
-                est_nombre:
-                <asp:Label ID="est_nombreLabel" runat="server" Text='<%# Eval("est_nombre") %>' />
-                <br />
-                mar_nombre:
-                <asp:Label ID="mar_nombreLabel" runat="server" Text='<%# Eval("mar_nombre") %>' />
-                <br />
-                cat_nombre:
-                <asp:Label ID="cat_nombreLabel" runat="server" Text='<%# Eval("cat_nombre") %>' />
-                <br />
-            </td>
-        </AlternatingItemTemplate>--%>
-        <EditItemTemplate>
-            <td runat="server" style="background-color: #008A8C; color: #FFFFFF;">art_codigo:&nbsp;<asp:Label ID="art_codigoLabel1" runat="server" Text='<%# Eval("art_codigo") %>' />
-                <br />art_nombre:&nbsp;<asp:TextBox ID="art_nombreTextBox" runat="server" Text='<%# Bind("art_nombre") %>' />
-                <br />art_descripcion:
-                <asp:TextBox ID="art_descripcionTextBox" runat="server" Text='<%# Bind("art_descripcion") %>' />
-                <br />
-                art_punto_pedido:
-                <asp:TextBox ID="art_punto_pedidoTextBox" runat="server" Text='<%# Bind("art_punto_pedido") %>' />
-                <br />
-                art_precio_lista:
-                <asp:TextBox ID="art_precio_listaTextBox" runat="server" Text='<%# Bind("art_precio_lista") %>' />
-                <br />
-                art_ruta_imagen:
-                <asp:TextBox ID="art_ruta_imagenTextBox" runat="server" Text='<%# Bind("art_ruta_imagen") %>' />
-                <br />est_nombre:
-                <asp:TextBox ID="est_nombreTextBox" runat="server" Text='<%# Bind("est_nombre") %>' />
-                <br />
-                mar_nombre:
-                <asp:TextBox ID="mar_nombreTextBox" runat="server" Text='<%# Bind("mar_nombre") %>' />
-                <br />
-                cat_nombre:
-                <asp:TextBox ID="cat_nombreTextBox" runat="server" Text='<%# Bind("cat_nombre") %>' />
-                <br />
-                <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Actualizar" />
-                <br />
-                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
-                <br />
-            </td>
-        </EditItemTemplate>
-        <EmptyDataTemplate>
-            <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                <tr>
-                    <td>No se han devuelto datos.</td>
-                </tr>
-            </table>
-        </EmptyDataTemplate>
-        <EmptyItemTemplate>
-<td runat="server" />
-        </EmptyItemTemplate>
-        <GroupTemplate>
-            <tr id="itemPlaceholderContainer" runat="server">
-                <td id="itemPlaceholder" runat="server"></td>
-            </tr>
-        </GroupTemplate>
-        <InsertItemTemplate>
-            <td runat="server" style="">art_nombre:
-                <asp:TextBox ID="art_nombreTextBox" runat="server" Text='<%# Bind("art_nombre") %>' />
-                <br />art_descripcion:
-                <asp:TextBox ID="art_descripcionTextBox" runat="server" Text='<%# Bind("art_descripcion") %>' />
-                <br />art_punto_pedido:
-                <asp:TextBox ID="art_punto_pedidoTextBox" runat="server" Text='<%# Bind("art_punto_pedido") %>' />
-                <br />art_precio_lista:
-                <asp:TextBox ID="art_precio_listaTextBox" runat="server" Text='<%# Bind("art_precio_lista") %>' />
-                <br />art_ruta_imagen:
-                <asp:TextBox ID="art_ruta_imagenTextBox" runat="server" Text='<%# Bind("art_ruta_imagen") %>' />
-                <br />est_nombre:
-                <asp:TextBox ID="est_nombreTextBox" runat="server" Text='<%# Bind("est_nombre") %>' />
-                <br />
-                mar_nombre:
-                <asp:TextBox ID="mar_nombreTextBox" runat="server" Text='<%# Bind("mar_nombre") %>' />
-                <br />cat_nombre:
-                <asp:TextBox ID="cat_nombreTextBox" runat="server" Text='<%# Bind("cat_nombre") %>' />
-                <br />
-                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
-                <br />
-                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
-                <br /></td>
-        </InsertItemTemplate>
-        <ItemTemplate>
-            <td Class=c runat="server" style="background-color: #FFFFFF; color: #333333;">
-                
-
-                <br />&nbsp;
-                <asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
-                
-                <asp:ImageButton ID="ImageButton3"  style="height:167px" runat="server"  CommandArgument='<%# Eval("art_codigo")+"@"+Eval("art_nombre")+"@"+Eval("art_descripcion")+"@"+Eval("art_punto_pedido")+"@"+Eval("art_precio_lista")+"@"+Eval("art_ruta_imagen")+"@"+Eval("est_nombre")+"@"+Eval("mar_nombre")+"@"+Eval("cat_nombre") %>' CommandName="EventoImg" Height="46px" ImageUrl='<%# Eval("art_ruta_imagen") %>' OnCommand="ImageButton3_Command" Width="202px" />
-                <br />
-                <br />&nbsp;&nbsp;
-                <br />
-                <br />&nbsp;&nbsp;$
-                <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>' />
-                <br />
-                <asp:Button ID="Button1" CssClass=btn-primary runat="server" CommandArgument='<%# Eval("art_codigo")+"@"+Eval("art_nombre")+"@"+Eval("art_descripcion")+"@"+Eval("art_precio_lista") %>' CommandName="agregar" OnCommand="Button1_Command" Text="Agregar" />
-                <br />
-            </td>
-        </ItemTemplate>
+    <div class="d-flex justify-content-center mt-4 align-items-center">
+        <asp:Label ID="LblCantProductos" runat="server" Text="" CssClass="mr-4"></asp:Label>
+        <asp:Button ID="BtnBuscarTodo" CssClass="btn btn-primary" runat="server" Text="Mostrar Todo" OnClick="BtnBuscarTodo_Click"/>
+    </div>
+    <asp:ListView ID="ListViewProductos" runat="server"  DataKeyNames="art_codigo" GroupItemCount="4" OnPreRender="ListViewProductos_PreRender" >
         <LayoutTemplate>
-            <table runat="server">
-                <tr runat="server">
-                    <td runat="server">
-                        <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                            <tr id="groupPlaceholder" runat="server">
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr runat="server">
-                    <td Class=c style="text-align: center;background-color: #CCCCCC; font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;" runat="server">
-                        <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
-                            <Fields>
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                <asp:NumericPagerField />
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                            </Fields>
-                        </asp:DataPager>
-                    </td>
-                </tr>
-            </table>
-        </LayoutTemplate>
-        <SelectedItemTemplate>
-            <td runat="server" style="background-color: #008A8C; font-weight: bold;color: #FFFFFF;">art_codigo:
-                <asp:Label ID="art_codigoLabel" runat="server" Text='<%# Eval("art_codigo") %>' />
-                <br />art_nombre:
-                <asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' />
-                <br />art_descripcion:
-                <asp:Label ID="art_descripcionLabel" runat="server" Text='<%# Eval("art_descripcion") %>' />
-                <br />art_punto_pedido:
-                <asp:Label ID="art_punto_pedidoLabel" runat="server" Text='<%# Eval("art_punto_pedido") %>' />
-                <br />art_precio_lista:
-                <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>' />
-                <br />art_ruta_imagen:
-                <asp:Label ID="art_ruta_imagenLabel" runat="server" Text='<%# Eval("art_ruta_imagen") %>' />
-                <br />est_nombre:
-                <asp:Label ID="est_nombreLabel" runat="server" Text='<%# Eval("est_nombre") %>' />
-                <br />mar_nombre:
-                <asp:Label ID="mar_nombreLabel" runat="server" Text='<%# Eval("mar_nombre") %>' />
-                <br />cat_nombre:
-                <asp:Label ID="cat_nombreLabel" runat="server" Text='<%# Eval("cat_nombre") %>' />
-                <br /></td>
-        </SelectedItemTemplate>
-    </asp:ListView>
-
+            <div runat="server">
+                <div runat="server">
+                    <div runat="server">
+                    </div>
+                    <div id="groupPlaceholder" runat="server">
+                    </div>    
+                </div>
+                <div runat="server" class="text-center pb-4 pt-4">
+                    <asp:DataPager ID="DataPaginacion" runat="server" PageSize="12">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonType="Button" ButtonCssClass="btn btn-primary mr-2" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                            <asp:NumericPagerField />
+                            <asp:NextPreviousPagerField ButtonType="Button" ButtonCssClass="btn btn-primary ml-2" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                        </Fields>
+                    </asp:DataPager>
+                </div>
             </div>
+        </LayoutTemplate>
+            <GroupTemplate>
+                <div id="itemPlaceholderContainer" runat="server" class="container d-flex justify-content-center mt-50 mb-50">
+                    <div class="card" id="itemPlaceholder" runat="server"></div>
+                </div>
+            </GroupTemplate>
+        <ItemTemplate>
+            <div class="col-md-3 mt-5 mr-4 ml-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <asp:ImageButton ID="ProductImage"  Height="160px"  Width="200px" runat="server"  CommandArgument='<%# Eval("art_codigo")+"@"+Eval("art_nombre")+"@"+Eval("art_descripcion")+"@"+Eval("art_punto_pedido")+"@"+Eval("art_precio_lista")+"@"+Eval("art_ruta_imagen")+"@"+Eval("est_nombre")+"@"+Eval("mar_nombre")+"@"+Eval("cat_nombre") %>' CommandName="EventoImg" ImageUrl='<%# Eval("art_ruta_imagen") %>' OnCommand="ProductImage_Command"/>
+                        <div class="mb-2">
+                            <h6 class="font-weight-semibold mb-3"><asp:Label ID="art_nombreLabel" runat="server" Text='<%# Eval("art_nombre") %>' /></h6>
+                            <h6 class="mb-3 text-muted"><asp:Label ID="art_catLabel" runat="server" Text='<%# Eval("cat_nombre") %>' /></h6>
+                            <h3 class="mb-0 font-weight-semibold">$ <asp:Label ID="art_precio_listaLabel" runat="server" Text='<%# Eval("art_precio_lista") %>' /></h3>
+                            <asp:Button ID="BtnAgregarCarrito" CssClass="btn btn-primary btn-block mt-4" runat="server" CommandArgument='<%# Eval("art_codigo")+"@"+Eval("art_nombre")+"@"+Eval("art_descripcion")+"@"+Eval("art_precio_lista") %>' CommandName="agregar" OnCommand="BtnAgregarCarrito_Command" Text="Agregar" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ItemTemplate>
+        <EmptyDataTemplate>
+            <div runat="server" class="text-center">
+                <h2 class="mt-5">No se han devuelto datos.</h2>
+                <asp:Button ID="BtnBuscarTodo" CssClass="btn btn-primary mt-4" runat="server" Text="Mostrar Todo" OnClick="BtnBuscarTodo_Click"/>
+            </div>
+        </EmptyDataTemplate>
+    </asp:ListView>
+    <asp:SqlDataSource ID="SqlDtProductos" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString3 %>" SelectCommand="SELECT art_codigo,art_nombre,art_descripcion,art_punto_pedido,art_precio_lista,art_ruta_imagen,est_nombre, mar_nombre, cat_nombre FROM Articulos INNER JOIN Estados ON Articulos.art_codigo_estado=Estados.est_codigo INNER JOIN Marcas ON Marcas.mar_codigo=Articulos.art_marca_codigo INNER JOIN Categorias ON Categorias.cat_codigo=Articulos.art_categoria_codigo "></asp:SqlDataSource>
 
-         </div>
-
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString3 %>" SelectCommand="SELECT art_codigo,art_nombre,art_descripcion,art_punto_pedido,art_precio_lista,art_ruta_imagen,est_nombre, mar_nombre, cat_nombre FROM Articulos INNER JOIN Estados ON Articulos.art_codigo_estado=Estados.est_codigo INNER JOIN Marcas ON Marcas.mar_codigo=Articulos.art_marca_codigo INNER JOIN Categorias ON Categorias.cat_codigo=Articulos.art_categoria_codigo "></asp:SqlDataSource>
-
-<asp:Label ID="Label1" runat="server"></asp:Label>
-
+<asp:Label ID="LblNotificacion" runat="server"></asp:Label>
 
 
 </asp:Content>

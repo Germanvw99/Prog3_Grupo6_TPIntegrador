@@ -43,13 +43,13 @@
                         <div class="nav-right" id="userPanelLoggedOff" runat="server">
                             <ul class="d-flex m-0">
                                 <li>
-                                    <asp:HyperLink ID="HyperLink3" runat="server" CssClass="text-light navbar-brand mr-5 fs-7" NavigateUrl="~/Login.aspx">Iniciar Sesión</asp:HyperLink>
+                                    <asp:HyperLink ID="HlIniciarSesion" runat="server" CssClass="text-light navbar-brand mr-5 fs-7" NavigateUrl="~/Login.aspx">Iniciar Sesión</asp:HyperLink>
                                 </li>
                                 <li>
-                                    <asp:HyperLink ID="HyperLink4" runat="server" CssClass="text-light navbar-brand mr-5 fs-5" NavigateUrl="~/Register.aspx">Crear Cuenta</asp:HyperLink>
+                                    <asp:HyperLink ID="HlCrearCuenta" runat="server" CssClass="text-light navbar-brand mr-5 fs-5" NavigateUrl="~/Register.aspx">Crear Cuenta</asp:HyperLink>
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-outline-light my-2 my-sm-0 hoverRemain" OnClick="btnCart_Click"><i class="fas fa-shopping-cart"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="HlCarrito" runat="server" CssClass="btn btn-outline-light my-2 my-sm-0 hoverRemain" OnClick="btnCart_Click"><i class="fas fa-shopping-cart"></i></asp:LinkButton>
                                 </li>
                             </ul>
                         </div>
@@ -57,13 +57,10 @@
                 </header>
                 <main class="row w-100">
                     <nav class="sidebar col-md-2 bg-white border-right sticky-top d-flex flex-column align-items-center">
-                        <p class="sidebar-brand">
-                            Grupo 6 - TP Integrador
-                        </p>
                         <div class="w-100">
                             <div class="sidebar-user" id="heroUser" runat="server">
-                                <div class="ImgUser d-flex justify-content-center mb-2">
-                                    <asp:ImageButton ID="ImageButton1" runat="server" CssClass="img-fluid rounded-circle" ImageUrl="Recursos/img/avatar.png" OnClick="Img_user_Click" />
+                                <div class="ImgUser d-flex justify-content-center mb-2 img-fluid">
+                                    <asp:ImageButton ID="ImgUser" runat="server" CssClass="img-fluid rounded-circle" ImageUrl="Recursos/img/avatar.png" OnClick="ImgUser_Click" />
                                 </div>
                                 <div class="d-flex align-items-center flex-column">
                                     <small>
@@ -71,37 +68,21 @@
                                     </small>
                                 </div>
                             </div>
-                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0" id="userPanelMarcas" runat="server" style="padding-top:0px">
-                                <li class="mt-4 sidebar-header">
-                                    </li>
-                                <li class="sidebar-item">
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="#">&nbsp;
-                                         <h5>Lista de Marcas</h5>
+                            <ul class="sidebar-nav d-flex flex-column align-items-center pt-4" id="userPanelMarcas" runat="server">
+                                <li class="sidebar-item text-center">
+                                    <h5>Listado de Marcas</h5>
                                         <div style=" height:500px; overflow:scroll; width:160px; text-align:center; margin:0px">
-                                           
-                                             <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
-                                        <ItemTemplate>
-                                            <asp:ImageButton ID="ImageButton2" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImageButton2_Command" Width="114px" />
-                                           
-                                <br />
+                                            <asp:DataList ID="DataListMarcas" runat="server" DataSourceID="SqlDsMarcas">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="ImgMarca" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImgMarca_Command" Width="114px" />  
                                         </ItemTemplate>
-                                    </asp:DataList>
+                                        </asp:DataList>
                                         </div>
-                                       
-                                    
-                                    </a>
                                 </li>
                                 <li class="sidebar-item" runat="server">
                                     <a class="sidebar-link" href="#">
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDsMarcas" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
                                     </a>
-                                </li>
-                            </ul>
-
-                            <ul class="sidebar-nav d-flex flex-column align-items-center p-0">
-                                <li class="sidebar-item">
                                 </li>
                             </ul>
                             <div runat="server" id="funcionesAdmin">

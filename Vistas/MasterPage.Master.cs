@@ -37,7 +37,7 @@ namespace Vistas
 
                     // HEADER GENERAL
                     userPanelLoggedIn.Visible = true;
-                    ImageButton1.ImageUrl = objUsuario.Ruta_Img;
+                    ImgUser.ImageUrl = objUsuario.Ruta_Img;
 
                     userPanelLoggedOff.Visible = false;
 
@@ -87,7 +87,7 @@ namespace Vistas
 
 
 
-        protected void Img_user_Click(object sender, ImageClickEventArgs e)
+        protected void ImgUser_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("Perfil.aspx");
         }
@@ -124,7 +124,16 @@ namespace Vistas
 
         protected void btnCart_Click(object sender, EventArgs e)
         {
+            // Checkea que el usuario este logueado, en caso de estar desconecado lo redirecciona
+            if (Session["User"] == null)
+
+            {
+                Response.Redirect("login.aspx");
+            }
+            else
+            {
             Response.Redirect("Carrito.aspx");
+            }
         }
 
         protected void btnLogOff_Click(object sender, EventArgs e)
@@ -133,11 +142,10 @@ namespace Vistas
             Response.Redirect("Home.aspx");
         }
 
-        protected void ImageButton2_Command(object sender, CommandEventArgs e)
+        protected void ImgMarca_Command(object sender, CommandEventArgs e)
         {
             if (e.CommandName == "marcas")
             {
-                    
                 Session["tablapormarca"] = e.CommandArgument.ToString();
                 Response.Redirect("Vistausuario.aspx");
                 

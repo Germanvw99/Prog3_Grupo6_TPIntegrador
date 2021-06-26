@@ -29,34 +29,28 @@ namespace Vistas
             {
                 DataTable dt = (DataTable)Session["User"];
 
-                Usuarios objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
-
-                
+                Usuarios objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);    
             }
 
         }
 
         public void cargarlistviewpormarca()
         {
-            //  int e = Convert.ToInt32((String)Session["tablapormarca"]);
-            // SqlDataSource1.SelectCommand= "SELECT art_codigo,art_nombre,art_descripcion,art_punto_pedido,art_precio_lista,art_ruta_imagen,est_nombre, mar_nombre, cat_nombre FROM Articulos INNER JOIN Estados ON Articulos.art_codigo_estado=Estados.est_codigo INNER JOIN Marcas ON Marcas.mar_codigo=Articulos.art_marca_codigo INNER JOIN Categorias ON Categorias.cat_codigo=Articulos.art_categoria_codigo  where art_marca_codigo = " + 9;
-            ListView1.DataSource = negocioArticulos.ObtenerArticulosdemarca((String)Session["tablapormarca"]);
-            ListView1.DataBind();
+            ListViewProductos.DataSource = negocioArticulos.ObtenerArticulosdemarca((String)Session["tablapormarca"]);
+            ListViewProductos.DataBind();
 
         }
 
-        public void cargarlistview(string busquedad=" ")
+        public void cargarlistview(string busquedad="")
         {
-            ListView1.DataSource = negocioArticulos.ObtenerArticulosBuscados(busquedad);
-            ListView1.DataBind();
-
+            ListViewProductos.DataSource = negocioArticulos.ObtenerArticulosBuscados(busquedad);
+            ListViewProductos.DataBind();
         }
 
-        protected void ListView1_PreRender(object sender, EventArgs e)
+        protected void ListViewProductos_PreRender(object sender, EventArgs e)
         {
             if (Session["Busquedad"] != null)
             {
-                //Label1.Text = Session["Busquedad"].ToString();
                 cargarlistview(Session["Busquedad"].ToString());
                 Session["Busquedad"] = null;
             }
@@ -69,62 +63,39 @@ namespace Vistas
             {
                 cargarlistview();
             }
-
+            LblCantProductos.Text = "Total de productos encontrados: " + ListViewProductos.Items.Count.ToString();
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        protected void Button2_Command(object sender, CommandEventArgs e)
+        protected void BtnAgregarCarrito_Command(object sender, CommandEventArgs e)
         {
             if (e.CommandName == "agregar")
             {
-                String s = e.CommandArgument.ToString();
-                String[] arreglo = s.Split('@');
+                // Checkea que el usuario este logueado, en caso de estar desconecado lo redirecciona
+                if (Session["User"] == null)
 
-                articulo.SetCodigo(Convert.ToInt32(arreglo[0]));
-                articulo.SetNombre(arreglo[1]);
-                articulo.SetDescripcion(arreglo[2]);
-                articulo.SetPrecioLista(Convert.ToDecimal(arreglo[3]));
+                {
+                    Response.Redirect("login.aspx");
+                }
+                else
+                {
+                    String s = e.CommandArgument.ToString();
+                    String[] arreglo = s.Split('@');
 
-                //String id = arreglo[0];
-                //String nombre = arreglo[1];
-                //String descripcion = arreglo[2];
-                //String precio = arreglo[3];
-                //n.agregarfilacarrito(id, nombre, descripcion, precio);
-                //aca  termine .
-
-                n.agregarfilacarrito(articulo);
+                    articulo.SetCodigo(Convert.ToInt32(arreglo[0]));
+                    articulo.SetNombre(arreglo[1]);
+                    articulo.SetDescripcion(arreglo[2]);
+                    articulo.SetPrecioLista(Convert.ToDecimal(arreglo[3]));
+                    n.agregarfilacarrito(articulo);
+                }
             }
         }
 
-        protected void Button1_Command(object sender, CommandEventArgs e)
+        protected void BtnBuscarTodo_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "agregar")
-            {
-                String s = e.CommandArgument.ToString();
-                String[] arreglo = s.Split('@');
-
-                articulo.SetCodigo(Convert.ToInt32(arreglo[0]));
-                articulo.SetNombre(arreglo[1]);
-                articulo.SetDescripcion(arreglo[2]);
-                articulo.SetPrecioLista(Convert.ToDecimal(arreglo[3]));
-
-                //String id = arreglo[0];
-                //String nombre = arreglo[1];
-                //String descripcion = arreglo[2];
-                //String precio = arreglo[3];
-                //n.agregarfilacarrito(id, nombre, descripcion, precio);
-                //aca  termine .
-
-                n.agregarfilacarrito(articulo);
-            }
+            cargarlistview();
         }
 
-        protected void ImageButton3_Command(object sender, CommandEventArgs e)
+        protected void ProductImage_Command(object sender, CommandEventArgs e)
         {
             if(e.CommandName== "EventoImg")
             {
