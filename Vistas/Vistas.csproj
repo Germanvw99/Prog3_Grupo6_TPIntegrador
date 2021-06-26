@@ -72,6 +72,7 @@
     <Content Include="CategoriasListado.aspx" />
     <Content Include="CategoriasModificar.aspx" />
     <Content Include="Carrito.aspx" />
+    <Content Include="ConfirmarPedido.aspx" />
     <Content Include="ControlStockAgregar.aspx" />
     <Content Include="ControlStockListado.aspx" />
     <Content Include="ControlStockModificar.aspx" />
@@ -319,6 +320,13 @@
     </Compile>
     <Compile Include="Carrito.aspx.designer.cs">
       <DependentUpon>Carrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmarPedido.aspx.cs">
+      <DependentUpon>ConfirmarPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmarPedido.aspx.designer.cs">
+      <DependentUpon>ConfirmarPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlStockAgregar.aspx.cs">
       <DependentUpon>ControlStockAgregar.aspx</DependentUpon>

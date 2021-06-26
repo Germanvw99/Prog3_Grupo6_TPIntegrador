@@ -48,6 +48,7 @@
     <Compile Include="DaoDetalleVentas.cs" />
     <Compile Include="DaoEstados.cs" />
     <Compile Include="DaoMarcas.cs" />
+    <Compile Include="DaoMetodosPago.cs" />
     <Compile Include="DaoProveedores.cs" />
     <Compile Include="DaoUsuarios.cs" />
     <Compile Include="DaoVentas.cs" />

@@ -31,20 +31,23 @@ namespace Vistas
         public void cargartabla()
         {
             DataTable dt = (DataTable)Session["carrito"];
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            GvCarro.DataSource = dt;
+            GvCarro.DataBind();
 
+            // Renderiza información en pantalla
             CantidadProductos();
+            LbcantidadProductos.Text = CantidadProductos().ToString();
             MontoPagar();
           
         }
 
-        protected void CantidadProductos()
+        protected int CantidadProductos()
         {
-            LbcantidadProductos.Text = Convert.ToString(GridView1.Rows.Count);
+            return (GvCarro.Rows.Count);
+
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void GvCarro_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
             if (e.CommandName == "eventoEliminar") {
@@ -72,7 +75,7 @@ namespace Vistas
                 }
             }
 
-        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GvCarro_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int indice =e.RowIndex;
             EliminarArticulo((DataTable)Session["carrito"], indice);
@@ -87,35 +90,29 @@ namespace Vistas
         protected void MontoPagar()
         {
             decimal monto = 0;
-            int cantidadFilas = GridView1.Rows.Count;
+            int cantidadFilas = GvCarro.Rows.Count;
             for (int x = 0; x < cantidadFilas; x++)
             {
-                monto += Convert.ToDecimal(GridView1.Rows[x].Cells[6].Text);
+                monto += Convert.ToDecimal(GvCarro.Rows[x].Cells[6].Text);
             }
             Lbmonto.Text = "$" + monto;
 
-            //foreach(GridViewRow fila in GridView1.Rows)
-            //{
-
-            //    monto += Convert.ToDecimal(((Label)fila.Cells[3].FindControl("Label4")).Text);
-            //    //((Label)fila.Cells["Peso"].FindControl("Lbl_Peso")).Text)
-
-            //}
-            
-
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void BtnEliminarCarro_Click(object sender, EventArgs e)
         {
             Session["carrito"] = null;
             cargartabla();
         }
-    }
 
-    /*    protected void GridView1_RowCommand1(object sender, GridViewCommandEventArgs e)
+        protected void BtnConfirmarCarro_Click(object sender, EventArgs e)
         {
-
-        }*/
-
+            if(CantidadProductos() > 0)
+            {
+                // HAY PRODUCTOS EN EL CARRO.
+                Response.Redirect("ConfirmarPedido.aspx");
+            }
+        }
+    }
 
 }

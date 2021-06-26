@@ -61,10 +61,15 @@
     <Compile Include="NegocioMarcas.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="NegocioMetodoPago.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="NegocioProveedores.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="NegocioUsuarios.cs" />
+    <Compile Include="NegocioUsuarios.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="NegocioVentas.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

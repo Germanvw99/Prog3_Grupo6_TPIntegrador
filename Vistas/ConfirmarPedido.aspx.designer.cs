@@ -11,52 +11,52 @@ namespace Vistas
 {
 
 
-    public partial class Formulario_web1
+    public partial class ConfirmarPedido
     {
 
         /// <summary>
-        /// Control LbcantidadProductos.
+        /// Control txtDni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LbcantidadProductos;
+        protected global::System.Web.UI.WebControls.TextBox txtDni;
 
         /// <summary>
-        /// Control GvCarro.
+        /// Control DdlPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvCarro;
+        protected global::System.Web.UI.WebControls.DropDownList DdlPago;
 
         /// <summary>
-        /// Control BtnEliminarCarro.
+        /// Control RfvMetodoPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEliminarCarro;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvMetodoPago;
 
         /// <summary>
-        /// Control BtnConfirmarCarro.
+        /// Control txtDireccionPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnConfirmarCarro;
+        protected global::System.Web.UI.WebControls.TextBox txtDireccionPago;
 
         /// <summary>
-        /// Control Lbmonto.
+        /// Control RfvDireccionPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbmonto;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDireccionPago;
     }
 }
