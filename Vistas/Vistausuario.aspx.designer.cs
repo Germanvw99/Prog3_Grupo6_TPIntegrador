@@ -15,24 +15,6 @@ namespace Vistas
     {
 
         /// <summary>
-        /// Control LblCantProductos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCantProductos;
-
-        /// <summary>
-        /// Control BtnBuscarTodo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBuscarTodo;
-
-        /// <summary>
         /// Control ListViewProductos.
         /// </summary>
         /// <remarks>

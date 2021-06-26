@@ -1,15 +1,13 @@
 ﻿<%@ Page Title=""  EnableEventValidation="false"  Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vistausuario.aspx.cs" Inherits="Vistas.Formulario_web11" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="d-flex justify-content-center mt-4 align-items-center">
-        <asp:Label ID="LblCantProductos" runat="server" Text="" CssClass="mr-4"></asp:Label>
-        <asp:Button ID="BtnBuscarTodo" CssClass="btn btn-primary" runat="server" Text="Mostrar Todo" OnClick="BtnBuscarTodo_Click"/>
-    </div>
     <asp:ListView ID="ListViewProductos" runat="server"  DataKeyNames="art_codigo" GroupItemCount="4" OnPreRender="ListViewProductos_PreRender" >
         <LayoutTemplate>
             <div runat="server">
                 <div runat="server">
-                    <div runat="server">
-                    </div>
+                        <div class="d-flex justify-content-center mt-4 align-items-center">
+                            <asp:Label ID="LblCantProductos" runat="server" Text="" CssClass="mr-4"></asp:Label>
+                            <asp:Button ID="BtnBuscarTodo" CssClass="btn btn-primary" runat="server" Text="Buscar todo" OnClick="BtnBuscarTodo_Click"/>
+                        </div>
                     <div id="groupPlaceholder" runat="server">
                     </div>    
                 </div>
@@ -46,7 +44,7 @@
         </ItemTemplate>
         <EmptyDataTemplate>
             <div runat="server" class="text-center">
-                <h2 class="mt-5">No se han devuelto datos.</h2>
+                <h2 class="mt-5">No se han encontrado artículos.</h2>
                 <asp:Button ID="BtnBuscarTodo" CssClass="btn btn-primary mt-4" runat="server" Text="Mostrar Todo" OnClick="BtnBuscarTodo_Click"/>
             </div>
         </EmptyDataTemplate>

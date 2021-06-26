@@ -63,7 +63,7 @@ namespace Vistas
             {
                 cargarlistview();
             }
-            LblCantProductos.Text = "Total de productos encontrados: " + ListViewProductos.Items.Count.ToString();
+
         }
 
         protected void BtnAgregarCarrito_Command(object sender, CommandEventArgs e)
