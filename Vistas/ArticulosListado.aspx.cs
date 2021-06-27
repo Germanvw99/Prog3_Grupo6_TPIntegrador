@@ -164,9 +164,9 @@ namespace Vistas
 			{
 				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No se pudo eliminar el " + TxtNombreModalEliminar.Text + " porque contiene dependencias en la DB.');", true);
 			}
-			//Response.Redirect("ArticulosListado.aspx");
 		}
 
+		// LINK BUTTON REDIRECCIONAMIENTO
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
@@ -194,6 +194,10 @@ namespace Vistas
 		protected void IrListarStock_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ControlStockListado.aspx");
+		}
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
 		}
 
 		// LINKBUTTON AGREGAR
