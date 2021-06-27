@@ -23,11 +23,10 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             // Verificar sesion
-            /*if (Session["User"] != null)
-
+            if (Session["User"] == null)
             {
                 Response.Redirect("home.aspx");
-            }*/
+            }
             // Cargo datos
             if (!Page.IsPostBack)
             {

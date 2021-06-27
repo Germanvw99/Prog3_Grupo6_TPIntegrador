@@ -80,10 +80,7 @@
                   </div>
                   <div class="form-group col-md-6 pr-0 d-flex">
                       <asp:TextBox ID="txtDni" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1' placeholder="DNI"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RfvDni" runat="server" ControlToValidate="txtDni" ErrorMessage="Dni invalido" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>
-                      
-
-                                              
+                      <asp:RequiredFieldValidator ID="RfvDni" runat="server" ControlToValidate="txtDni" ErrorMessage="Dni invalido" ForeColor="Red" ValidationGroup="VgRegister">*</asp:RequiredFieldValidator>     
                       </div>
                     </div>
                 <div class="mb-3 row">

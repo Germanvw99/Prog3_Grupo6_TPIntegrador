@@ -12,8 +12,8 @@
 				  <div class="card">
 					<div class="card-body">
 					  <div class="d-flex flex-column align-items-center text-center">
-						&nb&nbsp;<asp:ImageButton ID="ImageButton3"  class="img-fluid rounded-circle" runat="server" Width="193px" Height="216px" />
-&nbsp;<div class="mt-3">
+						<asp:ImageButton ID="ImageButton3"  class="img-fluid rounded-circle" runat="server" Width="193px" Height="216px" />
+						<div class="mt-3">
 							<asp:Label ID="lblUsername" class="img-fluid rounded-circle mb-2" runat="server" Text="Label"></asp:Label>
 						      &nbsp;&nbsp;&nbsp;&nbsp;
                               <asp:Button ID="Button1" CssClass="btn btn-info" runat="server" OnClick="Button1_Click" Text="Mis compras" />
@@ -23,7 +23,7 @@
 				  </div>
 				  <div class="card mt-5">
 					<div class="card-body pt-5 pb-5">
-					  <h2 class="mt-3 mb-5"> Modificar Contraseña 2>
+					  <h2 class="mt-3 mb-5"> Modificar Contraseña </h2>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Actual</h6>
@@ -165,8 +165,8 @@
 						  <h6 class="mb-0">Provincia</h6>
 						</div>
 						<div class="col-sm-9 text-secondary form-group d-flex p-0 m-0">
-						  <asp:TextBox ID="txtProvincia" runat="server" CssClass="form-control py-2 rounded-3" style='border: 1px solid #E1E1E1' ValidationGroup="VgEditarUsuario"></asp:TextBox>
-						  <asp:RequiredFieldValidator ID="RfvProvincia" runat="server" ControlToValidate="txtProvincia" ErrorMessage="Provincia invalida" ForeColor="Red" ValidationGroup="VgEditarUsuario">*</asp:RequiredFieldValidator>
+						  <asp:DropDownList ID="DdlProvincia" class="custom-select form-control"  runat="server" > </asp:DropDownList>
+                      <asp:RequiredFieldValidator ID="RfvProvincia" runat="server" ControlToValidate="DdlProvincia" ErrorMessage="Provincia invalida" ForeColor="Red" ValidationGroup="VgRegister" InitialValue="-1">*</asp:RequiredFieldValidator>
 						</div>
 					  </div>
 					<hr>

@@ -28,6 +28,7 @@ namespace Vistas
 
                 Usuarios objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
 
+                CargarProvincias(objUsuario.Provincia);
                 // Se rellena la interfaz con la información del usuario
                 lblUsername.Text = objUsuario.Username;
 
@@ -41,12 +42,8 @@ namespace Vistas
                 txtDireccion.Text = objUsuario.Direccion;
                 txtCodigo_Postal.Text = objUsuario.Codigo_Postal;
                 txtCiudad.Text = objUsuario.Ciudad;
-                txtProvincia.Text = objUsuario.Provincia;
                 ImageButton3.ImageUrl = objUsuario.Ruta_Img;
-                    //ImageButton1.ImageUrl = objUsuario.Ruta_Img;
-
-
-
+                //ImageButton1.ImageUrl = objUsuario.Ruta_Img;
 
                 // Estado de los txt
                 EsconderUIUser();
@@ -126,7 +123,7 @@ namespace Vistas
             objUsuario.Direccion = txtDireccion.Text;
             objUsuario.Codigo_Postal = txtCodigo_Postal.Text;
             objUsuario.Ciudad = txtCiudad.Text;
-            objUsuario.Provincia = txtProvincia.Text;
+            objUsuario.Provincia = DdlProvincia.SelectedItem.Text;
 
 
             return objUsuario;
@@ -144,7 +141,7 @@ namespace Vistas
             txtDireccion.Enabled = false;
             txtCodigo_Postal.Enabled = false;
             txtCiudad.Enabled = false;
-            txtProvincia.Enabled = false;
+            DdlProvincia.Enabled = false;
 
             btnEnviarForm.Enabled = false;
         }
@@ -174,7 +171,7 @@ namespace Vistas
             txtDireccion.Enabled = true;
             txtCodigo_Postal.Enabled = true;
             txtCiudad.Enabled = true; ;
-            txtProvincia.Enabled = true;
+            DdlProvincia.Enabled = true;
 
             btnEnviarForm.Enabled = true;
         }
@@ -188,6 +185,30 @@ namespace Vistas
             txtVerificacionPassword.Enabled = true;
 
             btnEnviarFormPassword.Enabled = true;
+        }
+
+        private void CargarProvincias(String provinciaUsuario)
+        {
+            DdlProvincia.Items.Add(new ListItem("- Provincia -", "-1"));
+            DdlProvincia.Items[0].Attributes["disabled"] = "disabled";
+            DataTable dt = NegocioUsuarios.getInstance().ObtenerProvincias();
+            foreach (DataRow dr in dt.Rows)
+            {
+                DdlProvincia.Items.Add(new ListItem(dr["prov_nombre"].ToString(), dr["prov_codigo"].ToString()));
+            }
+            int index = 0;
+            // selecciona la provincia del usuario como predeterminada
+            foreach (ListItem provincia in DdlProvincia.Items)
+            {
+                if (provincia.Text == provinciaUsuario)
+                {
+                    DdlProvincia.Items[index].Selected = true;
+                }
+                else
+                {
+                    index++;
+                }
+            }
         }
 
         protected void Mostrarventa(object sender, EventArgs e)

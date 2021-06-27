@@ -79,7 +79,6 @@
     <Content Include="DetalleArticulo.aspx" />
     <Content Include="DetalleVenta.aspx" />
     <Content Include="ComprasUsuario.aspx" />
-    <Content Include="CompraUsuarioDetalle.aspx" />
     <Content Include="Imagenes\articulos\2.png" />
     <Content Include="Imagenes\articulos\__default.png" />
     <Content Include="Imagenes\categorias\__default.png" />
@@ -370,13 +369,6 @@
     </Compile>
     <Compile Include="ComprasUsuario.aspx.designer.cs">
       <DependentUpon>ComprasUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CompraUsuarioDetalle.aspx.cs">
-      <DependentUpon>CompraUsuarioDetalle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CompraUsuarioDetalle.aspx.designer.cs">
-      <DependentUpon>CompraUsuarioDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsuariosListado.aspx.cs">
       <DependentUpon>UsuariosListado.aspx</DependentUpon>
