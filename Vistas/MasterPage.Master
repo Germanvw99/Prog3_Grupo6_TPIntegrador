@@ -10,14 +10,10 @@
         <!-- ESTILOS -->
         <link href="Recursos/css/theme.css" rel="stylesheet" type="text/css" />
         <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css" />
-        
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         <script src="Recursos/js/Carteles.js"></script>
-
         <title>Grupo 6 - TP Integrador</title>
-
-        </head>
+    </head>
     <body>
         <form id="form2" runat="server">
             <div>
@@ -89,14 +85,14 @@
                                     <div style=" max-height:500px; overflow:scroll; text-align:center" class="w-100 m-0">
                                         <asp:DataList ID="DataListMarcas" runat="server" DataSourceID="SqlDsMarcas" CssClass="w-100">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="ImgMarca" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImgMarca_Command"/>  
+                                                <asp:ImageButton ID="ImgMarca" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImgMarca_Command"/>
                                             </ItemTemplate>
                                         </asp:DataList>
                                     </div>
                                 </li>
                                 <li class="sidebar-item" runat="server">
                                     <a class="sidebar-link" href="#">
-                                    <asp:SqlDataSource ID="SqlDsMarcas" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlDsMarcas" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
                                     </a>
                                 </li>
                             </ul>
@@ -118,10 +114,10 @@
                                         <asp:LinkButton ID="LbAgregarProveedores" runat="server" class="btn btn-outline-primary mb-3" OnClick="LbAgregarProveedores_Click">Agregar Proveedores</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
-                                        <asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary mb-3"  OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
+                                        <asp:LinkButton ID="IrListarProveedores" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarProveedores_Click">Listado de Proveedores</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
-                                        <asp:LinkButton ID="LbAgregarCategorias" runat="server" class="btn btn-outline-primary mb-3"  OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
+                                        <asp:LinkButton ID="LbAgregarCategorias" runat="server" class="btn btn-outline-primary mb-3" OnClick="LbAgregarCategorias_Click">Agregar Categorías</asp:LinkButton>
                                     </li>
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="IrListarCategorias" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarCategorias_Click">Listado de Categorías</asp:LinkButton>
@@ -144,10 +140,9 @@
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="IrReportes" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrReportes_Click">Reportes</asp:LinkButton>
                                     </li>
-
                                 </ul>
                             </div>
-                        </div> 
+                        </div>
                     </nav>
                     <div class="main-content col-md-10">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -163,6 +158,5 @@
         <script src="Recursos/js/jquery-3.3.1.slim.min.js"></script>
         <script src="Recursos/js/jquery-3.6.0.min.js"></script>
         <script src="Recursos/js/jquery.dataTables.min.js"></script>
-
     </body>
 </html>
