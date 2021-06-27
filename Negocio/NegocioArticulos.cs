@@ -393,6 +393,74 @@ namespace Negocio
 			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
 		}
 
+		public DataTable filtrarConsultaSidebar(string Nombre, int Categoria, int Marca, int PrecioMin, int PrecioMax)
+        {
+			string ClausulaSQLConsulta = "";
+			if (!Nombre.Equals(""))
+			{
+				ConstruirClausulaSQL2("art_nombre", Nombre, ref ClausulaSQLConsulta);
+			}
+			if (Categoria != 0)
+			{
+				ConstruirClausulaSQL2("art_categoria_codigo", Categoria.ToString(), ref ClausulaSQLConsulta);
+			}
+			if (Marca != 0)
+			{
+				ConstruirClausulaSQL2("art_marca_codigo", Marca.ToString(), ref ClausulaSQLConsulta);
+			}
+			if (PrecioMin > 0)
+            {
+				ConstruirClausulaSQL2("precio_min", PrecioMin.ToString(), ref ClausulaSQLConsulta);
+			}
+			if (PrecioMax > 0)
+			{
+				ConstruirClausulaSQL2("precio_max", PrecioMax.ToString(), ref ClausulaSQLConsulta);
+			}
+			return daoArticulo.filtrarConsultaArticulos(ref ClausulaSQLConsulta);
+		}
+
+		public void ConstruirClausulaSQL2(string NombreCampo, string Valor, ref string Clausula)
+        {
+			string d1 = ""; // Delimitador 1
+			string d2 = ""; // Delimitador 2
+			if (Clausula == "")
+			{
+				Clausula = Clausula + " WHERE ";
+			}
+			else
+			{
+				Clausula = Clausula + " AND ";
+			}
+			// USO UN SWITCH
+			switch (NombreCampo)
+			{
+				case "art_categoria_codigo":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "art_nombre":
+					d1 = " LIKE '%";
+					d2 = "%'";
+					break;
+				case "art_marca_codigo":
+					d1 = " = ";
+					d2 = "";
+					break;
+				case "precio_min":
+					d1 = " >= ";
+					d2 = "";
+					NombreCampo = "art_precio_lista";
+					break;
+				case "precio_max":
+					d1 = " <= ";
+					d2 = "";
+					NombreCampo = "art_precio_lista";
+					break;
+			}
+			// CONSTRUYO LA CLAUSULA
+			Clausula = Clausula + NombreCampo + d1 + Valor + d2;
+		}
+
 		public bool ValidarContenido( ref string mensaje,string nombre, string descrip, string marca, string categ, string estado, string precio, string pedido)
         {
 

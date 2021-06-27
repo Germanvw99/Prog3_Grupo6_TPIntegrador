@@ -14,11 +14,16 @@ namespace Vistas
 
 	{
 		NegocioArticulos n = new NegocioArticulos();
+		NegocioCategorias negocioCategorias = new NegocioCategorias();
+		NegocioMarcas negocioMarcas = new NegocioMarcas();
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
+				// Cargar categorias y marcas para el sidebar
+				CargarCategorias();
+				CargarMarcas();
 				Session["tablacarrito"] = null;
 				//  Response.Redirect("Vistausuario.aspx");
 			}
@@ -78,6 +83,30 @@ namespace Vistas
 			}
 		}
 
+		protected void btnResetearFiltro_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Vistausuario.aspx");
+		}
+
+		protected void CargarCategorias()
+        {
+			DataTable dt = negocioCategorias.ObtenerCategorias();
+			RBLCategorias.Items.Add(new ListItem("Todas", "-1"));
+			foreach (DataRow dr in dt.Rows)
+			{
+				RBLCategorias.Items.Add(new ListItem(dr["cat_nombre"].ToString(), dr["cat_codigo"].ToString()));
+			}
+		}
+
+		protected void CargarMarcas()
+        {
+			DataTable dt = negocioMarcas.ObtenerMarcas();
+			DdlMarcas.Items.Add(new ListItem(" - Todas - ", "-1"));
+			foreach (DataRow dr in dt.Rows)
+			{
+				DdlMarcas.Items.Add(new ListItem(dr["mar_nombre"].ToString(), dr["mar_codigo"].ToString()));
+			}
+		}
 		protected void ImgUser_Click(object sender, ImageClickEventArgs e)
 		{
 			Response.Redirect("Perfil.aspx");
@@ -185,5 +214,43 @@ namespace Vistas
 		{
 			Response.Redirect("Reportes.aspx");
 		}
-	}
+
+        protected void btnBuscarFiltro_Click(object sender, EventArgs e)
+        {
+			string Nombre = "";
+			int Categoria = 0;
+			int Marca = 0;
+			int PrecioMin = 0;
+			int PrecioMax = 0;
+
+			if(txtNombre.Text.Trim() != "")
+            {
+				Nombre = txtNombre.Text;
+            }
+			if (RBLCategorias.SelectedIndex > 0)
+			{
+				Categoria = RBLCategorias.SelectedIndex;
+			}
+			if (DdlMarcas.SelectedIndex > 0)
+			{
+				Marca = DdlMarcas.SelectedIndex;
+			}
+			if (txtPrecioMin.Text != "")
+            {
+				PrecioMin = Convert.ToInt32(txtPrecioMin.Text);
+
+			}
+			if (txtPrecioMax.Text != "")
+			{
+				PrecioMax = Convert.ToInt32(txtPrecioMax.Text);
+
+			}
+			// Crea un string de búsqueda
+			DataTable Filtro = n.filtrarConsultaSidebar(Nombre,Categoria,Marca,PrecioMin,PrecioMax);
+			Session["tablaArticulosSidebar"] = Filtro;
+			//Session["tablapormarca"] = CrearBusquedaFiltro();
+			Response.Redirect("Vistausuario.aspx");
+		}
+
+    }
 }

@@ -54,6 +54,23 @@ namespace Vistas
                 cargarlistview(Session["Busquedad"].ToString());
                 Session["Busquedad"] = null;
             }
+            else if (Session["tablaArticulosSidebar"] != null)
+            {
+                ListViewProductos.DataSource = Session["tablaArticulosSidebar"];
+                ListViewProductos.DataBind();
+                Session["tablaArticulosSidebar"] = null;
+            }
+            else
+            {
+                cargarlistview();
+            }
+
+            /*
+            if (Session["Busquedad"] != null)
+            {
+                cargarlistview(Session["Busquedad"].ToString());
+                Session["Busquedad"] = null;
+            }
             else if (Session["tablapormarca"] != null)
             {
                 cargarlistviewpormarca();
@@ -62,7 +79,8 @@ namespace Vistas
             else
             {
                 cargarlistview();
-            }
+            }*/
+
 
         }
 

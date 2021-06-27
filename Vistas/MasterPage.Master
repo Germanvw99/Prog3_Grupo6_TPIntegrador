@@ -15,6 +15,11 @@
         <title>Grupo 6 - TP Integrador</title>
     </head>
     <body>
+       <style>
+            input{
+                margin-right:5px;
+            }
+        </style>
         <form id="form2" runat="server">
             <div>
                 <header>
@@ -52,7 +57,7 @@
                     </nav>
                 </header>
                 <main class="row w-100">
-                    <nav class="sidebar col-md-2 bg-white border-right sticky-top d-flex flex-column align-items-center">
+                    <nav class="sidebar col-md-2 pr-0 bg-white border-right sticky-top d-flex flex-column align-items-center">
                         <div class="w-100">
                             <div class="sidebar-user" id="heroUser" runat="server">
                                 <div class="ImgUser d-flex justify-content-center mb-2 mt-4 img-fluid">
@@ -64,6 +69,44 @@
                                     </small>
                                 </div>
                             </div>
+                            <hr />
+                            <div id="FiltrosBusquedaUsuario" class="pr-3 pl-3">
+                                <h5 class="text-center font-weight-bold mb-5">Filtros de Búsqueda</h5>
+                                <section class="mb-3 d-flex justify-content-left flex-column">
+                                    <div class="md-form md-outline mt-0 mb-3 align-items-center">
+                                        <h6 class="font-weight-bold mb-2">Nombre</h6>
+                                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control mb-0" ></asp:TextBox>
+                                    </div>
+                                    <div class="md-form md-outline mt-0 mb-3 align-items-center">
+                                        <h6 class="font-weight-bold mb-2">Categorías</h6>
+                                        <div class="d-flex">
+                                            <asp:RadioButtonList ID="RBLCategorias" runat="server"></asp:RadioButtonList>
+                                        </div>
+                                    </div>
+                                    <div class="md-form md-outline mt-0 mb-3 align-items-center">
+                                        <h6 class="font-weight-bold mb-2">Marcas</h6>
+                                        <asp:DropDownList ID="DdlMarcas" CssClass="custom-select form-control"  runat="server"></asp:DropDownList>
+                                    </div>
+                                    <div class="md-form md-outline mt-0 mb-3 align-items-center">
+                                        <h6 class="font-weight-bold mb-2">Precio</h6>
+
+                                            <div class="d-flex align-items-center mt-2 pb-1">
+                                                <div class="md-form md-outline my-0">
+                                                    <asp:TextBox ID="txtPrecioMin" type="number" runat="server" CssClass="form-control mb-0" placeholder="$ Min"></asp:TextBox>
+                                                </div>
+                                                <p class="px-2 mb-0 text-muted"> - </p>
+                                                <div class="md-form md-outline my-0">
+                                                    <asp:TextBox ID="txtPrecioMax" type="number"  runat="server" CssClass="form-control mb-0" placeholder="$ Max"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="md-form md-outline mt-0 mb-3 d-flex align-items-center text-center justify-content-around">
+                                        <asp:Button ID="btnBuscarFiltro" CssClass="btn btn-primary" runat="server" Text="Filtrar" OnClick="btnBuscarFiltro_Click" />
+                                        <asp:Button ID="btnResetearFiltro" CssClass="btn btn-secondary" runat="server" Text="Reiniciar Filtro" OnClick="btnResetearFiltro_Click" />
+                                    </div>
+                                </section>
+                            </div>
+                            <!--
                             <ul class="sidebar-nav d-flex flex-column align-items-center mt-4" id="userPanelCategorias" runat="server">
                                 <li class="sidebar-item text-center m-0 w-100">
                                     <h5>Listado de Categorias</h5>
@@ -94,7 +137,7 @@
                                     <a class="sidebar-link" href="#">
                                         <asp:SqlDataSource ID="SqlDsMarcas" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
                                     </a>
-                                </li>
+                                </li>-->
                             </ul>
                             <div runat="server" id="funcionesAdmin">
                                 <ul class="sidebar-nav d-flex flex-column align-items-center p-0 mt-4">
