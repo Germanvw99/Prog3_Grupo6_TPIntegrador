@@ -41,6 +41,13 @@ namespace Vistas
 
         }
 
+        public void cargarlistviewporCategoria()
+        {
+            
+            ListViewProductos.DataSource = negocioArticulos.ObtenerArticulosCategoria((String)Session["tablaporcategoria"]);
+            ListViewProductos.DataBind();
+
+        }
         public void cargarlistview(string busquedad="")
         {
             ListViewProductos.DataSource = negocioArticulos.ObtenerArticulosBuscados(busquedad);
@@ -58,6 +65,11 @@ namespace Vistas
             {
                 cargarlistviewpormarca();
                 Session["tablapormarca"] = null;
+            }
+            else if(Session["tablaporcategoria"] != null)
+            {
+                cargarlistviewporCategoria();
+                
             }
             else
             {

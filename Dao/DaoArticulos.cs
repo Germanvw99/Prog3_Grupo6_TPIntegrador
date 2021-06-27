@@ -118,13 +118,22 @@ namespace Dao
 			return accDatos.ObtenerTabla(strTabla, srtSQL);
 		}
 
+		public DataTable ObtenerArticulosCategoria(string categoria)
+		{
+			int categoriaa = Convert.ToInt32(categoria);
+			string strTabla = "ArticulosCategoria";
+			string srtSQL = "SELECT art_codigo,art_nombre,art_descripcion,art_punto_pedido,art_precio_lista,art_ruta_imagen,est_nombre, mar_nombre, cat_nombre FROM Articulos INNER JOIN Estados ON Articulos.art_codigo_estado=Estados.est_codigo INNER JOIN Marcas ON Marcas.mar_codigo=Articulos.art_marca_codigo INNER JOIN Categorias ON Categorias.cat_codigo=Articulos.art_categoria_codigo  where art_categoria_codigo = " + categoriaa;
+
+			return accDatos.ObtenerTabla(strTabla, srtSQL);
+		}
+
 		public DataTable ObtenerArticulosActivos()
 		{
 			string strTabla = "articulosAct";
 			string srtSQL = "SELECT art_codigo,art_nombre,art_descripcion,art_punto_pedido,art_precio_lista,art_ruta_imagen,est_nombre, mar_nombre, cat_nombre FROM Articulos INNER JOIN Estados ON Articulos.art_codigo_estado=Estados.est_codigo INNER JOIN Marcas ON Marcas.mar_codigo=Articulos.art_marca_codigo INNER JOIN Categorias ON Categorias.cat_codigo=Articulos.art_categoria_codigo where est_nombre='Activo'";
 			return accDatos.ObtenerTabla(strTabla, srtSQL);
 		}
-
+			
 		public DataTable ObtenerArticulosBus(string busquedad)
 		{
 			string strTabla = "ArticuloBus";
