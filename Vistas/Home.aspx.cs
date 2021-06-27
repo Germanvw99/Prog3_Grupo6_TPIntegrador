@@ -97,5 +97,9 @@ namespace Vistas
         {
             Response.Redirect("ControlStockListado.aspx");
         }
+        protected void IrReportes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Reportes.aspx");
+        }
     }
 }

@@ -126,6 +126,9 @@
                                     <li class="sidebar-item">
                                         <asp:LinkButton ID="IrListarVentas" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrListarVentas_Click">Listado de Ventas</asp:LinkButton>
                                     </li>
+                                    <li class="sidebar-item">
+                                        <asp:LinkButton ID="IrReportes" runat="server" class="btn btn-outline-primary mb-3" OnClick="IrReportes_Click">Reportes</asp:LinkButton>
+                                    </li>
 
                                 </ul>
                             </div>
