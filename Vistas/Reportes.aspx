@@ -97,6 +97,7 @@
                                                                 <asp:TextBox ID="TxtFechaInicio" ReadOnly="true" runat="server" Width="120px"></asp:TextBox>
                                                                 <asp:ImageButton ID="ImageButtonInicio" runat="server" ImageUrl="Recursos/img/calendar.png" ImageAlign="AbsBottom" OnClick="ImageButtonInicio_Click" />
                                                                 <asp:Calendar ID="CalendarInicio" runat="server" Height=" 200px" Width="200px" OnSelectionChanged="CalendarInicio_SelectionChanged"></asp:Calendar>
+                                                                <asp:RequiredFieldValidator ID="RfvTxtFechaInicio" runat="server" ControlToValidate="TxtFechaInicio" ErrorMessage="*Requiere Fecha de inicio" ForeColor="Red" ValidationGroup="solicitud">*</asp:RequiredFieldValidator>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -108,6 +109,7 @@
                                                                 <asp:TextBox ID="TxtFechaFinal" ReadOnly="true" runat="server" Width="120px"></asp:TextBox>
                                                                 <asp:ImageButton ID="ImageButtonFinal" runat="server" ImageUrl="Recursos/img/calendar.png" ImageAlign="AbsBottom" OnClick="ImageButtonFinal_Click" />
                                                                 <asp:Calendar ID="CalendarFinal" runat="server" Height=" 200px" Width="200px" OnSelectionChanged="CalendarFinal_SelectionChanged"></asp:Calendar>
+                                                                <asp:RequiredFieldValidator ID="RfvTxtFechaFinal" runat="server" ControlToValidate="TxtFechaFinal" ErrorMessage="**Requiere fecha final" ForeColor="Red" ValidationGroup="solicitud">**</asp:RequiredFieldValidator>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -115,7 +117,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <asp:Button ID="BtnSolicitud" runat="server" Text="Solicitud" class="btn btn-outline-primary btn-block" OnClick="BtnSolicitud_Click" />
+                                                                <asp:Button ID="BtnSolicitud" runat="server" Text="Solicitud" class="btn btn-outline-primary btn-block" OnClick="BtnSolicitud_Click" ValidationGroup="solicitud" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -126,6 +128,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                                                    
+                                <asp:ValidationSummary ID="VsSolicitud" runat="server" ForeColor="Red" ValidationGroup="solicitud" />
+                            
                                         <div class="col-md-10 text-left">
                                             <div class="row">
                                                 <div class="col-md-3 col-lg-3 col-xl">

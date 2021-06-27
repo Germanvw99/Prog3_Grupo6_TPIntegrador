@@ -168,6 +168,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Calendar CalendarInicio;
 
         /// <summary>
+        /// Control RfvTxtFechaInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvTxtFechaInicio;
+
+        /// <summary>
         /// Control TxtFechaFinal.
         /// </summary>
         /// <remarks>
@@ -195,6 +204,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Calendar CalendarFinal;
 
         /// <summary>
+        /// Control RfvTxtFechaFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvTxtFechaFinal;
+
+        /// <summary>
         /// Control BtnSolicitud.
         /// </summary>
         /// <remarks>
@@ -202,6 +220,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnSolicitud;
+
+        /// <summary>
+        /// Control VsSolicitud.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary VsSolicitud;
 
         /// <summary>
         /// Control LblIngresos.

@@ -26,6 +26,8 @@ namespace Vistas
 				CalendarInicio.Visible = false;
 				CalendarFinal.Visible = false;
 			}
+			TxtFechaInicio.Text = "";
+			TxtFechaFinal.Text = "";
 		}
 
 		private void CargarGridViewFechas(DateTime desdeFecha, DateTime hastaFecha)
