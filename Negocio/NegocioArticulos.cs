@@ -318,7 +318,10 @@ namespace Negocio
 		{
 			return daoArticulo.ObtenerArticulospormarca(marca);
 		}
-
+		public DataTable ObtenerArticulosCategoria(string categoria)
+		{
+			return daoArticulo.ObtenerArticulosCategoria(categoria);
+		}
 		public DataTable ObtenerArticulosAct()
 		{
 			return daoArticulo.ObtenerArticulosActivos();

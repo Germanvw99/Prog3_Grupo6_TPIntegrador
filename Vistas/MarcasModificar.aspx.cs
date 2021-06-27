@@ -95,6 +95,7 @@ namespace Vistas
 			DdlEstadoModificar.SelectedValue = "0";
 		}
 
+		// LINK BUTTON REDIRECCIONAMIENTO
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
@@ -122,6 +123,10 @@ namespace Vistas
 		protected void IrListarStock_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ControlStockListado.aspx");
+		}
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
 		}
 
 		protected void BtnCancelar_Click(object sender, EventArgs e)

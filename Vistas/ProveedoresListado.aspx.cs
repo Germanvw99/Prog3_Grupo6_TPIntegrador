@@ -141,6 +141,7 @@ namespace Vistas
 			}
 		}
 
+		// LINK BUTTON REDIRECCIONAMIENTO
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
@@ -169,8 +170,12 @@ namespace Vistas
 		{
 			Response.Redirect("ControlStockListado.aspx");
 		}
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
+		}
 
-		// LINKBUTTUN AGREGAR
+		// LINKBUTTON AGREGAR
 		protected void LnAgregarProveedor_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("ProveedoresAgregar.aspx");

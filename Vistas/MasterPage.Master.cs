@@ -171,7 +171,7 @@ namespace Vistas
 		{
 			if (e.CommandName == "categorias")
 			{
-				Session["tablapormarca"] = e.CommandArgument.ToString();
+				Session["tablaporcategoria"] = e.CommandArgument.ToString();
 				Response.Redirect("Vistausuario.aspx");
 			}
 		}

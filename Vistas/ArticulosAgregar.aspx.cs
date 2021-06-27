@@ -71,8 +71,8 @@ namespace Vistas
 		}
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			if(negocioArticulo.ValidarContenido(ref mensaje,TxtNombre.Text, TxtDescripcion.Text, DdlMarcas.SelectedValue, DdlCategorias.SelectedValue, DdlEstados.SelectedValue, txtPrecio.Text, txtPedido.Text))
-            {
+			if (negocioArticulo.ValidarContenido(ref mensaje, TxtNombre.Text, TxtDescripcion.Text, DdlMarcas.SelectedValue, DdlCategorias.SelectedValue, DdlEstados.SelectedValue, txtPrecio.Text, txtPedido.Text))
+			{
 				if (UploadImage.HasFile)
 				{
 					// Valida que el archivo sea correcto.
@@ -90,8 +90,8 @@ namespace Vistas
 						{
 							//lblNotificacion.ForeColor = System.Drawing.Color.Red;
 							//lblNotificacion.Text = "No se puso agregar el artículo!";
-						
-						    ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se puso agregar el artículo!','error')", true);
+
+							ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se puso agregar el artículo!','error')", true);
 
 						}
 						if (agrego == 1)
@@ -124,26 +124,23 @@ namespace Vistas
 					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Suba una imagen!','info')", true);
 				}
 			}
-            else
-            {
+			else
+			{
 				//lblNotificacion.ForeColor = System.Drawing.Color.Red;
 				//lblNotificacion.Text = mensaje;
 
-				ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "Mensaje('AGREGUE','"+mensaje+ "','warning')", true);
+				ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "Mensaje('AGREGUE','" + mensaje + "','warning')", true);
 			}
-
-
-
 		}
 
-
-        protected void IrListarArticulos_Click(object sender, EventArgs e)
-		{
-			Response.Redirect("ArticulosListado.aspx");
-		}
+		// LINK BUTTON REDIRECCIONAMIENTO
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
+		}
+		protected void IrListarArticulos_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ArticulosListado.aspx");
 		}
 		protected void IrListarMarcas_Click(object sender, EventArgs e)
 		{
@@ -161,6 +158,15 @@ namespace Vistas
 		{
 			Response.Redirect("VentasListado.aspx");
 		}
+		protected void IrListarStock_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ControlStockListado.aspx");
+		}
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
+		}
+
 		// AGREGAR MARCAS Y CATEGORIAS
 		protected void IrAgregarMarca_Click(object sender, EventArgs e)
 		{
@@ -201,7 +207,5 @@ namespace Vistas
 			TxtDescripcion.Text = "";
 			txtPrecio.Text = "";
 		}
-
-        
-    }
+	}
 }

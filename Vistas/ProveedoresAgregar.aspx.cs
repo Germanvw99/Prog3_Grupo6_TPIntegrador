@@ -98,9 +98,7 @@ namespace Vistas
 				else
 				{
 					ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Suba una imagen!','info')", true);
-				}
-
-				
+				}				
 			}
             else
             {
@@ -109,8 +107,7 @@ namespace Vistas
 			}
 		}
 
-
-
+		// LINK BUTTON REDIRECCIONAMIENTO
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
@@ -139,6 +136,10 @@ namespace Vistas
 		{
 			Response.Redirect("ControlStockListado.aspx");
 		}
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
+		}
 
 		private Proveedores GetEntity(string rutaImagen)
         {
@@ -154,11 +155,5 @@ namespace Vistas
 
 			return proveedor;
 		}
-
-     
-
-
-
-
 	}
 }
