@@ -40,11 +40,10 @@ GO
 
 CREATE TABLE DetalleFactura(
  dt_venta_codigo INT NOT NULL,
- dt_numero_linea INT NOT NULL,
  dt_articulo_codigo INT NOT NULL,
  dt_cantidad_unidades INT DEFAULT 0 NULL,
  dt_precio_unitario DECIMAL(18, 2) DEFAULT '0,00' NULL,
- CONSTRAINT PK_DetalleFactura PRIMARY KEY (dt_venta_codigo, dt_numero_linea, dt_articulo_codigo))
+ CONSTRAINT PK_DetalleFactura PRIMARY KEY (dt_venta_codigo, dt_articulo_codigo))
 GO
 
 CREATE TABLE Estados(
@@ -335,13 +334,13 @@ SELECT '98219940', 7, 23, 0, 23, 0,'7000.00' UNION
 SELECT '70951091', 9, 3, 0, 3, 0,'120000.00'
 GO
 
-INSERT INTO DetalleFactura (dt_venta_codigo,dt_numero_linea,dt_articulo_codigo,dt_cantidad_unidades,dt_precio_unitario)
-SELECT 1,1,10,1,'120000.00' UNION
-SELECT 2,1,11,1,'10000.00' UNION
-SELECT 2,2,12,1,'80000.00' UNION
-SELECT 3,1,11,1,'10000.00' UNION
-SELECT 3,2,7,4,'10000.00' UNION
-SELECT 3,3,9,1,'140000.00'
+INSERT INTO DetalleFactura (dt_venta_codigo,dt_articulo_codigo,dt_cantidad_unidades,dt_precio_unitario)
+SELECT 1,10,1,'120000.00' UNION
+SELECT 2,11,1,'10000.00' UNION
+SELECT 2,12,1,'80000.00' UNION
+SELECT 3,11,1,'10000.00' UNION
+SELECT 3,7,4,'10000.00' UNION
+SELECT 3,9,1,'140000.00'
 GO
 
 CREATE PROCEDURE spActualizarStock
@@ -391,40 +390,38 @@ GO
 
 CREATE PROCEDURE spAgregarArticulo
 (
-@prmMarca int,
-@prmCategoria int,
-@prmNombre varchar(255),
-@prmDescripcion varchar(255),
-@prmPunto_pedido int,
-@prmPrecio_lista decimal(18,2),
-@prmRuta_imagen varchar(255),
-@prmEstado int
+@art_marca_codigo INT,
+@art_categoria_codigo INT,
+@art_nombre VARCHAR(255),
+@art_descripcion VARCHAR(255),
+@art_punto_pedido INT,
+@art_precio_lista DECIMAL(18, 2),
+@art_ruta_imagen VARCHAR(255),
+@art_codigo_estado INT
 )
 AS
-BEGIN
-	INSERT INTO Articulos
-		(
-		art_marca_codigo,
-		art_categoria_codigo,
-		art_nombre,
-		art_descripcion,
-		art_punto_pedido,
-		art_precio_lista,
-		art_ruta_imagen,
-		art_codigo_estado
-		)
-	VALUES
-		(
-		@prmMarca,
-		@prmCategoria,
-		@prmNombre,
-		@prmDescripcion,
-		@prmPunto_pedido,
-		@prmPrecio_lista,
-		@prmRuta_imagen,
-		@prmEstado
-		)
-	END
+INSERT INTO Articulos
+(
+art_marca_codigo,
+art_categoria_codigo,
+art_nombre,
+art_descripcion,
+art_punto_pedido,
+art_precio_lista,
+art_ruta_imagen,
+art_codigo_estado
+)
+VALUES
+(
+@art_marca_codigo,
+@art_categoria_codigo,
+@art_nombre,
+@art_descripcion,
+@art_punto_pedido,
+@art_precio_lista,
+@art_ruta_imagen,
+@art_codigo_estado
+)
 GO
 
 CREATE PROCEDURE spAgregarCategoria
@@ -752,3 +749,69 @@ BEGIN
 	VALUES(@prmDni,@prmUsername,@prmPassword,@prmNombre,@prmApellido,@prmTelefono,@prmEmail,@prmDireccion,@prmCiudad,@prmProvincia,@prmCodigo_Postal,@prmRuta_Img,@prmEstado,@prmCodigo_Perfil)
 END
 GO
+
+CREATE PROCEDURE spAgregarDetallesFactura
+(
+@prm_dt_venta_codigo int,
+@prm_dt_articulo_codigo int,
+@prm_dt_cantidad_unidades int,
+@prm_dt_precio_unitario decimal(18,2)
+)
+AS
+INSERT INTO DetalleFactura
+(
+dt_venta_codigo,
+dt_articulo_codigo,
+dt_cantidad_unidades,
+dt_precio_unitario
+)
+VALUES
+(
+@prm_dt_venta_codigo,
+@prm_dt_articulo_codigo,
+@prm_dt_cantidad_unidades,
+@prm_dt_precio_unitario
+)
+GO
+
+CREATE PROCEDURE spAgregarVenta
+(
+@prm_ven_usuarios_dni char(8),
+@prm_ven_medio_pago_codigo int,
+@prm_ven_total_facturado decimal(8,2)
+)
+AS
+INSERT INTO Ventas
+(
+ven_usuarios_dni,
+ven_medio_pago_codigo,
+ven_fecha_requerida,
+ven_fecha,
+ven_total_facturado,
+ven_codigo_estado)
+VALUES
+(
+@prm_ven_usuarios_dni,
+@prm_ven_medio_pago_codigo,
+getdate(),
+getdate(),
+@prm_ven_total_facturado,
+2
+)
+SELECT SCOPE_IDENTITY()
+go
+
+CREATE TRIGGER TR_actualizarstcok 
+on DetalleFactura
+after insert
+as
+begin
+declare @idart int,@precio decimal(18,2), @stock int, @cantcomprar int  
+select @idart=dt_articulo_codigo, @cantcomprar=dt_cantidad_unidades from inserted 
+select @stock=axp_stock_actual from Articulos_por_Proveedor where axp_articulo_codigo=@idart 
+if (@cantcomprar<=@stock)
+update Articulos_por_Proveedor set axp_stock_actual=@stock-@cantcomprar where axp_articulo_codigo=@idart
+else
+    rollback
+end
+go
