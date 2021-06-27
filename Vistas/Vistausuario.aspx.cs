@@ -78,16 +78,24 @@ namespace Vistas
                 }
                 else
                 {
+                    // Chekea que haya suficiente stock para agregar al carrito
                     String s = e.CommandArgument.ToString();
                     String[] arreglo = s.Split('@');
+                    if (n.ControlDeStock(1,arreglo[0].ToString()))
+                    {
 
-                    articulo.SetCodigo(Convert.ToInt32(arreglo[0]));
-                    articulo.SetNombre(arreglo[1]);
-                    articulo.SetDescripcion(arreglo[2]);
-                    articulo.SetPrecioLista(Convert.ToDecimal(arreglo[3]));
-                    n.agregarfilacarrito(articulo);
+                        articulo.SetCodigo(Convert.ToInt32(arreglo[0]));
+                        articulo.SetNombre(arreglo[1]);
+                        articulo.SetDescripcion(arreglo[2]);
+                        articulo.SetPrecioLista(Convert.ToDecimal(arreglo[3]));
+                        n.agregarfilacarrito(articulo);
 
-                    ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agrego al carrito!','success')", true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Se agrego al carrito!','success')", true);
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('Stock no disponible!','warning')", true);
+                    }                  
                 }
             }
         }

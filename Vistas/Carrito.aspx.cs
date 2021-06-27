@@ -108,6 +108,10 @@ namespace Vistas
                 // HAY PRODUCTOS EN EL CARRO.
                 Response.Redirect("ConfirmarPedido.aspx");
             }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "MSJ", "MensajeCorto('No se han seleccionado artículos!','warning')", true);
+            }
         }
     }
 
