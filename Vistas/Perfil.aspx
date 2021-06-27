@@ -12,16 +12,18 @@
 				  <div class="card">
 					<div class="card-body">
 					  <div class="d-flex flex-column align-items-center text-center">
-						&nbsp;<asp:ImageButton ID="ImageButton3"  class="img-fluid rounded-circle" runat="server" Width="193px" Height="216px" />
+						&nb&nbsp;<asp:ImageButton ID="ImageButton3"  class="img-fluid rounded-circle" runat="server" Width="193px" Height="216px" />
 &nbsp;<div class="mt-3">
 							<asp:Label ID="lblUsername" class="img-fluid rounded-circle mb-2" runat="server" Text="Label"></asp:Label>
+						      &nbsp;&nbsp;&nbsp;&nbsp;
+                              <asp:Button ID="Button1" CssClass="btn btn-info" runat="server" OnClick="Button1_Click" Text="Mis compras" />
 						</div>
 					  </div>
 					</div>
 				  </div>
 				  <div class="card mt-5">
 					<div class="card-body pt-5 pb-5">
-					  <h2 class="mt-3 mb-5"> Modificar Contraseña </h2>
+					  <h2 class="mt-3 mb-5"> Modificar Contraseña 2>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Actual</h6>

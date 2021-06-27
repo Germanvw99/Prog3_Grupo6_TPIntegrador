@@ -53,5 +53,18 @@ namespace Negocio
             }
             return null;
         }
+
+        public DataTable obtenertabladetalledecompra()
+        {
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Factura", typeof(string));
+            dt.Columns.Add("Producto", typeof(string));
+            dt.Columns.Add("Importe", typeof(string));
+            dt.Columns.Add("Cantidad", typeof(string));
+            dt.Columns.Add("Total", typeof(string));
+            return dt;
+
+        }
     }
 }

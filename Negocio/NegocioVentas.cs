@@ -18,11 +18,18 @@ namespace Negocio
 			return daoVenta.ObtenerVentas();
 		}
 
-		public DataTable obtenertabladeventas2()
+		public DataTable ObtenerVentas2(string dni)
+
+		{
+			return daoVenta.ObtenerVentas2(dni);
+		}
+
+
+		public DataTable obtenertabladeventas2(string dni)
 		{
 			Session["TablaSesionVentas2"] = CrearTablaSesion2();
 			DataTable dt = ObtenerTablaSesionVentas2();
-			DataTable ventas = daoVenta.ObtenerVentas();
+			DataTable ventas = daoVenta.ObtenerVentas2(dni);
 			foreach (DataRow r in ventas.Rows)
 			{
 
@@ -30,7 +37,7 @@ namespace Negocio
 				DataRow fila = dt.NewRow();
 				fila["Venta"] = r["ven_codigo"].ToString();
 				fila["Usuario"] = r["ven_usuarios_dni"].ToString();
-				fila["Mediodepago"] = r["ven_medio_pago_codigo"].ToString();
+				fila["Mediodepago"] = r["mp_nombre"].ToString();
 				fila["Fecha"] = r["ven_fecha"].ToString();
 				fila["Total"] = r["ven_total_facturado"].ToString();
 				dt.Rows.Add(fila);
@@ -103,7 +110,7 @@ namespace Negocio
 			return dt;
 		}
 
-		public DataTable ObtenerTablaSesionVentas2()
+		public DataTable ObtenerTablaSesionVentas2( )
         {
 			DataTable dt = new DataTable();
 			if (Session["TablaSesionVentas2"] != null)

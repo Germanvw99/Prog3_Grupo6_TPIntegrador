@@ -3,7 +3,7 @@
     <main class="content">
     <div runat="server" id="funcionesAdmin">
 	 <nav aria-label="breadcrumb">
-                <div class="card-body text-left">
+                <div class="card-body tsext-left">
                     <div class="mb-3">
                         <asp:LinkButton ID="IrListarUsuarios" runat="server" class="btn btn-outline-success" OnClick="IrListarUsuarios_Click" >Listado de Usuarios</asp:LinkButton>
                         <asp:LinkButton ID="IrListarArticulos" runat="server" class="btn btn-outline-primary" OnClick="IrListarArticulos_Click">Listado de Artículos</asp:LinkButton>

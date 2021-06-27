@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Negocio;
+using Entidades;
 
 namespace Vistas
 {
@@ -14,17 +15,25 @@ namespace Vistas
 
     {
         private NegocioVentas ng = new NegocioVentas();
+        string dni;
         
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+            
+            DataTable dt = (DataTable)Session["User"];
+
+            Usuarios objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
+            dni = objUsuario.Dni.ToString();
             cargartabla();
+            
         }
 
         public void cargartabla()
         {
             string[] columnas = null;
             DataTable dt = new DataTable();
-            dt = ng.obtenertabladeventas2();
+            dt = ng.obtenertabladeventas2(dni);
 
             GridView1.DataSource = dt;
             GridView1.DataBind();
@@ -42,6 +51,8 @@ namespace Vistas
                 string factura;
 
                 factura =( (Label)GridView1.Rows[fila].FindControl("lblfactura")).Text;
+                Session["factura"] = factura;
+                Response.Redirect("CompraUsuarioDetalle.aspx");
                 
 
                 

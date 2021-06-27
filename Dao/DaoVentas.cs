@@ -12,13 +12,19 @@ namespace Dao
     {
         private readonly AccesoDatos accDatos = new AccesoDatos();
         SqlConnection conn = null;
-        public DataTable ObtenerVentas()
+        public DataTable ObtenerVentas( )
         {
             string strTabla = "Ventas";
-            string srtSQL = "SELECT ven_codigo,ven_usuarios_dni, usu_apellido, usu_nombre,usu_direccion, usu_ciudad, ven_medio_pago_codigo, mp_nombre, ven_fecha,ven_fecha_requerida,ven_fecha_envio,ven_total_facturado,ven_codigo_estado, est_nombre FROM Ventas INNER JOIN Usuarios ON ven_usuarios_dni=usu_dni INNER JOIN Medios_de_pago ON ven_medio_pago_codigo = mp_codigo INNER JOIN Estados ON ven_codigo_estado=est_codigo";
+            string srtSQL = "SELECT ven_codigo,ven_usuarios_dni, usu_apellido, usu_nombre,usu_direccion, usu_ciudad, ven_medio_pago_codigo, mp_nombre, ven_fecha,ven_fecha_requerida,ven_fecha_envio,ven_total_facturado,ven_codigo_estado, est_nombre FROM Ventas INNER JOIN Usuarios ON ven_usuarios_dni=usu_dni INNER JOIN Medios_de_pago ON ven_medio_pago_codigo = mp_codigo INNER JOIN Estados ON ven_codigo_estado=est_codigo ";
             return accDatos.ObtenerTabla(strTabla, srtSQL);
         }
 
+        public DataTable ObtenerVentas2(string dni)
+        {
+            string strTabla = "Ventas";
+            string srtSQL = "SELECT ven_codigo,ven_usuarios_dni, usu_apellido, usu_nombre,usu_direccion, usu_ciudad, ven_medio_pago_codigo, mp_nombre, ven_fecha,ven_fecha_requerida,ven_fecha_envio,ven_total_facturado,ven_codigo_estado, est_nombre FROM Ventas INNER JOIN Usuarios ON ven_usuarios_dni=usu_dni INNER JOIN Medios_de_pago ON ven_medio_pago_codigo = mp_codigo INNER JOIN Estados ON ven_codigo_estado=est_codigo where usu_dni="+ dni.ToString();
+            return accDatos.ObtenerTabla(strTabla, srtSQL);
+        }
         public DataTable filtrarConsultaVenta(ref string ClausulaSQLConsultaVenta)
         {
             string strTabla = "Venta";
