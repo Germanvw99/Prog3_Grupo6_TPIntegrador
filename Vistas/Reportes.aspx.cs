@@ -26,8 +26,6 @@ namespace Vistas
 				CalendarInicio.Visible = false;
 				CalendarFinal.Visible = false;
 			}
-			TxtFechaInicio.Text = "";
-			TxtFechaFinal.Text = "";
 		}
 
 		private void CargarGridViewFechas(DateTime desdeFecha, DateTime hastaFecha)
@@ -183,6 +181,9 @@ namespace Vistas
 				CargarGridViewFechas(desdeFecha, hastaFecha);
 				LblIngresos.Text = negocioVenta.ObtenerVentasIngresos(desdeFecha, hastaFecha);
 				LblVentas.Text = negocioVenta.ObtenerVentasCantidad(desdeFecha, hastaFecha);
+
+				TxtFechaInicio.Text = "";
+				TxtFechaFinal.Text = "";
 			}
 		}
 	}
