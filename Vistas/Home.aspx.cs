@@ -10,96 +10,86 @@ using Negocio;
 
 namespace Vistas
 {
-    public partial class Home : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            Response.Redirect("Vistausuario.aspx");
-            if (Session["User"] != null)
-            {
-                DataTable dt = (DataTable)Session["User"];
+	public partial class Home : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			Response.Redirect("Vistausuario.aspx");
+			if (Session["User"] != null)
+			{
+				DataTable dt = (DataTable)Session["User"];
 
-                Usuarios objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
-                if (objUsuario != null)
-                {
-                    // USUARIO LOGUEADO
+				Usuarios objUsuario = NegocioUsuarios.getInstance().LeerTablaUsuario(dt);
+				if (objUsuario != null)
+				{
+					// USUARIO LOGUEADO
 
-                    // HEADER GENERAL
+					// HEADER GENERAL
 
+					// SIDEBAR GENERAL
 
-                    // SIDEBAR GENERAL
+					funcionesAdmin.Visible = false; ;
 
-                    funcionesAdmin.Visible = false;
-                    ;
+					// En caso de que haya un usuario Logueado, identificar si es Administrador o Usuario
+					if (objUsuario.Codigo_Perfil == 1)
+					{
+						// Admin
+						// SIDEBAR
 
+						funcionesAdmin.Visible = true;
+					}
+					else
+					{
+						// Usuario
 
+						funcionesAdmin.Visible = false;
+					}
+				}
+			}
+			else
+			{
+				// USUARIO DESLOGUEADO
 
-                    // En caso de que haya un usuario Logueado, identificar si es Administrador o Usuario
-                    if (objUsuario.Codigo_Perfil == 1)
-                    {
-                        // Admin
-                        // SIDEBAR
+				//HEADER GENERAL
 
-                        funcionesAdmin.Visible = true;
-                    }
-                    else
-                    {
-                        // Usuario
+				//SIDEBAR GENERAL
 
-                        funcionesAdmin.Visible = false;
+				funcionesAdmin.Visible = false;
+			}
+		}
 
-
-                    }
-                }
-            }
-            else
-            {
-                // USUARIO DESLOGUEADO
-
-                //HEADER GENERAL
-
-
-                //SIDEBAR GENERAL
-
-                funcionesAdmin.Visible = false;
-            }
-
-        }
-
-
-
-    // Botones redireccion
-    protected void IrListarUsuarios_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UsuariosListado.aspx");
-        }
-        protected void IrListarArticulos_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ArticulosListado.aspx");
-        }
-        protected void IrListarMarcas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("MarcasListado.aspx");
-        }
-        protected void IrListarCategorias_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("CategoriasListado.aspx");
-        }
-        protected void IrListarProveedores_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ProveedoresListado.aspx");
-        }
-        protected void IrListarVentas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("VentasListado.aspx");
-        }
-        protected void IrListarStock_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ControlStockListado.aspx");
-        }
-        protected void IrReportes_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Reportes.aspx");
-        }
-    }
+		// LINK BUTTON REDIRECCIONAMIENTO
+		protected void IrListarUsuarios_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("UsuariosListado.aspx");
+		}
+		protected void IrListarArticulos_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ArticulosListado.aspx");
+		}
+		protected void IrListarMarcas_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("MarcasListado.aspx");
+		}
+		protected void IrListarCategorias_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("CategoriasListado.aspx");
+		}
+		protected void IrListarProveedores_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ProveedoresListado.aspx");
+		}
+		protected void IrListarVentas_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("VentasListado.aspx");
+		}
+		protected void IrListarStock_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("ControlStockListado.aspx");
+		}
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
+		}
+	}
 }
