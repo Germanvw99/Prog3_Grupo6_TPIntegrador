@@ -135,6 +135,15 @@ namespace Vistas
 			}
 		}
 
+		protected void BtnCategorias_Command(object sender, CommandEventArgs e)
+		{
+			if (e.CommandName == "categorias")
+			{
+				Session["tablapormarca"] = e.CommandArgument.ToString();
+				Response.Redirect("Vistausuario.aspx");
+			}
+		}
+
 		protected void btbuscar_Click(object sender, EventArgs e)
 		{
 			Session["Busquedad"] = tbbuscardor.Text;

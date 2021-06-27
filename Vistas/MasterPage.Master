@@ -59,8 +59,8 @@
                     <nav class="sidebar col-md-2 bg-white border-right sticky-top d-flex flex-column align-items-center">
                         <div class="w-100">
                             <div class="sidebar-user" id="heroUser" runat="server">
-                                <div class="ImgUser d-flex justify-content-center mb-2 img-fluid">
-                                    <asp:ImageButton ID="ImgUser" runat="server" CssClass="img-fluid rounded-circle" ImageUrl="Recursos/img/avatar.png" OnClick="ImgUser_Click" />
+                                <div class="ImgUser d-flex justify-content-center mb-2 mt-4 img-fluid">
+                                    <asp:ImageButton ID="ImgUser" runat="server" CssClass="img-fluid rounded-circle" ImageUrl="Recursos/img/avatar.png" OnClick="ImgUser_Click"  Width="200px" Height="200px" />
                                 </div>
                                 <div class="d-flex align-items-center flex-column">
                                     <small>
@@ -68,10 +68,25 @@
                                     </small>
                                 </div>
                             </div>
+                            <ul class="sidebar-nav d-flex flex-column align-items-center mt-4" id="Ul1" runat="server">
+                                <li class="sidebar-item text-center m-0 w-100">
+                                    <h5>Listado de Categorias</h5>
+                                        <asp:DataList ID="DataListCategorias" runat="server" DataSourceID="SqlDsCategorias" CssClass="w-100">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="LinkCategoria"  runat="server" CssClass="mb-2" CommandArgument='<%# Eval("cat_codigo") %>' text='<%# Eval("cat_nombre") %>' CommandName="categorias" OnCommand="BtnCategorias_Command"/></asp:LinkButton> 
+                                            </ItemTemplate>
+                                        </asp:DataList>
+                                </li>
+                                <li class="sidebar-item" runat="server">
+                                    <a class="sidebar-link" href="#">
+                                    <asp:SqlDataSource ID="SqlDsCategorias" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT cat_codigo, cat_nombre, cat_descripcion, cat_ruta_imagen, est_nombre, est_codigo FROM Categorias INNER JOIN Estados ON Categorias.cat_codigo_estado=Estados.est_codigo ORDER BY cat_nombre ASC"></asp:SqlDataSource>
+                                    </a>
+                                </li>
+                            </ul>
                             <ul class="sidebar-nav d-flex flex-column align-items-center pt-4" id="userPanelMarcas" runat="server">
                                 <li class="sidebar-item text-center m-0 w-100">
                                     <h5>Listado de Marcas</h5>
-                                    <div style=" max-height:1000px; overflow:scroll; text-align:center" class="w-100 m-0">
+                                    <div style=" max-height:500px; overflow:scroll; text-align:center" class="w-100 m-0">
                                         <asp:DataList ID="DataListMarcas" runat="server" DataSourceID="SqlDsMarcas" CssClass="w-100">
                                             <ItemTemplate>
                                                 <asp:ImageButton ID="ImgMarca" runat="server" CommandArgument='<%# Eval("mar_codigo") %>' CommandName="marcas" Height="100px" ImageUrl='<%# Bind("mar_ruta_imagen") %>' OnCommand="ImgMarca_Command"/>  
