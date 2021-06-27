@@ -3,6 +3,10 @@
      <div class ="row">
       <div class="card-body card bg-light">
    
+          <div CssClass="modal-title">
+              <h1>Detalle de compra </h1>
+          </div>
+   
     <asp:GridView ID="GridView1" runat="server" CssClass="table-striped dataTable dtr-inline table-hover row-border"  AutoGenerateColumns="False" style="margin-left: 211px" Width="664px">
         <Columns>
             <asp:TemplateField HeaderText="Factura">

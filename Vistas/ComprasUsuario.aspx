@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ComprasUsuario.aspx.cs" Inherits="Vistas.Formulario_web12" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class ="row">
+    <div CssClass="modal-title">
+              <h1>Compras realizadas</h1>
+          </div> 
+    <div class ="row">
       <div class="card-body card bg-light">
+          
     <asp:GridView ID="GridView1" runat="server" Width="1390px" CssClass="table-striped dataTable dtr-inline table-hover row-border" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" style="margin-right: 2px; margin-left: 141px;">
         <Columns>
              <asp:ButtonField ButtonType="Image" CommandName="eventodetalle" ImageUrl="Recursos/img/ver.png" />
