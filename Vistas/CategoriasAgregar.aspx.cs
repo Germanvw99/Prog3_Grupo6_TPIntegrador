@@ -51,8 +51,6 @@ namespace Vistas
 
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			//if (!string.IsNullOrEmpty(TxtNombre.Text) && !string.IsNullOrEmpty(TxtDescripcion.Text) && Int32.Parse(DdlEstados.SelectedValue) != 0)
-			//if(ValidarContenido())
 			if(negocioCategoria.ValidarContenido(ref mensaje,TxtNombre.Text,TxtDescripcion.Text,DdlEstados.SelectedValue))
 			{
 				if (FUCategoria.HasFile)
@@ -110,8 +108,7 @@ namespace Vistas
 			}
 		}
 
-
-
+		// LINK BUTTON REDIRECCIONAMIENTO
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
@@ -140,7 +137,11 @@ namespace Vistas
 		{
 			Response.Redirect("ControlStockListado.aspx");
 		}
-		
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
+		}
+
 		private Categorias GetEntity(String rutaImagen)
 		{
 			categoria.SetNombre(TxtNombre.Text.Trim());
@@ -150,7 +151,6 @@ namespace Vistas
 			categoria.SetRutaImagen(imagenURL);
 
 			return categoria;
-		}
-		
+		}		
     }
 }

@@ -49,6 +49,7 @@ namespace Vistas
 			}
 		}
 
+		// LINK BUTTON REDIRECCIONAMIENTO
 		protected void IrListarUsuarios_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("UsuariosListado.aspx");
@@ -77,26 +78,16 @@ namespace Vistas
 		{
 			Response.Redirect("ControlStockListado.aspx");
 		}
+		protected void IrReportes_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Reportes.aspx");
+		}
 
 		protected void BtnAgregar_Click(object sender, EventArgs e)
 		{
-			//if (Int32.Parse(DdlProveedores.SelectedValue) != 0 && Int32.Parse(DdlArticulos.SelectedValue) != 0 && !string.IsNullOrEmpty(TxtCantidad.Text) && !string.IsNullOrEmpty(TxtPrecio.Text))
 			if(negocioArticuloProveedor.ValidarContenido(ref mensaje,TxtPrecio.Text, TxtCantidad.Text, DdlProveedores.SelectedValue, DdlArticulos.SelectedValue))//;
 			
 			{
-				//Proveedores proveedor = new Proveedores();
-				//proveedor.SetDni(DdlProveedores.SelectedValue);
-				//articuloProveedor.SetProveedor(proveedor);
-				////
-				//Articulos articulo = new Articulos();
-				//articulo.SetCodigo(int.Parse(DdlArticulos.SelectedValue));
-				//articuloProveedor.SetArticulo(articulo);
-				//articuloProveedor.SetEntrada(int.Parse(TxtCantidad.Text));
-
-				//string precionuevo = TxtPrecio.Text.Replace('.', ',');
-
-				//articuloProveedor.SetPrecioUnitario(decimal.Parse(precionuevo));
-
 				CargarContenido();
 
                 if (negocioArticuloProveedor.agregarStock(articuloProveedor))
