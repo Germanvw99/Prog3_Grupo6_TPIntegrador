@@ -128,9 +128,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                                                    
-                                <asp:ValidationSummary ID="VsSolicitud" runat="server" ForeColor="Red" ValidationGroup="solicitud" />
-                            
+                                        <asp:ValidationSummary ID="VsSolicitud" runat="server" ForeColor="Red" ValidationGroup="solicitud" />
                                         <div class="col-md-10 text-left">
                                             <div class="row">
                                                 <div class="col-md-3 col-lg-3 col-xl">
@@ -162,8 +160,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br />
-                                            <br />
+                                            <br />                                           
                                             <div class="card">
                                                 <div class="card-body">
                                                     <asp:GridView ID="GrdReportes" runat="server" AutoGenerateColumns="False"
