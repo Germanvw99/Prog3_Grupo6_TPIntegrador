@@ -68,7 +68,7 @@
                                     </small>
                                 </div>
                             </div>
-                            <ul class="sidebar-nav d-flex flex-column align-items-center mt-4" id="Ul1" runat="server">
+                            <ul class="sidebar-nav d-flex flex-column align-items-center mt-4" id="userPanelCategorias" runat="server">
                                 <li class="sidebar-item text-center m-0 w-100">
                                     <h5>Listado de Categorias</h5>
                                         <asp:DataList ID="DataListCategorias" runat="server" DataSourceID="SqlDsCategorias" CssClass="w-100">

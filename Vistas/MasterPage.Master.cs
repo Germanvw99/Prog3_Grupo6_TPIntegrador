@@ -42,6 +42,7 @@ namespace Vistas
 					heroUser.Visible = true;
 					funcionesAdmin.Visible = false;
 					userPanelMarcas.Visible = false;
+					userPanelCategorias.Visible = false;
 
 					// En caso de que haya un usuario Logueado, identificar si es Administrador o Usuario
 					if (objUsuario.Codigo_Perfil == 1)
@@ -49,6 +50,7 @@ namespace Vistas
 						// Admin
 						// SIDEBAR
 						userPanelMarcas.Visible = false;
+						userPanelCategorias.Visible = false;
 						lblTipoUsuario.Text = objUsuario.Username + " (Administrador)";
 						funcionesAdmin.Visible = true;
 					}
@@ -57,6 +59,7 @@ namespace Vistas
 						// Usuario
 						lblTipoUsuario.Text = objUsuario.Username + " (Usuario)";
 						userPanelMarcas.Visible = true;
+						userPanelCategorias.Visible = true;
 					}
 				}
 			}

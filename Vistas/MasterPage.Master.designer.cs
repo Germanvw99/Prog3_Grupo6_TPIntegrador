@@ -141,13 +141,13 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblTipoUsuario;
 
         /// <summary>
-        /// Control Ul1.
+        /// Control userPanelCategorias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Ul1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userPanelCategorias;
 
         /// <summary>
         /// Control DataListCategorias.
