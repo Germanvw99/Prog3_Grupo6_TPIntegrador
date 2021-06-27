@@ -18,7 +18,36 @@ namespace Negocio
 			return daoVenta.ObtenerVentas();
 		}
 
-		public DataTable ObtenerVentas2(string dni)
+        #region REPORTES
+        public DataTable ObtenerVentas(DateTime desdeFecha, DateTime hastaFecha)
+		{
+			return daoVenta.ObtenerVentas(desdeFecha, hastaFecha);
+		}
+
+		public string ObtenerVentasIngresos(DateTime desdeFecha, DateTime hastaFecha)
+		{
+			string ingresos = "";
+			DataTable dt = daoVenta.ObtenerVentasIngresos(desdeFecha, hastaFecha);
+			foreach (System.Data.DataRow rows in dt.Rows)
+			{
+				ingresos = rows[0].ToString();
+			}
+			return ingresos;
+		}
+
+		public string ObtenerVentasCantidad(DateTime desdeFecha, DateTime hastaFecha)
+		{
+			string ventas = "";
+			DataTable dt = daoVenta.ObtenerVentasCantidad(desdeFecha, hastaFecha);
+			foreach (System.Data.DataRow rows in dt.Rows)
+			{
+				ventas = rows[0].ToString();
+			}
+			return ventas;
+		}
+
+        #endregion
+        public DataTable ObtenerVentas2(string dni)
 
 		{
 			return daoVenta.ObtenerVentas2(dni);

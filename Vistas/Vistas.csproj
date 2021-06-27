@@ -126,6 +126,7 @@
     <Content Include="Recursos\css\theme.css" />
     <Content Include="Recursos\img\avatar.png" />
     <Content Include="Recursos\img\ca.png" />
+    <Content Include="Recursos\img\calendar.png" />
     <Content Include="Recursos\img\Carrito.png" />
     <Content Include="Recursos\img\CarritoAgregar.png" />
     <Content Include="Recursos\img\editar.png" />
@@ -140,6 +141,7 @@
     <Content Include="Recursos\webfonts\fa-brands-400.svg" />
     <Content Include="Recursos\webfonts\fa-regular-400.svg" />
     <Content Include="Recursos\webfonts\fa-solid-900.svg" />
+    <Content Include="Reportes.aspx" />
     <Content Include="UsuariosListado.aspx" />
     <Content Include="VentasListado.aspx" />
     <Content Include="Vistausuario.aspx" />
@@ -369,6 +371,13 @@
     </Compile>
     <Compile Include="ComprasUsuario.aspx.designer.cs">
       <DependentUpon>ComprasUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsuariosListado.aspx.cs">
       <DependentUpon>UsuariosListado.aspx</DependentUpon>

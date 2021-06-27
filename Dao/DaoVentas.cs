@@ -59,5 +59,29 @@ namespace Dao
             }
             return index;
         }
+
+
+        #region REPORTES
+        public DataTable ObtenerVentas(DateTime desdeFecha, DateTime hastaFecha)
+        {
+            string strTabla = "Ventas";
+            string srtSQL = "SELECT ven_codigo,ven_usuarios_dni, usu_apellido, usu_nombre,usu_direccion, usu_ciudad, ven_medio_pago_codigo, mp_nombre, ven_fecha,ven_fecha_requerida,ven_fecha_envio,ven_total_facturado,ven_codigo_estado, est_nombre FROM Ventas INNER JOIN Usuarios ON ven_usuarios_dni=usu_dni INNER JOIN Medios_de_pago ON ven_medio_pago_codigo = mp_codigo INNER JOIN Estados ON ven_codigo_estado=est_codigo WHERE Ventas.ven_fecha BETWEEN '" + desdeFecha + "' AND '" + hastaFecha + "'";
+            return accDatos.ObtenerTabla(strTabla, srtSQL);
+        }
+
+        public DataTable ObtenerVentasIngresos(DateTime desdeFecha, DateTime hastaFecha)
+        {
+            string strTabla = "Ventas";
+            string srtSQL = "SELECT SUM(ven_total_facturado) FROM Ventas WHERE Ventas.ven_fecha BETWEEN '" + desdeFecha + "' AND '" + hastaFecha + "'";
+            return accDatos.ObtenerTabla(strTabla, srtSQL);
+        }
+
+        public DataTable ObtenerVentasCantidad(DateTime desdeFecha, DateTime hastaFecha)
+        {
+            string strTabla = "Ventas";
+            string srtSQL = "SELECT COUNT(ven_codigo) FROM Ventas WHERE Ventas.ven_fecha BETWEEN '" + desdeFecha + "' AND '" + hastaFecha + "'";
+            return accDatos.ObtenerTabla(strTabla, srtSQL);
+        }
+        #endregion
     }
 }
