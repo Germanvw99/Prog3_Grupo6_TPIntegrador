@@ -21,10 +21,10 @@ namespace Vistas
 		{
 			if (!Page.IsPostBack)
 			{
-				// Cargar categorias y marcas para el sidebar
-				CargarCategorias();
-				CargarMarcas();
-				Session["tablacarrito"] = null;
+                // Cargar categorias y marcas para el sidebar
+                CargarCategorias();
+                CargarMarcas();
+                Session["tablacarrito"] = null;
 				//  Response.Redirect("Vistausuario.aspx");
 			}
 			// Modifica la parte visual dependiendo del tipo de usuario

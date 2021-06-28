@@ -137,8 +137,8 @@
                                     <a class="sidebar-link" href="#">
                                         <asp:SqlDataSource ID="SqlDsMarcas" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
                                     </a>
-                                </li>-->
-                            </ul>
+                                </li>
+                            </ul>-->
                             <div runat="server" id="funcionesAdmin">
                                 <ul class="sidebar-nav d-flex flex-column align-items-center p-0 mt-4">
                                     <li class="sidebar-header mb-3 font-weight-bold">
