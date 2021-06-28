@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <hr />
-                            <div id="FiltrosBusquedaUsuario" class="pr-3 pl-3">
+                            <div id="FiltrosBusquedaUsuario" class="pr-3 pl-3" runat="server">
                                 <h5 class="text-center font-weight-bold mb-5">Filtros de Búsqueda</h5>
                                 <section class="mb-3 d-flex justify-content-left flex-column">
                                     <div class="md-form md-outline mt-0 mb-3 align-items-center">
@@ -137,8 +137,8 @@
                                     <a class="sidebar-link" href="#">
                                         <asp:SqlDataSource ID="SqlDsMarcas" runat="server" ConnectionString="<%$ ConnectionStrings:Grupo6_TPIntegradorV6ConnectionString2 %>" SelectCommand="SELECT [mar_nombre], [mar_codigo], [mar_ruta_imagen] FROM [Marcas]"></asp:SqlDataSource>
                                     </a>
-                                </li>-->
-                            </ul>
+                                </li>
+                            </ul>-->
                             <div runat="server" id="funcionesAdmin">
                                 <ul class="sidebar-nav d-flex flex-column align-items-center p-0 mt-4">
                                     <li class="sidebar-header mb-3 font-weight-bold">

@@ -58,6 +58,7 @@ namespace Vistas
 						userPanelCategorias.Visible = false;
 						lblTipoUsuario.Text = objUsuario.Username + " (Administrador)";
 						funcionesAdmin.Visible = true;
+						FiltrosBusquedaUsuario.Visible = false;
 					}
 					else
 					{
@@ -65,6 +66,7 @@ namespace Vistas
 						lblTipoUsuario.Text = objUsuario.Username + " (Usuario)";
 						userPanelMarcas.Visible = true;
 						userPanelCategorias.Visible = true;
+						FiltrosBusquedaUsuario.Visible = true;
 					}
 				}
 			}
