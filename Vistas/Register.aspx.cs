@@ -37,12 +37,9 @@ namespace Vistas
                 //validar que el archivo sea correcto
                 if (NegocioImagenes.validarArchivo(UploadImageUsuario.PostedFile))
                 {
-
                     //sube archivo
                      rutaimg = NegocioImagenes.SubirImagen(UploadImageUsuario.PostedFile);
                     GetEntity(rutaimg);
-
-
                 }
 
             }

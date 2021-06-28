@@ -117,7 +117,11 @@ namespace Dao
                 SqlCommand cmd = new SqlCommand("spEliminarUsuarioDni", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@prm_dni", Dni.ToString());
-                return conex.EjecutarProcedimientoAlmacenado(cmd, "spEliminarProveedor");
+                return conex.EjecutarProcedimientoAlmacenado(cmd, "spEliminarUsuarioDni");
+            }
+            catch (Exception exc)
+            {
+                throw exc;
             }
             finally
             {

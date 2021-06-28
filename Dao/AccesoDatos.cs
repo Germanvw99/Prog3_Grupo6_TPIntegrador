@@ -80,10 +80,10 @@ namespace Dao
             {
 				FilasCambiadas = cmd.ExecuteNonQuery();
 			}
-			catch
-            {
-				FilasCambiadas = -1;
-            }
+			catch (Exception exc)
+			{
+				throw exc;
+			}
 			Conn.Close();
 			return FilasCambiadas;
 		}
