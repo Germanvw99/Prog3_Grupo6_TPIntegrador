@@ -96,22 +96,13 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox txtDireccionPago;
 
         /// <summary>
-        /// Control RfvDireccionPago.
+        /// Control RfvtxtDireccionPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDireccionPago;
-
-        /// <summary>
-        /// Control RfvRangoDireccionPago.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RfvRangoDireccionPago;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtDireccionPago;
 
         /// <summary>
         /// Control GvCarro.
